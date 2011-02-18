@@ -55,6 +55,7 @@ namespace hs
 		std::vector<entity*>::const_iterator it = ent_cache.begin();
 		while (it != ent_cache.end())
 		{
+			printf("LOL\n");
 			current_entity = *it;
 			
 			pos = em->get_component<comp::position>(current_entity);
