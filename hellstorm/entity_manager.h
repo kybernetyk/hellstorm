@@ -7,17 +7,24 @@
 //
 #pragma once
 #include <vector>
+#include "hs_types.h"
 
 #define MAX_ENTITIES 128 
 #define MAX_COMPONENTS_PER_ENTITY 32
 
 namespace hs 
 {
-	typedef int uid;
 	
 	class entity_manager;
-	class component;
-	
+	struct component
+	{
+	public:
+		component();
+		virtual ~component();
+		
+		uid family_id;
+	};
+
 	class entity
 	{
 	public:
@@ -32,15 +39,7 @@ namespace hs
 		uid guid;
 		uid manager_id;
 	};
-	
-	class component
-	{
-		public:
-		component();
-		virtual ~component();
-		
-		uid family_id;
-	};
+
 	
 	class entity_manager
 	{

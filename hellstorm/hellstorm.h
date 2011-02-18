@@ -10,6 +10,8 @@
 #define SCREEN_W 320
 #define SCREEN_H 480
 
+#include "hs_types.h"
+
 #include "vec_2d.h"
 #include "renderer.h"
 #include "texture_2d.h"
@@ -22,6 +24,9 @@
 #include "particle_emitter.h"
 
 #include "entity_manager.h"
+#include "components.h"
+
+#include "render_system.h"
 
 #include "scene.h"
 #include "game.h"

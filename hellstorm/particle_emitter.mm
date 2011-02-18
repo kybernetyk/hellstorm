@@ -63,6 +63,9 @@ namespace hs
 	
 	void particle_emitter::render_content(void)
 	{
+		if (![(ParticleEmitter*)objc_pe_ptr particleCount])
+			return;
+		
 		glPushMatrix();
 		glTranslatef(0.0, 0.0, position.z);
 		[(ParticleEmitter*)objc_pe_ptr renderParticles];

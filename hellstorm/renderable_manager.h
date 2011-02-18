@@ -10,9 +10,9 @@
 #include <tr1/unordered_map>
 #include <string>
 #include "renderable.h"
+#include "hs_types.h"
 namespace hs 
 {
-	typedef int resource_handle;
 	
 #define MAX_RESOURCES 512
 	class particle_emitter;

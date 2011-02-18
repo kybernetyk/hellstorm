@@ -7,6 +7,7 @@
 //
 
 #include "menu_scene.h"
+#include "hellstorm.h"
 #include <cstdio>
 
 namespace test_game 

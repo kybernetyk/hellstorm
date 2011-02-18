@@ -53,6 +53,8 @@
 		03440C10130EB6860097D9DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440C0F130EB6810097D9DA /* libz.dylib */; };
 		03440C14130EB71A0097D9DA /* particle_emitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440C12130EB7020097D9DA /* particle_emitter.mm */; };
 		0346098D130EC8990086DFDD /* entity_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346098B130EC8990086DFDD /* entity_manager.cpp */; };
+		03460997130ED8950086DFDD /* components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03460995130ED8950086DFDD /* components.cpp */; };
+		0346099D130EDEAA0086DFDD /* render_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346099B130EDEAA0086DFDD /* render_system.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +142,11 @@
 		03440C13130EB70F0097D9DA /* particle_emitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_emitter.h; sourceTree = "<group>"; };
 		0346098B130EC8990086DFDD /* entity_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_manager.cpp; sourceTree = "<group>"; };
 		0346098C130EC8990086DFDD /* entity_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity_manager.h; sourceTree = "<group>"; };
+		03460995130ED8950086DFDD /* components.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = components.cpp; sourceTree = "<group>"; };
+		03460996130ED8950086DFDD /* components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = components.h; sourceTree = "<group>"; };
+		03460998130EDB6A0086DFDD /* hs_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hs_types.h; sourceTree = "<group>"; };
+		0346099B130EDEAA0086DFDD /* render_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = render_system.cpp; sourceTree = "<group>"; };
+		0346099C130EDEAA0086DFDD /* render_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_system.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +241,7 @@
 				03440B9E130E778B0097D9DA /* scene.h */,
 				03440BA0130E77B60097D9DA /* hellstorm.cpp */,
 				03440BA1130E77B60097D9DA /* hellstorm.h */,
+				03460998130EDB6A0086DFDD /* hs_types.h */,
 			);
 			name = hellstorm;
 			sourceTree = "<group>";
@@ -379,6 +387,8 @@
 		03460988130EC8790086DFDD /* entity system */ = {
 			isa = PBXGroup;
 			children = (
+				03460999130EDE940086DFDD /* systems */,
+				03460994130ED8810086DFDD /* components */,
 				0346098A130EC8880086DFDD /* entity_manager */,
 			);
 			name = "entity system";
@@ -391,6 +401,32 @@
 				0346098C130EC8990086DFDD /* entity_manager.h */,
 			);
 			name = entity_manager;
+			sourceTree = "<group>";
+		};
+		03460994130ED8810086DFDD /* components */ = {
+			isa = PBXGroup;
+			children = (
+				03460995130ED8950086DFDD /* components.cpp */,
+				03460996130ED8950086DFDD /* components.h */,
+			);
+			name = components;
+			sourceTree = "<group>";
+		};
+		03460999130EDE940086DFDD /* systems */ = {
+			isa = PBXGroup;
+			children = (
+				0346099A130EDE9D0086DFDD /* render_system */,
+			);
+			name = systems;
+			sourceTree = "<group>";
+		};
+		0346099A130EDE9D0086DFDD /* render_system */ = {
+			isa = PBXGroup;
+			children = (
+				0346099B130EDEAA0086DFDD /* render_system.cpp */,
+				0346099C130EDEAA0086DFDD /* render_system.h */,
+			);
+			name = render_system;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,6 +526,8 @@
 				03440C0E130EB5A80097D9DA /* TBXML.m in Sources */,
 				03440C14130EB71A0097D9DA /* particle_emitter.mm in Sources */,
 				0346098D130EC8990086DFDD /* entity_manager.cpp in Sources */,
+				03460997130ED8950086DFDD /* components.cpp in Sources */,
+				0346099D130EDEAA0086DFDD /* render_system.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
