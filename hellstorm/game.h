@@ -10,6 +10,7 @@
 namespace hs 
 {
     class scene;
+	class renderer;
     
     class game 
     {
@@ -24,6 +25,8 @@ namespace hs
 			~game();
         protected:
             hs::scene *current_scene;
+		
+			renderer *rdev;
     };
     
 };

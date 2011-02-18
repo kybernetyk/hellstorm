@@ -7,6 +7,7 @@
 //
 
 #include "game.h"
+#include "hellstorm.h"
 #include "scene.h"
 
 namespace hs 
@@ -23,14 +24,17 @@ namespace hs
 	
     bool game::init_with_scene(hs::scene *scene)
     {
+		rdev = new renderer();
+		rdev->init(1.0);
+		
         current_scene = scene;
-        
         return true;
     }
     
     void game::shutdown()
     {
-    
+    	rdev->shutdown();
+		delete rdev;
     }
 	
 	void game::tick(void)
@@ -40,6 +44,8 @@ namespace hs
 	
 	void game::render(void)
 	{
+		rdev->begin_render();
 		current_scene->render();
+		rdev->end_render();
 	}
 }
