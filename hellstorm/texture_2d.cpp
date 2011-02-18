@@ -36,31 +36,26 @@ namespace hs
 	bool texture2d::load_from_file(std::string fn)
 	{
 		filename = fn;
-		
-		fn = path_for_file(fn.c_str());
-		
-		unsigned int w,h;
-		
-		 GLuint tex_2d = SOIL_load_OGL_texture2
-		 (
-		 fn.c_str(),
-		 SOIL_LOAD_AUTO,
-		 SOIL_CREATE_NEW_ID,
-		 0,//SOIL_FLAG_COMPRESS_TO_DXT,
-		 // SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-		 //SOIL_FLAG_MIPMAPS | SOIL_FLAG_COMPRESS_TO_DXT
-		 //	 SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-		 &w,&h
-		 );
 
-		
+		fn = path_for_file(fn.c_str());
+
+		unsigned int w,h;
+
+		GLuint tex_2d = SOIL_load_OGL_texture2( fn.c_str(),
+												SOIL_LOAD_AUTO,
+												SOIL_CREATE_NEW_ID,
+												0,//SOIL_FLAG_COMPRESS_TO_DXT,
+												// SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+												//SOIL_FLAG_MIPMAPS | SOIL_FLAG_COMPRESS_TO_DXT
+												//	 SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+												&w,&h);
 		if(tex_2d == 0)
 		{
 			std::printf( "SOIL loading error: '%s' - %s\n", SOIL_last_result(),filename.c_str());
 			abort();
 			return false;
 		}
-		
+
 		name = tex_2d;
 		size = size2d_make(w, h);		
 		set_alias_tex_params();

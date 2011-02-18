@@ -34,6 +34,7 @@
 		03440BD4130E91130097D9DA /* image_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BCC130E91130097D9DA /* image_helper.cpp */; };
 		03440BD5130E91130097D9DA /* SOIL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BCE130E91130097D9DA /* SOIL.cpp */; };
 		03440BD6130E91130097D9DA /* stb_image_aug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BD0130E91130097D9DA /* stb_image_aug.cpp */; };
+		03440BD9130E95690097D9DA /* texture_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BD7130E95570097D9DA /* texture_manager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		03440BD0130E91130097D9DA /* stb_image_aug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image_aug.cpp; sourceTree = "<group>"; };
 		03440BD1130E91130097D9DA /* stbi_DDS_aug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_DDS_aug.h; sourceTree = "<group>"; };
 		03440BD2130E91130097D9DA /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_DDS_aug_c.h; sourceTree = "<group>"; };
+		03440BD7130E95570097D9DA /* texture_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture_manager.cpp; sourceTree = "<group>"; };
+		03440BD8130E955C0097D9DA /* texture_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture_manager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,8 @@
 				03440BBD130E84F60097D9DA /* hs_ogl.h */,
 				03440BC2130E8D1C0097D9DA /* texture_2d.cpp */,
 				03440BC3130E8D1C0097D9DA /* texture_2d.h */,
+				03440BD7130E95570097D9DA /* texture_manager.cpp */,
+				03440BD8130E955C0097D9DA /* texture_manager.h */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				03440BD4130E91130097D9DA /* image_helper.cpp in Sources */,
 				03440BD5130E91130097D9DA /* SOIL.cpp in Sources */,
 				03440BD6130E91130097D9DA /* stb_image_aug.cpp in Sources */,
+				03440BD9130E95690097D9DA /* texture_manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

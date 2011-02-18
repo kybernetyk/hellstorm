@@ -12,5 +12,7 @@
 
 #include "vec_2d.h"
 #include "renderer.h"
+#include "texture_2d.h"
+#include "texture_manager.h"
 #include "scene.h"
 #include "game.h"
