@@ -35,6 +35,9 @@
 		03440BD5130E91130097D9DA /* SOIL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BCE130E91130097D9DA /* SOIL.cpp */; };
 		03440BD6130E91130097D9DA /* stb_image_aug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BD0130E91130097D9DA /* stb_image_aug.cpp */; };
 		03440BD9130E95690097D9DA /* texture_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BD7130E95570097D9DA /* texture_manager.cpp */; };
+		03440BDD130E9CDD0097D9DA /* renderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BDB130E9CDD0097D9DA /* renderable.cpp */; };
+		03440BE3130E9F4B0097D9DA /* quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE1130E9F490097D9DA /* quad.cpp */; };
+		03440BE6130EA3B40097D9DA /* atlas_quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +92,12 @@
 		03440BD2130E91130097D9DA /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_DDS_aug_c.h; sourceTree = "<group>"; };
 		03440BD7130E95570097D9DA /* texture_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture_manager.cpp; sourceTree = "<group>"; };
 		03440BD8130E955C0097D9DA /* texture_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture_manager.h; sourceTree = "<group>"; };
+		03440BDB130E9CDD0097D9DA /* renderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderable.cpp; sourceTree = "<group>"; };
+		03440BDC130E9CDD0097D9DA /* renderable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderable.h; sourceTree = "<group>"; };
+		03440BE1130E9F490097D9DA /* quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = quad.cpp; sourceTree = "<group>"; };
+		03440BE2130E9F4A0097D9DA /* quad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quad.h; sourceTree = "<group>"; };
+		03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atlas_quad.cpp; sourceTree = "<group>"; };
+		03440BE5130EA3AF0097D9DA /* atlas_quad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atlas_quad.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +205,7 @@
 		03440BB9130E83250097D9DA /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				03440BDA130E9CCA0097D9DA /* renderables */,
 				03440BC8130E91120097D9DA /* SOIL_iPhone */,
 				03440BBA130E83430097D9DA /* renderer.cpp */,
 				03440BBB130E83430097D9DA /* renderer.h */,
@@ -234,6 +244,19 @@
 				03440BD2130E91130097D9DA /* stbi_DDS_aug_c.h */,
 			);
 			path = SOIL_iPhone;
+			sourceTree = "<group>";
+		};
+		03440BDA130E9CCA0097D9DA /* renderables */ = {
+			isa = PBXGroup;
+			children = (
+				03440BDB130E9CDD0097D9DA /* renderable.cpp */,
+				03440BDC130E9CDD0097D9DA /* renderable.h */,
+				03440BE1130E9F490097D9DA /* quad.cpp */,
+				03440BE2130E9F4A0097D9DA /* quad.h */,
+				03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */,
+				03440BE5130EA3AF0097D9DA /* atlas_quad.h */,
+			);
+			name = renderables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +339,9 @@
 				03440BD5130E91130097D9DA /* SOIL.cpp in Sources */,
 				03440BD6130E91130097D9DA /* stb_image_aug.cpp in Sources */,
 				03440BD9130E95690097D9DA /* texture_manager.cpp in Sources */,
+				03440BDD130E9CDD0097D9DA /* renderable.cpp in Sources */,
+				03440BE3130E9F4B0097D9DA /* quad.cpp in Sources */,
+				03440BE6130EA3B40097D9DA /* atlas_quad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

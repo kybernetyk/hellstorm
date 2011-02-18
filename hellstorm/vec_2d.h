@@ -19,6 +19,16 @@ namespace hs
 	vec2d vec2d_make(double x, double y);
 	vec2d vec2d_normalize(vec2d vec);
 	
+	struct vec3d
+	{
+		double x;
+		double y;
+		double z;
+	};
+	
+	vec3d vec3d_make(double x, double y, double z);
+	
+	
 	struct size2d
 	{
 		double w;

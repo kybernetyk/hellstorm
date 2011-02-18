@@ -26,6 +26,12 @@ namespace hs
 		return vec;
 	}
 
+	vec3d vec3d_make(double x, double y, double z)
+	{
+		vec3d vc = {x,y,z};
+		return vc;
+	}
+	
 	size2d size2d_make(double w, double h)
 	{
 		size2d s = {w,h};

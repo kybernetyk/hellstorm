@@ -42,5 +42,5 @@ namespace hs
 		size2d viewport_size_pixels;
 		size2d viewport_size_units;
 	};
-	extern renderer *g_renderer;
+	extern renderer g_renderer;
 }

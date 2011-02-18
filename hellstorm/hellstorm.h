@@ -14,5 +14,8 @@
 #include "renderer.h"
 #include "texture_2d.h"
 #include "texture_manager.h"
+#include "renderable.h"
+#include "quad.h"
+
 #include "scene.h"
 #include "game.h"

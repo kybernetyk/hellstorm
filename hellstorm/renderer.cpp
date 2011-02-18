@@ -13,7 +13,7 @@
 
 namespace hs 
 {
-	renderer *g_renderer = 0;
+	renderer g_renderer;
 	
 	renderer::renderer()
 	{
@@ -27,8 +27,6 @@ namespace hs
 	
 	void renderer::init(double scale)
 	{
-		g_renderer = this;
-		
 		scale_factor = scale;
 		double screen_size_x = SCREEN_W * scale_factor;
 		double screen_size_y = SCREEN_H * scale_factor;	//change to 280 for a 40px high empty strip [eg for an ad banner]
@@ -49,7 +47,7 @@ namespace hs
 	
 	void renderer::shutdown(void)
 	{
-		g_renderer = 0;	
+
 	}
 	
 	void renderer::begin_render(void)
@@ -80,13 +78,11 @@ namespace hs
 #else
 		vec.y = SCREEN_H*scale_factor - (float)vec.y;
 #endif
-		
 		vec2d ret;
 		ret.x = vec.x * x_conv + cam_pos.x - viewport_size_units.w/2.0; //+ camera offset etc
 		ret.y = vec.y * y_conv + cam_pos.y - viewport_size_units.h/2.0;
 		
 		return  ret;
-
 	}
 	
 	void renderer::setup_viewport_and_projection(int viewport_width_in_pixels,

@@ -24,8 +24,7 @@ namespace hs
 	
     bool game::init_with_scene(hs::scene *scene)
     {
-		rdev = new renderer();
-		rdev->init(1.0);
+		g_renderer.init(1.0);
 		
         current_scene = scene;
         return true;
@@ -33,7 +32,7 @@ namespace hs
     
     void game::shutdown()
     {
-    	rdev->shutdown();
+    	g_renderer.shutdown();
 		delete rdev;
     }
 	
@@ -44,8 +43,8 @@ namespace hs
 	
 	void game::render(void)
 	{
-		rdev->begin_render();
+		g_renderer.begin_render();
 		current_scene->render();
-		rdev->end_render();
+		g_renderer.end_render();
 	}
 }
