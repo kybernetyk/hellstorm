@@ -19,8 +19,13 @@
 		03440B88130E76D20097D9DA /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03440B87130E76D20097D9DA /* Shader.fsh */; };
 		03440B8A130E76D20097D9DA /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03440B89130E76D20097D9DA /* Shader.vsh */; };
 		03440B8D130E76D20097D9DA /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440B8C130E76D20097D9DA /* EAGLView.m */; };
-		03440B90130E76D20097D9DA /* hellstormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440B8F130E76D20097D9DA /* hellstormViewController.m */; };
+		03440B90130E76D20097D9DA /* hellstormViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440B8F130E76D20097D9DA /* hellstormViewController.mm */; };
 		03440B93130E76D20097D9DA /* hellstormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03440B91130E76D20097D9DA /* hellstormViewController.xib */; };
+		03440B9C130E77030097D9DA /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440B9A130E77030097D9DA /* game.cpp */; };
+		03440B9F130E778B0097D9DA /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440B9D130E778B0097D9DA /* scene.cpp */; };
+		03440BA2130E77B70097D9DA /* hellstorm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BA0130E77B60097D9DA /* hellstorm.cpp */; };
+		03440BA5130E77FA0097D9DA /* hs_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BA3130E77FA0097D9DA /* hs_wrapper.cpp */; };
+		03440BB8130E7E6F0097D9DA /* menu_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BB6130E7E6F0097D9DA /* menu_scene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,20 +35,30 @@
 		03440B72130E76D20097D9DA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		03440B74130E76D20097D9DA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		03440B76130E76D20097D9DA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		03440B7A130E76D20097D9DA /* hellstorm-Info.plist */ = {isa = PBXFileReference; path = "hellstorm-Info.plist"; sourceTree = "<group>"; };
+		03440B7A130E76D20097D9DA /* hellstorm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hellstorm-Info.plist"; sourceTree = "<group>"; };
 		03440B7C130E76D20097D9DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		03440B7E130E76D20097D9DA /* hellstorm-Prefix.pch */ = {isa = PBXFileReference; path = "hellstorm-Prefix.pch"; sourceTree = "<group>"; };
+		03440B7E130E76D20097D9DA /* hellstorm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hellstorm-Prefix.pch"; sourceTree = "<group>"; };
 		03440B7F130E76D20097D9DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03440B81130E76D20097D9DA /* hellstormAppDelegate.h */ = {isa = PBXFileReference; path = hellstormAppDelegate.h; sourceTree = "<group>"; };
+		03440B81130E76D20097D9DA /* hellstormAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hellstormAppDelegate.h; sourceTree = "<group>"; };
 		03440B82130E76D20097D9DA /* hellstormAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hellstormAppDelegate.m; sourceTree = "<group>"; };
 		03440B85130E76D20097D9DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		03440B87130E76D20097D9DA /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		03440B89130E76D20097D9DA /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
-		03440B8B130E76D20097D9DA /* EAGLView.h */ = {isa = PBXFileReference; path = EAGLView.h; sourceTree = "<group>"; };
+		03440B8B130E76D20097D9DA /* EAGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		03440B8C130E76D20097D9DA /* EAGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
-		03440B8E130E76D20097D9DA /* hellstormViewController.h */ = {isa = PBXFileReference; path = hellstormViewController.h; sourceTree = "<group>"; };
-		03440B8F130E76D20097D9DA /* hellstormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hellstormViewController.m; sourceTree = "<group>"; };
+		03440B8E130E76D20097D9DA /* hellstormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hellstormViewController.h; sourceTree = "<group>"; };
+		03440B8F130E76D20097D9DA /* hellstormViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = hellstormViewController.mm; sourceTree = "<group>"; };
 		03440B92130E76D20097D9DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hellstormViewController.xib; sourceTree = "<group>"; };
+		03440B9A130E77030097D9DA /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		03440B9B130E77030097D9DA /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		03440B9D130E778B0097D9DA /* scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene.cpp; sourceTree = "<group>"; };
+		03440B9E130E778B0097D9DA /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
+		03440BA0130E77B60097D9DA /* hellstorm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hellstorm.cpp; sourceTree = "<group>"; };
+		03440BA1130E77B60097D9DA /* hellstorm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hellstorm.h; sourceTree = "<group>"; };
+		03440BA3130E77FA0097D9DA /* hs_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hs_wrapper.cpp; sourceTree = "<group>"; };
+		03440BA4130E77FA0097D9DA /* hs_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hs_wrapper.h; sourceTree = "<group>"; };
+		03440BB6130E7E6F0097D9DA /* menu_scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_scene.cpp; sourceTree = "<group>"; };
+		03440BB7130E7E6F0097D9DA /* menu_scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu_scene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +109,8 @@
 		03440B78130E76D20097D9DA /* hellstorm */ = {
 			isa = PBXGroup;
 			children = (
+				03440BB5130E7E600097D9DA /* testgame */,
+				03440B99130E76E80097D9DA /* hellstorm */,
 				03440B81130E76D20097D9DA /* hellstormAppDelegate.h */,
 				03440B82130E76D20097D9DA /* hellstormAppDelegate.m */,
 				03440B84130E76D20097D9DA /* MainWindow.xib */,
@@ -102,9 +119,11 @@
 				03440B8B130E76D20097D9DA /* EAGLView.h */,
 				03440B8C130E76D20097D9DA /* EAGLView.m */,
 				03440B8E130E76D20097D9DA /* hellstormViewController.h */,
-				03440B8F130E76D20097D9DA /* hellstormViewController.m */,
+				03440B8F130E76D20097D9DA /* hellstormViewController.mm */,
 				03440B91130E76D20097D9DA /* hellstormViewController.xib */,
 				03440B79130E76D20097D9DA /* Supporting Files */,
+				03440BA3130E77FA0097D9DA /* hs_wrapper.cpp */,
+				03440BA4130E77FA0097D9DA /* hs_wrapper.h */,
 			);
 			path = hellstorm;
 			sourceTree = "<group>";
@@ -118,6 +137,28 @@
 				03440B7F130E76D20097D9DA /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03440B99130E76E80097D9DA /* hellstorm */ = {
+			isa = PBXGroup;
+			children = (
+				03440B9A130E77030097D9DA /* game.cpp */,
+				03440B9B130E77030097D9DA /* game.h */,
+				03440B9D130E778B0097D9DA /* scene.cpp */,
+				03440B9E130E778B0097D9DA /* scene.h */,
+				03440BA0130E77B60097D9DA /* hellstorm.cpp */,
+				03440BA1130E77B60097D9DA /* hellstorm.h */,
+			);
+			name = hellstorm;
+			sourceTree = "<group>";
+		};
+		03440BB5130E7E600097D9DA /* testgame */ = {
+			isa = PBXGroup;
+			children = (
+				03440BB6130E7E6F0097D9DA /* menu_scene.cpp */,
+				03440BB7130E7E6F0097D9DA /* menu_scene.h */,
+			);
+			name = testgame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +226,12 @@
 				03440B80130E76D20097D9DA /* main.m in Sources */,
 				03440B83130E76D20097D9DA /* hellstormAppDelegate.m in Sources */,
 				03440B8D130E76D20097D9DA /* EAGLView.m in Sources */,
-				03440B90130E76D20097D9DA /* hellstormViewController.m in Sources */,
+				03440B90130E76D20097D9DA /* hellstormViewController.mm in Sources */,
+				03440B9C130E77030097D9DA /* game.cpp in Sources */,
+				03440B9F130E778B0097D9DA /* scene.cpp in Sources */,
+				03440BA2130E77B70097D9DA /* hellstorm.cpp in Sources */,
+				03440BA5130E77FA0097D9DA /* hs_wrapper.cpp in Sources */,
+				03440BB8130E7E6F0097D9DA /* menu_scene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +347,7 @@
 				03440B98130E76D20097D9DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
