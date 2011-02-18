@@ -19,6 +19,7 @@ namespace test_game
 	{
 		std::printf("menu scene dtor\n");
 	}
+	hs::comp::particle_emitter *pe;
 	
 	void menu_scene::init(void)
 	{
@@ -33,8 +34,7 @@ namespace test_game
 		hs::comp::sprite *sprite = em->add_component<hs::comp::sprite>(ent);
 		sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
 		sprite->z = -3.0;
-		
-		
+				
 		ent = em->new_entity();
 		pos = em->add_component<hs::comp::position>(ent);
 		pos->origin = hs::vec2d_make(320/2,480/2);
@@ -43,6 +43,27 @@ namespace test_game
 		label->res_handle = hs::g_renderable_manager.acquire_resource<hs::bitmap_font>("impact20.fnt");
 		label->text = "oh hai!";
 		label->z = -2.0;
+		
+		ent = em->new_entity();
+		pos = em->add_component<hs::comp::position>(ent);
+		pos->origin = hs::vec2d_make(220/2,480/2);
+		
+		hs::comp::atlas_sprite *as = em->add_component<hs::comp::atlas_sprite>(ent);
+		as->res_handle = hs::g_renderable_manager.acquire_resource<hs::atlas_quad>("bubbles.png");
+		as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
+		as->z = -2.1;
+		
+		
+		ent = em->new_entity();
+		pos = em->add_component<hs::comp::position>(ent);
+		pos->origin = hs::vec2d_make(220/2,480/2-100);
+		
+		pe = em->add_component<hs::comp::particle_emitter>(ent);
+		pe->pe = hs::g_renderable_manager.acquire_particle_emitter("cool.pex");
+		pe->z = 0.0;
+		pe->pe->position = hs::vec3d_make(100, 100, 0.0);
+		pe->pe->set_duration(-1.0);
+		pe->pe->start();
 		
 //		hs::resource_handle q = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
 //		hs::quad *qd = hs::g_renderable_manager.get_resource<hs::quad>(&q);
@@ -70,8 +91,9 @@ namespace test_game
 	
 	void menu_scene::update(double dt)
 	{
-	//	std::printf("update %i\n", q);		
-//		pe->update(dt);
+	//	std::printf("update %i\n", q);	
+		
+		pe->pe->update(dt);
 	}
 	
 	void menu_scene::render()

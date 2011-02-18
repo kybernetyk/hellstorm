@@ -55,6 +55,7 @@
 		0346098D130EC8990086DFDD /* entity_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346098B130EC8990086DFDD /* entity_manager.cpp */; };
 		03460997130ED8950086DFDD /* components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03460995130ED8950086DFDD /* components.cpp */; };
 		0346099D130EDEAA0086DFDD /* render_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346099B130EDEAA0086DFDD /* render_system.cpp */; };
+		0346099F130EE89D0086DFDD /* bubbles.png in Resources */ = {isa = PBXBuildFile; fileRef = 0346099E130EE89D0086DFDD /* bubbles.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		03460998130EDB6A0086DFDD /* hs_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hs_types.h; sourceTree = "<group>"; };
 		0346099B130EDEAA0086DFDD /* render_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = render_system.cpp; sourceTree = "<group>"; };
 		0346099C130EDEAA0086DFDD /* render_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_system.h; sourceTree = "<group>"; };
+		0346099E130EE89D0086DFDD /* bubbles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubbles.png; path = ../../../../Users/jrk/c4/Resources/bubbles.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 		03440BF2130EB2540097D9DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0346099E130EE89D0086DFDD /* bubbles.png */,
 				03440BF3130EB3A20097D9DA /* cool.pex */,
 				03440BF4130EB3A20097D9DA /* impact20_0.png */,
 				03440BF5130EB3A20097D9DA /* impact20.fnt */,
@@ -485,6 +488,7 @@
 				03440BF6130EB3A30097D9DA /* cool.pex in Resources */,
 				03440BF7130EB3A30097D9DA /* impact20_0.png in Resources */,
 				03440BF8130EB3A30097D9DA /* impact20.fnt in Resources */,
+				0346099F130EE89D0086DFDD /* bubbles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
