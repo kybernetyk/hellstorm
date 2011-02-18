@@ -38,6 +38,7 @@
 		03440BDD130E9CDD0097D9DA /* renderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BDB130E9CDD0097D9DA /* renderable.cpp */; };
 		03440BE3130E9F4B0097D9DA /* quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE1130E9F490097D9DA /* quad.cpp */; };
 		03440BE6130EA3B40097D9DA /* atlas_quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */; };
+		03440BE9130EA7F60097D9DA /* renderable_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE7130EA7E40097D9DA /* renderable_manager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,8 @@
 		03440BE2130E9F4A0097D9DA /* quad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quad.h; sourceTree = "<group>"; };
 		03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atlas_quad.cpp; sourceTree = "<group>"; };
 		03440BE5130EA3AF0097D9DA /* atlas_quad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atlas_quad.h; sourceTree = "<group>"; };
+		03440BE7130EA7E40097D9DA /* renderable_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderable_manager.cpp; sourceTree = "<group>"; };
+		03440BE8130EA7E80097D9DA /* renderable_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderable_manager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +258,8 @@
 				03440BE2130E9F4A0097D9DA /* quad.h */,
 				03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */,
 				03440BE5130EA3AF0097D9DA /* atlas_quad.h */,
+				03440BE7130EA7E40097D9DA /* renderable_manager.cpp */,
+				03440BE8130EA7E80097D9DA /* renderable_manager.h */,
 			);
 			name = renderables;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				03440BDD130E9CDD0097D9DA /* renderable.cpp in Sources */,
 				03440BE3130E9F4B0097D9DA /* quad.cpp in Sources */,
 				03440BE6130EA3B40097D9DA /* atlas_quad.cpp in Sources */,
+				03440BE9130EA7F60097D9DA /* renderable_manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
