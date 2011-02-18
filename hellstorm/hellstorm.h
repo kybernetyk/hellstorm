@@ -15,7 +15,10 @@
 #include "texture_2d.h"
 #include "texture_manager.h"
 #include "renderable.h"
+#include "renderable_manager.h"
 #include "quad.h"
+#include "atlas_quad.h"
+#include "bitmap_font.h"
 
 #include "scene.h"
 #include "game.h"

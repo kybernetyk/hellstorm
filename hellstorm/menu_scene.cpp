@@ -11,6 +11,9 @@
 
 namespace test_game 
 {
+	hs::resource_handle q;
+	hs::resource_handle f;
+	
 	menu_scene::~menu_scene()
 	{
 		std::printf("menu scene dtor\n");
@@ -18,6 +21,13 @@ namespace test_game
 	
 	void menu_scene::init(void)
 	{
+		q = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
+		hs::quad *qd = hs::g_renderable_manager.get_resource<hs::quad>(&q);
+		qd->position = hs::vec3d_make(320/2, 480/2, -5.0);
+		
+		f = hs::g_renderable_manager.acquire_resource<hs::bitmap_font>("impact20.fnt");
+		hs::bitmap_font *fp = hs::g_renderable_manager.get_resource<hs::bitmap_font>(&f);
+		fp->position = hs::vec3d_make(320/2, 480/2, -4.0);
 		
 	}
 	
@@ -28,12 +38,16 @@ namespace test_game
 	
 	void menu_scene::update(double dt)
 	{
-		std::printf("update\n");		
+	//	std::printf("update %i\n", q);		
 	}
 	
 	void menu_scene::render()
 	{
+		hs::quad *qd = hs::g_renderable_manager.get_resource<hs::quad>(&q);
+		qd->render_content();
 		
+		hs::bitmap_font *fp = hs::g_renderable_manager.get_resource<hs::bitmap_font>(&f);
+		fp->render_content("ficken!");
 	}
 	
 	int menu_scene::scene_type()

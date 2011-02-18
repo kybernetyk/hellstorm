@@ -39,6 +39,12 @@
 		03440BE3130E9F4B0097D9DA /* quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE1130E9F490097D9DA /* quad.cpp */; };
 		03440BE6130EA3B40097D9DA /* atlas_quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE4130EA3AD0097D9DA /* atlas_quad.cpp */; };
 		03440BE9130EA7F60097D9DA /* renderable_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BE7130EA7E40097D9DA /* renderable_manager.cpp */; };
+		03440BEC130EACD20097D9DA /* bitmap_font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440BEA130EACB20097D9DA /* bitmap_font.cpp */; };
+		03440BEF130EAE550097D9DA /* bm_font.c in Sources */ = {isa = PBXBuildFile; fileRef = 03440BED130EAE4D0097D9DA /* bm_font.c */; };
+		03440BF1130EB2480097D9DA /* game_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF0130EB2450097D9DA /* game_back.png */; };
+		03440BF6130EB3A30097D9DA /* cool.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF3130EB3A20097D9DA /* cool.pex */; };
+		03440BF7130EB3A30097D9DA /* impact20_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF4130EB3A20097D9DA /* impact20_0.png */; };
+		03440BF8130EB3A30097D9DA /* impact20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF5130EB3A20097D9DA /* impact20.fnt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +107,14 @@
 		03440BE5130EA3AF0097D9DA /* atlas_quad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atlas_quad.h; sourceTree = "<group>"; };
 		03440BE7130EA7E40097D9DA /* renderable_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderable_manager.cpp; sourceTree = "<group>"; };
 		03440BE8130EA7E80097D9DA /* renderable_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderable_manager.h; sourceTree = "<group>"; };
+		03440BEA130EACB20097D9DA /* bitmap_font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bitmap_font.cpp; sourceTree = "<group>"; };
+		03440BEB130EACBA0097D9DA /* bitmap_font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitmap_font.h; sourceTree = "<group>"; };
+		03440BED130EAE4D0097D9DA /* bm_font.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bm_font.c; sourceTree = "<group>"; };
+		03440BEE130EAE500097D9DA /* bm_font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bm_font.h; sourceTree = "<group>"; };
+		03440BF0130EB2450097D9DA /* game_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = game_back.png; path = ../game_back.png; sourceTree = "<group>"; };
+		03440BF3130EB3A20097D9DA /* cool.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cool.pex; sourceTree = "<group>"; };
+		03440BF4130EB3A20097D9DA /* impact20_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = impact20_0.png; sourceTree = "<group>"; };
+		03440BF5130EB3A20097D9DA /* impact20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = impact20.fnt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +213,7 @@
 		03440BB5130E7E600097D9DA /* testgame */ = {
 			isa = PBXGroup;
 			children = (
+				03440BF2130EB2540097D9DA /* Resources */,
 				03440BB6130E7E6F0097D9DA /* menu_scene.cpp */,
 				03440BB7130E7E6F0097D9DA /* menu_scene.h */,
 			);
@@ -260,8 +275,23 @@
 				03440BE5130EA3AF0097D9DA /* atlas_quad.h */,
 				03440BE7130EA7E40097D9DA /* renderable_manager.cpp */,
 				03440BE8130EA7E80097D9DA /* renderable_manager.h */,
+				03440BED130EAE4D0097D9DA /* bm_font.c */,
+				03440BEE130EAE500097D9DA /* bm_font.h */,
+				03440BEA130EACB20097D9DA /* bitmap_font.cpp */,
+				03440BEB130EACBA0097D9DA /* bitmap_font.h */,
 			);
 			name = renderables;
+			sourceTree = "<group>";
+		};
+		03440BF2130EB2540097D9DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				03440BF3130EB3A20097D9DA /* cool.pex */,
+				03440BF4130EB3A20097D9DA /* impact20_0.png */,
+				03440BF5130EB3A20097D9DA /* impact20.fnt */,
+				03440BF0130EB2450097D9DA /* game_back.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +346,10 @@
 				03440B88130E76D20097D9DA /* Shader.fsh in Resources */,
 				03440B8A130E76D20097D9DA /* Shader.vsh in Resources */,
 				03440B93130E76D20097D9DA /* hellstormViewController.xib in Resources */,
+				03440BF1130EB2480097D9DA /* game_back.png in Resources */,
+				03440BF6130EB3A30097D9DA /* cool.pex in Resources */,
+				03440BF7130EB3A30097D9DA /* impact20_0.png in Resources */,
+				03440BF8130EB3A30097D9DA /* impact20.fnt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +382,8 @@
 				03440BE3130E9F4B0097D9DA /* quad.cpp in Sources */,
 				03440BE6130EA3B40097D9DA /* atlas_quad.cpp in Sources */,
 				03440BE9130EA7F60097D9DA /* renderable_manager.cpp in Sources */,
+				03440BEC130EACD20097D9DA /* bitmap_font.cpp in Sources */,
+				03440BEF130EAE550097D9DA /* bm_font.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
