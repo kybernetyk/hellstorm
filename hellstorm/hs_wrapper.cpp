@@ -15,11 +15,7 @@ static hs::game *the_game;
 void hs_game_init(void)
 {
     the_game = new hs::game();
-	
-	test_game::menu_scene *ms = new test_game::menu_scene();
-	ms->init();
-	
-	the_game->init_with_scene(ms);
+	the_game->init_with_scene(new test_game::menu_scene());
 }
 
 void hs_game_shutdown(void)

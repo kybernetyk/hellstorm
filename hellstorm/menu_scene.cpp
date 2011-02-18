@@ -15,6 +15,8 @@ namespace test_game
 	hs::resource_handle f;
 	hs::particle_emitter *pe;
 	
+	hs::entity_manager *em;
+	
 	menu_scene::~menu_scene()
 	{
 		std::printf("menu scene dtor\n");
@@ -22,6 +24,8 @@ namespace test_game
 	
 	void menu_scene::init(void)
 	{
+		em = new hs::entity_manager();
+		
 		q = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
 		hs::quad *qd = hs::g_renderable_manager.get_resource<hs::quad>(&q);
 		qd->position = hs::vec3d_make(320/2, 480/2, -5.0);
@@ -39,7 +43,8 @@ namespace test_game
 	
 	void menu_scene::shutdown(void)
 	{
-		
+		em->remove_all_entities();
+		delete em;
 	}
 	
 	void menu_scene::update(double dt)

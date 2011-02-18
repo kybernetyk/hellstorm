@@ -27,6 +27,7 @@ namespace hs
 		g_renderer.init(1.0);
 		
         current_scene = scene;
+		current_scene->init();
         return true;
     }
     

@@ -21,5 +21,7 @@
 #include "bitmap_font.h"
 #include "particle_emitter.h"
 
+#include "entity_manager.h"
+
 #include "scene.h"
 #include "game.h"

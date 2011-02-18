@@ -53,8 +53,6 @@
 		03440C10130EB6860097D9DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440C0F130EB6810097D9DA /* libz.dylib */; };
 		03440C14130EB71A0097D9DA /* particle_emitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440C12130EB7020097D9DA /* particle_emitter.mm */; };
 		0346098D130EC8990086DFDD /* entity_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346098B130EC8990086DFDD /* entity_manager.cpp */; };
-		03460990130EC9E60086DFDD /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346098E130EC9E60086DFDD /* component.cpp */; };
-		03460993130ECCAA0086DFDD /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03460991130ECCA90086DFDD /* entity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,10 +140,6 @@
 		03440C13130EB70F0097D9DA /* particle_emitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_emitter.h; sourceTree = "<group>"; };
 		0346098B130EC8990086DFDD /* entity_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_manager.cpp; sourceTree = "<group>"; };
 		0346098C130EC8990086DFDD /* entity_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity_manager.h; sourceTree = "<group>"; };
-		0346098E130EC9E60086DFDD /* component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cpp; sourceTree = "<group>"; };
-		0346098F130EC9E60086DFDD /* component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = component.h; sourceTree = "<group>"; };
-		03460991130ECCA90086DFDD /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
-		03460992130ECCA90086DFDD /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,10 +389,6 @@
 			children = (
 				0346098B130EC8990086DFDD /* entity_manager.cpp */,
 				0346098C130EC8990086DFDD /* entity_manager.h */,
-				0346098E130EC9E60086DFDD /* component.cpp */,
-				0346098F130EC9E60086DFDD /* component.h */,
-				03460991130ECCA90086DFDD /* entity.cpp */,
-				03460992130ECCA90086DFDD /* entity.h */,
 			);
 			name = entity_manager;
 			sourceTree = "<group>";
@@ -500,8 +490,6 @@
 				03440C0E130EB5A80097D9DA /* TBXML.m in Sources */,
 				03440C14130EB71A0097D9DA /* particle_emitter.mm in Sources */,
 				0346098D130EC8990086DFDD /* entity_manager.cpp in Sources */,
-				03460990130EC9E60086DFDD /* component.cpp in Sources */,
-				03460993130ECCAA0086DFDD /* entity.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
