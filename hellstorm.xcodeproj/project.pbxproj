@@ -45,6 +45,13 @@
 		03440BF6130EB3A30097D9DA /* cool.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF3130EB3A20097D9DA /* cool.pex */; };
 		03440BF7130EB3A30097D9DA /* impact20_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF4130EB3A20097D9DA /* impact20_0.png */; };
 		03440BF8130EB3A30097D9DA /* impact20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 03440BF5130EB3A20097D9DA /* impact20.fnt */; };
+		03440C0A130EB5A80097D9DA /* OBJCTexture2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440BFE130EB5A80097D9DA /* OBJCTexture2D.mm */; };
+		03440C0B130EB5A80097D9DA /* ParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440C01130EB5A80097D9DA /* ParticleEmitter.mm */; };
+		03440C0C130EB5A80097D9DA /* TBXMLParticleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440C03130EB5A80097D9DA /* TBXMLParticleAdditions.m */; };
+		03440C0D130EB5A80097D9DA /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440C07130EB5A80097D9DA /* NSDataAdditions.m */; };
+		03440C0E130EB5A80097D9DA /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440C09130EB5A80097D9DA /* TBXML.m */; };
+		03440C10130EB6860097D9DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440C0F130EB6810097D9DA /* libz.dylib */; };
+		03440C14130EB71A0097D9DA /* particle_emitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440C12130EB7020097D9DA /* particle_emitter.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +122,21 @@
 		03440BF3130EB3A20097D9DA /* cool.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cool.pex; sourceTree = "<group>"; };
 		03440BF4130EB3A20097D9DA /* impact20_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = impact20_0.png; sourceTree = "<group>"; };
 		03440BF5130EB3A20097D9DA /* impact20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = impact20.fnt; sourceTree = "<group>"; };
+		03440BFC130EB5A80097D9DA /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		03440BFD130EB5A80097D9DA /* OBJCTexture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJCTexture2D.h; sourceTree = "<group>"; };
+		03440BFE130EB5A80097D9DA /* OBJCTexture2D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OBJCTexture2D.mm; sourceTree = "<group>"; };
+		03440C00130EB5A80097D9DA /* ParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEmitter.h; sourceTree = "<group>"; };
+		03440C01130EB5A80097D9DA /* ParticleEmitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ParticleEmitter.mm; sourceTree = "<group>"; };
+		03440C02130EB5A80097D9DA /* TBXMLParticleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXMLParticleAdditions.h; sourceTree = "<group>"; };
+		03440C03130EB5A80097D9DA /* TBXMLParticleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXMLParticleAdditions.m; sourceTree = "<group>"; };
+		03440C04130EB5A80097D9DA /* Structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Structures.h; sourceTree = "<group>"; };
+		03440C06130EB5A80097D9DA /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		03440C07130EB5A80097D9DA /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		03440C08130EB5A80097D9DA /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		03440C09130EB5A80097D9DA /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		03440C0F130EB6810097D9DA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		03440C12130EB7020097D9DA /* particle_emitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = particle_emitter.mm; sourceTree = "<group>"; };
+		03440C13130EB70F0097D9DA /* particle_emitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_emitter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03440C10130EB6860097D9DA /* libz.dylib in Frameworks */,
 				03440B6F130E76D20097D9DA /* UIKit.framework in Frameworks */,
 				03440B71130E76D20097D9DA /* Foundation.framework in Frameworks */,
 				03440B73130E76D20097D9DA /* CoreGraphics.framework in Frameworks */,
@@ -153,6 +176,7 @@
 		03440B6D130E76D20097D9DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03440C0F130EB6810097D9DA /* libz.dylib */,
 				03440B6E130E76D20097D9DA /* UIKit.framework */,
 				03440B70130E76D20097D9DA /* Foundation.framework */,
 				03440B72130E76D20097D9DA /* CoreGraphics.framework */,
@@ -224,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				03440BDA130E9CCA0097D9DA /* renderables */,
-				03440BC8130E91120097D9DA /* SOIL_iPhone */,
 				03440BBA130E83430097D9DA /* renderer.cpp */,
 				03440BBB130E83430097D9DA /* renderer.h */,
 				03440BBD130E84F60097D9DA /* hs_ogl.h */,
@@ -267,6 +290,7 @@
 		03440BDA130E9CCA0097D9DA /* renderables */ = {
 			isa = PBXGroup;
 			children = (
+				03440C11130EB6AE0097D9DA /* ext */,
 				03440BDB130E9CDD0097D9DA /* renderable.cpp */,
 				03440BDC130E9CDD0097D9DA /* renderable.h */,
 				03440BE1130E9F490097D9DA /* quad.cpp */,
@@ -275,10 +299,10 @@
 				03440BE5130EA3AF0097D9DA /* atlas_quad.h */,
 				03440BE7130EA7E40097D9DA /* renderable_manager.cpp */,
 				03440BE8130EA7E80097D9DA /* renderable_manager.h */,
-				03440BED130EAE4D0097D9DA /* bm_font.c */,
-				03440BEE130EAE500097D9DA /* bm_font.h */,
 				03440BEA130EACB20097D9DA /* bitmap_font.cpp */,
 				03440BEB130EACBA0097D9DA /* bitmap_font.h */,
+				03440C12130EB7020097D9DA /* particle_emitter.mm */,
+				03440C13130EB70F0097D9DA /* particle_emitter.h */,
 			);
 			name = renderables;
 			sourceTree = "<group>";
@@ -292,6 +316,60 @@
 				03440BF0130EB2450097D9DA /* game_back.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		03440BF9130EB5600097D9DA /* font */ = {
+			isa = PBXGroup;
+			children = (
+				03440BED130EAE4D0097D9DA /* bm_font.c */,
+				03440BEE130EAE500097D9DA /* bm_font.h */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
+		03440BFB130EB5A60097D9DA /* Particle */ = {
+			isa = PBXGroup;
+			children = (
+				03440BFC130EB5A80097D9DA /* Global.h */,
+				03440BFD130EB5A80097D9DA /* OBJCTexture2D.h */,
+				03440BFE130EB5A80097D9DA /* OBJCTexture2D.mm */,
+				03440BFF130EB5A80097D9DA /* Particle Emitter */,
+				03440C04130EB5A80097D9DA /* Structures.h */,
+				03440C05130EB5A80097D9DA /* TBXML */,
+			);
+			path = Particle;
+			sourceTree = "<group>";
+		};
+		03440BFF130EB5A80097D9DA /* Particle Emitter */ = {
+			isa = PBXGroup;
+			children = (
+				03440C00130EB5A80097D9DA /* ParticleEmitter.h */,
+				03440C01130EB5A80097D9DA /* ParticleEmitter.mm */,
+				03440C02130EB5A80097D9DA /* TBXMLParticleAdditions.h */,
+				03440C03130EB5A80097D9DA /* TBXMLParticleAdditions.m */,
+			);
+			path = "Particle Emitter";
+			sourceTree = "<group>";
+		};
+		03440C05130EB5A80097D9DA /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				03440C06130EB5A80097D9DA /* NSDataAdditions.h */,
+				03440C07130EB5A80097D9DA /* NSDataAdditions.m */,
+				03440C08130EB5A80097D9DA /* TBXML.h */,
+				03440C09130EB5A80097D9DA /* TBXML.m */,
+			);
+			path = TBXML;
+			sourceTree = "<group>";
+		};
+		03440C11130EB6AE0097D9DA /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				03440BC8130E91120097D9DA /* SOIL_iPhone */,
+				03440BF9130EB5600097D9DA /* font */,
+				03440BFB130EB5A60097D9DA /* Particle */,
+			);
+			name = ext;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +462,12 @@
 				03440BE9130EA7F60097D9DA /* renderable_manager.cpp in Sources */,
 				03440BEC130EACD20097D9DA /* bitmap_font.cpp in Sources */,
 				03440BEF130EAE550097D9DA /* bm_font.c in Sources */,
+				03440C0A130EB5A80097D9DA /* OBJCTexture2D.mm in Sources */,
+				03440C0B130EB5A80097D9DA /* ParticleEmitter.mm in Sources */,
+				03440C0C130EB5A80097D9DA /* TBXMLParticleAdditions.m in Sources */,
+				03440C0D130EB5A80097D9DA /* NSDataAdditions.m in Sources */,
+				03440C0E130EB5A80097D9DA /* TBXML.m in Sources */,
+				03440C14130EB71A0097D9DA /* particle_emitter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

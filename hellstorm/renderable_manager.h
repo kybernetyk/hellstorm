@@ -12,12 +12,10 @@
 #include "renderable.h"
 namespace hs 
 {
-	class quad;
-	class atlas_quad;
-	
 	typedef int resource_handle;
 	
 #define MAX_RESOURCES 512
+	class particle_emitter;
 	
 	class renderable_manager
 	{
@@ -91,6 +89,8 @@ namespace hs
 			*handle = 0;
 		}
 
+		particle_emitter *acquire_particle_emitter(std::string fn);
+		
 	protected:
 		resource_handle get_free_handle(void);
 		

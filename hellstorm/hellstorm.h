@@ -19,6 +19,7 @@
 #include "quad.h"
 #include "atlas_quad.h"
 #include "bitmap_font.h"
+#include "particle_emitter.h"
 
 #include "scene.h"
 #include "game.h"

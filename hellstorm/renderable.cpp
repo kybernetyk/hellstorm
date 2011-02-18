@@ -49,9 +49,4 @@ namespace hs
 		glTranslatef(- (anchor_point.x * size.w), - (anchor_point.y * size.h), 0);
 
 	}
-	
-	void renderable::render_content(void)
-	{
-
-	}
 }

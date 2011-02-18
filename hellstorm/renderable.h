@@ -20,7 +20,6 @@ namespace hs
 		
 		virtual void init(void);
 		virtual void transform(void);
-		virtual void render_content(void);
 			
 		vec3d position;
 		size2d size;

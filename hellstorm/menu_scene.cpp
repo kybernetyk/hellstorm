@@ -13,6 +13,7 @@ namespace test_game
 {
 	hs::resource_handle q;
 	hs::resource_handle f;
+	hs::particle_emitter *pe;
 	
 	menu_scene::~menu_scene()
 	{
@@ -29,6 +30,11 @@ namespace test_game
 		hs::bitmap_font *fp = hs::g_renderable_manager.get_resource<hs::bitmap_font>(&f);
 		fp->position = hs::vec3d_make(320/2, 480/2, -4.0);
 		
+		pe = hs::g_renderable_manager.acquire_particle_emitter("cool.pex");
+		pe->position = hs::vec3d_make(320/2, 480/2, -3.0);
+		pe->set_duration(-1.0);
+		pe->reset();
+		pe->start();
 	}
 	
 	void menu_scene::shutdown(void)
@@ -39,6 +45,7 @@ namespace test_game
 	void menu_scene::update(double dt)
 	{
 	//	std::printf("update %i\n", q);		
+		pe->update(dt);
 	}
 	
 	void menu_scene::render()
@@ -48,6 +55,8 @@ namespace test_game
 		
 		hs::bitmap_font *fp = hs::g_renderable_manager.get_resource<hs::bitmap_font>(&f);
 		fp->render_content("ficken!");
+		
+		pe->render_content();
 	}
 	
 	int menu_scene::scene_type()

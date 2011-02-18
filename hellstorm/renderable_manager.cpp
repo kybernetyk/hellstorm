@@ -30,4 +30,13 @@ namespace hs
 		abort();
 		return -1;
 	}
+	
+	particle_emitter *renderable_manager::acquire_particle_emitter(std::string fn)
+	{
+		particle_emitter *ret = new particle_emitter(fn);
+		ret->stop();
+		ret->reset();
+		
+		return ret;
+	}
 }

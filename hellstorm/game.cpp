@@ -38,7 +38,7 @@ namespace hs
 	
 	void game::tick(void)
 	{
-		current_scene->update(0.167);
+		current_scene->update(0.0167);
 	}
 	
 	void game::render(void)
