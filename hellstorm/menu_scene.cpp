@@ -13,6 +13,7 @@
 namespace test_game 
 {
 	hs::entity_manager *em;
+	hs::corpse_retrieval_system *cs;
 	hs::render_system *rs;
 	hs::particle_system *ps;
 	
@@ -25,6 +26,7 @@ namespace test_game
 	void menu_scene::init(void)
 	{
 		em = new hs::entity_manager();
+		cs = new hs::corpse_retrieval_system(em);
 		rs = new hs::render_system(em);
 		ps = new hs::particle_system(em);
 		
@@ -55,7 +57,7 @@ namespace test_game
 		as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
 		as->z = -2.1;
 		
-		hs::particle_system::create_particle_emitter("cool.pex", -1.0, hs::vec2d_make(100, 100), true);
+		hs::particle_system::create_particle_emitter("cool.pex", 10.0, hs::vec2d_make(100, 100), true);
 		
 //		ent = em->new_entity();
 //		pos = em->add_component<hs::comp::position>(ent);
@@ -94,7 +96,12 @@ namespace test_game
 	
 	void menu_scene::update(double dt)
 	{
-	//	std::printf("update %i\n", q);	
+		//we must collect the corpses from the last frame
+		//as the entity-manager's isDirty property is reset each frame
+		//so if we did corpse collection at the end of update
+		//the systems wouldn't know that the manager is dirty 
+		//and a shitstorm of dangling references would rain down on them
+		cs->collect_corpses();
 		
 		ps->update(dt);
 	}
@@ -110,6 +117,7 @@ namespace test_game
 //		fp->render_content("ficken!");
 //		
 //		pe->render_content();
+		em->is_dirty = false;
 	}
 	
 	int menu_scene::scene_type()

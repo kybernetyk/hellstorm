@@ -26,6 +26,7 @@
 #include "entity_manager.h"
 #include "components.h"
 
+#include "corpse_retrieval_system.h"
 #include "render_system.h"
 #include "particle_system.h"
 

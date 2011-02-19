@@ -57,6 +57,7 @@
 		0346099D130EDEAA0086DFDD /* render_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0346099B130EDEAA0086DFDD /* render_system.cpp */; };
 		0346099F130EE89D0086DFDD /* bubbles.png in Resources */ = {isa = PBXBuildFile; fileRef = 0346099E130EE89D0086DFDD /* bubbles.png */; };
 		034609A3130FA90B0086DFDD /* particle_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609A1130FA90B0086DFDD /* particle_system.cpp */; };
+		034609A7130FAFA60086DFDD /* corpse_retrieval_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609A5130FAFA60086DFDD /* corpse_retrieval_system.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +153,8 @@
 		0346099E130EE89D0086DFDD /* bubbles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubbles.png; path = ../../../../Users/jrk/c4/Resources/bubbles.png; sourceTree = "<group>"; };
 		034609A1130FA90B0086DFDD /* particle_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle_system.cpp; sourceTree = "<group>"; };
 		034609A2130FA90B0086DFDD /* particle_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_system.h; sourceTree = "<group>"; };
+		034609A5130FAFA60086DFDD /* corpse_retrieval_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = corpse_retrieval_system.cpp; sourceTree = "<group>"; };
+		034609A6130FAFA60086DFDD /* corpse_retrieval_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corpse_retrieval_system.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +452,8 @@
 		034609A4130FAF6D0086DFDD /* corpse_retrieval_system */ = {
 			isa = PBXGroup;
 			children = (
+				034609A5130FAFA60086DFDD /* corpse_retrieval_system.cpp */,
+				034609A6130FAFA60086DFDD /* corpse_retrieval_system.h */,
 			);
 			name = corpse_retrieval_system;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				03460997130ED8950086DFDD /* components.cpp in Sources */,
 				0346099D130EDEAA0086DFDD /* render_system.cpp in Sources */,
 				034609A3130FA90B0086DFDD /* particle_system.cpp in Sources */,
+				034609A7130FAFA60086DFDD /* corpse_retrieval_system.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
