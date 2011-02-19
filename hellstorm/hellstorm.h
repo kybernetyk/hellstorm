@@ -31,6 +31,8 @@
 
 #include "corpse_retrieval_system.h"
 #include "render_system.h"
+#include "actions.h"
+#include "action_system.h"
 #include "particle_system.h"
 
 #include "sprite_factory.h"

@@ -12,17 +12,22 @@
 #include "vec_2d.h"
 #include "renderable_manager.h"
 #include "particle_emitter.h"
+#include "actions.h"
 
 namespace hs 
 {
 	namespace comp
 	{
+		
+#pragma mark -
+#pragma mark mark of death
 		struct mark_of_death : public component
 		{
 			static uid family_id;
 		};
 
-	
+#pragma mark -
+#pragma mark position
 		struct position : public component
 		{
 			static uid family_id;
@@ -124,6 +129,20 @@ namespace hs
 				if (!pe->do_not_delete)
 					delete pe;
 			}
+		};
+		
+#pragma mark -
+#pragma mark action container
+		
+#define NUM_OF_ACTIONS_PER_CONTAINER 256
+	
+		struct action_container : public component
+		{
+			static uid family_id;
+			actions::action *actions[NUM_OF_ACTIONS_PER_CONTAINER];
+			
+			action_container();
+			~action_container();
 		};
 	}
 }

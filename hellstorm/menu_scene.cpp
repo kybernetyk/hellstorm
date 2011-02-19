@@ -16,6 +16,7 @@ namespace test_game
 	hs::corpse_retrieval_system *cs;
 	hs::render_system *rs;
 	hs::particle_system *ps;
+	hs::action_system *as;
 	
 	double d = 0.0;
 	
@@ -33,7 +34,7 @@ namespace test_game
 		cs = new hs::corpse_retrieval_system(em);
 		rs = new hs::render_system(em);
 		ps = new hs::particle_system(em);
-
+		as = new hs::action_system(em);
 		
 		hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		
@@ -47,14 +48,42 @@ namespace test_game
 			hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
 		}
 		
-		hs::factory::create_particle_emitter("cool.pex", -1.0, hs::vec3d_screen_center(-2.0), true);
+		hs::entity *fire = hs::factory::create_particle_emitter("cool.pex", -1.0, hs::vec3d_screen_center(1.0), true);
 		hs::audio_system::play_music("music.mp3");
+		
+		hs::actions::move_to_action *actn = new hs::actions::move_to_action();
+		actn->dest = hs::vec2d_make(0.0, 0.0);
+		actn->duration = 10.0;
+		as->add_action_to_entity(fire, actn);
+		
+		hs::actions::move_to_action *actn2 = new hs::actions::move_to_action();
+		actn2->dest = hs::vec2d_make(0.0, 480.0);
+		actn2->duration = 5.0;
+		hs::action_append_action(actn, actn2);
+		
+		hs::actions::move_to_action *actn3 = new hs::actions::move_to_action();
+		actn3->dest = hs::vec2d_make(320.0, 480.0);
+		actn3->duration = 2.0;
+		hs::action_append_action(actn, actn3);
+
+		hs::actions::move_to_action *actn4 = new hs::actions::move_to_action();
+		actn4->dest = hs::vec2d_make(320.0, 0);
+		actn4->duration = 5.0;
+		hs::action_append_action(actn, actn4);
+
+		hs::actions::move_to_action *actn5 = new hs::actions::move_to_action();
+		actn5->dest = hs::vec2d_screen_center();
+		actn5->duration = 2.0;
+		hs::action_append_action(actn, actn5);
+		
+		
 	}
 	
 	void menu_scene::shutdown(void)
 	{
 		delete ps;
 		delete rs;
+		delete as;
 		
 		em->remove_all_entities();
 		delete em;
@@ -75,7 +104,8 @@ namespace test_game
 			d = 0.0;
 			hs::audio_system::play_sound("click.mp3");
 		}
-		
+
+		as->update(dt);		
 		ps->update(dt);
 	}
 	
