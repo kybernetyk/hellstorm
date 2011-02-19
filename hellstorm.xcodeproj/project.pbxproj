@@ -72,6 +72,7 @@
 		034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609CB130FECAA0086DFDD /* AudioToolbox.framework */; };
 		034609CE130FF04C0086DFDD /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 034609CD130FF04C0086DFDD /* music.mp3 */; };
 		034609D0130FF0D10086DFDD /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 034609CF130FF0D10086DFDD /* click.mp3 */; };
+		03CD6A91130FF8310049531F /* sprite_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03CD6A8F130FF8310049531F /* sprite_factory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +193,8 @@
 		034609CB130FECAA0086DFDD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		034609CD130FF04C0086DFDD /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		034609CF130FF0D10086DFDD /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		03CD6A8F130FF8310049531F /* sprite_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sprite_factory.cpp; sourceTree = "<group>"; };
+		03CD6A90130FF8310049531F /* sprite_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite_factory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +449,7 @@
 		03460988130EC8790086DFDD /* entity system */ = {
 			isa = PBXGroup;
 			children = (
+				03CD6A8D130FF8240049531F /* factories */,
 				03460999130EDE940086DFDD /* systems */,
 				03460994130ED8810086DFDD /* components */,
 				0346098A130EC8880086DFDD /* entity_manager */,
@@ -551,6 +555,15 @@
 				034609BF130FEB7D0086DFDD /* SimpleAudioEngine.m */,
 			);
 			path = CocosDenshion;
+			sourceTree = "<group>";
+		};
+		03CD6A8D130FF8240049531F /* factories */ = {
+			isa = PBXGroup;
+			children = (
+				03CD6A8F130FF8310049531F /* sprite_factory.cpp */,
+				03CD6A90130FF8310049531F /* sprite_factory.h */,
+			);
+			name = factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -666,6 +679,7 @@
 				034609C2130FEB7D0086DFDD /* CocosDenshion.m in Sources */,
 				034609C3130FEB7D0086DFDD /* SimpleAudioEngine.m in Sources */,
 				034609C6130FEB9C0086DFDD /* audio_system.mm in Sources */,
+				03CD6A91130FF8310049531F /* sprite_factory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

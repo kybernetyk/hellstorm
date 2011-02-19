@@ -7,13 +7,27 @@
 //
 
 #include "vec_2d.h"
+#include "hellstorm.h"
 #include <cmath>
 
 namespace hs
 {
+	vec2d anchor_bottom_left = {0.0,0.0};
+	vec2d anchor_bottom_right = {1.0,0.0};
+	vec2d anchor_center = {0.5,0.5};
+	vec2d anchor_top_left = {0.0,1.0};
+	vec2d anchor_top_right = {1.0,1.0};
+
+	
 	vec2d vec2d_make(double x, double y)
 	{
 		vec2d vc = {x,y};
+		return vc;
+	}
+		
+	vec2d vec2d_screen_center(void)
+	{
+		vec2d vc = {cfg::screen.size.w/2, cfg::screen.size.h/2};
 		return vc;
 	}
 	
@@ -29,6 +43,12 @@ namespace hs
 	vec3d vec3d_make(double x, double y, double z)
 	{
 		vec3d vc = {x,y,z};
+		return vc;
+	}
+	
+	vec3d vec3d_creen_center(double z)
+	{
+		vec3d vc = {cfg::screen.size.w/2, cfg::screen.size.h/2, z};
 		return vc;
 	}
 	

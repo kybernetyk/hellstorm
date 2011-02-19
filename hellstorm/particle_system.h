@@ -23,8 +23,6 @@ namespace hs
 		
 		void update(double dt);
 		
-		static entity *create_particle_emitter(std::string filename, double duration, vec2d position, bool autostart = false);
-		static entity *create_particle_emitter(hs::particle_emitter *existing_em, double duration, vec2d position, bool autostart = false);
 
 	protected:
 		entity_manager *em;

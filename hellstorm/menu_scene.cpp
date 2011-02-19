@@ -33,38 +33,45 @@ namespace test_game
 		cs = new hs::corpse_retrieval_system(em);
 		rs = new hs::render_system(em);
 		ps = new hs::particle_system(em);
+
 		
-		hs::entity *ent = em->new_entity();
+		hs::factory::create_sprite("game_back.png", hs::vec3d_make(320/2, 480/2, -5.0));
 		
-		hs::comp::position *pos = em->add_component<hs::comp::position>(ent);
-		pos->origin = hs::vec2d_make(320/2,480/2);
+		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_make(320/2, 480/2, -4.0));
 		
-		hs::comp::sprite *sprite = em->add_component<hs::comp::sprite>(ent);
-		sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
-		sprite->z = -3.0;
-				
-		ent = em->new_entity();
-		pos = em->add_component<hs::comp::position>(ent);
-		pos->origin = hs::vec2d_make(320/2,480/2);
+//		hs::entity *ent = em->new_entity();
+//		
+//		hs::comp::position *pos = em->add_component<hs::comp::position>(ent);
+//		pos->origin = hs::vec2d_make(320/2,480/2);
+//		
+//		hs::comp::sprite *sprite = em->add_component<hs::comp::sprite>(ent);
+//		sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
+//		sprite->z = -3.0;
+//				
+//		ent = em->new_entity();
+//		pos = em->add_component<hs::comp::position>(ent);
+//		pos->origin = hs::vec2d_make(320/2,480/2);
+//		
+//		hs::comp::text_label *label = em->add_component<hs::comp::text_label>(ent);
+//		label->res_handle = hs::g_renderable_manager.acquire_resource<hs::bitmap_font>("impact20.fnt");
+//		label->text = "oh hai!";
+//		label->z = -2.0;
+//		
+//		for (int i = 0; i < hs::cfg::entity_system.entity_pool_size-20; i++)
+//		{
+//			ent = em->new_entity();
+//			pos = em->add_component<hs::comp::position>(ent);
+//			pos->origin = hs::vec2d_make(rand()%320, rand()%480);
+//			
+//			hs::comp::atlas_sprite *as = em->add_component<hs::comp::atlas_sprite>(ent);
+//			as->res_handle = hs::g_renderable_manager.acquire_resource<hs::atlas_quad>("bubbles.png");
+//			as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
+//			as->z = -2.1;
+//		}
+//
+		hs::factory::create_particle_emitter("cool.pex", -1.0, hs::vec2d_make(100, 100), true);
 		
-		hs::comp::text_label *label = em->add_component<hs::comp::text_label>(ent);
-		label->res_handle = hs::g_renderable_manager.acquire_resource<hs::bitmap_font>("impact20.fnt");
-		label->text = "oh hai!";
-		label->z = -2.0;
-		
-		for (int i = 0; i < hs::cfg::entity_system.entity_pool_size-20; i++)
-		{
-			ent = em->new_entity();
-			pos = em->add_component<hs::comp::position>(ent);
-			pos->origin = hs::vec2d_make(rand()%320, rand()%480);
-			
-			hs::comp::atlas_sprite *as = em->add_component<hs::comp::atlas_sprite>(ent);
-			as->res_handle = hs::g_renderable_manager.acquire_resource<hs::atlas_quad>("bubbles.png");
-			as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
-			as->z = -2.1;
-		}
-		
-		hs::particle_system::create_particle_emitter("cool.pex", 10.0, hs::vec2d_make(100, 100), true);
+	//	hs::particle_system::create_particle_emitter("cool.pex", 10.0, hs::vec2d_make(100, 100), true);
 		
 		hs::audio_system::play_music("music.mp3");
 	}

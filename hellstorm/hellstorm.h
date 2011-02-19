@@ -33,5 +33,7 @@
 #include "render_system.h"
 #include "particle_system.h"
 
+#include "sprite_factory.h"
+
 #include "scene.h"
 #include "game.h"

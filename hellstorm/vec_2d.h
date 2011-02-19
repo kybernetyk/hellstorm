@@ -16,7 +16,14 @@ namespace hs
 		double y;
 	};
 	
+	extern vec2d anchor_bottom_left;
+	extern vec2d anchor_bottom_right;
+	extern vec2d anchor_center;
+	extern vec2d anchor_top_left;
+	extern vec2d anchor_top_right;
+	
 	vec2d vec2d_make(double x, double y);
+	vec2d vec2d_screen_center(void);
 	vec2d vec2d_normalize(vec2d vec);
 	
 	struct vec3d
@@ -27,7 +34,7 @@ namespace hs
 	};
 	
 	vec3d vec3d_make(double x, double y, double z);
-	
+	vec3d vec3d_creen_center(double z);
 	
 	struct size2d
 	{

@@ -54,54 +54,5 @@ namespace hs
 		}
 	}
 	
-	entity *particle_system::create_particle_emitter(std::string filename, double duration, vec2d position, bool autostart)
-	{
-		entity_manager *em = entity::ent_mgr;
-		
-		entity *e = em->new_entity();
-		
-		comp::position *pos = em->add_component<comp::position>(e);
-		pos->origin = position;
-		
-		comp::particle_emitter *pe = em->add_component<comp::particle_emitter>(e);
-		pe->pe = g_renderable_manager.acquire_particle_emitter(filename);
-		pe->z = 5.0;
-		
-		if (duration != 0.0)
-			pe->pe->set_duration(duration);
-		
-		if (autostart)
-		{
-			pe->pe->reset();
-			pe->pe->start();
-		}
-		
-		return e;
-	}
-	
-	entity *particle_system::create_particle_emitter(hs::particle_emitter *existing_em, double duration, vec2d position, bool autostart)
-	{
-		entity_manager *em = entity::ent_mgr;
-		
-		entity *e = em->new_entity();
-		
-		comp::position *pos = em->add_component<comp::position>(e);
-		pos->origin = position;
-		
-		comp::particle_emitter *pe = em->add_component<comp::particle_emitter>(e);
-		pe->pe = existing_em;
-		pe->z = 5.0;
-		
-		if (duration != 0.0)
-			pe->pe->set_duration(duration);
-		
-		if (autostart)
-		{
-			pe->pe->reset();
-			pe->pe->start();
-		}
-
-		return e;
-	}
 
 }
