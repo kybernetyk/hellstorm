@@ -72,20 +72,35 @@ namespace hs
 			return comp;
 		}
 		
-		component *add_component(entity *e, component *c)
+		template <typename T>
+		T *add_component(entity *e, T *c)
 		{
 			is_dirty = true;
 			if (c->family_id >= MAX_COMPONENTS_PER_ENTITY || 
 				c->family_id == 0)
 				abort();
-						
+			
 			if (components[e->manager_id][c->family_id])
 				remove_component(e, components[e->manager_id][c->family_id]);
 			
 			
 			components[e->manager_id][c->family_id] = c;
-			return c;
 		}
+		
+//		component *add_component(entity *e, component *c)
+//		{
+//			is_dirty = true;
+//			if (c->family_id >= MAX_COMPONENTS_PER_ENTITY || 
+//				c->family_id == 0)
+//				abort();
+//						
+//			if (components[e->manager_id][c->family_id])
+//				remove_component(e, components[e->manager_id][c->family_id]);
+//			
+//			
+//			components[e->manager_id][c->family_id] = c;
+//			return c;
+//		}
 		
 		
 		template <typename T> T *get_component(entity *e)
