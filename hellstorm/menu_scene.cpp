@@ -35,9 +35,9 @@ namespace test_game
 		ps = new hs::particle_system(em);
 
 		
-		hs::factory::create_sprite("game_back.png", hs::vec3d_make(320/2, 480/2, -5.0));
+		hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		
-		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_make(320/2, 480/2, -4.0));
+		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_screen_center(-4.0));
 		
 //		hs::entity *ent = em->new_entity();
 //		

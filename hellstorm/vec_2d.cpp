@@ -46,7 +46,7 @@ namespace hs
 		return vc;
 	}
 	
-	vec3d vec3d_creen_center(double z)
+	vec3d vec3d_screen_center(double z)
 	{
 		vec3d vc = {cfg::screen.size.w/2, cfg::screen.size.h/2, z};
 		return vc;
