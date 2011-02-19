@@ -44,8 +44,13 @@ namespace hs
 		current_guid = 1;
 		
 		entities = new entity*[cfg::entity_system.entity_pool_size];
-
+		if (!entities)
+			abort();
+		
 		components = new component**[cfg::entity_system.entity_pool_size];
+		if (!components)
+			abort();
+		
 		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 			components[i] = new component*[cfg::entity_system.components_per_entity];
 		

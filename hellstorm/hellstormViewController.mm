@@ -62,13 +62,12 @@ enum {
     
     if ([context API] == kEAGLRenderingAPIOpenGLES2)
         [self loadShaders];
-    
+
     animating = FALSE;
     animationFrameInterval = 1;
     self.displayLink = nil;
     
     hs_game_init();
-    
 }
 
 - (void)dealloc

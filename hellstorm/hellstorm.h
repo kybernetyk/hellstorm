@@ -9,6 +9,8 @@
 #pragma once
 
 #include "hs_types.h"
+#include "file_util.h"
+#include "timer.h"
 #include "hellstorm_config.h"
 
 #include "vec_2d.h"
