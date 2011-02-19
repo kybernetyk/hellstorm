@@ -36,7 +36,7 @@ namespace hs
 			current_pe = em->get_component<comp::particle_emitter>(current_entity);
 			if (current_pe)
 			{
-				if (current_pe->ren_type == RENDERABLETYPE_PARTICLE_EMITTER &&
+				if (current_pe->ren_type == comp::RENDERABLETYPE_PARTICLE_EMITTER &&
 					current_pe->pe->should_handle())
 				{
 					current_pos = em->get_component<comp::position>(current_entity);

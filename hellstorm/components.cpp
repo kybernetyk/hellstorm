@@ -34,7 +34,7 @@ namespace hs
 #pragma mark action container
 		action_container::action_container()
 		{
-			memset(actions,0x00,NUM_OF_ACTIONS_PER_CONTAINER*sizeof(actions::action*));
+			memset(actions,0x00,NUM_OF_ACTIONS_PER_CONTAINER*sizeof(action*));
 		}
 		
 		action_container::~action_container()
@@ -43,7 +43,7 @@ namespace hs
 			{
 				if (actions[i])
 				{
-					actions::action *a = actions[i];
+					action *a = actions[i];
 					delete a;
 				}
 			}

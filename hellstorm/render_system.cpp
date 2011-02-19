@@ -65,7 +65,7 @@ namespace hs
 		
 			switch (ren->ren_type)
 			{
-				case RENDERABLETYPE_SPRITE:
+				case comp::RENDERABLETYPE_SPRITE:
 					qd = g_renderable_manager.get_resource<quad>(&ren->res_handle);
 					
 					qd->position = pos->origin;
@@ -78,7 +78,7 @@ namespace hs
 					qd->render_content();
 					break;
 					
-				case RENDERABLETYPE_ATLASSPRITE:
+				case comp::RENDERABLETYPE_ATLASSPRITE:
 					aq = g_renderable_manager.get_resource<atlas_quad>(&ren->res_handle);
 					
 					aq->position = pos->origin;
@@ -93,7 +93,7 @@ namespace hs
 					aq->render_content();
 					break;
 					
-				case RENDERABLETYPE_TEXT:
+				case comp::RENDERABLETYPE_TEXT:
 					bf = g_renderable_manager.get_resource<bitmap_font>(&ren->res_handle);
 
 					bf->position = pos->origin;
@@ -109,7 +109,7 @@ namespace hs
 					bf->render_content(tl->text.c_str());
 					break;
 					
-				case RENDERABLETYPE_PARTICLE_EMITTER:
+				case comp::RENDERABLETYPE_PARTICLE_EMITTER:
 					comp::particle_emitter *pem;
 					pem = (comp::particle_emitter *)ren;
 					pe = pem->pe;

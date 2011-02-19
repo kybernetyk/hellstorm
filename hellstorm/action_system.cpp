@@ -11,9 +11,9 @@
 
 namespace hs 
 {
-	void action_append_action(actions::action *first, actions::action *to_append)
+	void action_append_action(action *first, action *to_append)
 	{
-		actions::action *last = first;
+		action *last = first;
 		while (1)
 		{
 			if (last->on_complete_action)
@@ -27,12 +27,12 @@ namespace hs
 	
 	action_system::action_system(entity_manager *manager)
 	{
-		actions::action::as = this;
+		action::as = this;
 		em = manager;
 		current_dt = 0.0;
 	}
 	
-	void action_system::add_action_to_entity(entity *e, actions::action *a)
+	void action_system::add_action_to_entity(entity *e, action *a)
 	{
 		comp::action_container *cont = em->get_component<comp::action_container>(e);
 		if (!cont)
@@ -53,7 +53,7 @@ namespace hs
 			abort();
 	}
 	
-	void action_system::cancel_action(entity *e, actions::action *a)
+	void action_system::cancel_action(entity *e, action *a)
 	{
 		comp::action_container *cont = em->get_component<comp::action_container>(e);
 		if (!cont)
@@ -63,11 +63,11 @@ namespace hs
 		{
 			if (cont->actions[i] == a)
 			{
-				actions::action *child = a->on_complete_action;
+				action *child = a->on_complete_action;
 				
 				while (child) 
 				{
-					actions::action *t = child;
+					action *t = child;
 					child = child->on_complete_action;
 					delete t;
 				}
@@ -80,9 +80,9 @@ namespace hs
 	
 	void action_system::handle_action_container(void)
 	{
-		actions::action **actions = current_container->actions;
+		action **actions = current_container->actions;
 		
-		actions::action *current_action = NULL;
+		action *current_action = NULL;
 		for (int i = 0; i < NUM_OF_ACTIONS_PER_CONTAINER; i++)
 		{
 			current_action = actions[i];
@@ -94,7 +94,7 @@ namespace hs
 			switch (current_action->action_type) 
 			{
 				case ACTIONTYPE_MOVE_TO:
-					handle_move_to_action((actions::move_to_action *)current_action);
+					handle_move_to_action((move_to_action *)current_action);
 					break;
 					
 				case ACTIONTYPE_NONE:
@@ -105,7 +105,7 @@ namespace hs
 
 			if (current_action->is_finished)
 			{
-				actions::action *on_complete_action = current_action->on_complete_action;
+				action *on_complete_action = current_action->on_complete_action;
 				
 				//run another action
 				if (on_complete_action)
@@ -146,7 +146,7 @@ namespace hs
 		
 	}
 	
-	void action_system::step_action(actions::action *action)
+	void action_system::step_action(action *action)
 	{
 		action->timestamp += tmp_dt;
 		current_dt = tmp_dt;
@@ -161,7 +161,7 @@ namespace hs
 #pragma -
 #pragma actions handler
 	
-	void action_system::handle_move_to_action (actions::move_to_action *action)
+	void action_system::handle_move_to_action (move_to_action *action)
 	{
 		if (action->duration == 0.0)
 		{

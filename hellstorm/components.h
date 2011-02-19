@@ -46,17 +46,19 @@ namespace hs
 		
 #pragma mark -
 #pragma mark renderable
-		
-#define RENDERABLETYPE_BASE 0
-#define RENDERABLETYPE_SPRITE 1
-#define RENDERABLETYPE_ATLASSPRITE 2
-#define RENDERABLETYPE_TEXT 3
-#define RENDERABLETYPE_PARTICLE_EMITTER 4
+		enum e_renderabletype
+		{
+			RENDERABLETYPE_BASE = 0,
+			RENDERABLETYPE_SPRITE,
+			RENDERABLETYPE_ATLASSPRITE,
+			RENDERABLETYPE_TEXT,
+			RENDERABLETYPE_PARTICLE_EMITTER
+		};
 		
 		struct renderable : public component
 		{
 			static uid family_id;
-			unsigned int ren_type;
+			e_renderabletype ren_type;
 			
 			resource_handle res_handle;
 			vec2d anchor_point;
@@ -139,7 +141,7 @@ namespace hs
 		struct action_container : public component
 		{
 			static uid family_id;
-			actions::action *actions[NUM_OF_ACTIONS_PER_CONTAINER];
+			action *actions[NUM_OF_ACTIONS_PER_CONTAINER];
 			
 			action_container();
 			~action_container();

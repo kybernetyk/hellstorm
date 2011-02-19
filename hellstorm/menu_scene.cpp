@@ -51,25 +51,25 @@ namespace test_game
 		hs::entity *fire = hs::factory::create_particle_emitter("cool.pex", -1.0, hs::vec3d_screen_center(1.0), true);
 		hs::audio_system::play_music("music.mp3");
 		
-		hs::actions::move_to_action *actn = new hs::actions::move_to_action(10.0, hs::vec2d_make(0.0, 0.0));
+		hs::move_to_action *actn = new hs::move_to_action(10.0, hs::vec2d_make(0.0, 0.0));
 		as->add_action_to_entity(fire, actn);
 		
-		hs::actions::move_to_action *actn2 = new hs::actions::move_to_action();
+		hs::move_to_action *actn2 = new hs::move_to_action();
 		actn2->destination = hs::vec2d_make(0.0, 480.0);
 		actn2->duration = 5.0;
 		hs::action_append_action(actn, actn2);
 		
-		hs::actions::move_to_action *actn3 = new hs::actions::move_to_action();
+		hs::move_to_action *actn3 = new hs::move_to_action();
 		actn3->destination = hs::vec2d_make(320.0, 480.0);
 		actn3->duration = 2.0;
 		hs::action_append_action(actn, actn3);
 
-		hs::actions::move_to_action *actn4 = new hs::actions::move_to_action();
+		hs::move_to_action *actn4 = new hs::move_to_action();
 		actn4->destination = hs::vec2d_make(320.0, 0);
 		actn4->duration = 5.0;
 		hs::action_append_action(actn, actn4);
 
-		hs::actions::move_to_action *actn5 = new hs::actions::move_to_action();
+		hs::move_to_action *actn5 = new hs::move_to_action();
 		actn5->destination = hs::vec2d_screen_center();
 		actn5->duration = 2.0;
 		hs::action_append_action(actn, actn5);

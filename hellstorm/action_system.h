@@ -16,7 +16,7 @@ namespace hs
 	class entity_manager;
 	class entity;
 	
-	void action_append_action(actions::action *first, actions::action *to_append);
+	void action_append_action(action *first, action *to_append);
 	
 	class action_system
 	{
@@ -24,16 +24,16 @@ namespace hs
 		action_system(entity_manager *manager);
 		void update(double dt);
 		
-		void add_action_to_entity(entity *e, actions::action *a);
-		void cancel_action(entity *e, actions::action *a);
+		void add_action_to_entity(entity *e, action *a);
+		void cancel_action(entity *e, action *a);
 		
 	protected:
-		void step_action(actions::action *action);
+		void step_action(action *action);
 		void handle_action_container(void);
 		
 		
-		void handle_default_action (actions::action *action);		
-		void handle_move_to_action (actions::move_to_action *action);
+		void handle_default_action (action *action);		
+		void handle_move_to_action (move_to_action *action);
 //		void handle_move_by_action (MoveByAction *action);
 //		void handle_create_entity_action (CreateEntityAction *action);
 //		void handle_add_component_action (AddComponentAction *action);
