@@ -23,7 +23,6 @@ namespace test_game
 	{
 		std::printf("menu scene dtor\n");
 	}
-	hs::comp::particle_emitter *pe;
 	
 	void menu_scene::init(void)
 	{
