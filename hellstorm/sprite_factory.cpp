@@ -36,7 +36,7 @@ namespace hs
 			pos->origin = position;
 			
 			comp::atlas_sprite *sprite = em->add_component<hs::comp::atlas_sprite>(ent);
-			sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::quad>(filename);
+			sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::atlas_quad>(filename);
 			sprite->src_rect = src_rect;
 			sprite->anchor_point = anchor;
 

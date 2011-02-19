@@ -38,7 +38,10 @@ namespace test_game
 		hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		
 		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_screen_center());
-		
+
+		hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
+
+		//		
 		for (int i = 0; i < hs::cfg::entity_system.entity_pool_size-20; i++)
 		{
 			hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
