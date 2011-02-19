@@ -24,7 +24,7 @@ namespace hs
 	
 #pragma mark -
 #pragma mark entity
-
+	entity_manager *entity::ent_mgr = NULL;
 	component *entity::get_by_id(uid family_id)
 	{
 		return ent_mgr->get_component(this, family_id);
@@ -51,6 +51,8 @@ namespace hs
 				components[i][j] = NULL;
 			}
 		}
+		
+		entity::ent_mgr = this;
 	}
 	
 	uid entity_manager::get_next_available_manager_id(void)
@@ -72,7 +74,7 @@ namespace hs
 	void entity_manager::register_entity(entity *e)
 	{
 		is_dirty = true;
-		e->ent_mgr = this;
+		//e->ent_mgr = this;
 		e->manager_id = get_next_available_manager_id();
 		e->guid = get_next_available_guid();
 		entities[e->manager_id] = e;

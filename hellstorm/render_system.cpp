@@ -42,11 +42,6 @@ namespace hs
 		comp::position *pos = NULL;
 		comp::renderable *ren = NULL;
 
-//		comp::sprite *sprite = NULL;
-//		comp::atlas_sprite *atlas_sprite = NULL;
-//		comp::text_label *text_label = NULL;
-//		comp::particle_emitter *part_emitter = NULL;
-		
 		quad *qd = NULL;
 		atlas_quad *aq = NULL;
 		bitmap_font *bf = NULL;

@@ -35,7 +35,7 @@ namespace hs
 		
 		component *get_by_id (uid family_id);
 				
-		entity_manager *ent_mgr;
+		static entity_manager *ent_mgr;
 		uid guid;
 		uid manager_id;
 	};

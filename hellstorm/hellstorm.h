@@ -27,6 +27,7 @@
 #include "components.h"
 
 #include "render_system.h"
+#include "particle_system.h"
 
 #include "scene.h"
 #include "game.h"

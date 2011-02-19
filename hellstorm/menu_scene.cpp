@@ -14,6 +14,7 @@ namespace test_game
 {
 	hs::entity_manager *em;
 	hs::render_system *rs;
+	hs::particle_system *ps;
 	
 	menu_scene::~menu_scene()
 	{
@@ -25,6 +26,7 @@ namespace test_game
 	{
 		em = new hs::entity_manager();
 		rs = new hs::render_system(em);
+		ps = new hs::particle_system(em);
 		
 		hs::entity *ent = em->new_entity();
 		
@@ -53,17 +55,18 @@ namespace test_game
 		as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
 		as->z = -2.1;
 		
+		hs::particle_system::create_particle_emitter("cool.pex", -1.0, hs::vec2d_make(100, 100), true);
 		
-		ent = em->new_entity();
-		pos = em->add_component<hs::comp::position>(ent);
-		pos->origin = hs::vec2d_make(220/2,480/2-100);
-		
-		pe = em->add_component<hs::comp::particle_emitter>(ent);
-		pe->pe = hs::g_renderable_manager.acquire_particle_emitter("cool.pex");
-		pe->z = 0.0;
-		pe->pe->position = hs::vec3d_make(100, 100, 0.0);
-		pe->pe->set_duration(-1.0);
-		pe->pe->start();
+//		ent = em->new_entity();
+//		pos = em->add_component<hs::comp::position>(ent);
+//		pos->origin = hs::vec2d_make(220/2,480/2-100);
+//		
+//		pe = em->add_component<hs::comp::particle_emitter>(ent);
+//		pe->pe = hs::g_renderable_manager.acquire_particle_emitter("cool.pex");
+//		pe->z = 0.0;
+//		pe->pe->position = hs::vec3d_make(100, 100, 0.0);
+//		pe->pe->set_duration(-1.0);
+//		pe->pe->start();
 		
 //		hs::resource_handle q = hs::g_renderable_manager.acquire_resource<hs::quad>("game_back.png");
 //		hs::quad *qd = hs::g_renderable_manager.get_resource<hs::quad>(&q);
@@ -82,7 +85,7 @@ namespace test_game
 	
 	void menu_scene::shutdown(void)
 	{
-		
+		delete ps;
 		delete rs;
 		
 		em->remove_all_entities();
@@ -93,12 +96,11 @@ namespace test_game
 	{
 	//	std::printf("update %i\n", q);	
 		
-		pe->pe->update(dt);
+		ps->update(dt);
 	}
 	
 	void menu_scene::render()
 	{
-		
 		rs->render();
 		
 //		hs::quad *qd = hs::g_renderable_manager.get_resource<hs::quad>(&q);
