@@ -62,6 +62,14 @@
 		034609AE130FBA370086DFDD /* hellstorm_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609AC130FBA370086DFDD /* hellstorm_config.cpp */; };
 		034609B0130FC4BC0086DFDD /* hellstorm.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 034609AF130FC4BC0086DFDD /* hellstorm.cfg */; };
 		034609B3130FC7620086DFDD /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609B1130FC7600086DFDD /* timer.cpp */; };
+		034609C0130FEB7D0086DFDD /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 034609B8130FEB7D0086DFDD /* CDAudioManager.m */; };
+		034609C1130FEB7D0086DFDD /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 034609BB130FEB7D0086DFDD /* CDOpenALSupport.m */; };
+		034609C2130FEB7D0086DFDD /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 034609BD130FEB7D0086DFDD /* CocosDenshion.m */; };
+		034609C3130FEB7D0086DFDD /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 034609BF130FEB7D0086DFDD /* SimpleAudioEngine.m */; };
+		034609C6130FEB9C0086DFDD /* audio_system.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034609C4130FEB9C0086DFDD /* audio_system.mm */; };
+		034609C8130FEC9B0086DFDD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C7130FEC980086DFDD /* AVFoundation.framework */; };
+		034609CA130FECA50086DFDD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C9130FECA20086DFDD /* OpenAL.framework */; };
+		034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609CB130FECAA0086DFDD /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +174,20 @@
 		034609AF130FC4BC0086DFDD /* hellstorm.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hellstorm.cfg; sourceTree = "<group>"; };
 		034609B1130FC7600086DFDD /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
 		034609B2130FC7600086DFDD /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		034609B7130FEB7D0086DFDD /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
+		034609B8130FEB7D0086DFDD /* CDAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAudioManager.m; sourceTree = "<group>"; };
+		034609B9130FEB7D0086DFDD /* CDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDConfig.h; sourceTree = "<group>"; };
+		034609BA130FEB7D0086DFDD /* CDOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDOpenALSupport.h; sourceTree = "<group>"; };
+		034609BB130FEB7D0086DFDD /* CDOpenALSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDOpenALSupport.m; sourceTree = "<group>"; };
+		034609BC130FEB7D0086DFDD /* CocosDenshion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosDenshion.h; sourceTree = "<group>"; };
+		034609BD130FEB7D0086DFDD /* CocosDenshion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosDenshion.m; sourceTree = "<group>"; };
+		034609BE130FEB7D0086DFDD /* SimpleAudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioEngine.h; sourceTree = "<group>"; };
+		034609BF130FEB7D0086DFDD /* SimpleAudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioEngine.m; sourceTree = "<group>"; };
+		034609C4130FEB9C0086DFDD /* audio_system.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = audio_system.mm; sourceTree = "<group>"; };
+		034609C5130FEB9C0086DFDD /* audio_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_system.h; sourceTree = "<group>"; };
+		034609C7130FEC980086DFDD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		034609C9130FECA20086DFDD /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		034609CB130FECAA0086DFDD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +195,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */,
+				034609CA130FECA50086DFDD /* OpenAL.framework in Frameworks */,
+				034609C8130FEC9B0086DFDD /* AVFoundation.framework in Frameworks */,
 				03440C10130EB6860097D9DA /* libz.dylib in Frameworks */,
 				03440B6F130E76D20097D9DA /* UIKit.framework in Frameworks */,
 				03440B71130E76D20097D9DA /* Foundation.framework in Frameworks */,
@@ -188,6 +213,9 @@
 		03440B5F130E76D20097D9DA = {
 			isa = PBXGroup;
 			children = (
+				034609CB130FECAA0086DFDD /* AudioToolbox.framework */,
+				034609C9130FECA20086DFDD /* OpenAL.framework */,
+				034609C7130FEC980086DFDD /* AVFoundation.framework */,
 				03440B78130E76D20097D9DA /* hellstorm */,
 				03440B6D130E76D20097D9DA /* Frameworks */,
 				03440B6B130E76D20097D9DA /* Products */,
@@ -251,6 +279,7 @@
 		03440B99130E76E80097D9DA /* hellstorm */ = {
 			isa = PBXGroup;
 			children = (
+				034609B4130FEB490086DFDD /* audio */,
 				034609A8130FBA0B0086DFDD /* config */,
 				03460988130EC8790086DFDD /* entity system */,
 				03440BBE130E88A30097D9DA /* util */,
@@ -484,6 +513,40 @@
 			name = config;
 			sourceTree = "<group>";
 		};
+		034609B4130FEB490086DFDD /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				034609B5130FEB5F0086DFDD /* ext */,
+				034609C4130FEB9C0086DFDD /* audio_system.mm */,
+				034609C5130FEB9C0086DFDD /* audio_system.h */,
+			);
+			name = audio;
+			sourceTree = "<group>";
+		};
+		034609B5130FEB5F0086DFDD /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				034609B6130FEB7D0086DFDD /* CocosDenshion */,
+			);
+			name = ext;
+			sourceTree = "<group>";
+		};
+		034609B6130FEB7D0086DFDD /* CocosDenshion */ = {
+			isa = PBXGroup;
+			children = (
+				034609B7130FEB7D0086DFDD /* CDAudioManager.h */,
+				034609B8130FEB7D0086DFDD /* CDAudioManager.m */,
+				034609B9130FEB7D0086DFDD /* CDConfig.h */,
+				034609BA130FEB7D0086DFDD /* CDOpenALSupport.h */,
+				034609BB130FEB7D0086DFDD /* CDOpenALSupport.m */,
+				034609BC130FEB7D0086DFDD /* CocosDenshion.h */,
+				034609BD130FEB7D0086DFDD /* CocosDenshion.m */,
+				034609BE130FEB7D0086DFDD /* SimpleAudioEngine.h */,
+				034609BF130FEB7D0086DFDD /* SimpleAudioEngine.m */,
+			);
+			path = CocosDenshion;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,6 +653,11 @@
 				034609AB130FBA210086DFDD /* ConfigFile.cpp in Sources */,
 				034609AE130FBA370086DFDD /* hellstorm_config.cpp in Sources */,
 				034609B3130FC7620086DFDD /* timer.cpp in Sources */,
+				034609C0130FEB7D0086DFDD /* CDAudioManager.m in Sources */,
+				034609C1130FEB7D0086DFDD /* CDOpenALSupport.m in Sources */,
+				034609C2130FEB7D0086DFDD /* CocosDenshion.m in Sources */,
+				034609C3130FEB7D0086DFDD /* SimpleAudioEngine.m in Sources */,
+				034609C6130FEB9C0086DFDD /* audio_system.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

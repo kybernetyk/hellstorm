@@ -38,4 +38,5 @@ namespace hs
 			double max_timer_delta;
     };
     
+	extern game *g_game;
 };

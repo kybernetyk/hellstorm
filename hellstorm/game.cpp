@@ -12,7 +12,8 @@
 
 namespace hs 
 {
-
+	game *g_game = 0;
+	
 	bitmap_font *fnt = 0;
 	char s[32];
 	
@@ -28,6 +29,8 @@ namespace hs
 	
     bool game::init_with_scene(hs::scene *scene)
     {
+		g_game = this;
+		
 		cfg::read_config_from_file("hellstorm.cfg");
 		
 		ticks_per_second = cfg::screen.desired_fps;
