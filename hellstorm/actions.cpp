@@ -29,6 +29,26 @@ namespace hs
 			
 		}
 	
+
+		move_to_action::move_to_action()
+		{
+			action_type = ACTIONTYPE_MOVE_TO;
+			
+			destination = vec2d_make(0.0, 0.0);
+			_velocity = vec2d_make(0.0, 0.0);
+		}
+		
+		move_to_action::move_to_action(double dur, vec2d dest)
+		{
+			action_type = ACTIONTYPE_MOVE_TO;
+			
+			destination = dest;
+			duration = dur;
+			
+			_velocity = vec2d_make(0.0, 0.0);
+		}
+
+		
 		action_system *action::as = NULL;
 	}
 }

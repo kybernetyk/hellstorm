@@ -165,15 +165,15 @@ namespace hs
 	{
 		if (action->duration == 0.0)
 		{
-			current_position->origin.x = action->dest.x;
-			current_position->origin.y = action->dest.y;
+			current_position->origin.x = action->destination.x;
+			current_position->origin.y = action->destination.y;
 		}
 		
 		if (!action->is_initialized)
 		{
 			action->is_initialized = true;
-			double dx = action->dest.x - current_position->origin.x;
-			double dy = action->dest.y - current_position->origin.y;
+			double dx = action->destination.x - current_position->origin.x;
+			double dy = action->destination.y - current_position->origin.y;
 			
 			action->_velocity = vec2d_make(dx / action->duration, dy / action->duration);
 		}

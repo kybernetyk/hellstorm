@@ -45,16 +45,11 @@ namespace hs
 		
 		struct move_to_action : public action
 		{
-			vec2d dest;
+			vec2d destination;
 			vec2d _velocity;
 			
-			move_to_action()
-			{
-				action_type = ACTIONTYPE_MOVE_TO;
-				
-				dest = vec2d_make(0.0, 0.0);
-				_velocity = vec2d_make(0.0, 0.0);
-			}
+			move_to_action();
+			move_to_action(double dur, vec2d dest);
 		};
 		
 		
