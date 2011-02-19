@@ -34,7 +34,7 @@ namespace hs
 	};
 	
 	vec3d vec3d_make(double x, double y, double z);
-	vec3d vec3d_screen_center(double z);
+	vec3d vec3d_screen_center(double z = 0.0);
 	
 	struct size2d
 	{
