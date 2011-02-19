@@ -17,17 +17,18 @@ namespace hs
 #pragma mark -
 #pragma mark IDs
 		
+		
 		//0 reserved
-		uid mark_of_death::family_id = 1;
-		uid position::family_id = 2;
+		family::id mark_of_death::family_id = family::mark_of_death;
+		family::id position::family_id = family::position;
 
-		uid renderable::family_id = 4;
-		uid sprite::family_id = renderable::family_id;
-		uid atlas_sprite::family_id = renderable::family_id;
-		uid text_label::family_id = renderable::family_id;
-		uid particle_emitter::family_id = renderable::family_id;
+		family::id renderable::family_id = family::renderable;
+		family::id sprite::family_id = renderable::family_id;
+		family::id atlas_sprite::family_id = renderable::family_id;
+		family::id text_label::family_id = renderable::family_id;
+		family::id particle_emitter::family_id = renderable::family_id;
 
-		uid action_container::family_id = 5;
+		family::id action_container::family_id = family::action_container;
 
 
 #pragma mark -

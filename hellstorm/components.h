@@ -18,19 +18,29 @@ namespace hs
 {
 	namespace comp
 	{
+		namespace family
+		{
+			enum id
+			{
+				mark_of_death = 1,
+				position,
+				renderable,
+				action_container
+			};
+		}
 		
 #pragma mark -
 #pragma mark mark of death
 		struct mark_of_death : public component
 		{
-			static uid family_id;
+			static family::id family_id;
 		};
 
 #pragma mark -
 #pragma mark position
 		struct position : public component
 		{
-			static uid family_id;
+			static family::id family_id;
 			
 			vec3d origin;
 			vec2d scale;
@@ -57,7 +67,7 @@ namespace hs
 		
 		struct renderable : public component
 		{
-			static uid family_id;
+			static family::id family_id;
 			e_renderabletype ren_type;
 			
 			resource_handle res_handle;
@@ -83,7 +93,7 @@ namespace hs
 		
 		struct sprite : public renderable
 		{
-			static uid family_id;
+			static family::id family_id;
 
 			sprite()
 			{
@@ -93,7 +103,7 @@ namespace hs
 		
 		struct atlas_sprite : public renderable
 		{
-			static uid family_id;
+			static family::id family_id;
 			rect src_rect;
 			
 			atlas_sprite()
@@ -106,7 +116,7 @@ namespace hs
 		
 		struct text_label : public renderable
 		{
-			static uid family_id;
+			static family::id family_id;
 			std::string text;
 			
 			text_label()
@@ -117,7 +127,7 @@ namespace hs
 
 		struct particle_emitter : public renderable
 		{
-			static uid family_id;
+			static family::id family_id;
 			
 			hs::particle_emitter *pe;
 			
@@ -140,7 +150,7 @@ namespace hs
 	
 		struct action_container : public component
 		{
-			static uid family_id;
+			static family::id family_id;
 			action *actions[NUM_OF_ACTIONS_PER_CONTAINER];
 			
 			action_container();

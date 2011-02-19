@@ -12,7 +12,6 @@
 
 namespace hs 
 {
-	
 	class entity_manager;
 	struct component
 	{
@@ -38,7 +37,6 @@ namespace hs
 		uid guid;
 		uid manager_id;
 	};
-
 	
 	class entity_manager
 	{

@@ -13,14 +13,6 @@ namespace hs
 {
 	bool comp_ents(entity *e1, entity *e2)
 	{
-//		comp::renderable *ren1 = e1->ent_mgr->get_component<comp::renderable>(e1);
-//		comp::renderable *ren2 = e1->ent_mgr->get_component<comp::renderable>(e2);
-//		
-//		if (ren1->z == ren2->z)
-//			return (e1->guid < e2->guid);
-//		
-//		return (ren1->z < ren2->z);
-		
 		comp::position *pos1 = entity::ent_mgr->get_component<comp::position>(e1);
 		comp::position *pos2 = entity::ent_mgr->get_component<comp::position>(e2);
 		
