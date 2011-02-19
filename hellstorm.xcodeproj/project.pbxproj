@@ -70,6 +70,8 @@
 		034609C8130FEC9B0086DFDD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C7130FEC980086DFDD /* AVFoundation.framework */; };
 		034609CA130FECA50086DFDD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C9130FECA20086DFDD /* OpenAL.framework */; };
 		034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609CB130FECAA0086DFDD /* AudioToolbox.framework */; };
+		034609CE130FF04C0086DFDD /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 034609CD130FF04C0086DFDD /* music.mp3 */; };
+		034609D0130FF0D10086DFDD /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 034609CF130FF0D10086DFDD /* click.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +190,8 @@
 		034609C7130FEC980086DFDD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		034609C9130FECA20086DFDD /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		034609CB130FECAA0086DFDD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		034609CD130FF04C0086DFDD /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		034609CF130FF0D10086DFDD /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +377,8 @@
 		03440BF2130EB2540097D9DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				034609CF130FF0D10086DFDD /* click.mp3 */,
+				034609CD130FF04C0086DFDD /* music.mp3 */,
 				034609AF130FC4BC0086DFDD /* hellstorm.cfg */,
 				0346099E130EE89D0086DFDD /* bubbles.png */,
 				03440BF3130EB3A20097D9DA /* cool.pex */,
@@ -605,6 +611,8 @@
 				03440BF8130EB3A30097D9DA /* impact20.fnt in Resources */,
 				0346099F130EE89D0086DFDD /* bubbles.png in Resources */,
 				034609B0130FC4BC0086DFDD /* hellstorm.cfg in Resources */,
+				034609CE130FF04C0086DFDD /* music.mp3 in Resources */,
+				034609D0130FF0D10086DFDD /* click.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

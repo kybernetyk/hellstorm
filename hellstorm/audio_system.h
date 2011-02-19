@@ -17,11 +17,17 @@ namespace hs
 		audio_system();
 		~audio_system();
 		
+		static void init(double sfx_vol, double music_vol);
+		
 		static void preload_sound(std::string filename);
 		static void unload_sound(std::string filename);
 		
+		static void preload_music(std::string filename);
+		
+		static void play_sound(const char* filename);
 		static void play_sound(std::string filename);
 		
+		static void play_music(const char* filename);
 		static void play_music(std::string filename);
 		static void stop_music(void);
 		

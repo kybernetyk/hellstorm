@@ -33,13 +33,15 @@ namespace hs
 		
 		cfg::read_config_from_file("hellstorm.cfg");
 		
+		audio_system::init(cfg::audio.sfx_volume, cfg::audio.music_volume);
+		
+		
 		ticks_per_second = cfg::screen.desired_fps;
 		skip_ticks = (1000.0 / (double)ticks_per_second);
 		max_frame_skip = 5;
 		fixed_delta = (1.0/ticks_per_second);
 		max_timer_delta = fixed_delta*2.0;
-		
-		
+				
 		g_renderer.init(cfg::screen.scale);
 
 		fnt = new bitmap_font("impact20.fnt");

@@ -30,6 +30,13 @@ namespace hs
 		
 	}
 	
+	void audio_system::init(double sfx_vol, double music_vol)
+	{
+		[SimpleAudioEngine sharedEngine];
+		set_music_volume(music_vol);
+		set_sound_volume(sfx_vol);
+	}
+	
 	void audio_system::preload_sound(std::string filename)
 	{
 		NSString *fn = [NSString stringWithCString: filename.c_str() encoding: NSASCIIStringEncoding];
@@ -41,11 +48,34 @@ namespace hs
 		NSString *fn = [NSString stringWithCString: filename.c_str() encoding: NSASCIIStringEncoding];
 		[[SimpleAudioEngine sharedEngine] unloadEffect: fn];
 	}
+	
+	void audio_system::preload_music(std::string filename)
+	{
+		NSString *fn = [NSString stringWithCString: filename.c_str() encoding: NSASCIIStringEncoding];
+		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: fn];		
+	}
 
+	void audio_system::play_sound(const char *filename)
+	{
+		NSString *fn = [NSString stringWithCString: filename encoding: NSASCIIStringEncoding];
+		[[SimpleAudioEngine sharedEngine] playEffect: fn];
+	}
+	
 	void audio_system::play_sound(std::string filename)
 	{
 		NSString *fn = [NSString stringWithCString: filename.c_str() encoding: NSASCIIStringEncoding];
 		[[SimpleAudioEngine sharedEngine] playEffect: fn];
+	}
+
+	void audio_system::play_music(const char* filename)
+	{
+		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+		
+		NSString *fn = [NSString stringWithCString: filename encoding: NSASCIIStringEncoding];
+		
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic: fn loop: YES];
+		
+		last_music_played = filename;
 	}
 	
 	void audio_system::play_music(std::string filename)
@@ -121,5 +151,7 @@ namespace hs
 		return sound_volume;
 	}
 
-
+	double audio_system::music_volume = 0.0;
+	double audio_system::sound_volume = 0.0;
+	std::string audio_system::last_music_played;
 }

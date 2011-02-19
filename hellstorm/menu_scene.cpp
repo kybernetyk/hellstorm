@@ -17,6 +17,8 @@ namespace test_game
 	hs::render_system *rs;
 	hs::particle_system *ps;
 	
+	double d = 0.0;
+	
 	menu_scene::~menu_scene()
 	{
 		std::printf("menu scene dtor\n");
@@ -25,6 +27,9 @@ namespace test_game
 	
 	void menu_scene::init(void)
 	{
+		hs::audio_system::preload_sound("click.mp3");
+		hs::audio_system::preload_music("music.mp3");
+		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);
 		rs = new hs::render_system(em);
@@ -61,6 +66,8 @@ namespace test_game
 		}
 		
 		hs::particle_system::create_particle_emitter("cool.pex", 10.0, hs::vec2d_make(100, 100), true);
+		
+		hs::audio_system::play_music("music.mp3");
 		
 //		ent = em->new_entity();
 //		pos = em->add_component<hs::comp::position>(ent);
@@ -105,6 +112,13 @@ namespace test_game
 		//the systems wouldn't know that the manager is dirty 
 		//and a shitstorm of dangling references would rain down on them
 		cs->collect_corpses();
+		
+		d += dt;
+		if (d >= 1.0)
+		{
+			d = 0.0;
+			hs::audio_system::play_sound("click.mp3");
+		}
 		
 		ps->update(dt);
 	}

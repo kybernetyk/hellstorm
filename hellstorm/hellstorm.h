@@ -24,6 +24,8 @@
 #include "bitmap_font.h"
 #include "particle_emitter.h"
 
+#include "audio_system.h"
+
 #include "entity_manager.h"
 #include "components.h"
 
