@@ -27,13 +27,13 @@ namespace hs
 		{
 			static uid family_id;
 			
-			vec2d origin;
+			vec3d origin;
 			vec2d scale;
 			double rot;
 			
 			position()
 			{
-				origin = vec2d_make(0.0, 0.0);
+				origin = vec3d_make(0.0, 0.0, 0.0);
 				scale = vec2d_make(1.0, 1.0);
 				rot = 0.0;
 			}
@@ -56,12 +56,10 @@ namespace hs
 			resource_handle res_handle;
 			vec2d anchor_point;
 			double alpha;
-			double z;
 			
 			renderable()
 			{
 				anchor_point = vec2d_make(0.5, 0.5);
-				z = 0.0;
 				alpha = 1.0;
 				res_handle = 0;
 			}

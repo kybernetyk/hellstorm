@@ -19,11 +19,10 @@ namespace hs
 			entity_manager *em = entity::ent_mgr;
 			entity *ent = em->new_entity();
 			comp::position *pos = em->add_component<hs::comp::position>(ent);
-			pos->origin = hs::vec2d_make(position.x, position.y);
+			pos->origin = position;
 						
 			comp::sprite *sprite = em->add_component<hs::comp::sprite>(ent);
 			sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::quad>(filename);
-			sprite->z = position.z;
 			sprite->anchor_point = anchor;
 			
 			return ent;
@@ -34,11 +33,10 @@ namespace hs
 			entity_manager *em = entity::ent_mgr;
 			entity *ent = em->new_entity();
 			comp::position *pos = em->add_component<hs::comp::position>(ent);
-			pos->origin = hs::vec2d_make(position.x, position.y);
+			pos->origin = position;
 			
 			comp::atlas_sprite *sprite = em->add_component<hs::comp::atlas_sprite>(ent);
 			sprite->res_handle = hs::g_renderable_manager.acquire_resource<hs::quad>(filename);
-			sprite->z = position.z;
 			sprite->src_rect = src_rect;
 			sprite->anchor_point = anchor;
 
@@ -50,13 +48,12 @@ namespace hs
 			entity_manager *em = entity::ent_mgr;
 			entity *ent = em->new_entity();
 			comp::position *pos = em->add_component<hs::comp::position>(ent);
-			pos->origin = hs::vec2d_make(position.x, position.y);
+			pos->origin = position;
 			
 			
 			hs::comp::text_label *label = em->add_component<hs::comp::text_label>(ent);
 			label->res_handle = hs::g_renderable_manager.acquire_resource<hs::bitmap_font>(fontname);
 			label->text = text;
-			label->z = position.z;
 			label->anchor_point = anchor;
 
 			return ent;
@@ -69,11 +66,10 @@ namespace hs
 			entity *e = em->new_entity();
 			
 			comp::position *pos = em->add_component<comp::position>(e);
-			pos->origin = hs::vec2d_make(position.x, position.y);
+			pos->origin = position;
 			
 			comp::particle_emitter *pe = em->add_component<comp::particle_emitter>(e);
 			pe->pe = g_renderable_manager.acquire_particle_emitter(filename);
-			pe->z = position.z;
 			
 			if (duration != 0.0)
 				pe->pe->set_duration(duration);
@@ -94,11 +90,10 @@ namespace hs
 			entity *e = em->new_entity();
 			
 			comp::position *pos = em->add_component<comp::position>(e);
-			pos->origin = hs::vec2d_make(position.x, position.y);
+			pos->origin = position;
 			
 			comp::particle_emitter *pe = em->add_component<comp::particle_emitter>(e);
 			pe->pe = existing_em;
-			pe->z = position.z;
 			
 			if (duration != 0.0)
 				pe->pe->set_duration(duration);

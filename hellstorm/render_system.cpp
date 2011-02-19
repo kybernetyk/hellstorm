@@ -13,13 +13,21 @@ namespace hs
 {
 	bool comp_ents(entity *e1, entity *e2)
 	{
-		comp::renderable *ren1 = e1->ent_mgr->get_component<comp::renderable>(e1);
-		comp::renderable *ren2 = e1->ent_mgr->get_component<comp::renderable>(e2);
+//		comp::renderable *ren1 = e1->ent_mgr->get_component<comp::renderable>(e1);
+//		comp::renderable *ren2 = e1->ent_mgr->get_component<comp::renderable>(e2);
+//		
+//		if (ren1->z == ren2->z)
+//			return (e1->guid < e2->guid);
+//		
+//		return (ren1->z < ren2->z);
 		
-		if (ren1->z == ren2->z)
+		comp::position *pos1 = entity::ent_mgr->get_component<comp::position>(e1);
+		comp::position *pos2 = entity::ent_mgr->get_component<comp::position>(e2);
+		
+		if (pos1->origin.z == pos2->origin.z)
 			return (e1->guid < e2->guid);
 		
-		return (ren1->z < ren2->z);
+		return (pos1->origin.z < pos2->origin.z);
 	}
 	
 	render_system::render_system(entity_manager *manager)
@@ -60,9 +68,7 @@ namespace hs
 				case RENDERABLETYPE_SPRITE:
 					qd = g_renderable_manager.get_resource<quad>(&ren->res_handle);
 					
-					qd->position.x = pos->origin.x;
-					qd->position.y = pos->origin.y;
-					qd->position.z = ren->z;
+					qd->position = pos->origin;
 					
 					qd->scale = pos->scale;
 					qd->rotation = pos->rot;
@@ -75,9 +81,7 @@ namespace hs
 				case RENDERABLETYPE_ATLASSPRITE:
 					aq = g_renderable_manager.get_resource<atlas_quad>(&ren->res_handle);
 					
-					aq->position.x = pos->origin.x;
-					aq->position.y = pos->origin.y;
-					aq->position.z = ren->z;
+					aq->position = pos->origin;
 					
 					aq->scale = pos->scale;
 					aq->rotation = pos->rot;
@@ -92,9 +96,7 @@ namespace hs
 				case RENDERABLETYPE_TEXT:
 					bf = g_renderable_manager.get_resource<bitmap_font>(&ren->res_handle);
 
-					bf->position.x = pos->origin.x;
-					bf->position.y = pos->origin.y;
-					bf->position.z = ren->z;
+					bf->position = pos->origin;
 					
 					bf->scale = pos->scale;
 					bf->rotation = pos->rot;
@@ -111,7 +113,7 @@ namespace hs
 					comp::particle_emitter *pem;
 					pem = (comp::particle_emitter *)ren;
 					pe = pem->pe;
-					pe->position.z = ren->z;
+					pe->position.z = pos->origin.z;
 					pe->render_content();
 					break;
 				default:
