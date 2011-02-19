@@ -20,6 +20,8 @@
 
 namespace hs 
 {
+	#define MIN_DELAY 0.1
+	
 	audio_system::audio_system()
 	{
 		
@@ -35,6 +37,7 @@ namespace hs
 		[SimpleAudioEngine sharedEngine];
 		set_music_volume(music_vol);
 		set_sound_volume(sfx_vol);
+		current_tick = 0.0;
 	}
 	
 	void audio_system::preload_sound(std::string filename)
@@ -55,29 +58,16 @@ namespace hs
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: fn];		
 	}
 
-	void audio_system::play_sound(const char *filename)
-	{
-		NSString *fn = [NSString stringWithCString: filename encoding: NSASCIIStringEncoding];
-		[[SimpleAudioEngine sharedEngine] playEffect: fn];
-	}
-	
 	void audio_system::play_sound(std::string filename)
 	{
+		if (current_tick - delays[filename] < MIN_DELAY)
+			return;
+		
+		delays[filename] = current_tick;
 		NSString *fn = [NSString stringWithCString: filename.c_str() encoding: NSASCIIStringEncoding];
 		[[SimpleAudioEngine sharedEngine] playEffect: fn];
 	}
 
-	void audio_system::play_music(const char* filename)
-	{
-		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-		
-		NSString *fn = [NSString stringWithCString: filename encoding: NSASCIIStringEncoding];
-		
-		[[SimpleAudioEngine sharedEngine] playBackgroundMusic: fn loop: YES];
-		
-		last_music_played = filename;
-	}
-	
 	void audio_system::play_music(std::string filename)
 	{
 		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
@@ -151,7 +141,15 @@ namespace hs
 		return sound_volume;
 	}
 
+	void audio_system::update(double dt)
+	{
+		current_tick += dt;
+	}
+	
 	double audio_system::music_volume = 0.0;
 	double audio_system::sound_volume = 0.0;
 	std::string audio_system::last_music_played;
+	std::tr1::unordered_map <std::string, double> audio_system::delays;
+	double audio_system::current_tick;
+
 }

@@ -8,6 +8,7 @@
 
 #pragma once
 #include <string>
+#include <tr1/unordered_map>
 
 namespace hs
 {
@@ -24,10 +25,8 @@ namespace hs
 		
 		static void preload_music(std::string filename);
 		
-		static void play_sound(const char* filename);
 		static void play_sound(std::string filename);
 		
-		static void play_music(const char* filename);
 		static void play_music(std::string filename);
 		static void stop_music(void);
 		
@@ -41,10 +40,15 @@ namespace hs
 		static void set_sound_volume(double vol);
 		static double get_sound_volume(void);
 
+		static void update(double dt);
+		
 	protected:
 		static double music_volume;
 		static double sound_volume;
 		static std::string last_music_played;
+		
+		static std::tr1::unordered_map <std::string, double> delays;
+		static double current_tick;
 	};
 	
 }
