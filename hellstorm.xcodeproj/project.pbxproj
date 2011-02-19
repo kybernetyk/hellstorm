@@ -161,7 +161,7 @@
 		03440C12130EB7020097D9DA /* particle_emitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = particle_emitter.mm; sourceTree = "<group>"; };
 		03440C13130EB70F0097D9DA /* particle_emitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_emitter.h; sourceTree = "<group>"; };
 		03452E8F13100E740056422D /* actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = actions.cpp; sourceTree = "<group>"; };
-		03452E9013100E740056422D /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; path = actions.h; sourceTree = "<group>"; };
+		03452E9013100E740056422D /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = actions.h; sourceTree = "<group>"; };
 		03452E92131010260056422D /* action_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action_system.cpp; sourceTree = "<group>"; };
 		03452E93131010260056422D /* action_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = action_system.h; sourceTree = "<group>"; };
 		0346098B130EC8990086DFDD /* entity_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_manager.cpp; sourceTree = "<group>"; };
@@ -226,9 +226,6 @@
 		03440B5F130E76D20097D9DA = {
 			isa = PBXGroup;
 			children = (
-				034609CB130FECAA0086DFDD /* AudioToolbox.framework */,
-				034609C9130FECA20086DFDD /* OpenAL.framework */,
-				034609C7130FEC980086DFDD /* AVFoundation.framework */,
 				03440B78130E76D20097D9DA /* hellstorm */,
 				03440B6D130E76D20097D9DA /* Frameworks */,
 				03440B6B130E76D20097D9DA /* Products */,
@@ -246,6 +243,9 @@
 		03440B6D130E76D20097D9DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				034609CB130FECAA0086DFDD /* AudioToolbox.framework */,
+				034609C9130FECA20086DFDD /* OpenAL.framework */,
+				034609C7130FEC980086DFDD /* AVFoundation.framework */,
 				03440C0F130EB6810097D9DA /* libz.dylib */,
 				03440B6E130E76D20097D9DA /* UIKit.framework */,
 				03440B70130E76D20097D9DA /* Foundation.framework */,
