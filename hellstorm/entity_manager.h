@@ -8,9 +8,7 @@
 #pragma once
 #include <vector>
 #include "hs_types.h"
-
-#define MAX_ENTITIES 128 
-#define MAX_COMPONENTS_PER_ENTITY 32
+#include "hellstorm_config.h"
 
 namespace hs 
 {
@@ -46,6 +44,7 @@ namespace hs
 	{
 		public:
 		entity_manager();
+		~entity_manager();
 		
 		entity *new_entity(void);
 		void register_entity(entity *e);
@@ -62,7 +61,7 @@ namespace hs
 		{
 			is_dirty = true;
 			
-			if (T::family_id >= MAX_COMPONENTS_PER_ENTITY ||
+			if (T::family_id >= cfg::entity_system.components_per_entity ||
 				T::family_id == 0)
 				abort();
 			
@@ -81,7 +80,7 @@ namespace hs
 			is_dirty = true;
 		//	c->family_id = T::FAMILY_ID;
 			
-			if (COMP_TYPE::family_id >= MAX_COMPONENTS_PER_ENTITY || 
+			if (COMP_TYPE::family_id >= cfg::entity_system.components_per_entity || 
 				COMP_TYPE::family_id == 0)
 				abort();
 			
@@ -146,7 +145,7 @@ namespace hs
 		
 		uid current_guid;
 		
-		entity *entities[MAX_ENTITIES];
-		component *components[MAX_ENTITIES][MAX_COMPONENTS_PER_ENTITY];
+		entity **entities;
+		component ***components;
 	};
 }

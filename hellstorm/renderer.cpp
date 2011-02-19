@@ -28,11 +28,11 @@ namespace hs
 	void renderer::init(double scale)
 	{
 		scale_factor = scale;
-		double screen_size_x = SCREEN_W * scale_factor;
-		double screen_size_y = SCREEN_H * scale_factor;	//change to 280 for a 40px high empty strip [eg for an ad banner]
+		double screen_size_x = cfg::screen.size.w * scale_factor;
+		double screen_size_y = cfg::screen.size.h * scale_factor;	//change to 280 for a 40px high empty strip [eg for an ad banner]
 		
-		double viewport_size_x = SCREEN_W;// / pixeltometerratio;//viewport_size_x / xyratio;
-		double viewport_size_y = SCREEN_H;	
+		double viewport_size_x = cfg::screen.size.w;// / pixeltometerratio;//viewport_size_x / xyratio;
+		double viewport_size_y = cfg::screen.size.h;	
 		
 		std::printf("RenderDevice init:\n{\n\tscreen_size_x: %f\n\tscreen_size_y: %f\n}\n", screen_size_x, screen_size_y);
 		

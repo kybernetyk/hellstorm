@@ -58,6 +58,8 @@
 		0346099F130EE89D0086DFDD /* bubbles.png in Resources */ = {isa = PBXBuildFile; fileRef = 0346099E130EE89D0086DFDD /* bubbles.png */; };
 		034609A3130FA90B0086DFDD /* particle_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609A1130FA90B0086DFDD /* particle_system.cpp */; };
 		034609A7130FAFA60086DFDD /* corpse_retrieval_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609A5130FAFA60086DFDD /* corpse_retrieval_system.cpp */; };
+		034609AB130FBA210086DFDD /* ConfigFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609A9130FBA210086DFDD /* ConfigFile.cpp */; };
+		034609AE130FBA370086DFDD /* hellstorm_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034609AC130FBA370086DFDD /* hellstorm_config.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +157,10 @@
 		034609A2130FA90B0086DFDD /* particle_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_system.h; sourceTree = "<group>"; };
 		034609A5130FAFA60086DFDD /* corpse_retrieval_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = corpse_retrieval_system.cpp; sourceTree = "<group>"; };
 		034609A6130FAFA60086DFDD /* corpse_retrieval_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corpse_retrieval_system.h; sourceTree = "<group>"; };
+		034609A9130FBA210086DFDD /* ConfigFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigFile.cpp; sourceTree = "<group>"; };
+		034609AA130FBA210086DFDD /* ConfigFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigFile.h; sourceTree = "<group>"; };
+		034609AC130FBA370086DFDD /* hellstorm_config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hellstorm_config.cpp; sourceTree = "<group>"; };
+		034609AD130FBA370086DFDD /* hellstorm_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hellstorm_config.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +246,7 @@
 		03440B99130E76E80097D9DA /* hellstorm */ = {
 			isa = PBXGroup;
 			children = (
+				034609A8130FBA0B0086DFDD /* config */,
 				03460988130EC8790086DFDD /* entity system */,
 				03440BBE130E88A30097D9DA /* util */,
 				03440BB9130E83250097D9DA /* graphics */,
@@ -458,6 +465,17 @@
 			name = corpse_retrieval_system;
 			sourceTree = "<group>";
 		};
+		034609A8130FBA0B0086DFDD /* config */ = {
+			isa = PBXGroup;
+			children = (
+				034609A9130FBA210086DFDD /* ConfigFile.cpp */,
+				034609AA130FBA210086DFDD /* ConfigFile.h */,
+				034609AC130FBA370086DFDD /* hellstorm_config.cpp */,
+				034609AD130FBA370086DFDD /* hellstorm_config.h */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -560,6 +578,8 @@
 				0346099D130EDEAA0086DFDD /* render_system.cpp in Sources */,
 				034609A3130FA90B0086DFDD /* particle_system.cpp in Sources */,
 				034609A7130FAFA60086DFDD /* corpse_retrieval_system.cpp in Sources */,
+				034609AB130FBA210086DFDD /* ConfigFile.cpp in Sources */,
+				034609AE130FBA370086DFDD /* hellstorm_config.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

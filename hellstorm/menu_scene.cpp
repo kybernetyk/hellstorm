@@ -48,14 +48,17 @@ namespace test_game
 		label->text = "oh hai!";
 		label->z = -2.0;
 		
-		ent = em->new_entity();
-		pos = em->add_component<hs::comp::position>(ent);
-		pos->origin = hs::vec2d_make(220/2,480/2);
-		
-		hs::comp::atlas_sprite *as = em->add_component<hs::comp::atlas_sprite>(ent);
-		as->res_handle = hs::g_renderable_manager.acquire_resource<hs::atlas_quad>("bubbles.png");
-		as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
-		as->z = -2.1;
+		for (int i = 0; i < hs::cfg::entity_system.entity_pool_size-20; i++)
+		{
+			ent = em->new_entity();
+			pos = em->add_component<hs::comp::position>(ent);
+			pos->origin = hs::vec2d_make(rand()%320, rand()%480);
+			
+			hs::comp::atlas_sprite *as = em->add_component<hs::comp::atlas_sprite>(ent);
+			as->res_handle = hs::g_renderable_manager.acquire_resource<hs::atlas_quad>("bubbles.png");
+			as->src_rect = hs::rect_make(0.0, 0.0, 41.0, 41.0);
+			as->z = -2.1;
+		}
 		
 		hs::particle_system::create_particle_emitter("cool.pex", 10.0, hs::vec2d_make(100, 100), true);
 		

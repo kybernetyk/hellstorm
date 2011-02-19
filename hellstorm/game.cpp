@@ -24,7 +24,9 @@ namespace hs
 	
     bool game::init_with_scene(hs::scene *scene)
     {
-		g_renderer.init(1.0);
+		cfg::read_config_from_file("hellstorm.cfg");
+		
+		g_renderer.init(cfg::screen.scale);
 		
         current_scene = scene;
 		current_scene->init();

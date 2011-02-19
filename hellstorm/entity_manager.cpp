@@ -35,18 +35,24 @@ namespace hs
 	entity_manager::entity_manager()
 	{
 		printf("EntityManager startup:\n{\n");
-		printf("\t[*] Entity Slots: %i\n", MAX_ENTITIES);
-		printf("\t[*] Component Slots per Entity: %i\n", MAX_COMPONENTS_PER_ENTITY);
+		printf("\t[*] Entity Slots: %i\n", cfg::entity_system.entity_pool_size);
+		printf("\t[*] Component Slots per Entity: %i\n", cfg::entity_system.components_per_entity);
 		printf("\t[!] don't exceed these limits without adjusting the #defines!\n");
 		printf("\t[!] no checks/asserts will be made for this! you will crash and burn!\n}\n");
 		
 		is_dirty = true;
 		current_guid = 1;
 		
-		for (int i = 0; i < MAX_ENTITIES; i++)
+		entities = new entity*[cfg::entity_system.entity_pool_size];
+
+		components = new component**[cfg::entity_system.entity_pool_size];
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
+			components[i] = new component*[cfg::entity_system.components_per_entity];
+		
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
 			entities[i] = NULL;
-			for (int j = 0; j < MAX_COMPONENTS_PER_ENTITY; j++)
+			for (int j = 0; j < cfg::entity_system.components_per_entity; j++)
 			{
 				components[i][j] = NULL;
 			}
@@ -55,9 +61,18 @@ namespace hs
 		entity::ent_mgr = this;
 	}
 	
+	entity_manager::~entity_manager()
+	{
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
+			delete [] components[i];
+		delete [] components;
+		
+		delete entities;
+	}
+	
 	uid entity_manager::get_next_available_manager_id(void)
 	{
-		for (uid i = 1; i < MAX_ENTITIES; i++)
+		for (uid i = 1; i < cfg::entity_system.entity_pool_size; i++)
 			if (entities[i] == NULL)
 				return i;
 		
@@ -108,7 +123,7 @@ namespace hs
 		is_dirty = true;
 		entity *e = NULL;
 		
-		for (uid i = 0; i < MAX_ENTITIES; i++)
+		for (uid i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
 			e = entities[i];
 			if (e)
@@ -121,7 +136,7 @@ namespace hs
 		is_dirty = true;
 		
 		component *c = NULL;
-		for (uid i = 0; i < MAX_COMPONENTS_PER_ENTITY; i++)
+		for (uid i = 0; i < cfg::entity_system.components_per_entity; i++)
 		{
 			c = components[e->manager_id][i];
 			delete c;
@@ -144,7 +159,7 @@ namespace hs
 		while (1)
 		{
 			arg = va_arg( listPointer, int );
-			if (arg == -1 || count >= NUM_FAMILY_IDS)
+			if (arg == ARGLIST_END || count >= NUM_FAMILY_IDS)
 				break;
 			family_ids[count] = arg;
 			++count;
@@ -153,7 +168,7 @@ namespace hs
 		
 		entity *current_entity = NULL;
 		bool is_entity_valid = true;
-		for (int i = 0; i < MAX_ENTITIES; i++)
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
 			current_entity = entities[i];
 			is_entity_valid = true;
@@ -181,7 +196,7 @@ namespace hs
 	{
 		entity *current_entity = NULL;
 		bool is_entity_valid = true;
-		for (int i = 0; i < MAX_ENTITIES; i++)
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
 			current_entity = entities[i];
 			is_entity_valid = true;
@@ -201,16 +216,16 @@ namespace hs
 	void entity_manager::dump_entity_count(void)
 	{
 		int count = 0;
-		for (int i = 0; i < MAX_ENTITIES; i++)
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
 			if (entities[i])
 				count ++;
 		}
 		printf("** EntityManager entity count: %i\n", count);
 		
-		if ((MAX_ENTITIES-count) < 20)
+		if ((cfg::entity_system.entity_pool_size-count) < 20)
 		{
-			printf("\t[!] MAX_ENTITES is %i - you are reaching the limit!\n", MAX_ENTITIES);
+			printf("\t[!] MAX_ENTITES is %i - you are reaching the limit!\n", cfg::entity_system.entity_pool_size);
 		}
 	}
 
@@ -227,7 +242,7 @@ namespace hs
 	{
 		entity *e = NULL;
 		printf("\n\n************** DUMP *************\n");
-		for (int i = 0; i < MAX_ENTITIES; i++)
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
 			e = entities[i];
 			if (e)
@@ -253,7 +268,7 @@ namespace hs
 	void entity_manager::dump_components(entity *e)
 	{
 		component *c = NULL;
-		for (int i = 0; i < MAX_COMPONENTS_PER_ENTITY; i++)
+		for (int i = 0; i < cfg::entity_system.components_per_entity; i++)
 		{
 			c = components[e->manager_id][i];
 			if (c)
