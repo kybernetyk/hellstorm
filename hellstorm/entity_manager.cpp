@@ -15,7 +15,7 @@ namespace hs
 #pragma mark component
 	component::component()
 	{
-		family_id = 0;
+		//family_id = 0;
 	}
 	
 	component::~component()

@@ -19,18 +19,13 @@ namespace hs
 	{
 		struct mark_of_death : public component
 		{
-			static uid FAMILY_ID;
-			
-			mark_of_death()
-			{
-				family_id = FAMILY_ID;
-			}
+			static uid family_id;
 		};
 
 	
 		struct position : public component
 		{
-			static uid FAMILY_ID;
+			static uid family_id;
 			
 			vec2d origin;
 			vec2d scale;
@@ -38,8 +33,6 @@ namespace hs
 			
 			position()
 			{
-				family_id = FAMILY_ID;
-				
 				origin = vec2d_make(0.0, 0.0);
 				scale = vec2d_make(1.0, 1.0);
 				rot = 0.0;
@@ -57,7 +50,7 @@ namespace hs
 		
 		struct renderable : public component
 		{
-			static uid FAMILY_ID;
+			static uid family_id;
 			unsigned int ren_type;
 			
 			resource_handle res_handle;
@@ -67,8 +60,6 @@ namespace hs
 			
 			renderable()
 			{
-				family_id = FAMILY_ID;
-				
 				anchor_point = vec2d_make(0.5, 0.5);
 				z = 0.0;
 				alpha = 1.0;
@@ -87,23 +78,21 @@ namespace hs
 		
 		struct sprite : public renderable
 		{
-			static uid FAMILY_ID;
+			static uid family_id;
 
 			sprite()
 			{
-				family_id = FAMILY_ID;
 				ren_type = RENDERABLETYPE_SPRITE;
 			}
 		};
 		
 		struct atlas_sprite : public renderable
 		{
-			static uid FAMILY_ID;
+			static uid family_id;
 			rect src_rect;
 			
 			atlas_sprite()
 			{
-				family_id = FAMILY_ID;
 				ren_type = RENDERABLETYPE_ATLASSPRITE;
 			
 				src_rect = rect_make(0.0, 0.0, 0.0, 0.0);
@@ -112,25 +101,23 @@ namespace hs
 		
 		struct text_label : public renderable
 		{
-			static uid FAMILY_ID;
+			static uid family_id;
 			std::string text;
 			
 			text_label()
 			{
-				family_id = FAMILY_ID;
 				ren_type = RENDERABLETYPE_TEXT;
 			}
 		};
 
 		struct particle_emitter : public renderable
 		{
-			static uid FAMILY_ID;
+			static uid family_id;
 			
 			hs::particle_emitter *pe;
 			
 			particle_emitter()
 			{
-				family_id = FAMILY_ID;
 				ren_type = RENDERABLETYPE_PARTICLE_EMITTER;
 				pe = NULL;
 			}

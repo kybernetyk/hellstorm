@@ -20,7 +20,7 @@ namespace hs
 	void particle_system::update(double dt)
 	{
 		std::vector<entity *> entities;
-		em->get_entities_possesing_components(entities, comp::particle_emitter::FAMILY_ID, comp::position::FAMILY_ID, ARGLIST_END);
+		em->get_entities_possesing_components(entities, comp::particle_emitter::family_id, comp::position::family_id, ARGLIST_END);
 		
 		std::vector<entity *>::const_iterator it = entities.begin();
 		

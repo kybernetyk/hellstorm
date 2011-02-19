@@ -19,7 +19,7 @@ namespace hs
 	void corpse_retrieval_system::collect_corpses(void)
 	{
 		std::vector<entity *> entities;
-		em->get_entities_posessing_component(entities, comp::mark_of_death::FAMILY_ID);
+		em->get_entities_posessing_component(entities, comp::mark_of_death::family_id);
 		
 		
 		entity *current_entity = NULL;

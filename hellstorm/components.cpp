@@ -13,14 +13,14 @@ namespace hs
 	namespace comp
 	{
 		//0 reserved
-		uid mark_of_death::FAMILY_ID = 1;
-		uid position::FAMILY_ID = 2;
+		uid mark_of_death::family_id = 1;
+		uid position::family_id = 2;
 
-		uid renderable::FAMILY_ID = 4;
-		uid sprite::FAMILY_ID = renderable::FAMILY_ID;
-		uid atlas_sprite::FAMILY_ID = renderable::FAMILY_ID;
-		uid text_label::FAMILY_ID = renderable::FAMILY_ID;
-		uid particle_emitter::FAMILY_ID = renderable::FAMILY_ID;
+		uid renderable::family_id = 4;
+		uid sprite::family_id = renderable::family_id;
+		uid atlas_sprite::family_id = renderable::family_id;
+		uid text_label::family_id = renderable::family_id;
+		uid particle_emitter::family_id = renderable::family_id;
 		
 	}
 }

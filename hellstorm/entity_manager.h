@@ -22,13 +22,14 @@ namespace hs
 		component();
 		virtual ~component();
 		
-		uid family_id;
+		//uid family_id;
 	};
 
 	class entity
 	{
 	public:
-		template <typename Type> Type *get()
+		template <typename Type> 
+		Type *get()
 		{
 			return (Type*)get_by_id(Type::family_id);
 		}
@@ -55,57 +56,46 @@ namespace hs
 		
 		void get_entities_posessing_component(std::vector<entity*> &result, uid family_id);
 		void get_entities_possesing_components(std::vector<entity*> &result, ...);
-		
-		template <typename T> T *add_component(entity *e)
+
+		template <typename T>
+		T *add_component(entity *e)
 		{
 			is_dirty = true;
 			
-			if (T::FAMILY_ID >= MAX_COMPONENTS_PER_ENTITY ||
-				T::FAMILY_ID == 0)
+			if (T::family_id >= MAX_COMPONENTS_PER_ENTITY ||
+				T::family_id == 0)
 				abort();
 			
 			T *comp = new T();
+//			comp->family_id = T::FAMILY_ID;
 			
-			if (components[e->manager_id][T::FAMILY_ID])
+			if (components[e->manager_id][T::family_id])
 				remove_component <T> (e);
-			components[e->manager_id][T::FAMILY_ID] = comp;
+			components[e->manager_id][T::family_id] = comp;
 			return comp;
 		}
 		
-		template <typename T>
-		T *add_component(entity *e, T *c)
+		template <typename COMP_TYPE>
+		COMP_TYPE *add_component(entity *e, COMP_TYPE *c)
 		{
 			is_dirty = true;
-			if (c->family_id >= MAX_COMPONENTS_PER_ENTITY || 
-				c->family_id == 0)
+		//	c->family_id = T::FAMILY_ID;
+			
+			if (COMP_TYPE::family_id >= MAX_COMPONENTS_PER_ENTITY || 
+				COMP_TYPE::family_id == 0)
 				abort();
 			
-			if (components[e->manager_id][c->family_id])
-				remove_component(e, components[e->manager_id][c->family_id]);
+			if (components[e->manager_id][COMP_TYPE::family_id])
+				remove_component(e, components[e->manager_id][COMP_TYPE::family_id]);
 			
 			
-			components[e->manager_id][c->family_id] = c;
+			components[e->manager_id][COMP_TYPE::family_id] = c;
 		}
 		
-//		component *add_component(entity *e, component *c)
-//		{
-//			is_dirty = true;
-//			if (c->family_id >= MAX_COMPONENTS_PER_ENTITY || 
-//				c->family_id == 0)
-//				abort();
-//						
-//			if (components[e->manager_id][c->family_id])
-//				remove_component(e, components[e->manager_id][c->family_id]);
-//			
-//			
-//			components[e->manager_id][c->family_id] = c;
-//			return c;
-//		}
-		
-		
-		template <typename T> T *get_component(entity *e)
+		template <typename T> 
+		T *get_component(entity *e)
 		{
-			return (T*)components[e->manager_id][T::FAMILY_ID];
+			return (T*)components[e->manager_id][T::family_id];
 		}
 		
 		component *get_component(entity *e, uid family_id)
@@ -113,21 +103,23 @@ namespace hs
 			return components[e->manager_id][family_id];
 		}
 		
-		
-		template<typename T> void remove_component(entity *e)
+		template<typename T>
+		void remove_component(entity *e)
 		{
-			component *c = components[e->manager_id][T::FAMILY_ID];
+			component *c = components[e->manager_id][T::family_id];
 			delete c;
-			components[e->manager_id][T::FAMILY_ID] = NULL;
+			components[e->manager_id][T::family_id] = NULL;
 			is_dirty = true;
 		}
-		
-		void remove_component(entity *e, component *c)
+
+		template<typename COMP_TYPE>
+		void remove_component(entity *e, COMP_TYPE *c)
 		{
-			components[e->manager_id][c->family_id] = NULL;
+			components[e->manager_id][COMP_TYPE::family_id] = NULL;
 			delete c;
 			is_dirty = true;
 		}
+
 		
 		void remove_component (entity *e, uid family_id)
 		{

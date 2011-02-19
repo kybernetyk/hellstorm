@@ -33,7 +33,7 @@ namespace hs
 		{
 			gl_data.clear();
 			ent_cache.clear();
-			em->get_entities_possesing_components(ent_cache, comp::position::FAMILY_ID, comp::renderable::FAMILY_ID, ARGLIST_END);
+			em->get_entities_possesing_components(ent_cache, comp::position::family_id, comp::renderable::family_id, ARGLIST_END);
 			std::sort(ent_cache.begin(), ent_cache.end(), comp_ents);
 		}
 		
