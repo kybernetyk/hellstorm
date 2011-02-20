@@ -208,7 +208,6 @@ namespace hs
 		//floating point is evul!
 		if (action->is_finished)
 		{
-			printf("position is now: %f,%f\n", current_position->origin.x, current_position->origin.y);			
 			current_position->origin.x = action->destination.x;
 			current_position->origin.y = action->destination.y;
 		}
@@ -264,7 +263,6 @@ namespace hs
 		
 		if (action->is_finished)
 		{
-			printf("scale is now: %f,%f\n", current_position->scale.x, current_position->scale.y);			
 			current_position->scale.x = action->scale_to.x;
 			current_position->scale.y = action->scale_to.y;
 		}
