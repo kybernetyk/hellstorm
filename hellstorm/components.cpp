@@ -54,7 +54,7 @@ namespace hs
 #pragma mark action container
 		action_container::action_container()
 		{
-			printf("%i\n",action_container::family_id);
+//			printf("%i\n",action_container::family_id);
 //			register_component_class<action_container>();
 			memset(actions,0x00,NUM_OF_ACTIONS_PER_CONTAINER*sizeof(action*));
 		}

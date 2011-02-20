@@ -84,7 +84,7 @@ namespace hs
 
 	scale_to_action::scale_to_action()
 	{
-		action_type = ACTIONTYPE_SCALE_BY;
+		action_type = ACTIONTYPE_SCALE_TO;
 		
 		duration = 0.0;
 		scale_to = vec2d_zero;
@@ -93,7 +93,7 @@ namespace hs
 	
 	scale_to_action::scale_to_action(double dur, vec2d to)
 	{
-		action_type = ACTIONTYPE_SCALE_BY;
+		action_type = ACTIONTYPE_SCALE_TO;
 		
 		duration = dur;
 		scale_to = to;

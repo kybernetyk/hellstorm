@@ -203,7 +203,16 @@ namespace hs
 		}
 		
 		current_position->origin.x += action->_velocity.x * current_dt;
-		current_position->origin.y += action->_velocity.y * current_dt;		
+		current_position->origin.y += action->_velocity.y * current_dt;
+		
+		//floating point is evul!
+		if (action->is_finished)
+		{
+			printf("position is now: %f,%f\n", current_position->origin.x, current_position->origin.y);			
+			current_position->origin.x = action->destination.x;
+			current_position->origin.y = action->destination.y;
+		}
+
 	}
 	
 	void action_system::handle_move_by_action(move_by_action *action)
@@ -252,6 +261,14 @@ namespace hs
 		
 		current_position->scale.x += action->_step.x * current_dt;
 		current_position->scale.y += action->_step.y * current_dt;
+		
+		if (action->is_finished)
+		{
+			printf("scale is now: %f,%f\n", current_position->scale.x, current_position->scale.y);			
+			current_position->scale.x = action->scale_to.x;
+			current_position->scale.y = action->scale_to.y;
+		}
+
 	}
 	
 	void action_system::handle_scale_by_action(scale_by_action *action)
@@ -290,6 +307,12 @@ namespace hs
 		}
 		
 		current_renderable->alpha += action->_step * current_dt;
+		
+		//floating point is evul!
+		if (action->is_finished)
+		{
+			current_renderable->alpha = action->destination_alpha;
+		}
 	}
 	
 	void action_system::handle_fade_by_action(fade_by_action *action)
@@ -323,6 +346,12 @@ namespace hs
 			action->_step = (action->rotate_to - current_position->rot) / action->duration;
 		}
 		current_position->rot += action->_step * current_dt;
+		
+		//floating point is evul!
+		if (action->is_finished)
+		{
+			current_position->rot = action->rotate_to;
+		}
 	}
 
 	void action_system::handle_rotate_by_action(rotate_by_action *action)
