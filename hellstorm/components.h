@@ -192,8 +192,8 @@ namespace hs
 			double speed_scale;
 			
 			e_animationstate state;
-			int start_frame;
-			int end_frame;
+			double start_frame;
+			double end_frame;
 			
 			bool loop;
 			bool destroy_on_finish;
@@ -201,7 +201,7 @@ namespace hs
 			seq_animation *next_animation;
 			action *on_complete_action;
 			
-			int _cached_frame;
+			double _cached_frame;
 			
 			seq_animation()
 			{
@@ -212,9 +212,9 @@ namespace hs
 				destroy_on_finish = true;
 				frame_size = size2d_make(0.0, 0.0);
 				state = ANIM_STATE_PAUSE;
-				start_frame = 0;
-				_cached_frame = -1;
-				end_frame = 0;
+				start_frame = 0.0;
+				_cached_frame = -8.0;
+				end_frame = 0.0;
 				next_animation = NULL;
 				on_complete_action = NULL;
 			}

@@ -94,8 +94,6 @@ namespace test_game
 		anim->state = hs::comp::ANIM_STATE_PLAY;
 		anim->destroy_on_finish = false;
 		anim->frame_size = hs::size2d_make(40.0, 40.0);
-		
-		
 	}
 	
 	void menu_scene::shutdown(void)

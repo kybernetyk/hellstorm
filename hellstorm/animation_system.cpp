@@ -53,7 +53,8 @@ namespace hs
 			
 			current_animation = em->get_component<comp::seq_animation>(current_entity);
 			current_sprite = em->get_component<comp::atlas_sprite>(current_entity);
-			
+
+		
 			if (current_animation->state == comp::ANIM_STATE_PLAY)
 			{
 				//forward advance
@@ -65,13 +66,12 @@ namespace hs
 				{
 					current_animation->current_frame -= (dt * current_animation->frames_per_second * current_animation->speed_scale);
 				}
-				
-				
+
 				//forward update
 				if (current_animation->start_frame <= current_animation->end_frame)
 				{
 					//animation finished?
-					if ( (int)current_animation->current_frame > (int)current_animation->end_frame )
+					if ( current_animation->current_frame >= current_animation->end_frame+1.0 )
 					{
 						//on loop rewind
 						if (current_animation->loop)
@@ -97,7 +97,7 @@ namespace hs
 				else //backwars update
 				{
 					//anim finished?
-					if ( (int)current_animation->current_frame < (int)current_animation->end_frame )
+					if ( current_animation->current_frame <= current_animation->end_frame )
 					{
 						if (current_animation->loop)
 						{
@@ -121,7 +121,7 @@ namespace hs
 			}
 			
 			//update the sprite related data only once each frame
-			if (current_animation->_cached_frame != (int)current_animation->current_frame)
+			if ( fabs(current_animation->current_frame - current_animation->_cached_frame) >= 1.0 )
 			{
 				aq = g_renderable_manager.get_resource<atlas_quad>(&current_sprite->res_handle);
 				
@@ -129,14 +129,18 @@ namespace hs
 				int sx = aq->tex_size.w / current_animation->frame_size.w;
 				//	int sy = current_sprite->atlas_quad->tex_h / fs.h;
 				
-				int fx = ( (int)current_animation->current_frame ) % sx;
-				int fy = ( (int)current_animation->current_frame ) / sx; // (/ sy is for quadratische texutren! ansonsten muessen wir durch x beficken, damit wir indexiert tun koennen)
+				int fn = (int)(current_animation->current_frame);
+				
+				int fx = fn % sx;
+				int fy = fn / sx; // (/ sy is for quadratische texutren! ansonsten muessen wir durch x beficken, damit wir indexiert tun koennen)
 				
 				current_sprite->src_rect.x = fx * current_animation->frame_size.w;
 				current_sprite->src_rect.y = fy * current_animation->frame_size.h;
 				
 				current_animation->_cached_frame = current_animation->current_frame;
 			}
+
+
 		}
 		
 	}
