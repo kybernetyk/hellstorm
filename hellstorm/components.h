@@ -155,7 +155,7 @@ namespace hs
 #pragma mark -
 #pragma mark action container
 		
-#define NUM_OF_ACTIONS_PER_CONTAINER 256
+#define NUM_OF_ACTIONS_PER_CONTAINER 32
 	
 		struct action_container : public component
 		{

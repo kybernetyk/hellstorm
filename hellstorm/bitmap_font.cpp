@@ -52,7 +52,7 @@ namespace hs
 		glTranslatef(position.x, position.y, position.z);
 		
 		if (rotation != 0.0f )
-			glRotatef( -rotation, 0.0f, 0.0f, 1.0f );
+			glRotatef( rotation, 0.0f, 0.0f, 1.0f );
 		
 		if (scale.x != 1.0 || scale.y != 1.0)
 			glScalef( scale.x, scale.y, 1.0f );

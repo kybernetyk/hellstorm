@@ -36,7 +36,7 @@ namespace test_game
 		ps = new hs::particle_system(em);
 		as = new hs::action_system(em);
 		
-		hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
+		hs::entity *back = hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		
 		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_screen_center());
 
@@ -54,30 +54,36 @@ namespace test_game
 		hs::action *a = new hs::move_by_action(10.0, hs::vec2d_make(100.0, 0.0));
 		hs::action *b = new hs::move_by_action(10.0, hs::vec2d_make(0.0, 100.0));
 
-		a->append_action(b);
+//		a->append_action(b);
 		a->append_action(new hs::move_to_action(10.0, hs::vec2d_screen_center()));
 		
 		as->add_action_to_entity(fire, a);
-
+		as->add_action_to_entity(fire, b);
 		
 		hs::entity *bubble = hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_screen_center(3.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
 
 		a = new hs::scale_to_action(5.0, hs::vec2d_make(2.0, 2.0));
 		a->append_action(new hs::scale_to_action(5.0, hs::vec2d_make(0.1, 0.1)));
-		
-//		as->add_action_to_entity(bubble, a);
+		as->add_action_to_entity(bubble, a);
 		
 		hs::factory::create_particle_emitter("tss.pex", PE_LOOP, hs::vec3d_make(320/2, 480, 4.0), true);
 		
 		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(0, 0, 4.0), true);
 		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(320, 0, 4.0), true);
-//		a = new hs::scale_by_action(5.0, hs::vec2d_make(2.0, 2.0));
-//		as->add_action_to_entity(bubble, a);
-//
-//		b = new hs::fade_to_action(5.0, 0.3);
-//		a->append_action(b);
-//		
-//		as->add_action_to_entity(fire, b);
+
+		a = new hs::scale_by_action(5.0, hs::vec2d_make(2.0, 2.0));
+		as->add_action_to_entity(bubble, a);
+
+		b = new hs::fade_to_action(5.0, 0.3);
+		a->append_action(b);
+		
+		a = new hs::rotate_to_action(2.0, -90);
+		as->add_action_to_entity(back, a);
+		
+		a->append_action(new hs::rotate_to_action(2.0,-90));
+		a->append_action(new hs::rotate_to_action(2.0,270.0));
+		a->append_action(new hs::rotate_to_action(2.0,0.0));
+		//as->add_action_to_entity(fire, b);
 		
 	/*	
 		hs::move_to_action *actn2 = new hs::move_to_action();

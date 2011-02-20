@@ -103,11 +103,21 @@ namespace hs
 					break;
 				case ACTIONTYPE_SCALE_TO:
 					handle_scale_to_action((scale_to_action *)current_action);
+					break;
 				case ACTIONTYPE_SCALE_BY:
 					handle_scale_by_action((scale_by_action *)current_action);
 					break;
 				case ACTIONTYPE_FADE_TO:
 					handle_fade_to_action((fade_to_action *)current_action);
+					break;
+				case ACTIONTYPE_FADE_BY:
+					handle_fade_by_action((fade_by_action *)current_action);
+					break;
+				case ACTIONTYPE_ROTATE_TO:
+					handle_rotate_to_action((rotate_to_action *)current_action);
+					break;
+				case ACTIONTYPE_ROTATE_BY:
+					handle_rotate_by_action((rotate_by_action *)current_action);
 					break;
 				case ACTIONTYPE_NONE:
 				default:
@@ -206,12 +216,17 @@ namespace hs
 		{
 			action->is_initialized = true;
 			
-			action->_destination.x = current_position->origin.x + action->distance.x;
-			action->_destination.y = current_position->origin.y + action->distance.y;
+	//		action->_destination.x = current_position->origin.x + action->distance.x;
+	//		action->_destination.y = current_position->origin.y + action->distance.y;
+			action->_step.x = action->distance.x / action->duration;
+			action->_step.y = action->distance.y / action->duration;
 		}
 		
-		current_position->origin.x += (action->distance.x/action->duration) * current_dt;
-		current_position->origin.y += (action->distance.y/action->duration) * current_dt;
+		current_position->origin.x += action->_step.x * current_dt;
+		current_position->origin.y += action->_step.y * current_dt;
+		
+	//	current_position->origin.x += (action->distance.x/action->duration) * current_dt;
+	//	current_position->origin.y += (action->distance.y/action->duration) * current_dt;
 	}
 	
 	void action_system::handle_scale_to_action(scale_to_action *action)
@@ -273,6 +288,70 @@ namespace hs
 		
 		current_renderable->alpha += action->_step * current_dt;
 	}
+	
+	void action_system::handle_fade_by_action(fade_by_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_renderable->alpha += action->fade_by;
+			return;
+		}
+		
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			action->_step = action->fade_by/action->duration;
+		}
+		
+		current_renderable->alpha += action->_step * current_dt;
+	}
+	
+	void action_system::handle_rotate_to_action(rotate_to_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_position->rot = action->rotate_to;
+			return;
+		}
+
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			action->_step = (action->rotate_to - current_position->rot) / action->duration;
+		}
+		current_position->rot += action->_step * current_dt;
+	}
+
+	void action_system::handle_rotate_by_action(rotate_by_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_position->rot += action->rotate_by;
+			return;
+		}
+		
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			action->_step = action->rotate_by/action->duration;
+		}
+		current_position->rot += action->_step * current_dt;
+	}
+
+	
+	/*
+	 {
+		 if (action->duration == 0.0)
+		 {
+			 return;
+		 }
+		 
+		 if (!action->is_initialized)
+		 {
+				action->is_initialized = true;	 
+		 }
+	 }
+*/
 }
 
 

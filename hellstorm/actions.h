@@ -52,7 +52,8 @@ namespace hs
 		void append_action(action *next_action);
 	};
 	
-//
+#pragma mark -
+#pragma mark move
 	struct move_to_action : public action
 	{
 		vec2d destination;
@@ -65,13 +66,14 @@ namespace hs
 	struct move_by_action : public action
 	{
 		vec2d distance;
-		vec2d _destination;
+		vec2d _step;
 		
 		move_by_action();
 		move_by_action(double dur, vec2d dist);
 	};
 
-//
+#pragma mark -
+#pragma mark scale
 	struct scale_to_action : public action
 	{
 		vec2d scale_to;
@@ -90,8 +92,8 @@ namespace hs
 		scale_by_action(double dur, vec2d by);
 	};
 	
-
-//
+#pragma mark -
+#pragma mark fade
 	struct fade_to_action : public action
 	{
 		double destination_alpha;
@@ -100,4 +102,35 @@ namespace hs
 		fade_to_action();
 		fade_to_action(double dur, double dest_alpha);
 	};
+
+	struct fade_by_action : public action
+	{
+		double fade_by;
+		double _step;
+		
+		fade_by_action();
+		fade_by_action(double dur, double by);
+	};
+	
+#pragma mark -
+#pragma mark rotate
+	struct rotate_to_action : public action
+	{
+		double rotate_to;
+		double _step;
+		
+		rotate_to_action();
+		rotate_to_action(double dur, double rot_to);
+	};
+	
+	struct rotate_by_action : public action
+	{
+		double rotate_by;
+		double _step;
+		
+		rotate_by_action();
+		rotate_by_action(double dur, double rot_by);
+	};
+	
+
 }

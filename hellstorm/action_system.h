@@ -40,9 +40,11 @@ namespace hs
 		void handle_scale_to_action(scale_to_action *action);
 		void handle_scale_by_action(scale_by_action *action);
 
-		
 		void handle_fade_to_action(fade_to_action *action);
+		void handle_fade_by_action(fade_by_action *action);
 
+		void handle_rotate_to_action(rotate_to_action *action);
+		void handle_rotate_by_action(rotate_by_action *action);
 		
 //		void handle_create_entity_action (CreateEntityAction *action);
 //		void handle_add_component_action (AddComponentAction *action);

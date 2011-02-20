@@ -12,6 +12,8 @@
 
 namespace hs 
 {
+	action_system *action::as = NULL;
+	
 	action::action()
 	{
 		action_type = ACTIONTYPE_NONE;
@@ -68,7 +70,7 @@ namespace hs
 		
 		distance = vec2d_zero;
 		duration = 0.0;
-		_destination = vec2d_zero;
+		_step = vec2d_zero;
 	}
 
 	move_by_action::move_by_action(double dur, vec2d dist)
@@ -77,7 +79,7 @@ namespace hs
 		
 		duration = dur;
 		distance = dist;
-		_destination = vec2d_zero;
+		_step = vec2d_zero;
 	}
 
 	scale_to_action::scale_to_action()
@@ -97,7 +99,7 @@ namespace hs
 		scale_to = to;
 		_step = vec2d_zero;
 	}
-	
+
 	scale_by_action::scale_by_action()
 	{
 		action_type = ACTIONTYPE_SCALE_BY;
@@ -131,6 +133,57 @@ namespace hs
 		_step = 0.0;
 		duration = dur;
 	}
+
+	fade_by_action::fade_by_action()
+	{
+		action_type = ACTIONTYPE_FADE_BY;
+		fade_by = 0.0;
+		_step = 0.0;
+		duration = 0.0;
+	}
 	
-	action_system *action::as = NULL;
+	fade_by_action::fade_by_action(double dur, double by)
+	{
+		action_type = ACTIONTYPE_FADE_BY;
+		fade_by = by;
+		_step = 0.0;
+		duration = dur;
+	}
+
+	rotate_to_action::rotate_to_action()
+	{
+		action_type = ACTIONTYPE_ROTATE_TO;
+		_step = 0.0;
+		
+		rotate_to = 0.0;
+		duration = 0.0;
+	}
+	
+	rotate_to_action::rotate_to_action(double dur, double rot_to)
+	{
+		action_type = ACTIONTYPE_ROTATE_TO;
+		_step = 0.0;
+		
+		rotate_to = rot_to;
+		duration = dur;
+	}
+	
+	rotate_by_action::rotate_by_action()
+	{
+		action_type = ACTIONTYPE_ROTATE_BY;
+		_step = 0.0;
+		
+		rotate_by = 0.0;
+		duration = 0.0;
+	}
+	
+	rotate_by_action::rotate_by_action(double dur, double rot_by)
+	{
+		action_type = ACTIONTYPE_ROTATE_BY;
+		_step = 0.0;
+		
+		rotate_by = rot_by;
+		duration = dur;
+	}
+	
 }
