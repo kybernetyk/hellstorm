@@ -16,7 +16,7 @@ namespace hs
 	class entity_manager;
 	class entity;
 	
-	void action_append_action(action *first, action *to_append);
+//	action *action_append_action(action *first, action *next_action);
 	
 	class action_system
 	{
@@ -34,7 +34,7 @@ namespace hs
 		
 		void handle_default_action (action *action);		
 		void handle_move_to_action (move_to_action *action);
-//		void handle_move_by_action (MoveByAction *action);
+		void handle_move_by_action (move_by_action *action);
 //		void handle_create_entity_action (CreateEntityAction *action);
 //		void handle_add_component_action (AddComponentAction *action);
 //		

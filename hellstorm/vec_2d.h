@@ -22,6 +22,8 @@ namespace hs
 	extern vec2d anchor_top_left;
 	extern vec2d anchor_top_right;
 	
+	extern vec2d vec2d_zero;
+		
 	vec2d vec2d_make(double x, double y);
 	vec2d vec2d_screen_center(void);
 	vec2d vec2d_normalize(vec2d vec);
@@ -32,6 +34,8 @@ namespace hs
 		double y;
 		double z;
 	};
+	
+	extern vec3d vec3d_zero;
 	
 	vec3d vec3d_make(double x, double y, double z);
 	vec3d vec3d_screen_center(double z = 0.0);

@@ -11,19 +11,21 @@
 
 namespace hs 
 {
-	void action_append_action(action *first, action *to_append)
-	{
-		action *last = first;
-		while (1)
-		{
-			if (last->on_complete_action)
-				last = last->on_complete_action;
-			else
-				break;
-		}
-		
-		last->on_complete_action = to_append;
-	}
+//	action *action_append_action(action *first, action *next_action)
+//	{
+//		action *last = first;
+//		while (1)
+//		{
+//			if (last->on_complete_action)
+//				last = last->on_complete_action;
+//			else
+//				break;
+//		}
+//		
+//		last->on_complete_action = next_action;
+//		
+//		return last->on_complete_action;
+//	}
 	
 	action_system::action_system(entity_manager *manager)
 	{
@@ -96,7 +98,9 @@ namespace hs
 				case ACTIONTYPE_MOVE_TO:
 					handle_move_to_action((move_to_action *)current_action);
 					break;
-					
+				case ACTIONTYPE_MOVE_BY:
+					handle_move_by_action((move_by_action *)current_action);
+					break;
 				case ACTIONTYPE_NONE:
 				default:
 					//handle_default_action(current_action);
@@ -182,4 +186,41 @@ namespace hs
 		current_position->origin.y += action->_velocity.y * current_dt;		
 	}
 	
+	void action_system::handle_move_by_action (move_by_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_position->origin.x += action->distance.x;
+			current_position->origin.y += action->distance.y;
+			return;
+		}
+		
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			
+			action->_destination.x = current_position->origin.x + action->distance.x;
+			action->_destination.y = current_position->origin.y + action->distance.y;
+		}
+		
+		current_position->origin.x += (action->distance.x/action->duration) * current_dt;
+		current_position->origin.y += (action->distance.y/action->duration) * current_dt;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

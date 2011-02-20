@@ -486,8 +486,8 @@
 		03460994130ED8810086DFDD /* components */ = {
 			isa = PBXGroup;
 			children = (
-				03460995130ED8950086DFDD /* components.cpp */,
 				03460996130ED8950086DFDD /* components.h */,
+				03460995130ED8950086DFDD /* components.cpp */,
 			);
 			name = components;
 			sourceTree = "<group>";

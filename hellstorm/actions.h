@@ -39,6 +39,8 @@ namespace hs
 		bool is_finished;
 		bool may_be_aborted;
 		bool is_initialized;
+		
+		void append_action(action *next_action);
 	};
 	
 	struct move_to_action : public action
@@ -48,5 +50,14 @@ namespace hs
 		
 		move_to_action();
 		move_to_action(double dur, vec2d dest);
+	};
+	
+	struct move_by_action : public action
+	{
+		vec2d distance;
+		vec2d _destination;
+		
+		move_by_action();
+		move_by_action(double dur, vec2d dist);
 	};
 }

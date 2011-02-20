@@ -26,6 +26,22 @@ namespace hs
 	{
 		
 	}
+	
+	void action::append_action(action *next_action)
+	{
+		action *last = this;
+
+		while (1)
+		{
+			if (last->on_complete_action)
+				last = last->on_complete_action;
+			else
+				break;
+		}
+		
+		last->on_complete_action = next_action;
+	//	return last->on_complete_action;
+	}
 
 
 	move_to_action::move_to_action()
@@ -43,8 +59,26 @@ namespace hs
 		destination = dest;
 		duration = dur;
 		
-		_velocity = vec2d_make(0.0, 0.0);
+		_velocity = vec2d_zero;
 	}
+	
+	move_by_action::move_by_action()
+	{
+		action_type = ACTIONTYPE_MOVE_BY;
+		
+		distance = vec2d_zero;
+		duration = 0.0;
+	}
+
+	move_by_action::move_by_action(double dur, vec2d dist)
+	{
+		action_type = ACTIONTYPE_MOVE_BY;
+		
+		duration = dur;
+		distance = dist;
+	}
+
+	
 	
 	action_system *action::as = NULL;
 }
