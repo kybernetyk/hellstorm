@@ -75,7 +75,6 @@ namespace hs
 		COMP_TYPE *add_component(entity *e, COMP_TYPE *c)
 		{
 			is_dirty = true;
-		//	c->family_id = T::FAMILY_ID;
 			
 			if (COMP_TYPE::family_id >= cfg::entity_system.components_per_entity || 
 				COMP_TYPE::family_id == 0)
@@ -90,7 +89,30 @@ namespace hs
 			
 			
 			components[e->manager_id][COMP_TYPE::family_id] = c;
+			return c;
 		}
+
+		template <typename COMP_TYPE>
+		COMP_TYPE *add_component(entity *e, COMP_TYPE *c, uid fam_id)
+		{
+			is_dirty = true;
+			
+			if (fam_id >= cfg::entity_system.components_per_entity || 
+				fam_id == 0)
+			{	
+				printf("family id of component out of bounds. component probably not registered!\n");
+				dump_component(e, c);
+				abort();
+			}
+			
+			if (components[e->manager_id][fam_id])
+				remove_component(e, components[e->manager_id][fam_id], fam_id);
+			
+			
+			components[e->manager_id][fam_id] = c;
+			return c;
+		}
+
 		
 		template <typename T> 
 		T *get_component(entity *e)
@@ -116,6 +138,14 @@ namespace hs
 		void remove_component(entity *e, COMP_TYPE *c)
 		{
 			components[e->manager_id][COMP_TYPE::family_id] = NULL;
+			delete c;
+			is_dirty = true;
+		}
+
+		template<typename COMP_TYPE>
+		void remove_component(entity *e, COMP_TYPE *c, uid family_id)
+		{
+			components[e->manager_id][family_id] = NULL;
 			delete c;
 			is_dirty = true;
 		}

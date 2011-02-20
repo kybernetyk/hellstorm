@@ -7,10 +7,12 @@
 //
 #pragma once
 #include "vec_2d.h"
+#include "hs_types.h"
 
 namespace hs 
 {
 	class action_system;
+	class component;
 	
 	enum e_actiontype
 	{
@@ -27,9 +29,7 @@ namespace hs
 		ACTIONTYPE_ROTATE_TO,
 		ACTIONTYPE_ROTATE_BY,
 		
-		ACTIONTYPE_ADD_COMPONENT,
-		ACTIONTYPE_CREATE_ENTITY
-
+		ACTIONTYPE_ADD_COMPONENT
 	};
 
 	struct action
@@ -132,5 +132,24 @@ namespace hs
 		rotate_by_action(double dur, double rot_by);
 	};
 	
+#pragma mark -
+#pragma mark comp/ent
+	struct add_component_action : public action
+	{
+		uid family_id;
+		component *component_to_add;
+		
+		template <typename T>
+		add_component_action(double dur, T *comp)
+		{
+			action_type = ACTIONTYPE_ADD_COMPONENT;
+			
+			family_id = T::family_id;
+			component_to_add = comp;
+			
+			duration = dur;
+		}
+
+	};
 
 }

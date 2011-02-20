@@ -46,12 +46,8 @@ namespace hs
 		void handle_rotate_to_action(rotate_to_action *action);
 		void handle_rotate_by_action(rotate_by_action *action);
 		
-//		void handle_create_entity_action (CreateEntityAction *action);
-//		void handle_add_component_action (AddComponentAction *action);
-//		
-//		void handle_scale_by_action (ScaleByAction *action);
-//		void handle_fade_to_action (FadeToAction *action);
-
+		void handle_add_component_action (add_component_action *action);
+	
 		
 	private:
 		entity_manager *em;

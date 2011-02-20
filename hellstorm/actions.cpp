@@ -185,5 +185,14 @@ namespace hs
 		rotate_by = rot_by;
 		duration = dur;
 	}
+
+	
+//	add_component_action::add_component_action(double dur, component *comp)
+//	{
+//		action_type = ACTIONTYPE_ADD_COMPONENT;
+//		duration = dur;
+//		family_id = comp->family_id;
+//		component_to_add = comp;
+//	}
 	
 }

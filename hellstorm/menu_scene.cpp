@@ -85,6 +85,9 @@ namespace test_game
 		a->append_action(new hs::rotate_to_action(2.0,0.0));
 		//as->add_action_to_entity(fire, b);
 		
+		b = new hs::add_component_action(2.0, new hs::comp::mark_of_death);
+		
+		a->append_action(b);
 	/*	
 		hs::move_to_action *actn2 = new hs::move_to_action();
 		actn2->destination = hs::vec2d_make(0.0, 480.0);

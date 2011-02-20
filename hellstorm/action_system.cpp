@@ -119,6 +119,9 @@ namespace hs
 				case ACTIONTYPE_ROTATE_BY:
 					handle_rotate_by_action((rotate_by_action *)current_action);
 					break;
+				case ACTIONTYPE_ADD_COMPONENT:
+					handle_add_component_action((add_component_action *)current_action);
+					break;
 				case ACTIONTYPE_NONE:
 				default:
 					//handle_default_action(current_action);
@@ -338,20 +341,19 @@ namespace hs
 		current_position->rot += action->_step * current_dt;
 	}
 
-	
-	/*
-	 {
-		 if (action->duration == 0.0)
+	void action_system::handle_add_component_action (add_component_action *action)
+	{
+		 if (action->duration == 0.0 || action->is_finished)
 		 {
+			 em->add_component(current_entity, action->component_to_add, action->family_id);
 			 return;
 		 }
 		 
 		 if (!action->is_initialized)
 		 {
-				action->is_initialized = true;	 
+			action->is_initialized = true;	 
 		 }
-	 }
-*/
+	}
 }
 
 
