@@ -58,42 +58,67 @@ namespace test_game
 		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(320, 0, 4.0), true);
 
 		
-		hs::action *a = new hs::move_by_action(10.0, hs::vec2d_make(100.0, 0.0));
-		hs::action *b = new hs::move_by_action(10.0, hs::vec2d_make(0.0, 100.0));
-		a->append_action(new hs::move_to_action(10.0, hs::vec2d_screen_center()));
+//		hs::action *a = new hs::move_by_action(10.0, hs::vec2d_make(100.0, 0.0));
+//		hs::action *b = new hs::move_by_action(10.0, hs::vec2d_make(0.0, 100.0));
+//		a->append_action(new hs::move_to_action(10.0, hs::vec2d_screen_center()));
 		
-		as->add_action_to_entity(fire, a);
-		as->add_action_to_entity(fire, b);
+//		as->add_action_to_entity(fire, a);
+//		as->add_action_to_entity(fire, b);
 		
-		hs::entity *bubble = hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_screen_center(3.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
-		a = new hs::scale_to_action(5.0, hs::vec2d_make(2.0, 2.0));
-		a->append_action(new hs::scale_to_action(5.0, hs::vec2d_make(1.0, 1.0)));
-//		a->append_action(new hs::scale_to_action(5.0, hs::vec2d_make(1.0, 1.0)));
-//		a->append_action(new hs::scale_by_action(5.0, hs::vec2d_make(2.0, 4.0)));
-//		b = new hs::fade_to_action(5.0, 0.3);
+//		a = new hs::scale_to_action(2.0, hs::vec2d_make(0.5, 0.5));
+//		a->append_action(new hs::scale_to_action(1.0, hs::vec2d_make(4.0, 4.0)));
+//		a->append_action(new hs::scale_to_action(1.0, hs::vec2d_make(2.0, 2.0)));
+//		a->append_action(new hs::scale_by_action(1.0, hs::vec2d_make(6.0, 9.0)));
+//		b = new hs::fade_to_action(5.0, 0.5);
 //		a->append_action(b);
-		as->add_action_to_entity(bubble, a);
+//		
 		
-		a = new hs::rotate_to_action(2.0, -90);
-		as->add_action_to_entity(back, a);
 		
-		a->append_action(new hs::rotate_to_action(2.0,-90));
-		a->append_action(new hs::rotate_to_action(2.0,270.0));
-		a->append_action(new hs::rotate_to_action(2.0,0.0));
+		hs::entity *bubble = hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(100.0, 100.0, 4.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
+		hs::action *bac = new hs::move_by_action(3.0, hs::vec2d_make(50.0, 50.0));
+		bac->loop_count = 1;
 		
-		b = new hs::add_component_action(2.0, new hs::comp::mark_of_death);
-		a->append_action(b);
-
-		hs::comp::seq_animation *anim = em->add_component<hs::comp::seq_animation>(bubble);
+		hs::action *blink = new hs::fade_to_action(1.0, 0.0);
+		blink->append_action(new hs::fade_to_action(1.0,1.0));
+		blink->loop_forever = true;
 		
-		anim->frames_per_second = 1.0;
+		bac->append_action(blink);
+		
+		as->add_action_to_entity(bubble, bac);
+		
+		
+		
+		hs::entity *clock = hs::factory::create_atlas_sprite("clocks.png", 
+															 hs::vec3d_screen_center(6.0),
+															 hs::rect_make(0.0, 0.0, 0.0, 0.0));
+		
+		hs::comp::seq_animation *anim = em->add_component<hs::comp::seq_animation>(clock);
+		
+		anim->frames_per_second = 24.0;
 		anim->start_frame = 0;
-		anim->end_frame = 7;
+		anim->end_frame = 23;
 		anim->current_frame = 0;
 		anim->loop = true;
 		anim->state = hs::comp::ANIM_STATE_PLAY;
 		anim->destroy_on_finish = false;
-		anim->frame_size = hs::size2d_make(40.0, 40.0);
+		anim->frame_size = hs::size2d_make(32.0, 32.00);
+
+		
+//		as->add_action_to_entity(clock, a);
+		
+		
+		
+		
+//		a = new hs::rotate_to_action(2.0, -90);
+//		as->add_action_to_entity(back, a);
+//		
+//		a->append_action(new hs::rotate_to_action(2.0,-90));
+//		a->append_action(new hs::rotate_to_action(2.0,270.0));
+//		a->append_action(new hs::rotate_to_action(2.0,0.0));
+//		
+//		b = new hs::add_component_action(2.0, new hs::comp::mark_of_death);
+//		a->append_action(b);
+		
 	}
 	
 	void menu_scene::shutdown(void)

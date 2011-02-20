@@ -22,11 +22,15 @@ namespace hs
 		may_be_aborted = true;
 		is_finished = false;
 		is_initialized = false;
+		parent_action = NULL;
+		loop_count = 0;
+		loop_forever = false;
 	}
 	
 	action::~action()
 	{
-		
+		printf("free action: %p\n", this);
+		printf("have child: %p\n", on_complete_action);
 	}
 	
 	void action::append_action(action *next_action)
@@ -42,6 +46,7 @@ namespace hs
 		}
 		
 		last->on_complete_action = next_action;
+		next_action->parent_action = last;
 	//	return last->on_complete_action;
 	}
 

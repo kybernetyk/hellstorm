@@ -41,6 +41,7 @@ namespace hs
 		
 		e_actiontype action_type;
 		action *on_complete_action;
+		action *parent_action;
 		
 		double duration;
 		double timestamp;
@@ -48,6 +49,8 @@ namespace hs
 		bool is_finished;
 		bool may_be_aborted;
 		bool is_initialized;
+		int loop_count;
+		bool loop_forever;
 		
 		void append_action(action *next_action);
 	};

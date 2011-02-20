@@ -136,6 +136,8 @@ namespace hs
 				
 				current_sprite->src_rect.x = fx * current_animation->frame_size.w;
 				current_sprite->src_rect.y = fy * current_animation->frame_size.h;
+				current_sprite->src_rect.w = current_animation->frame_size.w;
+				current_sprite->src_rect.h = current_animation->frame_size.h;
 				
 				current_animation->_cached_frame = current_animation->current_frame;
 			}

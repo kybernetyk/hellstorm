@@ -31,6 +31,8 @@ namespace hs
 		void step_action(action *action);
 		void handle_action_container(void);
 		
+		action *get_root_action(action *a);
+		void free_action(action *a);
 		
 		//void handle_default_action(action *action);		
 

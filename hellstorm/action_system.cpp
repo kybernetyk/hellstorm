@@ -78,6 +78,32 @@ namespace hs
 		}
 	}
 	
+	void action_system::free_action(action *a)
+	{
+		action *child = a->on_complete_action;
+		if (!child)
+		{
+			delete a;
+			return;
+		}
+		
+		free_action(child);
+		delete a;
+	}
+	
+	action *action_system::get_root_action(action *a)
+	{
+		action *root = a;
+		
+		while (1) 
+		{
+			if(!root->parent_action)
+				break;
+			root = root->parent_action;
+		}
+		
+		return root;
+	}
 	
 	
 	void action_system::handle_action_container(void)
@@ -135,15 +161,71 @@ namespace hs
 				//run another action
 				if (on_complete_action)
 				{
-					delete current_action;
 					current_action = NULL;
 					current_container->actions[i] = on_complete_action;
 				}
 				else //do nothing - just delete current action
 				{
-					delete current_action;
-					current_action = NULL;
-					current_container->actions[i] = NULL;
+					action *a = current_action;
+					action *loopstart = NULL;
+					while (1)
+					{
+						if (a->loop_count > 0 || a->loop_forever)
+							loopstart = a;
+						
+						a->timestamp = 0.0;
+						a->is_initialized = false;
+						a->is_finished = false;
+						
+						if (!a->parent_action)
+							break;
+						
+						a = a->parent_action;
+					}
+					
+					if (!loopstart)
+					{
+						a = current_action;
+						while(1)
+						{
+							if (a->loop_count > 0 || a->loop_forever)
+								loopstart = a;
+
+							a->timestamp = 0.0;
+							a->is_initialized = false;
+							a->is_finished = false;
+							
+							if (!a->on_complete_action)
+								break;
+							
+							a = a->on_complete_action;
+						}
+					}
+					
+					if (loopstart)
+					{
+						if (loopstart->parent_action)
+						{
+							loopstart->parent_action->on_complete_action = NULL;
+							free_action(get_root_action(loopstart->parent_action));
+							loopstart->parent_action = NULL;
+						}
+					
+						current_action = NULL;
+						//current_container->actions[i] = loopstart;	
+						actions[i] = loopstart;
+						//if (!loopstart->loop_forever)
+							loopstart->loop_count--;
+					}
+					else
+					{
+						action *root_action = get_root_action(current_action);
+						free_action(root_action);
+						current_action = NULL;
+						//current_container->actions[i] = NULL;
+						actions[i] = NULL;
+					}
+					
 				}
 			}
 		}
