@@ -23,9 +23,22 @@ namespace hs
 		template <typename T>
 		void register_component_class(void)
 		{
-		//	printf("init id: %i", T::family_id);
+			if (T::family_id != 0)
+			{	
+				printf("This component class seems to be registered already. Are you sure you want to do this again? [comp fam id: %i]\n",
+					   T::family_id);
+				abort();
+			}
+			
 			T::family_id = get_next_component_family_id();
-		//	printf("     --    reg id: %i\n", T::family_id);
+			
+			if (T::family_id >= cfg::entity_system.components_per_entity)
+			{
+				printf("The family id %i exceeds 'entity_system.components_per_entity'. Please update your config file!\n",
+					   T::family_id);
+				abort();
+			}
+			
 		}
 
 		void register_components(void);
