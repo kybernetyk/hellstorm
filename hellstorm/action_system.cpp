@@ -162,7 +162,7 @@ namespace hs
 				if (on_complete_action)
 				{
 					current_action = NULL;
-					current_container->actions[i] = on_complete_action;
+					actions[i] = on_complete_action;
 				}
 				else //do nothing - just delete current action
 				{

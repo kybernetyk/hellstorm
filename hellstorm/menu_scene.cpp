@@ -62,8 +62,8 @@ namespace test_game
 		hs::action *b = new hs::move_by_action(10.0, hs::vec2d_make(0.0, 100.0));
 		a->append_action(new hs::move_to_action(10.0, hs::vec2d_screen_center()));
 		
-		as->add_action_to_entity(fire, a);
-		as->add_action_to_entity(fire, b);
+	//	as->add_action_to_entity(fire, a);
+	//	as->add_action_to_entity(fire, b);
 		
 		a = new hs::scale_to_action(2.0, hs::vec2d_make(0.5, 0.5));
 		a->append_action(new hs::scale_to_action(1.0, hs::vec2d_make(4.0, 4.0)));
@@ -75,23 +75,23 @@ namespace test_game
 		
 		
 		hs::entity *bubble = hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(100.0, 100.0, 4.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
-		hs::action *bac = new hs::move_by_action(3.0, hs::vec2d_make(50.0, 50.0));
-		bac->loop_count = 1;
+//		hs::action *bac = new hs::move_by_action(3.0, hs::vec2d_make(50.0, 50.0));
+//		bac->loop_count = 1;
 		
 		hs::action *blink = new hs::fade_to_action(1.0, 0.0);
 		blink->append_action(new hs::fade_to_action(1.0,1.0));
 		blink->loop_forever = true;
 		
-		bac->append_action(blink);
+//		bac->append_action(blink);
+		as->add_action_to_entity(bubble, blink);
 		
-		as->add_action_to_entity(bubble, bac);
 		
 		
 		
 		hs::entity *clock = hs::factory::create_atlas_sprite("clocks.png", 
 															 hs::vec3d_screen_center(6.0),
 															 hs::rect_make(0.0, 0.0, 0.0, 0.0));
-		
+
 		hs::comp::seq_animation *anim = em->add_component<hs::comp::seq_animation>(clock);
 		
 		anim->frames_per_second = 24.0;
@@ -110,7 +110,7 @@ namespace test_game
 		
 		
 		a = new hs::rotate_to_action(2.0, -90);
-		as->add_action_to_entity(back, a);
+		//as->add_action_to_entity(back, a);
 		
 		a->append_action(new hs::rotate_to_action(2.0,-90));
 		a->append_action(new hs::rotate_to_action(2.0,270.0));
