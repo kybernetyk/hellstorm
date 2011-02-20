@@ -53,7 +53,7 @@ namespace hs
 		//fps
 		frames++;
 		temp += delta;
-		if (temp > 0.1)
+		if (temp >= 1.0)
 		{
 			fps = frames / temp;
 			temp = 0.0;

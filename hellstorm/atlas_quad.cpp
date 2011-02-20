@@ -50,6 +50,32 @@ namespace hs
 
 		return true;
 	}
+
+	GLfloat		coordinates[] = { 0,0,
+		0,0,
+		0,0,
+		0,0};
+
+	GLfloat		vertices[] = 
+	{
+		0,0,0,
+		0,0,0,
+		0,0,0,
+		0,0,0
+	};
+
+	GLfloat colors[] = 
+	{
+		1.0,1.0,1.0,1.0,
+		1.0,1.0,1.0,1.0,
+		1.0,1.0,1.0,1.0,
+		1.0,1.0,1.0,1.0,
+	};
+
+	rect atlas_info;
+	
+	
+
 	
 	void atlas_quad::render_content(void)
 	{
@@ -63,34 +89,73 @@ namespace hs
 			
 			transform();
 			
-			rect atlas_info;
 			atlas_info.x = src_rect.x / texture->size.w;
 			atlas_info.y = src_rect.y / texture->size.h;
 			
 			atlas_info.w = src_rect.w / texture->size.w;
 			atlas_info.h = src_rect.h / texture->size.h;
-		
-			GLfloat		coordinates[] = { 
-				atlas_info.x,	atlas_info.y + atlas_info.h,
-				atlas_info.x + atlas_info.w,	atlas_info.y + atlas_info.h,
-				atlas_info.x,	atlas_info.y,
-				atlas_info.x + atlas_info.w,	atlas_info.y };
 
-			GLfloat		vertices[] = 
-			{	
-				0,			0,			0,
-				size.w,	0,			0,
-				0,			size.h,	0,
-				size.w,			size.h,	0
-			};
+			
+			coordinates[0] = atlas_info.x;
+			coordinates[1] = atlas_info.y + atlas_info.h;
+			coordinates[2] = atlas_info.x + atlas_info.w;
+			coordinates[3] = atlas_info.y + atlas_info.h;
+			coordinates[4] = atlas_info.x;
+			coordinates[5] = atlas_info.y;
+			coordinates[6] = atlas_info.x + atlas_info.w;
+			coordinates[7] = atlas_info.y;
 
-			GLfloat colors[] = 
-			{
-				1.0,1.0,1.0,alpha,
-				1.0,1.0,1.0,alpha,
-				1.0,1.0,1.0,alpha,
-				1.0,1.0,1.0,alpha,
-			};
+//			GLfloat		vertices[] = 
+//			{	
+//				0,			0,			0,
+//				size.w,	0,			0,
+//				0,			size.h,	0,
+//				size.w,			size.h,	0
+//			};
+			
+			vertices[0] = 0;
+			vertices[1] = 0;
+			vertices[2] = 0;
+
+			vertices[3] = size.w;
+			vertices[4] = 0;
+			vertices[5] = 0;
+
+			vertices[6] = 0;
+			vertices[7] = size.h;
+			vertices[8] = 0;
+			
+			vertices[9] = size.w;
+			vertices[10] = size.h;
+			vertices[11] = 0;
+			
+			colors[0] = 1.0;
+			colors[1] = 1.0;
+			colors[2] = 1.0;
+			colors[3] = alpha;
+
+			colors[4] = 1.0;
+			colors[5] = 1.0;
+			colors[6] = 1.0;
+			colors[7] = alpha;
+
+			colors[8] = 1.0;
+			colors[9] = 1.0;
+			colors[10] = 1.0;
+			colors[11] = alpha;
+
+			colors[12] = 1.0;
+			colors[13] = 1.0;
+			colors[14] = 1.0;
+			colors[15] = alpha;
+
+//			GLfloat colors[] = 
+//			{
+//				1.0,1.0,1.0,alpha,
+//				1.0,1.0,1.0,alpha,
+//				1.0,1.0,1.0,alpha,
+//				1.0,1.0,1.0,alpha,
+//			};
 			glColorPointer(4, GL_FLOAT, 0, colors);
 			
 			//		glEnable( GL_TEXTURE_2D);

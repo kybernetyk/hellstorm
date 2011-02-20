@@ -12,6 +12,8 @@
 
 namespace hs 
 {
+	#define PE_LOOP -1.0f
+	
 	class particle_emitter : public renderable
 	{
 	public:

@@ -17,10 +17,19 @@ namespace hs
 		ACTIONTYPE_NONE = 0,
 		ACTIONTYPE_MOVE_TO,
 		ACTIONTYPE_MOVE_BY,
-		ACTIONTYPE_ADD_COMPONENT,
-		ACTIONTYPE_CREATE_ENTITY,
+
+		ACTIONTYPE_SCALE_TO,
 		ACTIONTYPE_SCALE_BY,
-		ACTIONTYPE_FADE_TO
+
+		ACTIONTYPE_FADE_TO,
+		ACTIONTYPE_FADE_BY,
+		
+		ACTIONTYPE_ROTATE_TO,
+		ACTIONTYPE_ROTATE_BY,
+		
+		ACTIONTYPE_ADD_COMPONENT,
+		ACTIONTYPE_CREATE_ENTITY
+
 	};
 
 	struct action
@@ -43,6 +52,7 @@ namespace hs
 		void append_action(action *next_action);
 	};
 	
+//
 	struct move_to_action : public action
 	{
 		vec2d destination;
@@ -59,5 +69,35 @@ namespace hs
 		
 		move_by_action();
 		move_by_action(double dur, vec2d dist);
+	};
+
+//
+	struct scale_to_action : public action
+	{
+		vec2d scale_to;
+		vec2d _step;
+		
+		scale_to_action();
+		scale_to_action(double dur, vec2d to);
+	};
+
+	struct scale_by_action : public action
+	{
+		vec2d scale_by;
+		vec2d _step;
+		
+		scale_by_action();
+		scale_by_action(double dur, vec2d by);
+	};
+	
+
+//
+	struct fade_to_action : public action
+	{
+		double destination_alpha;
+		double _step;
+		
+		fade_to_action();
+		fade_to_action(double dur, double dest_alpha);
 	};
 }

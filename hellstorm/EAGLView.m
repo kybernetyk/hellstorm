@@ -110,7 +110,7 @@
         if (!defaultFramebuffer)
             [self createFramebuffer];
         
-        glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
+     //   glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
         
       //  glViewport(0, 0, framebufferWidth, framebufferHeight);
     }

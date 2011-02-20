@@ -81,6 +81,10 @@ namespace hs
 				next_game_tick += skip_ticks;
 				loops++;
 			}
+			if (loops > 0)
+			{
+				printf("had to do %i loops in one frame!\n", loops);
+			}
 		}
 		else
 		{

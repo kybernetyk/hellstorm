@@ -1,0 +1,9 @@
+In this directory you'll find the excellent Obj-C based particle emitter from 71Squared.
+It's part of 71Squared's Particle Designer app which you SHOULD GET: http://particledesigner.71squared.com/
+
+The code in this directory was not written by me! It's not stated which license it is but at the first look
+it seems to be GPL-compatible. So for the meantime we'll use this code until we port the system down to C.
+
+I've added some methods to make the code work on OS X.
+
+NOTE: The texture binding code uses tex2d_bind() - if you want to extract the pemitter, you should replace it by a glBind

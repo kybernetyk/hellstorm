@@ -40,22 +40,16 @@ namespace test_game
 		
 		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_screen_center());
 
-		hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
-
-		//		
-		for (int i = 0; i < hs::cfg::entity_system.entity_pool_size-20; i++)
+//		hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
+//
+//		//		
+		for (int i = 0; i < 220; i++)
 		{
 			hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
 		}
 		
-		hs::entity *fire = hs::factory::create_particle_emitter("cool.pex", -1.0, hs::vec3d_screen_center(1.0), true);
+		hs::entity *fire = hs::factory::create_particle_emitter("cool.pex", PE_LOOP, hs::vec3d_screen_center(1.0), true);
 		hs::audio_system::play_music("music.mp3");
-		
-		/*hs::move_by_action *actn = new hs::move_by_action(10.0, hs::vec2d_make(100.0, 100.0));
-		as->add_action_to_entity(fire, actn);
-		
-		actn->append_action( new hs::move_to_action(10.0, hs::vec2d_make(0.0, 0.0)) );*/
-		
 		
 		hs::action *a = new hs::move_by_action(10.0, hs::vec2d_make(100.0, 0.0));
 		hs::action *b = new hs::move_by_action(10.0, hs::vec2d_make(0.0, 100.0));
@@ -64,7 +58,25 @@ namespace test_game
 		a->append_action(new hs::move_to_action(10.0, hs::vec2d_screen_center()));
 		
 		as->add_action_to_entity(fire, a);
+
 		
+		hs::entity *bubble = hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_screen_center(3.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
+
+		a = new hs::scale_to_action(5.0, hs::vec2d_make(2.0, 2.0));
+		a->append_action(new hs::scale_to_action(5.0, hs::vec2d_make(0.1, 0.1)));
+		
+//		as->add_action_to_entity(bubble, a);
+		
+		hs::factory::create_particle_emitter("tss.pex", PE_LOOP, hs::vec3d_make(320/2, 480, 4.0), true);
+		
+		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(0, 0, 4.0), true);
+		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(320, 0, 4.0), true);
+//		a = new hs::scale_by_action(5.0, hs::vec2d_make(2.0, 2.0));
+//		as->add_action_to_entity(bubble, a);
+//
+//		b = new hs::fade_to_action(5.0, 0.3);
+//		a->append_action(b);
+//		
 //		as->add_action_to_entity(fire, b);
 		
 	/*	

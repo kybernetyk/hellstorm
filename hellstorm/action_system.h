@@ -32,9 +32,18 @@ namespace hs
 		void handle_action_container(void);
 		
 		
-		void handle_default_action (action *action);		
-		void handle_move_to_action (move_to_action *action);
-		void handle_move_by_action (move_by_action *action);
+		//void handle_default_action(action *action);		
+
+		void handle_move_to_action(move_to_action *action);
+		void handle_move_by_action(move_by_action *action);
+
+		void handle_scale_to_action(scale_to_action *action);
+		void handle_scale_by_action(scale_by_action *action);
+
+		
+		void handle_fade_to_action(fade_to_action *action);
+
+		
 //		void handle_create_entity_action (CreateEntityAction *action);
 //		void handle_add_component_action (AddComponentAction *action);
 //		

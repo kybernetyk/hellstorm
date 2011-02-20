@@ -68,6 +68,7 @@ namespace hs
 		
 		distance = vec2d_zero;
 		duration = 0.0;
+		_destination = vec2d_zero;
 	}
 
 	move_by_action::move_by_action(double dur, vec2d dist)
@@ -76,9 +77,60 @@ namespace hs
 		
 		duration = dur;
 		distance = dist;
+		_destination = vec2d_zero;
 	}
 
+	scale_to_action::scale_to_action()
+	{
+		action_type = ACTIONTYPE_SCALE_BY;
+		
+		duration = 0.0;
+		scale_to = vec2d_zero;
+		_step = vec2d_zero;
+	}
 	
+	scale_to_action::scale_to_action(double dur, vec2d to)
+	{
+		action_type = ACTIONTYPE_SCALE_BY;
+		
+		duration = dur;
+		scale_to = to;
+		_step = vec2d_zero;
+	}
+	
+	scale_by_action::scale_by_action()
+	{
+		action_type = ACTIONTYPE_SCALE_BY;
+		
+		duration = 0.0;
+		scale_by = vec2d_zero;
+		_step = vec2d_zero;
+	}
+	
+	scale_by_action::scale_by_action(double dur, vec2d by)
+	{
+		action_type = ACTIONTYPE_SCALE_BY;
+		
+		duration = dur;
+		scale_by = by;
+		_step = vec2d_zero;
+	}
+	
+	fade_to_action::fade_to_action()
+	{
+		action_type = ACTIONTYPE_FADE_TO;
+		destination_alpha = 0.0;
+		_step = 0.0;
+		duration = 0.0;
+	}
+	
+	fade_to_action::fade_to_action(double dur, double dest_alpha)
+	{
+		action_type = ACTIONTYPE_FADE_TO;
+		destination_alpha = dest_alpha;
+		_step = 0.0;
+		duration = dur;
+	}
 	
 	action_system *action::as = NULL;
 }

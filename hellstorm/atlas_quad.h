@@ -8,6 +8,7 @@
 #pragma once
 #include "renderable.h"
 #include <string>
+#include "hs_ogl.h"
 
 namespace hs 
 {

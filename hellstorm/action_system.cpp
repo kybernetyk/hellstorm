@@ -101,6 +101,14 @@ namespace hs
 				case ACTIONTYPE_MOVE_BY:
 					handle_move_by_action((move_by_action *)current_action);
 					break;
+				case ACTIONTYPE_SCALE_TO:
+					handle_scale_to_action((scale_to_action *)current_action);
+				case ACTIONTYPE_SCALE_BY:
+					handle_scale_by_action((scale_by_action *)current_action);
+					break;
+				case ACTIONTYPE_FADE_TO:
+					handle_fade_to_action((fade_to_action *)current_action);
+					break;
 				case ACTIONTYPE_NONE:
 				default:
 					//handle_default_action(current_action);
@@ -164,8 +172,7 @@ namespace hs
 
 #pragma -
 #pragma actions handler
-	
-	void action_system::handle_move_to_action (move_to_action *action)
+	void action_system::handle_move_to_action(move_to_action *action)
 	{
 		if (action->duration == 0.0)
 		{
@@ -186,7 +193,7 @@ namespace hs
 		current_position->origin.y += action->_velocity.y * current_dt;		
 	}
 	
-	void action_system::handle_move_by_action (move_by_action *action)
+	void action_system::handle_move_by_action(move_by_action *action)
 	{
 		if (action->duration == 0.0)
 		{
@@ -207,6 +214,65 @@ namespace hs
 		current_position->origin.y += (action->distance.y/action->duration) * current_dt;
 	}
 	
+	void action_system::handle_scale_to_action(scale_to_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_position->scale.x = action->scale_to.x;
+			current_position->scale.y = action->scale_to.y;
+			return;
+		}
+		
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			double dx = action->scale_to.x - current_position->scale.x;
+			double dy = action->scale_to.y - current_position->scale.y;
+			
+			action->_step = vec2d_make(dx / action->duration, dy / action->duration);
+		}
+		
+		current_position->scale.x += action->_step.x * current_dt;
+		current_position->scale.y += action->_step.y * current_dt;
+	}
+	
+	void action_system::handle_scale_by_action(scale_by_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_position->scale.x *= action->scale_by.x;
+			current_position->scale.y *= action->scale_by.y;
+			return;
+		}
+		
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			
+			action->_step.x = ((current_position->scale.x * action->scale_by.x) - current_position->scale.x) / action->duration;
+			action->_step.y = ((current_position->scale.y * action->scale_by.y) - current_position->scale.y) / action->duration;
+		}
+		
+		current_position->scale.x += action->_step.x * current_dt;
+		current_position->scale.y += action->_step.y * current_dt;
+	}
+	
+	void action_system::handle_fade_to_action(fade_to_action *action)
+	{
+		if (action->duration == 0.0)
+		{
+			current_renderable->alpha = action->destination_alpha;
+			return;
+		}
+		
+		if (!action->is_initialized)
+		{
+			action->is_initialized = true;
+			action->_step = (action->destination_alpha - current_renderable->alpha) / action->duration;
+		}
+		
+		current_renderable->alpha += action->_step * current_dt;
+	}
 }
 
 
