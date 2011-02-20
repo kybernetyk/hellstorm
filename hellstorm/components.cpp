@@ -16,25 +16,46 @@ namespace hs
 	{
 #pragma mark -
 #pragma mark IDs
-		
+	
+		bool components_registered = false;
 		
 		//0 reserved
-		family::id mark_of_death::family_id = family::mark_of_death;
-		family::id position::family_id = family::position;
+		uid mark_of_death::family_id;
+		uid position::family_id;
 
-		family::id renderable::family_id = family::renderable;
-		family::id sprite::family_id = renderable::family_id;
-		family::id atlas_sprite::family_id = renderable::family_id;
-		family::id text_label::family_id = renderable::family_id;
-		family::id particle_emitter::family_id = renderable::family_id;
+		uid renderable::family_id;
+		/*uid sprite::family_id;
+		uid atlas_sprite::family_id;
+		uid text_label::family_id;
+		uid particle_emitter::family_id;*/
 
-		family::id action_container::family_id = family::action_container;
+		uid action_container::family_id;
 
+		uid get_next_component_family_id(void)
+		{
+			static uid current_component_family_id = 1;
+			return current_component_family_id++;
+		}
+
+		void register_components(void)
+		{
+			if (components_registered)
+				return;
+			
+			register_component_class<mark_of_death>();
+			register_component_class<position>();
+			register_component_class<renderable>();
+			register_component_class<action_container>();
+			
+			components_registered = true;
+		}
 
 #pragma mark -
 #pragma mark action container
 		action_container::action_container()
 		{
+			printf("%i\n",action_container::family_id);
+//			register_component_class<action_container>();
 			memset(actions,0x00,NUM_OF_ACTIONS_PER_CONTAINER*sizeof(action*));
 		}
 		

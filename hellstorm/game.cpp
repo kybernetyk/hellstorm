@@ -33,6 +33,7 @@ namespace hs
 		
 		cfg::read_config_from_file("hellstorm.cfg");
 		
+		
 		audio_system::init(cfg::audio.sfx_volume, cfg::audio.music_volume);
 		
 		

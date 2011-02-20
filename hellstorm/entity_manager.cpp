@@ -15,13 +15,11 @@ namespace hs
 #pragma mark component
 	component::component()
 	{
-		//family_id = 0;
 	}
 	
 	component::~component()
 	{
 	}
-	
 #pragma mark -
 #pragma mark entity
 	entity_manager *entity::ent_mgr = NULL;
@@ -39,6 +37,9 @@ namespace hs
 		printf("\t[*] Component Slots per Entity: %i\n", cfg::entity_system.components_per_entity);
 		printf("\t[!] don't exceed these limits without adjusting the #defines!\n");
 		printf("\t[!] no checks/asserts will be made for this! you will crash and burn!\n}\n");
+		
+		if (!comp::components_registered)
+			comp::register_components();
 		
 		is_dirty = true;
 		current_guid = 1;

@@ -18,8 +18,6 @@ namespace hs
 	public:
 		component();
 		virtual ~component();
-		
-		//uid family_id;
 	};
 
 	class entity
@@ -57,14 +55,15 @@ namespace hs
 		template <typename T>
 		T *add_component(entity *e)
 		{
+			T *comp = new T();
 			is_dirty = true;
-			
 			if (T::family_id >= cfg::entity_system.components_per_entity ||
 				T::family_id == 0)
+			{	
+				printf("family id of component out of bounds. component probably not registered!\n");
+				dump_component(e, comp);
 				abort();
-			
-			T *comp = new T();
-//			comp->family_id = T::FAMILY_ID;
+			}
 			
 			if (components[e->manager_id][T::family_id])
 				remove_component <T> (e);
@@ -80,7 +79,11 @@ namespace hs
 			
 			if (COMP_TYPE::family_id >= cfg::entity_system.components_per_entity || 
 				COMP_TYPE::family_id == 0)
+			{	
+				printf("family id of component out of bounds. component probably not registered!\n");
+				dump_component(e, c);
 				abort();
+			}
 			
 			if (components[e->manager_id][COMP_TYPE::family_id])
 				remove_component(e, components[e->manager_id][COMP_TYPE::family_id]);
@@ -141,7 +144,9 @@ namespace hs
 		uid get_next_available_manager_id(void);
 		uid get_next_available_guid(void);
 		
+		
 		uid current_guid;
+		static uid current_component_family_id;
 		
 		entity **entities;
 		component ***components;

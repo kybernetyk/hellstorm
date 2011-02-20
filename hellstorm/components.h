@@ -18,29 +18,31 @@ namespace hs
 {
 	namespace comp
 	{
-		namespace family
+		uid get_next_component_family_id(void);
+		
+		template <typename T>
+		void register_component_class(void)
 		{
-			enum id
-			{
-				mark_of_death = 1,
-				position,
-				renderable,
-				action_container
-			};
+		//	printf("init id: %i", T::family_id);
+			T::family_id = get_next_component_family_id();
+		//	printf("     --    reg id: %i\n", T::family_id);
 		}
+
+		void register_components(void);
+		extern bool components_registered;
 		
 #pragma mark -
 #pragma mark mark of death
 		struct mark_of_death : public component
 		{
-			static family::id family_id;
+			static uid family_id;
 		};
 
 #pragma mark -
 #pragma mark position
 		struct position : public component
 		{
-			static family::id family_id;
+			static uid family_id;
 			
 			vec3d origin;
 			vec2d scale;
@@ -67,7 +69,7 @@ namespace hs
 		
 		struct renderable : public component
 		{
-			static family::id family_id;
+			static uid family_id;
 			e_renderabletype ren_type;
 			
 			resource_handle res_handle;
@@ -93,8 +95,6 @@ namespace hs
 		
 		struct sprite : public renderable
 		{
-			static family::id family_id;
-
 			sprite()
 			{
 				ren_type = RENDERABLETYPE_SPRITE;
@@ -103,7 +103,6 @@ namespace hs
 		
 		struct atlas_sprite : public renderable
 		{
-			static family::id family_id;
 			rect src_rect;
 			
 			atlas_sprite()
@@ -116,7 +115,6 @@ namespace hs
 		
 		struct text_label : public renderable
 		{
-			static family::id family_id;
 			std::string text;
 			
 			text_label()
@@ -127,8 +125,6 @@ namespace hs
 
 		struct particle_emitter : public renderable
 		{
-			static family::id family_id;
-			
 			hs::particle_emitter *pe;
 			
 			particle_emitter()
@@ -150,7 +146,7 @@ namespace hs
 	
 		struct action_container : public component
 		{
-			static family::id family_id;
+			static uid family_id;
 			action *actions[NUM_OF_ACTIONS_PER_CONTAINER];
 			
 			action_container();
