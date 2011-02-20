@@ -17,6 +17,7 @@ namespace test_game
 	hs::render_system *rs;
 	hs::particle_system *ps;
 	hs::action_system *as;
+	hs::animation_system *ans;
 	
 	double d = 0.0;
 	
@@ -35,6 +36,7 @@ namespace test_game
 		rs = new hs::render_system(em);
 		ps = new hs::particle_system(em);
 		as = new hs::action_system(em);
+		ans = new hs::animation_system(em, as);
 		
 		hs::entity *back = hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		
@@ -82,6 +84,18 @@ namespace test_game
 		b = new hs::add_component_action(2.0, new hs::comp::mark_of_death);
 		a->append_action(b);
 
+		hs::comp::seq_animation *anim = em->add_component<hs::comp::seq_animation>(bubble);
+		
+		anim->frames_per_second = 1.0;
+		anim->start_frame = 0;
+		anim->end_frame = 7;
+		anim->current_frame = 0;
+		anim->loop = true;
+		anim->state = hs::comp::ANIM_STATE_PLAY;
+		anim->destroy_on_finish = false;
+		anim->frame_size = hs::size2d_make(40.0, 40.0);
+		
+		
 	}
 	
 	void menu_scene::shutdown(void)
@@ -110,7 +124,8 @@ namespace test_game
 			hs::audio_system::play_sound("click.mp3");
 		}
 
-		as->update(dt);		
+		ans->update(dt);
+		as->update(dt);
 		ps->update(dt);
 	}
 	

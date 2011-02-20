@@ -15,6 +15,7 @@
 		033B2BA9131147520062A4A3 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 033B2BA2131147520062A4A3 /* TBXML.m */; };
 		033B2BAA131147520062A4A3 /* TBXMLParticleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 033B2BA4131147520062A4A3 /* TBXMLParticleAdditions.m */; };
 		033B2BAB131147520062A4A3 /* WHATS_THIS in Resources */ = {isa = PBXBuildFile; fileRef = 033B2BA5131147520062A4A3 /* WHATS_THIS */; };
+		033B2BB51311A6290062A4A3 /* animation_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033B2BB31311A6290062A4A3 /* animation_system.cpp */; };
 		03440B6F130E76D20097D9DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B6E130E76D20097D9DA /* UIKit.framework */; };
 		03440B71130E76D20097D9DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B70130E76D20097D9DA /* Foundation.framework */; };
 		03440B73130E76D20097D9DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B72130E76D20097D9DA /* CoreGraphics.framework */; };
@@ -96,6 +97,8 @@
 		033B2BA3131147520062A4A3 /* TBXMLParticleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXMLParticleAdditions.h; sourceTree = "<group>"; };
 		033B2BA4131147520062A4A3 /* TBXMLParticleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXMLParticleAdditions.m; sourceTree = "<group>"; };
 		033B2BA5131147520062A4A3 /* WHATS_THIS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WHATS_THIS; sourceTree = "<group>"; };
+		033B2BB31311A6290062A4A3 /* animation_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_system.cpp; sourceTree = "<group>"; };
+		033B2BB41311A6290062A4A3 /* animation_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_system.h; sourceTree = "<group>"; };
 		03440B6A130E76D20097D9DA /* hellstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hellstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03440B6E130E76D20097D9DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03440B70130E76D20097D9DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -255,6 +258,15 @@
 				033B2BA2131147520062A4A3 /* TBXML.m */,
 			);
 			path = TBXML;
+			sourceTree = "<group>";
+		};
+		033B2BB21311A6180062A4A3 /* animation_system */ = {
+			isa = PBXGroup;
+			children = (
+				033B2BB31311A6290062A4A3 /* animation_system.cpp */,
+				033B2BB41311A6290062A4A3 /* animation_system.h */,
+			);
+			name = animation_system;
 			sourceTree = "<group>";
 		};
 		03440B5F130E76D20097D9DA = {
@@ -496,6 +508,7 @@
 		03460999130EDE940086DFDD /* systems */ = {
 			isa = PBXGroup;
 			children = (
+				033B2BB21311A6180062A4A3 /* animation_system */,
 				03452E8D13100E620056422D /* action_system */,
 				034609A4130FAF6D0086DFDD /* corpse_retrieval_system */,
 				034609A0130FA8FC0086DFDD /* particle_system */,
@@ -704,6 +717,7 @@
 				033B2BA8131147520062A4A3 /* NSDataAdditions.m in Sources */,
 				033B2BA9131147520062A4A3 /* TBXML.m in Sources */,
 				033B2BAA131147520062A4A3 /* TBXMLParticleAdditions.m in Sources */,
+				033B2BB51311A6290062A4A3 /* animation_system.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

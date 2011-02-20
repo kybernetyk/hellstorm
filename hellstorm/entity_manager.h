@@ -85,7 +85,7 @@ namespace hs
 			}
 			
 			if (components[e->manager_id][COMP_TYPE::family_id])
-				remove_component(e, components[e->manager_id][COMP_TYPE::family_id]);
+				remove_component(e, (COMP_TYPE *)components[e->manager_id][COMP_TYPE::family_id]);
 			
 			
 			components[e->manager_id][COMP_TYPE::family_id] = c;

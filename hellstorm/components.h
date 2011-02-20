@@ -165,5 +165,60 @@ namespace hs
 			action_container();
 			~action_container();
 		};
+
+#pragma mark -
+#pragma mark animation
+		
+		enum e_animationtype
+		{
+			SEQ_ANIMATION = 0
+		};
+		
+		enum e_animationstate
+		{
+			ANIM_STATE_PAUSE = 0,
+			ANIM_STATE_PLAY
+		};
+		
+		struct seq_animation : public component
+		{
+			static uid family_id;
+			e_animationtype animation_type;
+			
+			size2d frame_size;
+			
+			double current_frame;
+			double frames_per_second;
+			double speed_scale;
+			
+			e_animationstate state;
+			int start_frame;
+			int end_frame;
+			
+			bool loop;
+			bool destroy_on_finish;
+			
+			seq_animation *next_animation;
+			action *on_complete_action;
+			
+			int _cached_frame;
+			
+			seq_animation()
+			{
+				current_frame = 0.0;
+				speed_scale = 1.0;
+				frames_per_second = 0.0;
+				loop = false;
+				destroy_on_finish = true;
+				frame_size = size2d_make(0.0, 0.0);
+				state = ANIM_STATE_PAUSE;
+				start_frame = 0;
+				_cached_frame = -1;
+				end_frame = 0;
+				next_animation = NULL;
+				on_complete_action = NULL;
+			}
+		};
+	
 	}
 }

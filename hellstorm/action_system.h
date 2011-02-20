@@ -59,6 +59,5 @@ namespace hs
 		comp::action_container *current_container;
 		comp::position *current_position;
 		comp::renderable *current_renderable;
-		
 	};
 }
