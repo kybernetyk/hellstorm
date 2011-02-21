@@ -45,6 +45,7 @@
      */
 }
 
+
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     /*
@@ -59,6 +60,12 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     [self.viewController startAnimation];
+}
+
+//update dt to 0 after huge time changes
+- (void)applicationSignificantTimeChange:(UIApplication *)application
+{
+	hs_game_did_become_active();
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
