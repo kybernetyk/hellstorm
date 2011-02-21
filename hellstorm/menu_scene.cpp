@@ -62,8 +62,8 @@ namespace test_game
 		hs::action *b = new hs::move_by_action(10.0, hs::vec2d_make(0.0, 100.0));
 		a->append_action(new hs::move_to_action(10.0, hs::vec2d_screen_center()));
 		
-	//	as->add_action_to_entity(fire, a);
-	//	as->add_action_to_entity(fire, b);
+		as->add_action_to_entity(fire, a);
+		as->add_action_to_entity(fire, b);
 		
 		a = new hs::scale_to_action(2.0, hs::vec2d_make(0.5, 0.5));
 		a->append_action(new hs::scale_to_action(1.0, hs::vec2d_make(4.0, 4.0)));
@@ -110,7 +110,7 @@ namespace test_game
 		
 		
 		a = new hs::rotate_to_action(2.0, -90);
-		//as->add_action_to_entity(back, a);
+		as->add_action_to_entity(back, a);
 		
 		a->append_action(new hs::rotate_to_action(2.0,-90));
 		a->append_action(new hs::rotate_to_action(2.0,270.0));
