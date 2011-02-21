@@ -29,6 +29,8 @@ namespace hs
 	{
 		scale_factor = cfg::screen.scale;
 		
+		current_rendertarget = e_rendertarget_screen;
+		
 		double screen_size_x = cfg::screen.size.w;
 		double screen_size_y = cfg::screen.size.h;	//change to 280 for a 40px high empty strip [eg for an ad banner]
 		
@@ -37,13 +39,12 @@ namespace hs
 		
 		std::printf("RenderDevice init:\n{\n\tscreen_size_x: %f\n\tscreen_size_y: %f\n}\n", screen_size_x, screen_size_y);
 		
-//		current_render_target = RENDERTARGET_SCREEN;
+		current_rendertarget = e_rendertarget_screen;
 		cam_rot = 0.0;		
-//		camera = vector2D_make(viewport_size_x/2, viewport_size_y/2);
 		cam_pos = vec2d_make(screen_size_x/2.0, screen_size_y/2.0);
-		
-		//camera = vector2D_make(0, 0);
 		setup_viewport_and_projection(screen_size_x,screen_size_y,viewport_size_x,viewport_size_y);
+		
+		create_render_texture();
 	}
 	
 	void renderer::shutdown(void)
@@ -132,4 +133,109 @@ namespace hs
 		
 		glEnable( GL_TEXTURE_2D);
 	}
+	
+#pragma mark -
+#pragma mark render backing tex
+	void renderer::render_backing_texture_to_screen(void)
+	{
+		GLfloat		coordinates[] = { 0.0f,	0.0,
+			1.0,	0.0,
+			0.0f,	1.0f,
+			1.0,	1.0f };
+
+		GLfloat		vertices[] = 
+		{	
+			0,			0,			0,
+			viewport_size_pixels.w*x_conv,	0,			0,
+			0,			viewport_size_pixels.h*y_conv,	0,
+			viewport_size_pixels.w*x_conv,			viewport_size_pixels.h*y_conv,	0
+		};
+
+		float alpha = 1.0;
+		GLfloat colors[] = 
+		{
+			1.0,1.0,1.0,alpha,
+			1.0,1.0,1.0,alpha,
+			1.0,1.0,1.0,alpha,
+			1.0,1.0,1.0,alpha,
+		};
+		glColorPointer(4, GL_FLOAT, 0, colors);
+
+		if (texture2d::bound_texture != render_texture)
+		{
+			texture2d::bound_texture = render_texture;
+			glBindTexture( GL_TEXTURE_2D, render_texture );
+		}
+		
+		glVertexPointer(3, GL_FLOAT, 0, vertices);
+		glTexCoordPointer(2, GL_FLOAT, 0, coordinates);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+		
+	}
+	
+#pragma mark -
+#pragma mark render texture helpers
+	GLuint renderer::make_empty_texture(int w, int h)
+	{
+		GLuint ret;
+		
+		glGenTextures(1, &ret);
+		
+		glBindTexture(GL_TEXTURE_2D, ret);
+		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+		glBindTexture(GL_TEXTURE_2D, ret);
+		
+		texture2d::bound_texture = ret;
+		return ret;
+	}
+	
+#pragma mark -
+#pragma mark render targets
+	void renderer::create_render_texture(void)
+	{
+		render_texture = make_empty_texture(512,512);
+		
+		screen_frame_buffer = 100;
+		glGetIntegerv(GL_FRAMEBUFFER_BINDING_OES, &screen_frame_buffer);
+		
+		glGenFramebuffersOES(1, &texture_frame_buffer);
+		glBindFramebufferOES(GL_FRAMEBUFFER_OES, texture_frame_buffer);
+		glFramebufferTexture2DOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_TEXTURE_2D, render_texture, 0);
+		
+		glBindFramebufferOES(GL_FRAMEBUFFER_OES, screen_frame_buffer);
+	}
+	
+	void renderer::set_rendertarget(e_rendertarget t)
+	{
+		if (current_rendertarget == t)
+			return;
+		
+		if (t == e_rendertarget_screen)
+			set_rendertarget_screen();
+		else
+			set_rendertarget_texture();
+	}
+
+	void renderer::set_rendertarget_screen(void)
+	{
+		current_rendertarget = e_rendertarget_screen;
+		
+		glBindFramebufferOES(GL_FRAMEBUFFER_OES, screen_frame_buffer);
+		glViewport(0,0,viewport_size_pixels.w, viewport_size_pixels.h);
+
+	}
+
+	void renderer::set_rendertarget_texture(void)
+	{
+		current_rendertarget = e_rendertarget_texture;
+		
+		glViewport(0, 0, 512, 512);
+		glBindFramebufferOES(GL_FRAMEBUFFER_OES, texture_frame_buffer);
+	}
+
+	
 }

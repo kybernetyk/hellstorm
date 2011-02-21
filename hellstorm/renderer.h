@@ -8,9 +8,16 @@
 
 #pragma once
 #include "vec_2d.h"
+#include "hs_ogl.h"
 
 namespace hs 
 {
+	enum e_rendertarget
+	{
+		e_rendertarget_screen,
+		e_rendertarget_texture
+	};
+	
 	class renderer
 	{
 	public:
@@ -25,12 +32,29 @@ namespace hs
 		renderer();
 		~renderer();
 		
+		void set_rendertarget(e_rendertarget t);
+		
+		void render_backing_texture_to_screen(void);
+		
 	protected:
 		void setup_viewport_and_projection(int viewport_width_in_pixels,
 										   int viewport_height_in_pixels,
 										   double viewport_width_in_units,
 										   double viewport_height_in_units);
-		private:
+		
+		void set_rendertarget_screen(void);
+		void set_rendertarget_texture(void);
+		void create_render_texture(void);
+		
+		GLuint make_empty_texture(int w, int h);
+		
+	private:
+		e_rendertarget current_rendertarget;
+		
+		GLint screen_frame_buffer;
+		GLuint render_texture;
+		GLuint texture_frame_buffer;
+		
 		double scale_factor;
 		
 		double x_conv;

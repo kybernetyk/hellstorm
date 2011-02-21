@@ -98,9 +98,82 @@ namespace hs
 	
 	void game::render(void)
 	{
+#ifdef TEX_RENDER_TEST
+		g_renderer.set_rendertarget(e_rendertarget_texture);
 		g_renderer.begin_render();
 		current_scene->render();
 		fnt->render_content(s);
 		g_renderer.end_render();
+
+		
+		g_renderer.set_rendertarget(e_rendertarget_screen);
+		g_renderer.begin_render();
+		
+		glLoadIdentity();
+		int _x = 320;
+		int _y = 480;
+		float r = 0.0;
+		
+		float xscale = 0.5;
+		
+		glTranslatef( (0.5 * _x),  (0.5 * _y), 0);
+		glScalef(xscale, xscale, 1.0);
+		glRotatef(r, 0, 0, 1.0);
+		glTranslatef( -(0.5 * _x),  -(0.5 * _y), 0);
+
+		glPushMatrix();
+		glTranslatef(-_x, -_y, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(0, -_y, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(_x, -_y, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(-_x, 0, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(0, 0, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(_x, 0, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(-_x, _y, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(0, _y, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+		glTranslatef(_x, _y, 0);
+		g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+
+		
+		g_renderer.end_render();
+#else
+		
+		g_renderer.begin_render();
+		current_scene->render();
+		fnt->render_content(s);
+		g_renderer.end_render();
+#endif
 	}
 }
