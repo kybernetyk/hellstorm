@@ -150,6 +150,19 @@ namespace test_game
 		ans->update(dt);
 		as->update(dt);
 		ps->update(dt);
+		
+		if (hs::g_input.has_touched_down())
+			printf("has touched down!\n");
+		if (hs::g_input.has_moved())
+			printf("has moved!\n");
+		if (hs::g_input.has_touched_up())
+			printf("has touched up!\n");
+		
+		/*
+		if (hs::g_input.get_last_event() != hs::inputevent_none)
+		{
+			printf("last input event: %i\n", hs::g_input.get_last_event());
+		}*/
 	}
 	
 	void menu_scene::render()

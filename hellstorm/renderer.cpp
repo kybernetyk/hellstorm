@@ -84,7 +84,7 @@ namespace hs
 		ret.x = vec.x * x_conv + cam_pos.x - viewport_size_units.w/2.0; //+ camera offset etc
 		ret.y = vec.y * y_conv + cam_pos.y - viewport_size_units.h/2.0;
 	
-		printf("%f,%f --> %f,%f\n",vec.x, vec.y, ret.x, ret.y);
+//		printf("%f,%f --> %f,%f\n",vec.x, vec.y, ret.x, ret.y);
 		
 		return  ret;
 	}

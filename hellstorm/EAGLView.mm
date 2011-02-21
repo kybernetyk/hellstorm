@@ -164,4 +164,27 @@
 	[super touchesBegan: touches withEvent: event];
 }
 
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	UITouch *touch = [[touches allObjects] objectAtIndex: 0];
+	CGPoint loc = [touch locationInView: self];
+	loc = [self convertToGL: loc];
+
+	hs_input_touch_move(loc.x, loc.y);
+	
+	[super touchesMoved: touches withEvent: event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	UITouch *touch = [[touches allObjects] objectAtIndex: 0];
+	CGPoint loc = [touch locationInView: self];
+	loc = [self convertToGL: loc];
+
+	hs_input_touch_up(loc.x, loc.y);
+
+	[super touchesEnded: touches withEvent: event];
+}
+
+
 @end

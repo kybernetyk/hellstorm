@@ -22,6 +22,7 @@ namespace hs
 	{
 		inputevent_none,
 		inputevent_touch_down,
+		inputevent_touch_move,
 		inputevent_touch_up
 	};
 	
@@ -42,6 +43,10 @@ namespace hs
 		void input_touch_up(vec2d location);
 		
 		e_inputevent get_last_event(void);
+		
+		bool has_touched_down(void);
+		bool has_moved(void);
+		bool has_touched_up(void);
 		
 	protected:
 		e_inputstate input_state;

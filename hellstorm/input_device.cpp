@@ -51,24 +51,40 @@ namespace hs
 		return last_event;
 	}
 	
+	bool input_device::has_touched_down(void)
+	{
+		return (get_last_event() == inputevent_touch_down);
+	}
+
+	bool input_device::has_moved(void)
+	{
+		return (get_last_event() == inputevent_touch_move);		
+	}
+	
+	bool input_device::has_touched_up(void)
+	{
+		return (get_last_event() == inputevent_touch_up);
+	}
+	
 	void input_device::input_touch_down(vec2d location)
 	{
 		last_event = inputevent_touch_down;
 		input_state = inputstate_touch_down;
-		initial_touch_location = g_renderer.conv_screen_to_world(location);;
+		initial_touch_location = g_renderer.conv_screen_to_world(location);
 		current_touch_location = initial_touch_location;
 	}
 	
 	void input_device::input_touch_move(vec2d location)
 	{
-		current_touch_location = g_renderer.conv_screen_to_world(location);;
+		last_event = inputevent_touch_move;
+		current_touch_location = g_renderer.conv_screen_to_world(location);
 	}
 	
 	void input_device::input_touch_up(vec2d location)
 	{
 		last_event = inputevent_touch_up;
 		input_state = inputstate_no_input;
-		current_touch_location = g_renderer.conv_screen_to_world(location);;
+		current_touch_location = g_renderer.conv_screen_to_world(location);
 	}
 
 }

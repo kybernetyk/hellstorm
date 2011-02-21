@@ -84,10 +84,12 @@ namespace hs
 			while (t > next_game_tick) // && loops < MAX_FRAMESKIP)
 			{
 				audio_system::update(fixed_delta);
-				g_input.update();
 				current_scene->update(fixed_delta);
 				next_game_tick += skip_ticks;
 				loops++;
+				
+				g_input.update();
+
 			}
 			if (loops > 0)
 			{
@@ -97,9 +99,10 @@ namespace hs
 		else
 		{
 			next_game_tick = get_tick_count();
-			g_input.update();
 			audio_system::update(tmr.delta);
 			current_scene->update(tmr.delta);
+			
+			g_input.update();
 		}
 	
 		sprintf(s, "%.2f", tmr.fps);
