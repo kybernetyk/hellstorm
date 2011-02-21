@@ -28,18 +28,19 @@ namespace hs
 	void renderer::init(double scale)
 	{
 		scale_factor = scale;
-		double screen_size_x = cfg::screen.size.w * scale_factor;
-		double screen_size_y = cfg::screen.size.h * scale_factor;	//change to 280 for a 40px high empty strip [eg for an ad banner]
 		
-		double viewport_size_x = cfg::screen.size.w;// / pixeltometerratio;//viewport_size_x / xyratio;
-		double viewport_size_y = cfg::screen.size.h;	
+		double screen_size_x = cfg::screen.size.w;
+		double screen_size_y = cfg::screen.size.h;	//change to 280 for a 40px high empty strip [eg for an ad banner]
+		
+		double viewport_size_x = cfg::screen.size.w / scale_factor;// / pixeltometerratio;//viewport_size_x / xyratio;
+		double viewport_size_y = cfg::screen.size.h / scale_factor;	
 		
 		std::printf("RenderDevice init:\n{\n\tscreen_size_x: %f\n\tscreen_size_y: %f\n}\n", screen_size_x, screen_size_y);
 		
 //		current_render_target = RENDERTARGET_SCREEN;
 		cam_rot = 0.0;		
 //		camera = vector2D_make(viewport_size_x/2, viewport_size_y/2);
-		cam_pos = vec2d_make(viewport_size_x/2.0, viewport_size_y/2.0);
+		cam_pos = vec2d_make(screen_size_x/2.0, screen_size_y/2.0);
 		
 		//camera = vector2D_make(0, 0);
 		setup_viewport_and_projection(screen_size_x,screen_size_y,viewport_size_x,viewport_size_y);
@@ -81,6 +82,8 @@ namespace hs
 		vec2d ret;
 		ret.x = vec.x * x_conv + cam_pos.x - viewport_size_units.w/2.0; //+ camera offset etc
 		ret.y = vec.y * y_conv + cam_pos.y - viewport_size_units.h/2.0;
+	
+		printf("%f,%f --> %f,%f\n",vec.x, vec.y, ret.x, ret.y);
 		
 		return  ret;
 	}
@@ -92,6 +95,9 @@ namespace hs
 	{
 		viewport_size_pixels = size2d_make(viewport_width_in_pixels, viewport_height_in_pixels);
 		viewport_size_units = size2d_make(viewport_width_in_units, viewport_height_in_units);
+		
+		x_conv = (double)viewport_width_in_units / (double)viewport_width_in_pixels;
+		y_conv = (double)viewport_height_in_units / (double)viewport_height_in_pixels;
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

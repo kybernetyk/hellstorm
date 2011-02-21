@@ -23,7 +23,7 @@
 #include "atlas_quad.h"
 #include "bitmap_font.h"
 #include "particle_emitter.h"
-
+#include "input_device.h"
 #include "audio_system.h"
 
 #include "entity_manager.h"

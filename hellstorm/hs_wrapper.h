@@ -12,3 +12,7 @@ extern void hs_game_shutdown(void);
 
 extern void hs_game_tick(void);
 extern void hs_game_render(void);
+
+extern void hs_input_touch_down(double x, double y);
+extern void hs_input_touch_move(double x, double y);
+extern void hs_input_touch_up(double x, double y);

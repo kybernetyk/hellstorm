@@ -28,7 +28,7 @@
 		03440B86130E76D20097D9DA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03440B84130E76D20097D9DA /* MainWindow.xib */; };
 		03440B88130E76D20097D9DA /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03440B87130E76D20097D9DA /* Shader.fsh */; };
 		03440B8A130E76D20097D9DA /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03440B89130E76D20097D9DA /* Shader.vsh */; };
-		03440B8D130E76D20097D9DA /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440B8C130E76D20097D9DA /* EAGLView.m */; };
+		03440B8D130E76D20097D9DA /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440B8C130E76D20097D9DA /* EAGLView.mm */; };
 		03440B90130E76D20097D9DA /* hellstormViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440B8F130E76D20097D9DA /* hellstormViewController.mm */; };
 		03440B93130E76D20097D9DA /* hellstormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03440B91130E76D20097D9DA /* hellstormViewController.xib */; };
 		03440B9C130E77030097D9DA /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03440B9A130E77030097D9DA /* game.cpp */; };
@@ -79,6 +79,7 @@
 		034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609CB130FECAA0086DFDD /* AudioToolbox.framework */; };
 		034609CE130FF04C0086DFDD /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 034609CD130FF04C0086DFDD /* music.mp3 */; };
 		034609D0130FF0D10086DFDD /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 034609CF130FF0D10086DFDD /* click.mp3 */; };
+		0373707A1312C20A008B905E /* input_device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037370781312C20A008B905E /* input_device.cpp */; };
 		03CD6A91130FF8310049531F /* sprite_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03CD6A8F130FF8310049531F /* sprite_factory.cpp */; };
 /* End PBXBuildFile section */
 
@@ -117,7 +118,7 @@
 		03440B87130E76D20097D9DA /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		03440B89130E76D20097D9DA /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		03440B8B130E76D20097D9DA /* EAGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
-		03440B8C130E76D20097D9DA /* EAGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		03440B8C130E76D20097D9DA /* EAGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
 		03440B8E130E76D20097D9DA /* hellstormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hellstormViewController.h; sourceTree = "<group>"; };
 		03440B8F130E76D20097D9DA /* hellstormViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = hellstormViewController.mm; sourceTree = "<group>"; };
 		03440B92130E76D20097D9DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hellstormViewController.xib; sourceTree = "<group>"; };
@@ -210,6 +211,8 @@
 		034609CB130FECAA0086DFDD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		034609CD130FF04C0086DFDD /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		034609CF130FF0D10086DFDD /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		037370781312C20A008B905E /* input_device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_device.cpp; sourceTree = "<group>"; };
+		037370791312C20A008B905E /* input_device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_device.h; sourceTree = "<group>"; };
 		03CD6A8F130FF8310049531F /* sprite_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sprite_factory.cpp; sourceTree = "<group>"; };
 		03CD6A90130FF8310049531F /* sprite_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite_factory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,7 +318,7 @@
 				03440B87130E76D20097D9DA /* Shader.fsh */,
 				03440B89130E76D20097D9DA /* Shader.vsh */,
 				03440B8B130E76D20097D9DA /* EAGLView.h */,
-				03440B8C130E76D20097D9DA /* EAGLView.m */,
+				03440B8C130E76D20097D9DA /* EAGLView.mm */,
 				03440B8E130E76D20097D9DA /* hellstormViewController.h */,
 				03440B8F130E76D20097D9DA /* hellstormViewController.mm */,
 				03440B91130E76D20097D9DA /* hellstormViewController.xib */,
@@ -340,6 +343,7 @@
 		03440B99130E76E80097D9DA /* hellstorm */ = {
 			isa = PBXGroup;
 			children = (
+				037370761312C166008B905E /* input */,
 				034609B4130FEB490086DFDD /* audio */,
 				034609A8130FBA0B0086DFDD /* config */,
 				03460988130EC8790086DFDD /* entity system */,
@@ -592,6 +596,15 @@
 			path = CocosDenshion;
 			sourceTree = "<group>";
 		};
+		037370761312C166008B905E /* input */ = {
+			isa = PBXGroup;
+			children = (
+				037370781312C20A008B905E /* input_device.cpp */,
+				037370791312C20A008B905E /* input_device.h */,
+			);
+			name = input;
+			sourceTree = "<group>";
+		};
 		03CD6A8D130FF8240049531F /* factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,7 +690,7 @@
 			files = (
 				03440B80130E76D20097D9DA /* main.m in Sources */,
 				03440B83130E76D20097D9DA /* hellstormAppDelegate.m in Sources */,
-				03440B8D130E76D20097D9DA /* EAGLView.m in Sources */,
+				03440B8D130E76D20097D9DA /* EAGLView.mm in Sources */,
 				03440B90130E76D20097D9DA /* hellstormViewController.mm in Sources */,
 				03440B9C130E77030097D9DA /* game.cpp in Sources */,
 				03440B9F130E778B0097D9DA /* scene.cpp in Sources */,
@@ -722,6 +735,7 @@
 				033B2BA9131147520062A4A3 /* TBXML.m in Sources */,
 				033B2BAA131147520062A4A3 /* TBXMLParticleAdditions.m in Sources */,
 				033B2BB51311A6290062A4A3 /* animation_system.cpp in Sources */,
+				0373707A1312C20A008B905E /* input_device.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

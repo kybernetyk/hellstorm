@@ -32,3 +32,19 @@ void hs_game_render(void)
 {
     the_game->render();
 }
+
+
+void hs_input_touch_down(double x, double y)
+{
+	hs::g_input.input_touch_down(hs::vec2d_make(x, y));
+}
+
+void hs_input_touch_move(double x, double y)
+{
+	hs::g_input.input_touch_move(hs::vec2d_make(x, y));	
+}
+
+void hs_input_touch_up(double x, double y)
+{
+	hs::g_input.input_touch_up(hs::vec2d_make(x, y));
+}
