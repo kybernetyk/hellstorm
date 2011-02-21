@@ -43,7 +43,7 @@ namespace hs
 		fixed_delta = (1.0/ticks_per_second);
 		max_timer_delta = fixed_delta*2.0;
 				
-		g_renderer.init(cfg::screen.scale);
+		g_renderer.init();
 
 		fnt = new bitmap_font("impact20.fnt");
 		

@@ -25,9 +25,9 @@ namespace hs
 		
 	}
 	
-	void renderer::init(double scale)
+	void renderer::init(void)
 	{
-		scale_factor = scale;
+		scale_factor = cfg::screen.scale;
 		
 		double screen_size_x = cfg::screen.size.w;
 		double screen_size_y = cfg::screen.size.h;	//change to 280 for a 40px high empty strip [eg for an ad banner]

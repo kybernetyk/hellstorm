@@ -14,7 +14,7 @@ namespace hs
 	class renderer
 	{
 	public:
-		void init(double scale = 1.0);
+		void init(void);
 		void shutdown(void);
 		
 		void begin_render(void);
