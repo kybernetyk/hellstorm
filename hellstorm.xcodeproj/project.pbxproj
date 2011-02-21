@@ -24,7 +24,7 @@
 		03440B77130E76D20097D9DA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B76130E76D20097D9DA /* OpenGLES.framework */; };
 		03440B7D130E76D20097D9DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03440B7B130E76D20097D9DA /* InfoPlist.strings */; };
 		03440B80130E76D20097D9DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440B7F130E76D20097D9DA /* main.m */; };
-		03440B83130E76D20097D9DA /* hellstormAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03440B82130E76D20097D9DA /* hellstormAppDelegate.m */; };
+		03440B83130E76D20097D9DA /* hellstormAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03440B82130E76D20097D9DA /* hellstormAppDelegate.mm */; };
 		03440B86130E76D20097D9DA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03440B84130E76D20097D9DA /* MainWindow.xib */; };
 		03440B88130E76D20097D9DA /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03440B87130E76D20097D9DA /* Shader.fsh */; };
 		03440B8A130E76D20097D9DA /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03440B89130E76D20097D9DA /* Shader.vsh */; };
@@ -113,7 +113,7 @@
 		03440B7E130E76D20097D9DA /* hellstorm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hellstorm-Prefix.pch"; sourceTree = "<group>"; };
 		03440B7F130E76D20097D9DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03440B81130E76D20097D9DA /* hellstormAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hellstormAppDelegate.h; sourceTree = "<group>"; };
-		03440B82130E76D20097D9DA /* hellstormAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hellstormAppDelegate.m; sourceTree = "<group>"; };
+		03440B82130E76D20097D9DA /* hellstormAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = hellstormAppDelegate.mm; sourceTree = "<group>"; };
 		03440B85130E76D20097D9DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		03440B87130E76D20097D9DA /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		03440B89130E76D20097D9DA /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 				03440BB5130E7E600097D9DA /* testgame */,
 				03440B99130E76E80097D9DA /* hellstorm */,
 				03440B81130E76D20097D9DA /* hellstormAppDelegate.h */,
-				03440B82130E76D20097D9DA /* hellstormAppDelegate.m */,
+				03440B82130E76D20097D9DA /* hellstormAppDelegate.mm */,
 				03440B84130E76D20097D9DA /* MainWindow.xib */,
 				03440B87130E76D20097D9DA /* Shader.fsh */,
 				03440B89130E76D20097D9DA /* Shader.vsh */,
@@ -689,7 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03440B80130E76D20097D9DA /* main.m in Sources */,
-				03440B83130E76D20097D9DA /* hellstormAppDelegate.m in Sources */,
+				03440B83130E76D20097D9DA /* hellstormAppDelegate.mm in Sources */,
 				03440B8D130E76D20097D9DA /* EAGLView.mm in Sources */,
 				03440B90130E76D20097D9DA /* hellstormViewController.mm in Sources */,
 				03440B9C130E77030097D9DA /* game.cpp in Sources */,

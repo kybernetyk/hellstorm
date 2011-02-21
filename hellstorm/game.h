@@ -21,7 +21,9 @@ namespace hs
         
             void tick(void);
 			void render(void);
-               
+		
+			void long_delta_occured(void);
+		
 			game();
 			~game();
         protected:

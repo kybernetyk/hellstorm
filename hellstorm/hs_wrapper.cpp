@@ -33,6 +33,17 @@ void hs_game_render(void)
     the_game->render();
 }
 
+void hs_game_did_become_active(void)
+{
+	the_game->long_delta_occured();
+}
+
+void hs_game_did_enter_background(void)
+{
+	
+}
+
+
 
 void hs_input_touch_down(double x, double y)
 {
