@@ -50,7 +50,7 @@
 	[super dealloc];
 }
 
-#ifdef LE_TARGET_IPHONE
+#ifdef HS_TARGET_IPHONE
 - (id)initWithImage:(UIImage*)aImage filter:(GLenum)aFilter {
     
     self = [super init];

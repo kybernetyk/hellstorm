@@ -75,7 +75,7 @@ typedef enum {
 
 // Designated initializer that takes a UIImage and a filter (used for the MIN and MAG settings
 // of the texture) and creates an OpenGL texture.
-#ifdef LE_TARGET_IPHONE
+#ifdef HS_TARGET_IPHONE
 - (id) initWithImage:(UIImage*)aImage filter:(GLenum)aFilter;
 #else
 - (id) initWithImage:(NSImage*)aImage filter:(GLenum)aFilter;
