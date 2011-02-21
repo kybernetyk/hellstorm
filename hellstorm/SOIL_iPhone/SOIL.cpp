@@ -31,8 +31,7 @@
 //#import <UIKit/UIKit.h>
 //#endif
 
-#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED >= 30000
-
+#ifdef HS_TARGET_IPHONE
 #include <CoreFoundation/CFBase.h>
 #include <CoreFoundation/CFData.h>
 #include <CoreFoundation/CFError.h>

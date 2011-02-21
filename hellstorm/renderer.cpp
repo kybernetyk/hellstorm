@@ -74,7 +74,7 @@ namespace hs
 	
 	vec2d renderer::conv_screen_to_world(vec2d vec)
 	{
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 30000
+#ifdef HS_TARGET_IPHONE
 #else
 		vec.y = SCREEN_H*scale_factor - (float)vec.y;
 #endif

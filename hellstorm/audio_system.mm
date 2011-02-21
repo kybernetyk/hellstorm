@@ -9,7 +9,7 @@
 #include "audio_system.h"
 #include "hellstorm.h"
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 30000
+#ifdef HS_TARGET_IPHONE
 #import <AVFoundation/AVFoundation.h>
 #endif
 #import <AudioToolbox/AudioToolbox.h>
