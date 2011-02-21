@@ -15,6 +15,15 @@ namespace hs
 	{
 		em = manager;
 		as = asystem;
+		
+		ent_cache = new entity*[cfg::entity_system.entity_pool_size];
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+		cache_size = 0;
+	}
+	
+	animation_system::~animation_system()
+	{
+		delete [] ent_cache;	
 	}
 	
 	void animation_system::setup_next_animation_or_stop(entity *e, comp::seq_animation *current_animation)
@@ -37,19 +46,34 @@ namespace hs
 	
 	void animation_system::update(double dt)
 	{
-		entities.clear();
-		em->get_entities_possesing_components(entities, comp::seq_animation::family_id, comp::atlas_sprite::family_id, ARGLIST_END);
+//		entities.clear();
+//		em->get_entities_possesing_components(entities, comp::seq_animation::family_id, comp::atlas_sprite::family_id, ARGLIST_END);
+
+		uid qry[] =
+		{
+			comp::seq_animation::family_id, 
+			comp::atlas_sprite::family_id
+		};
+		
+//		cache_size = em->get_entities_posessing_components(qry, ent_cache, cfg::entity_system.entity_pool_size);
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+		cache_size = em->get_entities_possesing_components(qry, 2, ent_cache, cfg::entity_system.entity_pool_size);
+
 		
 		entity *current_entity;
 		comp::seq_animation *current_animation;
 		comp::atlas_sprite *current_sprite;
 		atlas_quad *aq;
 		
-		std::vector<entity *>::const_iterator it = entities.begin();
-		while (it != entities.end()) 
+//		std::vector<entity *>::const_iterator it = entities.begin();
+//		while (it != entities.end()) 
+//		{
+//			current_entity = *it;
+//			++it;
+//			
+		for (uid i = 0; i < cache_size; i++)
 		{
-			current_entity = *it;
-			++it;
+			current_entity = ent_cache[i];
 			
 			current_animation = em->get_component<comp::seq_animation>(current_entity);
 			current_sprite = em->get_component<comp::atlas_sprite>(current_entity);

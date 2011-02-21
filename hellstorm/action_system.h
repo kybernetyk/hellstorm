@@ -22,6 +22,7 @@ namespace hs
 	{
 	public:
 		action_system(entity_manager *manager);
+		~action_system();
 		void update(double dt);
 		
 		void add_action_to_entity(entity *e, action *a);
@@ -53,7 +54,10 @@ namespace hs
 		
 	private:
 		entity_manager *em;
-		std::vector<entity *> entities;
+
+		entity **ent_cache;
+		size_t cache_size;
+
 		double current_dt;
 		double tmp_dt;
 		

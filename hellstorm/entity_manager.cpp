@@ -153,70 +153,118 @@ namespace hs
 #pragma mark -
 #pragma mark query
 	
-#define NUM_FAMILY_IDS 32
-	void entity_manager::get_entities_possesing_components(std::vector<entity*> &result, ...)
+	size_t entity_manager::get_entities_posessing_component(uid fam_id, entity **outarr, size_t outarr_size)
 	{
-		va_list listPointer;
-		va_start( listPointer, result );
+		size_t out_counter = 0;
 		
-		uid family_ids[NUM_FAMILY_IDS+1];
-		uid arg;
-		int count = 0;
-		while (1)
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 		{
-			arg = va_arg( listPointer, int );
-			if (arg == ARGLIST_END || count >= NUM_FAMILY_IDS)
+			if (components[i][fam_id])
+				outarr[out_counter++] = entities[i];
+			
+			if (out_counter >= outarr_size)
 				break;
-			family_ids[count] = arg;
-			++count;
 		}
-		va_end(listPointer);
 		
-		entity *current_entity = NULL;
-		bool is_entity_valid = true;
-		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
-		{
-			current_entity = entities[i];
-			is_entity_valid = true;
-			
-			if (current_entity)
-			{
-				for (int j = 0; j < count; j++)
-				{
-					if (!components[current_entity->manager_id][family_ids[j]])
-					{
-						is_entity_valid = false;
-						break;
-					}
-				}
-				
-				if (is_entity_valid)
-				{
-					result.push_back (current_entity);
-				}
-			}
-		}
-	}
-	
-	void entity_manager::get_entities_posessing_component(std::vector<entity*> &result, uid family_id)
-	{
-		entity *current_entity = NULL;
-		bool is_entity_valid = true;
-		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
-		{
-			current_entity = entities[i];
-			is_entity_valid = true;
-			
-			if (current_entity)
-			{
-				if (components[current_entity->manager_id][family_id])
-				{
-					result.push_back (current_entity);
-				}
-			}
-		}
+		return out_counter;
+
 	}
 
+	size_t entity_manager::get_entities_possesing_components(uid query[], size_t query_size, entity **outarr, size_t outarr_size)
+	{
+		size_t out_counter = 0;
+		
+		bool add_ent = true;	
+		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
+		{
+			add_ent = true;
+			for (int qi = 0; qi < query_size; qi++)
+			{
+				if (!components[i][query[qi]])
+				{	
+					add_ent = false;
+					break;
+				}
+			}
+			
+			if (add_ent)
+			{	
+				outarr[out_counter++] = entities[i];
+				if (out_counter >= outarr_size)
+					break;
+			}
+		}
+		
+		return out_counter;
+	}
+
+	
+	
+//	
+//#define NUM_FAMILY_IDS 32
+//	void entity_manager::get_entities_possesing_components(std::vector<entity*> &result, ...)
+//	{
+//		va_list listPointer;
+//		va_start( listPointer, result );
+//		
+//		uid family_ids[NUM_FAMILY_IDS+1];
+//		uid arg;
+//		int count = 0;
+//		while (1)
+//		{
+//			arg = va_arg( listPointer, int );
+//			if (arg == ARGLIST_END || count >= NUM_FAMILY_IDS)
+//				break;
+//			family_ids[count] = arg;
+//			++count;
+//		}
+//		va_end(listPointer);
+//		
+//		entity *current_entity = NULL;
+//		bool is_entity_valid = true;
+//		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
+//		{
+//			current_entity = entities[i];
+//			is_entity_valid = true;
+//			
+//			if (current_entity)
+//			{
+//				for (int j = 0; j < count; j++)
+//				{
+//					if (!components[current_entity->manager_id][family_ids[j]])
+//					{
+//						is_entity_valid = false;
+//						break;
+//					}
+//				}
+//				
+//				if (is_entity_valid)
+//				{
+//					result.push_back (current_entity);
+//				}
+//			}
+//		}
+//	}
+//	
+//	void entity_manager::get_entities_posessing_component(std::vector<entity*> &result, uid family_id)
+//	{
+//		entity *current_entity = NULL;
+//		bool is_entity_valid = true;
+//		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
+//		{
+//			current_entity = entities[i];
+//			is_entity_valid = true;
+//			
+//			if (current_entity)
+//			{
+//				if (components[current_entity->manager_id][family_id])
+//				{
+//					result.push_back (current_entity);
+//				}
+//			}
+//		}
+//	}
+//
 #pragma mark -
 #pragma mark dump
 	void entity_manager::dump_entity_count(void)

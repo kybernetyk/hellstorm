@@ -49,9 +49,13 @@ namespace hs
 		
 		entity *get_entity(uid entity_manager_id);
 		
-		void get_entities_posessing_component(std::vector<entity*> &result, uid family_id);
-		void get_entities_possesing_components(std::vector<entity*> &result, ...);
+//		void get_entities_posessing_component(std::vector<entity*> &result, uid family_id);
+//		void get_entities_possesing_components(std::vector<entity*> &result, ...);
 
+		size_t get_entities_posessing_component(uid fam_id, entity **outarr, size_t outarr_size);
+		size_t get_entities_possesing_components(uid query[], size_t query_size, entity **outarr, size_t outarr_size);
+
+		
 		template <typename T>
 		T *add_component(entity *e)
 		{

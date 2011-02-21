@@ -32,6 +32,15 @@ namespace hs
 		action::as = this;
 		em = manager;
 		current_dt = 0.0;
+		
+		ent_cache = new entity*[cfg::entity_system.entity_pool_size];
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+		cache_size = 0;
+	}
+	
+	action_system::~action_system()
+	{
+		delete [] ent_cache;
 	}
 	
 	void action_system::add_action_to_entity(entity *e, action *a)
@@ -234,15 +243,21 @@ namespace hs
 	void action_system::update(double dt)
 	{
 		tmp_dt = dt;
+
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+		cache_size = em->get_entities_posessing_component(comp::action_container::family_id, ent_cache, cfg::entity_system.entity_pool_size);
 		
-		entities.clear();
-		em->get_entities_posessing_component(entities, comp::action_container::family_id);
-		
-		std::vector<entity *>::const_iterator it = entities.begin();
-		while (it != entities.end())
-		{
-			current_entity = *it;
-			++it;
+//		entities.clear();
+//		em->get_entities_posessing_component(entities, comp::action_container::family_id);
+//		
+//		std::vector<entity *>::const_iterator it = entities.begin();
+//		while (it != entities.end())
+//		{
+//			current_entity = *it;
+//			++it;
+		for (uid i = 0; i < cache_size; i++)
+		{	
+			current_entity = ent_cache[i];
 			
 			current_container = em->get_component<comp::action_container>(current_entity);
 			current_position = em->get_component<comp::position>(current_entity);

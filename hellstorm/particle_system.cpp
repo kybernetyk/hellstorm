@@ -15,23 +15,46 @@ namespace hs
 	{
 		em = manager;
 		skiptimer = 0;
+		
+		ent_cache = new entity*[cfg::entity_system.entity_pool_size];
+		cache_size = 0;
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+
+	}
+
+	particle_system::~particle_system()
+	{
+		delete [] ent_cache;
 	}
 	
 	void particle_system::update(double dt)
 	{
-		std::vector<entity *> entities;
-		em->get_entities_possesing_components(entities, comp::particle_emitter::family_id, comp::position::family_id, ARGLIST_END);
-		
-		std::vector<entity *>::const_iterator it = entities.begin();
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+		uid qry[] = 
+		{
+			comp::particle_emitter::family_id,
+			comp::position::family_id
+		};
+		cache_size = em->get_entities_possesing_components(qry, 2, ent_cache, cfg::entity_system.entity_pool_size);
+//		std::vector<entity *> entities;
+//		em->get_entities_possesing_components(entities, comp::particle_emitter::family_id, comp::position::family_id, ARGLIST_END);
+//		
+//		std::vector<entity *>::const_iterator it = entities.begin();
+
+
 		
 		entity *current_entity = NULL;
 		comp::particle_emitter *current_pe = NULL;
 		comp::position *current_pos = NULL;
 		
-		while (it != entities.end())
+//		while (it != entities.end())
+//		{
+//			current_entity = *it;
+//			++it;
+			
+		for (uid i = 0; i < cache_size; i++)
 		{
-			current_entity = *it;
-			++it;
+			current_entity = ent_cache[i];
 			
 			current_pe = em->get_component<comp::particle_emitter>(current_entity);
 			if (current_pe)

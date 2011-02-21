@@ -20,6 +20,7 @@ namespace hs
 	{
 	public:
 		particle_system(entity_manager *manager);
+		~particle_system();
 		
 		void update(double dt);
 		
@@ -27,5 +28,8 @@ namespace hs
 	protected:
 		entity_manager *em;
 		int skiptimer;
+		
+		entity **ent_cache;
+		size_t cache_size;
 	};
 }

@@ -11,6 +11,7 @@
 
 namespace hs 
 {
+	//for std::sort
 	bool comp_ents(entity *e1, entity *e2)
 	{
 		comp::position *pos1 = entity::ent_mgr->get_component<comp::position>(e1);
@@ -22,19 +23,70 @@ namespace hs
 		return (pos1->origin.z < pos2->origin.z);
 	}
 	
+	//for qsort
+	static int z_comp(const void *ep1, const void *ep2)
+	{
+		entity *e1 = *(entity**)ep1;
+		entity *e2 = *(entity**)ep2;
+		
+		comp::position *p1 = entity::ent_mgr->get_component<comp::position>(e1);
+		comp::position *p2 = entity::ent_mgr->get_component<comp::position>(e2);
+		
+		if (p1->origin.z < p2->origin.z)
+			return -1;
+		if (p1->origin.z > p2->origin.z)
+			return 1;
+		
+		if (e1->guid < e2->guid)
+			return -1;
+		if (e1->guid > e2->guid)
+			return 1;
+		
+		return 0;
+	}
+
+	
 	render_system::render_system(entity_manager *manager)
 	{
 		em = manager;
+
+		ent_cache = new entity*[cfg::entity_system.entity_pool_size];
+		memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+		cache_size = 0;
+
+	}
+
+	render_system::~render_system()
+	{
+		delete [] ent_cache;
+		ent_cache = 0;
 	}
 	
 	void render_system::render(void)
 	{
 		if (em->is_dirty)
 		{
-			gl_data.clear();
-			ent_cache.clear();
-			em->get_entities_possesing_components(ent_cache, comp::position::family_id, comp::renderable::family_id, ARGLIST_END);
-			std::sort(ent_cache.begin(), ent_cache.end(), comp_ents);
+			uid qry[] =
+			{
+				comp::position::family_id,
+				comp::renderable::family_id
+			};
+			memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
+			cache_size = em->get_entities_possesing_components(qry, 2, ent_cache, cfg::entity_system.entity_pool_size);
+
+			for (int i = 0; i < cache_size; i++)
+				printf("%p = z: %f\n", 
+					   ent_cache[i], 
+					   ent_cache[i]->get<comp::position>()->origin.z);
+
+			printf("\n\n");
+			
+			qsort(ent_cache, cache_size, sizeof(entity *),z_comp);
+			
+			for (int i = 0; i < cache_size; i++)
+				printf("%p = z: %f\n", 
+					   ent_cache[i], 
+					   ent_cache[i]->get<comp::position>()->origin.z);
 		}
 		
 		entity *current_entity = NULL;
@@ -47,11 +99,15 @@ namespace hs
 		bitmap_font *bf = NULL;
 		particle_emitter *pe = NULL;
 		
-		std::vector<entity*>::const_iterator it = ent_cache.begin();
-		while (it != ent_cache.end())
+//		std::vector<entity*>::const_iterator it = ent_cache.begin();
+//		while (it != ent_cache.end())
+//		{
+//			current_entity = *it;
+
+		for (uid i = 0; i < cache_size; i++)
 		{
-			current_entity = *it;
-			
+			current_entity = ent_cache[i];
+
 			pos = em->get_component<comp::position>(current_entity);
 			ren = em->get_component<comp::renderable>(current_entity);
 		
@@ -112,7 +168,7 @@ namespace hs
 					abort();
 					break;
 			}
-			++it;
+//			++it;
 		}
 
 	}

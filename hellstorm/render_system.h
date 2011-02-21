@@ -19,12 +19,14 @@ namespace hs
 	{
 	public:
 		render_system(entity_manager *manager);
+		~render_system();
 		void render(void);
 		
 	protected:
 		entity_manager *em;
-		std::vector<renderable*> gl_data;
-		std::vector<entity*> ent_cache;
+
+		entity **ent_cache;
+		size_t cache_size;
 	};
 	
 }

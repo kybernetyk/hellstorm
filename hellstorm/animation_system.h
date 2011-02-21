@@ -20,6 +20,7 @@ namespace hs
 	{
 	public:
 		animation_system(entity_manager *manager, action_system *asystem);
+		~animation_system();
 		void update(double dt);
 
 	protected:
@@ -28,6 +29,8 @@ namespace hs
 	private:
 		entity_manager *em;
 		action_system *as;
-		std::vector<entity *> entities;
+
+		entity **ent_cache;
+		size_t cache_size;
 	};
 }
