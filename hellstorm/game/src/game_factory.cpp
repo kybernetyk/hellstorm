@@ -25,26 +25,26 @@ namespace game
 			sunb->get<hs::comp::renderable>()->alpha = 0.1;
 			sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(13.0, -42.0);
 
-			//		sunb = hs::factory::create_sprite(em, 
-			//										  "sunburst_2.png", 
-			//										  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.6), 
-			//										  hs::anchor_center);
-			//		
-			//		sunb->add<comp_psycho_marker>()->type = e_psycho_type_sunburst;
-			//		sunb->get<comp_psycho_marker>()->rot_speed = -40.0;
-			//		sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(23.0, 12.0);
-			//		sunb->get<hs::comp::renderable>()->alpha = 0.1;
-			//
-			//		sunb = hs::factory::create_sprite(em, 
-			//										  "sunburst_2.png", 
-			//										  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.55), 
-			//										  hs::anchor_center);
-			//		
-			//		sunb->add<comp_psycho_marker>()->type = e_psycho_type_sunburst;
-			//		sunb->get<comp_psycho_marker>()->rot_speed = 50.0;
-			//		sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(-43.0, -12.0);
-			//		sunb->get<hs::comp::renderable>()->alpha = 0.1;
-
+//			sunb = hs::factory::create_sprite(em, 
+//											  "sunburst_1.png", 
+//											  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.6), 
+//											  hs::anchor_center);
+//			
+//			sunb->add<comp_psycho_marker>()->type = e_psycho_type_sunburst;
+//			sunb->get<comp_psycho_marker>()->rot_speed = -40.0;
+//			sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(23.0, 12.0);
+//			sunb->get<hs::comp::renderable>()->alpha = 0.1;
+//
+//			sunb = hs::factory::create_sprite(em, 
+//											  "sunburst_1.png", 
+//											  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.55), 
+//											  hs::anchor_center);
+//			
+//			sunb->add<comp_psycho_marker>()->type = e_psycho_type_sunburst;
+//			sunb->get<comp_psycho_marker>()->rot_speed = 50.0;
+//			sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(-43.0, -12.0);
+//			sunb->get<hs::comp::renderable>()->alpha = 0.1;
+//
 		
 		}
 		

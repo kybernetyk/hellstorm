@@ -38,7 +38,10 @@ namespace game
 		
 		hs::factory::create_sprite(em, "background_noraster.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
-		factory::create_borders_and_raster(em);
+//		factory::create_borders_and_raster(em);
+		
+		hs::factory::create_text_label(em, "impact20.fnt", "Tap Screen To Play!", hs::vec3d_screen_center(0.0));
+		
 
 	}
 	
