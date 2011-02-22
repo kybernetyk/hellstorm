@@ -10,7 +10,7 @@
 
 #include "hellstorm.h"
 
-namespace test_game 
+namespace game 
 {
 	hs::uid comp_psycho_marker::family_id = 0;
 	

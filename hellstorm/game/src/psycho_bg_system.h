@@ -10,7 +10,7 @@
 
 #include "hellstorm.h"
 
-namespace test_game
+namespace game
 {
 	enum e_psycho_type
 	{

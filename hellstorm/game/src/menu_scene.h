@@ -8,7 +8,7 @@
 #pragma once
 #include "hellstorm.h"
 
-namespace test_game
+namespace game
 {
 	class menu_scene : public hs::scene
 	{
