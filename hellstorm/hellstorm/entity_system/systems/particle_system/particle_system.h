@@ -7,7 +7,6 @@
 //
 #pragma once
 
-#include <vector>
 #include "vec_2d.h"
 #include "components.h"
 namespace hs

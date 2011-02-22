@@ -28,6 +28,11 @@ namespace hs
 		return ent_mgr->get_component(this, family_id);
 	}
 	
+	component *entity::add_component(component *comp, uid family_id)
+	{
+		return ent_mgr->add_component(this, comp, family_id);
+	}
+	
 #pragma mark -
 #pragma mark entity manager
 	entity_manager::entity_manager()

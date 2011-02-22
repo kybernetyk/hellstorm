@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 #pragma once
-#include <vector>
+#include <stddef.h>
 
 namespace hs
 {
@@ -26,6 +26,5 @@ namespace hs
 		
 		entity **ent_cache;
 		size_t cache_size;
-
 	};
 }

@@ -29,11 +29,21 @@ namespace hs
 			return (Type*)get_by_id(Type::family_id);
 		}
 		
-		component *get_by_id (uid family_id);
-				
+		template <typename Type>
+		Type *add()
+		{
+			Type *c = new Type();
+			return (Type*)add_component(c, Type::family_id);
+		}
+		
 		entity_manager *ent_mgr;
 		uid guid;
 		uid manager_id;
+
+	protected:
+		component *get_by_id(uid family_id);
+		component *add_component(component *comp, uid family_id);
+				
 	};
 	
 	class entity_manager
@@ -96,6 +106,9 @@ namespace hs
 			return c;
 		}
 
+		//fucking hack with explicit family_id because component baseclass doesn't have a static family_id
+		//and if it had it would be shared (and the same) for every component subclass
+		//you should almost never have to use this method!
 		template <typename COMP_TYPE>
 		COMP_TYPE *add_component(entity *e, COMP_TYPE *c, uid fam_id)
 		{

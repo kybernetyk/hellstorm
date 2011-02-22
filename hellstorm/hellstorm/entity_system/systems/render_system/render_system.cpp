@@ -74,19 +74,19 @@ namespace hs
 			memset(ent_cache, 0x00, sizeof(entity *)*cfg::entity_system.entity_pool_size);
 			cache_size = em->get_entities_possesing_components(qry, 2, ent_cache, cfg::entity_system.entity_pool_size);
 
-			for (int i = 0; i < cache_size; i++)
-				printf("%p = z: %f\n", 
-					   ent_cache[i], 
-					   ent_cache[i]->get<comp::position>()->origin.z);
-
-			printf("\n\n");
-			
+//			for (int i = 0; i < cache_size; i++)
+//				printf("%p = z: %f\n", 
+//					   ent_cache[i], 
+//					   ent_cache[i]->get<comp::position>()->origin.z);
+//
+//			printf("\n\n");
+//			
 			qsort(ent_cache, cache_size, sizeof(entity *),z_comp);
 			
-			for (int i = 0; i < cache_size; i++)
-				printf("%p = z: %f\n", 
-					   ent_cache[i], 
-					   ent_cache[i]->get<comp::position>()->origin.z);
+//			for (int i = 0; i < cache_size; i++)
+//				printf("%p = z: %f\n", 
+//					   ent_cache[i], 
+//					   ent_cache[i]->get<comp::position>()->origin.z);
 		}
 		
 		entity *current_entity = NULL;

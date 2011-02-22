@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0331C08B1313F0A7006937CA /* psycho_bg_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0331C0891313F0A7006937CA /* psycho_bg_system.cpp */; };
 		03440B6F130E76D20097D9DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B6E130E76D20097D9DA /* UIKit.framework */; };
 		03440B71130E76D20097D9DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B70130E76D20097D9DA /* Foundation.framework */; };
 		03440B73130E76D20097D9DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B72130E76D20097D9DA /* CoreGraphics.framework */; };
@@ -79,6 +80,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0331C0891313F0A7006937CA /* psycho_bg_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = psycho_bg_system.cpp; sourceTree = "<group>"; };
+		0331C08A1313F0A7006937CA /* psycho_bg_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = psycho_bg_system.h; sourceTree = "<group>"; };
 		03440B6A130E76D20097D9DA /* hellstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hellstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03440B6E130E76D20097D9DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03440B70130E76D20097D9DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -227,6 +230,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0331C0871313F08D006937CA /* systems */ = {
+			isa = PBXGroup;
+			children = (
+				0331C0891313F0A7006937CA /* psycho_bg_system.cpp */,
+				0331C08A1313F0A7006937CA /* psycho_bg_system.h */,
+			);
+			name = systems;
+			sourceTree = "<group>";
+		};
 		03440B5F130E76D20097D9DA = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +337,7 @@
 		0374E1D41313E1FE00BD1FDA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0331C0871313F08D006937CA /* systems */,
 				0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */,
 				0374E1D61313E1FE00BD1FDA /* menu_scene.h */,
 			);
@@ -732,6 +745,7 @@
 				03BAA4781313E7E100AAA735 /* hellstorm_config.cpp in Sources */,
 				03BAA4791313E7E100AAA735 /* timer.cpp in Sources */,
 				03BAA47A1313E7E100AAA735 /* vec_2d.cpp in Sources */,
+				0331C08B1313F0A7006937CA /* psycho_bg_system.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
