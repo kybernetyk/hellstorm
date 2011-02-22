@@ -7,7 +7,12 @@
 //
 
 #pragma once
-extern void hs_game_init(void);
+namespace hs
+{
+	class scene;
+}
+
+extern void hs_game_init(hs::scene *scene);
 extern void hs_game_shutdown(void);
 
 extern void hs_game_tick(void);

@@ -12,10 +12,12 @@
 
 static hs::game *the_game;
 
-void hs_game_init(void)
+void hs_game_init(hs::scene *scene)
 {
     the_game = new hs::game();
-	the_game->init_with_scene(new test_game::menu_scene());
+	//the_game->init_wih_scene(scene);
+	
+	the_game->init_with_scene(scene);
 }
 
 void hs_game_shutdown(void)

@@ -12,6 +12,7 @@
 #import "EAGLView.h"
 
 #include "hs_wrapper.h"
+#include "menu_scene.h"
 
 // Uniform index.
 enum {
@@ -67,7 +68,7 @@ enum {
     animationFrameInterval = 1;
     self.displayLink = nil;
     
-    hs_game_init();
+    hs_game_init(new test_game::menu_scene());
 }
 
 - (void)dealloc
