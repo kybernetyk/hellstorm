@@ -39,21 +39,21 @@ namespace test_game
 		ans = new hs::animation_system(em, as);
 		
 		
-		hs::factory::create_particle_emitter("tss.pex", PE_LOOP, hs::vec3d_make(320/2, 480, 4.0), true);
-		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(0, 0, 4.0), true);
-		hs::factory::create_particle_emitter("stars.pex", PE_LOOP, hs::vec3d_make(320, 0, 4.0), true);
-		hs::entity *fire = hs::factory::create_particle_emitter("cool.pex", PE_LOOP, hs::vec3d_screen_center(1.0), true);
+		hs::factory::create_particle_emitter(em, "tss.pex", PE_LOOP, hs::vec3d_make(320/2, 480, 4.0), true);
+		hs::factory::create_particle_emitter(em, "stars.pex", PE_LOOP, hs::vec3d_make(0, 0, 4.0), true);
+		hs::factory::create_particle_emitter(em, "stars.pex", PE_LOOP, hs::vec3d_make(320, 0, 4.0), true);
+		hs::entity *fire = hs::factory::create_particle_emitter(em, "cool.pex", PE_LOOP, hs::vec3d_screen_center(1.0), true);
 
-		hs::entity *back = hs::factory::create_sprite("game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
+		hs::entity *back = hs::factory::create_sprite(em, "game_back.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		
-		hs::factory::create_text_label("impact20.fnt", "oh hai!", hs::vec3d_screen_center());
+		hs::factory::create_text_label(em, "impact20.fnt", "oh hai!", hs::vec3d_screen_center());
 
 //		hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
 //
 //		//		
 		for (int i = 0; i < 220; i++)
 		{
-			hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
+			hs::factory::create_atlas_sprite(em, "bubbles.png", hs::vec3d_make(rand()%320, rand()%480, -1.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
 		}
 		
 		hs::audio_system::play_music("music.mp3");
@@ -75,7 +75,7 @@ namespace test_game
 		
 		
 		
-		hs::entity *bubble = hs::factory::create_atlas_sprite("bubbles.png", hs::vec3d_make(100.0, 100.0, 7.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
+		hs::entity *bubble = hs::factory::create_atlas_sprite(em, "bubbles.png", hs::vec3d_make(100.0, 100.0, 7.0), hs::rect_make(0.0, 0.0, 41.0, 41.0));
 //		hs::action *bac = new hs::move_by_action(3.0, hs::vec2d_make(50.0, 50.0));
 //		bac->loop_count = 1;
 		
@@ -89,7 +89,8 @@ namespace test_game
 		
 		
 		
-		hs::entity *clock = hs::factory::create_atlas_sprite("clocks.png", 
+		hs::entity *clock = hs::factory::create_atlas_sprite(em, 
+															 "clocks.png", 
 															 hs::vec3d_screen_center(6.0),
 															 hs::rect_make(0.0, 0.0, 0.0, 0.0));
 

@@ -14,8 +14,8 @@ namespace hs
 	//for std::sort
 	bool comp_ents(entity *e1, entity *e2)
 	{
-		comp::position *pos1 = entity::ent_mgr->get_component<comp::position>(e1);
-		comp::position *pos2 = entity::ent_mgr->get_component<comp::position>(e2);
+		comp::position *pos1 = e1->ent_mgr->get_component<comp::position>(e1);
+		comp::position *pos2 = e1->ent_mgr->get_component<comp::position>(e2);
 		
 		if (pos1->origin.z == pos2->origin.z)
 			return (e1->guid < e2->guid);
@@ -29,8 +29,8 @@ namespace hs
 		entity *e1 = *(entity**)ep1;
 		entity *e2 = *(entity**)ep2;
 		
-		comp::position *p1 = entity::ent_mgr->get_component<comp::position>(e1);
-		comp::position *p2 = entity::ent_mgr->get_component<comp::position>(e2);
+		comp::position *p1 = e1->ent_mgr->get_component<comp::position>(e1);
+		comp::position *p2 = e1->ent_mgr->get_component<comp::position>(e2);
 		
 		if (p1->origin.z < p2->origin.z)
 			return -1;

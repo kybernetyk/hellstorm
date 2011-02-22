@@ -34,8 +34,39 @@ namespace hs
 		next_game_tick = get_tick_count();
 	}
 	
+	void game::set_next_scene(hs::scene *scene)
+	{
+		if (next_scene)
+		{
+			printf("can't set next scene in same frame more than once!\n");
+			abort();
+		}
+		
+		next_scene = scene;
+		scene_queue_state = e_sqs_set;
+	}
+	
+	void game::push_scene(hs::scene *scene)
+	{
+		scene_stack_pointer++;
+		if (scene_stack_pointer >= scene_stack_size)
+		{
+			printf("scene stack fuck'd up!\n");
+			abort();
+		}
+		scene_stack[scene_stack_pointer] = scene;
+		scene->init();
+		
+		scene_queue_state = e_sqs_pushed;
+	}
+	
     bool game::init_with_scene(hs::scene *scene)
     {
+		scene_queue_state = e_sqs_none;
+		pop_counter = 0;
+		scene_stack_pointer = 0;
+		next_scene = 0;
+		scene_stack[scene_stack_pointer] = scene;
 		g_game = this;
 		
 		cfg::read_config_from_file("hellstorm.cfg");
@@ -59,6 +90,7 @@ namespace hs
 		
         current_scene = scene;
 		current_scene->init();
+
 		tmr.update();
 		tmr.update();
 
@@ -75,6 +107,49 @@ namespace hs
 	
 	void game::tick(void)
 	{
+		if (scene_queue_state != e_sqs_none)
+		{
+			switch (scene_queue_state) 
+			{
+				case e_sqs_set:
+					current_scene->shutdown();
+					delete current_scene;
+					scene_stack[scene_stack_pointer] = next_scene;
+					current_scene = next_scene;
+					current_scene->init();
+					next_scene = 0;
+					break;
+				case e_sqs_pushed:
+					current_scene = scene_stack[scene_stack_pointer];
+					break;
+				case e_sqs_popped:
+					for (int i = 0; i < pop_counter; i++)
+					{
+						scene_stack_pointer--;
+						if (scene_stack_pointer < 0)
+						{
+							printf("scene stack is fuck'd up!\n");
+							abort();
+							return;
+						}
+						current_scene->shutdown();
+						delete current_scene;
+						current_scene = scene_stack[scene_stack_pointer];
+					}
+					pop_counter = 0;
+					break;
+					
+				default:
+					abort();
+					break;
+			}
+			
+			next_game_tick = get_tick_count();
+			tmr.update();
+			tmr.update();
+		}
+		
+		
 		tmr.update();
 		
 		if (tmr.delta > max_timer_delta)

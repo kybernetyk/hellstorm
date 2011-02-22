@@ -14,9 +14,9 @@ namespace hs
 	class entity;
 	namespace factory
 	{
-		entity *create_sprite(std::string filename, vec3d position, vec2d anchor)
+		entity *create_sprite(entity_manager *em, std::string filename, vec3d position, vec2d anchor)
 		{
-			entity_manager *em = entity::ent_mgr;
+//			entity_manager *em = entity::ent_mgr;
 			entity *ent = em->new_entity();
 			comp::position *pos = em->add_component<hs::comp::position>(ent);
 			pos->origin = position;
@@ -28,9 +28,9 @@ namespace hs
 			return ent;
 		}
 		
-		entity *create_atlas_sprite(std::string filename, vec3d position, rect src_rect, vec2d anchor)
+		entity *create_atlas_sprite(entity_manager *em, std::string filename, vec3d position, rect src_rect, vec2d anchor)
 		{
-			entity_manager *em = entity::ent_mgr;
+//			entity_manager *em = entity::ent_mgr;
 			entity *ent = em->new_entity();
 			comp::position *pos = em->add_component<hs::comp::position>(ent);
 			pos->origin = position;
@@ -43,9 +43,9 @@ namespace hs
 			return ent;
 		}
 		
-		entity *create_text_label(std::string fontname, std::string text, vec3d position, vec2d anchor)
+		entity *create_text_label(entity_manager *em, std::string fontname, std::string text, vec3d position, vec2d anchor)
 		{
-			entity_manager *em = entity::ent_mgr;
+//			entity_manager *em = entity::ent_mgr;
 			entity *ent = em->new_entity();
 			comp::position *pos = em->add_component<hs::comp::position>(ent);
 			pos->origin = position;
@@ -59,9 +59,9 @@ namespace hs
 			return ent;
 		}
 		
-		entity *create_particle_emitter(std::string filename, double duration, vec3d position, bool autostart)
+		entity *create_particle_emitter(entity_manager *em, std::string filename, double duration, vec3d position, bool autostart)
 		{
-			entity_manager *em = entity::ent_mgr;
+		//	entity_manager *em = entity::ent_mgr;
 			
 			entity *e = em->new_entity();
 			
@@ -83,9 +83,9 @@ namespace hs
 			return e;
 		}
 		
-		entity *create_particle_emitter(particle_emitter *existing_em, double duration, vec3d position, bool autostart)
+		entity *create_particle_emitter(entity_manager *em, particle_emitter *existing_em, double duration, vec3d position, bool autostart)
 		{
-			entity_manager *em = entity::ent_mgr;
+			//entity_manager *em = entity::ent_mgr;
 			
 			entity *e = em->new_entity();
 			
