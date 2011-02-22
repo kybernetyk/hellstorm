@@ -51,27 +51,30 @@ namespace hs
 	{
 
 	}
-	
-	void renderer::begin_render(void)
+
+	void renderer::apply_camera_transform(void)
 	{
-		glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		
-		glLoadIdentity();
-		
-		
 		glTranslatef( viewport_size_units.w/2.0,  viewport_size_units.h/2.0, 0);
 		
 		if (cam_rot != 0.0)
 			glRotatef(cam_rot, 0.0, 0.0, 1.0);
 		
 		glTranslatef( -cam_pos.x , -cam_pos.y, 0.0);
+	}
+	
+	void renderer::begin_render(void)
+	{
+//		glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
+//		glClear(GL_COLOR_BUFFER_BIT);
+		
+		glLoadIdentity();
+		
 
 	}
 	
 	void renderer::end_render(void)
 	{
-		
+		glLoadIdentity();
 	}
 	
 	vec2d renderer::conv_screen_to_world(vec2d vec)
@@ -188,6 +191,13 @@ namespace hs
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
 		glBindTexture(GL_TEXTURE_2D, ret);
+		
+//		tex_params t_params = { GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE };
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, t_params.minFilter );
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, t_params.magFilter );
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, t_params.wrapS );
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, t_params.wrapT );
+
 		
 		texture2d::bound_texture = ret;
 		return ret;

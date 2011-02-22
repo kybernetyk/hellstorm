@@ -48,15 +48,79 @@ namespace test_game
 		
 		hs::entity *current_entity = NULL;
 		comp_psycho_marker *current_marker = 0;
+		hs::comp::renderable *current_renderable = 0;
+		hs::comp::position *current_position = 0;
 		
 		for (hs::uid i = 0; i < cache_size; i++)
 		{
 			current_entity = ent_cache[i];
-			
 			current_marker = em->get_component<comp_psycho_marker>(current_entity);
-			printf("marker type: %i\n", current_marker->type);
+			current_renderable = em->get_component<hs::comp::renderable>(current_entity);
+			current_position = em->get_component<hs::comp::position>(current_entity);
+			
+			if (current_marker->type == e_psycho_type_sunburst) 
+			{
+				current_position->rot += dt * current_marker->rot_speed;
+			}
+			
+			current_position->origin.x += dt * current_marker->velocity.x;
+			current_position->origin.y += dt * current_marker->velocity.y;
+			
+			if (current_position->origin.x < 0 ||
+				current_position->origin.x > hs::cfg::screen.size.w)
+			{
+				float f = 0.0;
+				
+				if (current_position->origin.x < 0)
+				{
+					f = 1.0;
+					current_position->origin.x = 0;
+				}
+				
+				if (current_position->origin.x > hs::cfg::screen.size.w)
+				{
+					current_position->origin.x = hs::cfg::screen.size.w;	
+					f = -1.0;
+				}
+				
+				int r = rand()%100 + 10;
+				
+				current_marker->velocity.x = r * f;
+					
+//				if (rand()%2 == 0)
+//					current_marker->rot_speed *= -1.0;
+			}
+
+			if (current_position->origin.y < 0 ||
+				current_position->origin.y > hs::cfg::screen.size.h)
+			{
+				float f = 0.0;
+				
+				if (current_position->origin.y < 0)
+				{
+					f = 1.0;
+					current_position->origin.y = 0;
+				}
+				
+				if (current_position->origin.y > hs::cfg::screen.size.h)
+				{
+					current_position->origin.y = hs::cfg::screen.size.h;	
+					f = -1.0;
+				}
+
+				current_marker->velocity.y *= -1.0;
+				int r = rand()%100 + 10;
+				
+				current_marker->velocity.y = r * f;
+
+//				if (rand()%2 == 0)
+//					current_marker->rot_speed *= -1.0;
+			}
+
+			
+//			printf("marker type: %i\n", current_marker->type);
 		}
-		if (cache_size > 0)
-			printf("..\n");
+//		if (cache_size > 0)
+//			printf("..\n");
 	}
 }

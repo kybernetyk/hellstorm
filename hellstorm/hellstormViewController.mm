@@ -64,11 +64,12 @@ enum {
     if ([context API] == kEAGLRenderingAPIOpenGLES2)
         [self loadShaders];
 
+	hs_game_init(new test_game::menu_scene());
+	
     animating = FALSE;
-    animationFrameInterval = 1;
+    animationFrameInterval = 60/hs::cfg::screen.desired_fps;
     self.displayLink = nil;
     
-    hs_game_init(new test_game::menu_scene());
 }
 
 - (void)dealloc

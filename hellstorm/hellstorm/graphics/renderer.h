@@ -36,6 +36,8 @@ namespace hs
 		
 		void render_backing_texture_to_screen(void);
 		
+		void apply_camera_transform(void);
+		
 	protected:
 		void setup_viewport_and_projection(int viewport_width_in_pixels,
 										   int viewport_height_in_pixels,

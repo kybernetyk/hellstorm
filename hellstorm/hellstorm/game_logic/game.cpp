@@ -62,6 +62,8 @@ namespace hs
 	
     bool game::init_with_scene(hs::scene *scene)
     {
+		srand(time(0));
+		
 		scene_queue_state = e_sqs_none;
 		pop_counter = 0;
 		scene_stack_pointer = 0;
@@ -185,80 +187,46 @@ namespace hs
 	
 	void game::render(void)
 	{
+//#define TEX_RENDER_TEST
+
 #ifdef TEX_RENDER_TEST
+		static double xx;
+		xx += 100.0 * tmr.delta;
+		if (xx >= 320)
+			xx = 0;
+		
+		
 		g_renderer.set_rendertarget(e_rendertarget_texture);
 		g_renderer.begin_render();
+		g_renderer.apply_camera_transform();
 		current_scene->render();
-		fnt->render_content(s);
 		g_renderer.end_render();
-
 		
 		g_renderer.set_rendertarget(e_rendertarget_screen);
 		g_renderer.begin_render();
+		glTranslatef(-xx, 0.0, 0.0);
 		
+	
+		glPushMatrix();
+			glTranslatef(0.0, 0.0, 0.0);
+			g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+		
+		glPushMatrix();
+			glTranslatef(320.0, 0.0, 0.0);
+			g_renderer.render_backing_texture_to_screen();
+		glPopMatrix();
+
+		glPushMatrix();
 		glLoadIdentity();
-		int _x = 320;
-		int _y = 480;
-		float r = 0.0;
-		
-		float xscale = 0.5;
-		
-		glTranslatef( (0.5 * _x),  (0.5 * _y), 0);
-		glScalef(xscale, xscale, 1.0);
-		glRotatef(r, 0, 0, 1.0);
-		glTranslatef( -(0.5 * _x),  -(0.5 * _y), 0);
-
-		glPushMatrix();
-		glTranslatef(-_x, -_y, 0);
-		g_renderer.render_backing_texture_to_screen();
+		fnt->render_content(s);
 		glPopMatrix();
-
-		glPushMatrix();
-		glTranslatef(0, -_y, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(_x, -_y, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(-_x, 0, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(0, 0, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(_x, 0, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(-_x, _y, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(0, _y, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-		
-		glPushMatrix();
-		glTranslatef(_x, _y, 0);
-		g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
-
 		
 		g_renderer.end_render();
 #else
-		
 		g_renderer.begin_render();
-		current_scene->render();
+		g_renderer.apply_camera_transform();
+	 	current_scene->render();
 		fnt->render_content(s);
 		g_renderer.end_render();
 #endif

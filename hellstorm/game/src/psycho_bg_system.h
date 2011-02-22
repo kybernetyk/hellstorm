@@ -24,10 +24,14 @@ namespace test_game
 		static hs::uid family_id;
 		
 		e_psycho_type type;
+		hs::vec2d velocity;
+		double rot_speed;
 		
 		comp_psycho_marker()
 		{
 			type = e_psycho_type_static;
+			rot_speed = 40.0;
+			velocity = hs::vec2d_zero;
 		}
 		
 	};
