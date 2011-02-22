@@ -29,7 +29,7 @@ namespace hs
 	{
 		scale_factor = cfg::screen.scale;
 		
-		current_rendertarget = e_rendertarget_screen;
+//		current_rendertarget = e_rendertarget_screen;
 		
 		double screen_size_x = cfg::screen.size.w;
 		double screen_size_y = cfg::screen.size.h;	//change to 280 for a 40px high empty strip [eg for an ad banner]
@@ -39,12 +39,14 @@ namespace hs
 		
 		std::printf("RenderDevice init:\n{\n\tscreen_size_x: %f\n\tscreen_size_y: %f\n}\n", screen_size_x, screen_size_y);
 		
-		current_rendertarget = e_rendertarget_screen;
+		//current_rendertarget = e_rendertarget_screen;
 		cam_rot = 0.0;		
 		cam_pos = vec2d_make(screen_size_x/2.0, screen_size_y/2.0);
 		setup_viewport_and_projection(screen_size_x,screen_size_y,viewport_size_x,viewport_size_y);
 		
 		create_render_texture();
+		
+		set_rendertarget_screen();
 	}
 	
 	void renderer::shutdown(void)
@@ -62,14 +64,15 @@ namespace hs
 		glTranslatef( -cam_pos.x , -cam_pos.y, 0.0);
 	}
 	
+	void renderer::clear(void)
+	{
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+	
 	void renderer::begin_render(void)
 	{
-//		glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-//		glClear(GL_COLOR_BUFFER_BIT);
-		
 		glLoadIdentity();
-		
-
 	}
 	
 	void renderer::end_render(void)
@@ -169,11 +172,11 @@ namespace hs
 			texture2d::bound_texture = render_texture;
 			glBindTexture( GL_TEXTURE_2D, render_texture );
 		}
-		
+		glDisable(GL_BLEND);
 		glVertexPointer(3, GL_FLOAT, 0, vertices);
 		glTexCoordPointer(2, GL_FLOAT, 0, coordinates);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
+		glEnable(GL_BLEND);
 		
 	}
 	
@@ -236,7 +239,6 @@ namespace hs
 		
 		glBindFramebufferOES(GL_FRAMEBUFFER_OES, screen_frame_buffer);
 		glViewport(0,0,viewport_size_pixels.w, viewport_size_pixels.h);
-
 	}
 
 	void renderer::set_rendertarget_texture(void)

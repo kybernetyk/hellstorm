@@ -18,7 +18,7 @@ namespace game
 	{
 		hs::comp::register_component_class<comp_psycho_marker>();
 		
-		printf("comp_psycho_marker::family_id =  %i\n", comp_psycho_marker::family_id);
+		//printf("comp_psycho_marker::family_id =  %i\n", comp_psycho_marker::family_id);
 		
 		em = manager;
 		ent_cache = new hs::entity*[hs::cfg::entity_system.entity_pool_size];

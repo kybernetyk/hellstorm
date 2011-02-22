@@ -33,6 +33,7 @@
 		034609CA130FECA50086DFDD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C9130FECA20086DFDD /* OpenAL.framework */; };
 		034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609CB130FECAA0086DFDD /* AudioToolbox.framework */; };
 		0372A7AF131446E400D1A840 /* game_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0372A7AD131446E400D1A840 /* game_factory.cpp */; };
+		0372A7B31314489C00D1A840 /* game_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0372A7B11314489C00D1A840 /* game_scene.cpp */; };
 		0374E1C61313E1ED00BD1FDA /* hellstormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1C01313E1ED00BD1FDA /* hellstormViewController.xib */; };
 		0374E1C71313E1ED00BD1FDA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1C21313E1ED00BD1FDA /* InfoPlist.strings */; };
 		0374E1C81313E1ED00BD1FDA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1C41313E1ED00BD1FDA /* MainWindow.xib */; };
@@ -126,6 +127,8 @@
 		034609CB130FECAA0086DFDD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0372A7AD131446E400D1A840 /* game_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_factory.cpp; sourceTree = "<group>"; };
 		0372A7AE131446E400D1A840 /* game_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_factory.h; sourceTree = "<group>"; };
+		0372A7B11314489C00D1A840 /* game_scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_scene.cpp; sourceTree = "<group>"; };
+		0372A7B21314489C00D1A840 /* game_scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_scene.h; sourceTree = "<group>"; };
 		0374E1C11313E1ED00BD1FDA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hellstormViewController.xib; sourceTree = "<group>"; };
 		0374E1C31313E1ED00BD1FDA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0374E1C51313E1ED00BD1FDA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -333,6 +336,17 @@
 			name = helpers;
 			sourceTree = "<group>";
 		};
+		0372A7B01314488700D1A840 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */,
+				0374E1D61313E1FE00BD1FDA /* menu_scene.h */,
+				0372A7B11314489C00D1A840 /* game_scene.cpp */,
+				0372A7B21314489C00D1A840 /* game_scene.h */,
+			);
+			name = scenes;
+			sourceTree = "<group>";
+		};
 		0374E1BF1313E1ED00BD1FDA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,10 +396,9 @@
 		0374E1D41313E1FE00BD1FDA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0372A7B01314488700D1A840 /* scenes */,
 				0372A7AB131446D400D1A840 /* helpers */,
 				0331C0871313F08D006937CA /* systems */,
-				0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */,
-				0374E1D61313E1FE00BD1FDA /* menu_scene.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -804,6 +817,7 @@
 				03BAA47A1313E7E100AAA735 /* vec_2d.cpp in Sources */,
 				0331C08B1313F0A7006937CA /* psycho_bg_system.cpp in Sources */,
 				0372A7AF131446E400D1A840 /* game_factory.cpp in Sources */,
+				0372A7B31314489C00D1A840 /* game_scene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,6 +74,8 @@ namespace hs
 	
 	entity_manager::~entity_manager()
 	{
+		remove_all_entities();
+		
 		for (int i = 0; i < cfg::entity_system.entity_pool_size; i++)
 			delete [] components[i];
 		delete [] components;

@@ -1,17 +1,18 @@
 //
-//  menu_scene.h
+//  game_scene.h
 //  hellstorm
 //
-//  Created by jrk on 18/2/11.
+//  Created by jrk on 22/2/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+
 #pragma once
 #include "hellstorm.h"
 #include "psycho_bg_system.h"
 
-namespace game
+namespace game 
 {
-	class menu_scene : public hs::scene
+	class game_scene : public hs::scene
 	{
 	public:
 		void init(void);
@@ -22,7 +23,7 @@ namespace game
 		
 		int scene_type(void);
 		
-		~menu_scene();
+		~game_scene();
 
 	protected:
 		hs::entity_manager *em;
@@ -33,4 +34,5 @@ namespace game
 		hs::animation_system *ans;
 		psycho_bg_system *bg_system;
 	};
-};
+
+}

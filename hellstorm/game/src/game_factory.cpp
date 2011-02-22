@@ -15,9 +15,6 @@ namespace game
 	{
 		void create_psycho_back(hs::entity_manager *em)
 		{
-			hs::entity *back = hs::factory::create_sprite(em, "background.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
-			back->add<comp_psycho_marker>();
-			
 			hs::entity *sunb = hs::factory::create_sprite(em, 
 														  "sunburst_2.png", 
 														  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.5), 

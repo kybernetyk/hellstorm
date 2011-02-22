@@ -60,6 +60,14 @@ namespace hs
 		scene_queue_state = e_sqs_pushed;
 	}
 	
+	void game::pop_scene(void)
+	{
+		printf("popping scene ...\n");
+		
+		scene_queue_state = e_sqs_popped;
+		pop_counter++;
+	}
+	
     bool game::init_with_scene(hs::scene *scene)
     {
 		srand(time(0));
@@ -145,7 +153,7 @@ namespace hs
 					abort();
 					break;
 			}
-			
+			scene_queue_state = e_sqs_none;
 			next_game_tick = get_tick_count();
 			tmr.update();
 			tmr.update();
@@ -190,23 +198,26 @@ namespace hs
 //#define TEX_RENDER_TEST
 
 #ifdef TEX_RENDER_TEST
-		static double xx;
-		xx += 100.0 * tmr.delta;
+		static double xx = 0;
+		//xx += 100.0 * tmr.delta;
 		if (xx >= 320)
 			xx = 0;
 		
-		
 		g_renderer.set_rendertarget(e_rendertarget_texture);
+		g_renderer.clear();
+
 		g_renderer.begin_render();
 		g_renderer.apply_camera_transform();
 		current_scene->render();
 		g_renderer.end_render();
 		
 		g_renderer.set_rendertarget(e_rendertarget_screen);
+		g_renderer.clear();
 		g_renderer.begin_render();
-		glTranslatef(-xx, 0.0, 0.0);
 		
-	
+		//glDisable(GL_BLEND);
+		
+		glTranslatef(-xx, 0.0, 0.0);
 		glPushMatrix();
 			glTranslatef(0.0, 0.0, 0.0);
 			g_renderer.render_backing_texture_to_screen();
@@ -214,6 +225,7 @@ namespace hs
 		
 		glPushMatrix();
 			glTranslatef(320.0, 0.0, 0.0);
+		
 			g_renderer.render_backing_texture_to_screen();
 		glPopMatrix();
 
@@ -221,9 +233,10 @@ namespace hs
 		glLoadIdentity();
 		fnt->render_content(s);
 		glPopMatrix();
-		
+		//glEnable(GL_BLEND);
 		g_renderer.end_render();
 #else
+		g_renderer.clear();
 		g_renderer.begin_render();
 		g_renderer.apply_camera_transform();
 	 	current_scene->render();
