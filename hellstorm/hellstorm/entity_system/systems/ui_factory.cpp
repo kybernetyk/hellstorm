@@ -7,7 +7,7 @@
 //
 
 #include "ui_factory.h"
-
+#include "ConfigFile.h"
 namespace hs 
 {
 	namespace ui
@@ -37,6 +37,59 @@ namespace hs
 					btn->text = NULL;
 					
 				return ret;
+			}
+			
+			entity *creat_button_from_file(entity_manager *em, std::string filename, vec3d position, std::string caption, vec2d anchor)
+			{
+				try
+				{
+					ConfigFile cfg(path_for_file(filename.c_str()));
+					
+					//mandatory
+					std::string button_texture;
+					button_texture = cfg.read<std::string>("texture");
+
+					//mandatory!
+					rect rc_idle;
+					rc_idle.x = cfg.read<double>("idle.x");
+					rc_idle.y = cfg.read<double>("idle.y");
+					rc_idle.w = cfg.read<double>("idle.w");
+					rc_idle.h = cfg.read<double>("idle.h");
+
+					//mandatory!
+					rect rc_pressed;
+					rc_pressed.x = cfg.read<double>("pressed.x");
+					rc_pressed.y = cfg.read<double>("pressed.y");
+					rc_pressed.w = cfg.read<double>("pressed.w");
+					rc_pressed.h = cfg.read<double>("pressed.h");
+					
+					//mandatory!
+					std::string font;
+					font = cfg.read<std::string>("font");
+					
+					entity *ret = em->new_entity();
+					button *btn = em->add_component<button>(ret);
+					btn->type = e_control_button;
+					btn->rc_idle = rc_idle;
+					btn->rc_pressed = rc_pressed;
+
+					
+					btn->graphic = hs::factory::create_atlas_sprite(em, button_texture, position, rc_idle, anchor);
+					btn->text = hs::factory::create_text_label(em, font, caption, position, anchor);
+					
+					return ret;
+				} 
+				catch (ConfigFile::file_not_found f)
+				{
+					printf("couldn't open %s!\n", f.filename.c_str());
+					abort();
+				}
+				catch (ConfigFile::key_not_found f)
+				{
+					printf("couldn't find key %s in file %s!\n", f.key.c_str(), filename.c_str());
+					abort();
+				}
+				return NULL;
 			}
 		}
 	}

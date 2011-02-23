@@ -23,6 +23,8 @@ namespace hs
 								  vec3d position,
 								  vec2d anchor = anchor_center
 								  );
+			
+			entity *creat_button_from_file(entity_manager *em, std::string filename, vec3d position = vec3d_zero, std::string caption = "", vec2d anchor = anchor_center);
 		}
 	}
 }
