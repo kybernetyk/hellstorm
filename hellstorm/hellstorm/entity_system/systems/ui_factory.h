@@ -12,19 +12,15 @@ namespace hs
 {
 	namespace ui
 	{
-		namespace factory
-		{
-//			entity *create_sprite(entity_manager *em, std::string filename, vec3d position, vec2d anchor = anchor_center);
-			entity *create_button(entity_manager *em, 
-								  std::string filename, 
-								  std::string label_text,
-								  rect rc_unpressed,
-								  rect rc_pressed,
-								  vec3d position,
-								  vec2d anchor = anchor_center
-								  );
-			
-			entity *creat_button_from_file(entity_manager *em, std::string filename, vec3d position = vec3d_zero, std::string caption = "", vec2d anchor = anchor_center);
-		}
+		entity *create_button(entity_manager *em, 
+							  std::string filename, 
+							  std::string label_text,
+							  rect rc_unpressed,
+							  rect rc_pressed,
+							  vec3d position,
+							  vec2d anchor = anchor_center
+							  );
+		
+		entity *creat_button_from_file(entity_manager *em, std::string filename, vec3d position = vec3d_zero, std::string caption = "", vec2d anchor = anchor_center);
 	}
 }

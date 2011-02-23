@@ -35,7 +35,7 @@ namespace game
 	{
 		hs::entity *but = 0;
 		
-		but = hs::ui::factory::creat_button_from_file(em, "menu_button.cfg", hs::vec3d_screen_center(), "play!");
+		but = hs::ui::creat_button_from_file(em, "menu_button.cfg", hs::vec3d_screen_center(), "play!");
 		but->get<hs::ui::button>()->tag_ptr = &button_tag;
 		but->get<hs::ui::button>()->tag = tag;
 		
