@@ -70,13 +70,46 @@ namespace hs
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 	
+	void renderer::push_renderable(renderable *ren)
+	{
+		renderables.push_back(ren);
+	}
+
+	void renderer::push_renderables(std::vector <renderable *> &rens)
+	{
+		renderables.insert(renderables.end(), rens.begin(), rens.end());
+	}
+
 	void renderer::begin_render(void)
 	{
 		glLoadIdentity();
 	}
 	
+	bool comp_rens(renderable *r1, renderable *r2)
+	{
+		if (r1->position.z == r2->position.z)
+			return (r1->guid < r2->guid);
+		
+		return (r1->position.z < r2->position.z);
+	}
+
+	
+	void renderer::flush(void)
+	{
+		std::sort (renderables.begin(), renderables.end(), comp_rens);
+		
+		std::vector<renderable *>::const_iterator it = renderables.begin();
+		while (it != renderables.end())
+		{
+			(*it)->render_content();
+			++it;
+		}
+		renderables.clear();
+	}
+	
 	void renderer::end_render(void)
 	{
+		
 		glLoadIdentity();
 	}
 	

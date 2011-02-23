@@ -124,7 +124,9 @@ namespace hs
 					qd->alpha = ren->alpha;
 					qd->anchor_point = ren->anchor_point;
 					
-					qd->render_content();
+					g_renderer.push_renderable(qd);
+					
+					//qd->render_content();
 					break;
 					
 				case comp::RENDERABLETYPE_ATLASSPRITE:
@@ -140,7 +142,8 @@ namespace hs
 					
 					aq->src_rect = ((comp::atlas_sprite *)ren)->src_rect;
 					
-					aq->render_content();
+					//aq->render_content();
+					g_renderer.push_renderable(aq);
 					break;
 					
 				case comp::RENDERABLETYPE_TEXT:
@@ -154,10 +157,13 @@ namespace hs
 					bf->alpha = ren->alpha;
 					bf->anchor_point = ren->anchor_point;
 	
-					//the fuck?
 					comp::text_label *tl;
 					tl = (comp::text_label*)ren;
-					bf->render_content(tl->text.c_str());
+
+					bf->text_ptr = tl->text.c_str();
+					//the fuck?
+//					bf->render_content();
+					g_renderer.push_renderable(bf);
 					break;
 					
 				case comp::RENDERABLETYPE_PARTICLE_EMITTER:
@@ -165,7 +171,9 @@ namespace hs
 					pem = (comp::particle_emitter *)ren;
 					pe = pem->pe;
 					pe->position.z = pos->origin.z;
-					pe->render_content();
+					//pe->render_content();
+					
+					g_renderer.push_renderable(pe);
 					break;
 				default:
 					abort();

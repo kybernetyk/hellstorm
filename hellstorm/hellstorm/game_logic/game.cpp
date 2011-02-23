@@ -191,11 +191,23 @@ namespace hs
 		}
 	
 		sprintf(s, "%.2f", tmr.fps);
+		fnt->text_ptr = s;
 	}
 	
 	void game::render(void)
 	{
 //#define TEX_RENDER_TEST
+		current_scene->render();
+		
+		g_renderer.clear();
+		g_renderer.begin_render();
+		g_renderer.apply_camera_transform();
+	 	
+		g_renderer.flush();
+
+		fnt->render_content();
+		g_renderer.end_render();
+
 
 #ifdef TEX_RENDER_TEST
 		static double xx = 0;
@@ -236,12 +248,12 @@ namespace hs
 		//glEnable(GL_BLEND);
 		g_renderer.end_render();
 #else
-		g_renderer.clear();
-		g_renderer.begin_render();
-		g_renderer.apply_camera_transform();
-	 	current_scene->render();
-		fnt->render_content(s);
-		g_renderer.end_render();
+//		g_renderer.clear();
+//		g_renderer.begin_render();
+//		g_renderer.apply_camera_transform();
+//	 	current_scene->render();
+//		fnt->render_content(s);
+//		g_renderer.end_render();
 #endif
 	}
 }

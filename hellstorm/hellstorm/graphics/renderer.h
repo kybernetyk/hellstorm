@@ -9,6 +9,7 @@
 #pragma once
 #include "vec_2d.h"
 #include "hs_ogl.h"
+#include <vector>
 
 namespace hs 
 {
@@ -18,13 +19,18 @@ namespace hs
 		e_rendertarget_texture
 	};
 	
+	class renderable;
 	class renderer
 	{
 	public:
 		void init(void);
 		void shutdown(void);
+	
+		void push_renderable(renderable *ren);
+		void push_renderables(std::vector <renderable *> &rens);
 		
 		void begin_render(void);
+		void flush(void);
 		void end_render(void);
 		
 		vec2d conv_screen_to_world(vec2d vec);
@@ -68,6 +74,9 @@ namespace hs
 		
 		size2d viewport_size_pixels;
 		size2d viewport_size_units;
+		
+		std::vector <renderable *> renderables;
+		
 	};
 	extern renderer g_renderer;
 }

@@ -24,18 +24,18 @@ namespace hs
 		
 		template <typename T> resource_handle acquire_resource(std::string filename)
 		{
-			if (reference_counts[filename] > 0)
-			{
-				reference_counts[filename] ++;
-				resource_handle ret =  handles_by_filename[filename];
-				if (ret == 0)
-				{
-					printf("handle may not be 0!\n");
-					abort();
-					return 0;
-				}
-				return ret;
-			}
+//			if (reference_counts[filename] > 0)
+//			{
+//				reference_counts[filename] ++;
+//				resource_handle ret =  handles_by_filename[filename];
+//				if (ret == 0)
+//				{
+//					printf("handle may not be 0!\n");
+//					abort();
+//					return 0;
+//				}
+//				return ret;
+//			}
 			
 			resource_handle current_handle = get_free_handle();
 			

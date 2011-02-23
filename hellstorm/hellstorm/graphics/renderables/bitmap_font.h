@@ -25,12 +25,10 @@ namespace hs
 
 		bool load_from_file(std::string fnt_filename);
 		void transform(void);
-		void render_content(const char *text);
+		void render_content();
 				
 		std::string texture_filename;
 		bm_font font;
-
-	private:
-		const char *tmp_text;
+		const char *text_ptr;
 	};
 }

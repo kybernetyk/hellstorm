@@ -16,6 +16,7 @@ namespace hs
 	{
 		init();
 		load_from_file(fnt_filename);
+		text_ptr = 0;
 	}
 	
 	bitmap_font::~bitmap_font()
@@ -47,7 +48,7 @@ namespace hs
 	
 	void bitmap_font::transform(void)
 	{
-		int w = bm_width(&font, tmp_text);
+		int w = bm_width(&font, text_ptr);
 		float h = font.line_h*.75; //bm_height(&font, text);
 		glTranslatef(position.x, position.y, position.z);
 		
@@ -60,16 +61,15 @@ namespace hs
 		glTranslatef(- (anchor_point.x * w),h - (anchor_point.y * h), 0);
 	}
 	
-	void bitmap_font::render_content(const char *text)
+	void bitmap_font::render_content()
 	{
 		texture2d *texture = g_texture_manager.get_texture(texture_filename);
 		if (texture)
 		{
-			tmp_text = text;
 			
 			glPushMatrix();
 			transform();
-			int l = strlen(text);
+			int l = strlen(text_ptr);
 			
 			texture->bind();
 			
@@ -90,7 +90,7 @@ namespace hs
 			bm_char *pchar = NULL;
 			for (int i = 0; i < l; i++)
 			{
-				pchar = &font.chars[ text[i] ];
+				pchar = &font.chars[ text_ptr[i] ];
 				
 				tx = (float)pchar->x / (float)texture->size.w;
 				ty = (float)pchar->y / (float)texture->size.h;
@@ -123,7 +123,6 @@ namespace hs
 				glTranslatef(pchar->x_advance-pchar->x_offset, 0, 0.0);			
 			}
 			glPopMatrix();
-			tmp_text = NULL;
 		}
 	}
 }
