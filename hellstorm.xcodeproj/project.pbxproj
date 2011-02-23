@@ -47,6 +47,11 @@
 		0374E1DE1313E1FE00BD1FDA /* stars.pex in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1D21313E1FE00BD1FDA /* stars.pex */; };
 		0374E1DF1313E1FE00BD1FDA /* tss.pex in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1D31313E1FE00BD1FDA /* tss.pex */; };
 		0374E1E01313E1FE00BD1FDA /* menu_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */; };
+		03ADE4641315018A00A539BC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4631315018A00A539BC /* logo.png */; };
+		03ADE4691315091100A539BC /* logo_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4681315091100A539BC /* logo_blink.png */; };
+		03ADE46D1315374700A539BC /* ui_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ADE46B1315374700A539BC /* ui_system.cpp */; };
+		03ADE47013153B3600A539BC /* ui_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ADE46E13153B3500A539BC /* ui_factory.cpp */; };
+		03ADE47213153F5F00A539BC /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE47113153F5F00A539BC /* button.png */; };
 		03BAA4501313E7E100AAA735 /* audio_system.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03BAA3DE1313E7E100AAA735 /* audio_system.mm */; };
 		03BAA4511313E7E100AAA735 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BAA3E21313E7E100AAA735 /* CDAudioManager.m */; };
 		03BAA4521313E7E100AAA735 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BAA3E51313E7E100AAA735 /* CDOpenALSupport.m */; };
@@ -143,6 +148,13 @@
 		0374E1D31313E1FE00BD1FDA /* tss.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tss.pex; sourceTree = "<group>"; };
 		0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_scene.cpp; sourceTree = "<group>"; };
 		0374E1D61313E1FE00BD1FDA /* menu_scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu_scene.h; sourceTree = "<group>"; };
+		03ADE4631315018A00A539BC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		03ADE4681315091100A539BC /* logo_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_blink.png; sourceTree = "<group>"; };
+		03ADE46B1315374700A539BC /* ui_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_system.cpp; sourceTree = "<group>"; };
+		03ADE46C1315374700A539BC /* ui_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_system.h; sourceTree = "<group>"; };
+		03ADE46E13153B3500A539BC /* ui_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_factory.cpp; sourceTree = "<group>"; };
+		03ADE46F13153B3500A539BC /* ui_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_factory.h; sourceTree = "<group>"; };
+		03ADE47113153F5F00A539BC /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		03BAA3DD1313E7E100AAA735 /* audio_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_system.h; sourceTree = "<group>"; };
 		03BAA3DE1313E7E100AAA735 /* audio_system.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = audio_system.mm; sourceTree = "<group>"; };
 		03BAA3E11313E7E100AAA735 /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
@@ -369,6 +381,9 @@
 		0374E1CA1313E1FE00BD1FDA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				03ADE47113153F5F00A539BC /* button.png */,
+				03ADE4681315091100A539BC /* logo_blink.png */,
+				03ADE4631315018A00A539BC /* logo.png */,
 				031AFF3213141E69000D11C2 /* upper.png */,
 				031AFF3013141DE9000D11C2 /* lower.png */,
 				031AFF2E13141DAF000D11C2 /* rahmen.png */,
@@ -401,6 +416,17 @@
 				0331C0871313F08D006937CA /* systems */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		03ADE46A1315373A00A539BC /* ui_system */ = {
+			isa = PBXGroup;
+			children = (
+				03ADE46B1315374700A539BC /* ui_system.cpp */,
+				03ADE46C1315374700A539BC /* ui_system.h */,
+				03ADE46E13153B3500A539BC /* ui_factory.cpp */,
+				03ADE46F13153B3500A539BC /* ui_factory.h */,
+			);
+			name = ui_system;
 			sourceTree = "<group>";
 		};
 		03BAA3DB1313E7E100AAA735 /* hellstorm */ = {
@@ -495,6 +521,7 @@
 		03BAA3F41313E7E100AAA735 /* systems */ = {
 			isa = PBXGroup;
 			children = (
+				03ADE46A1315373A00A539BC /* ui_system */,
 				03BAA3F51313E7E100AAA735 /* action_system */,
 				03BAA3FA1313E7E100AAA735 /* animation_system */,
 				03BAA3FD1313E7E100AAA735 /* corpse_retrieval_system */,
@@ -758,6 +785,9 @@
 				031AFF2F13141DAF000D11C2 /* rahmen.png in Resources */,
 				031AFF3113141DE9000D11C2 /* lower.png in Resources */,
 				031AFF3313141E69000D11C2 /* upper.png in Resources */,
+				03ADE4641315018A00A539BC /* logo.png in Resources */,
+				03ADE4691315091100A539BC /* logo_blink.png in Resources */,
+				03ADE47213153F5F00A539BC /* button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,6 +848,8 @@
 				0331C08B1313F0A7006937CA /* psycho_bg_system.cpp in Sources */,
 				0372A7AF131446E400D1A840 /* game_factory.cpp in Sources */,
 				0372A7B31314489C00D1A840 /* game_scene.cpp in Sources */,
+				03ADE46D1315374700A539BC /* ui_system.cpp in Sources */,
+				03ADE47013153B3600A539BC /* ui_factory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,7 +927,14 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hellstorm/hellstorm-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = HS_TARGET_IPHONE;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = DEBUG;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INFOPLIST_FILE = "hellstorm/hellstorm-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -910,7 +949,13 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hellstorm/hellstorm-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = HS_TARGET_IPHONE;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INFOPLIST_FILE = "hellstorm/hellstorm-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -35,8 +35,9 @@
 #include "action_system.h"
 #include "animation_system.h"
 #include "particle_system.h"
-
+#include "ui_system.h"
 #include "sprite_factory.h"
+#include "ui_factory.h"
 
 #include "scene.h"
 #include "game.h"

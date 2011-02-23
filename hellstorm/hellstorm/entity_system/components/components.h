@@ -89,12 +89,14 @@ namespace hs
 			
 			resource_handle res_handle;
 			vec2d anchor_point;
+			color3f color;
 			double alpha;
-			
+
 			renderable()
 			{
 				anchor_point = vec2d_make(0.5, 0.5);
 				alpha = 1.0;
+				color.r = color.g = color.b = 1.0;
 				res_handle = 0;
 			}
 
@@ -103,7 +105,6 @@ namespace hs
 				if (res_handle)
 					g_renderable_manager.release_resource(&res_handle);
 			}
-			
 			//WARNING: Don't forget to set the entity manager to dirty when you change the z value of an existing component! (Which shouldn't happen too often anyways)
 
 		};

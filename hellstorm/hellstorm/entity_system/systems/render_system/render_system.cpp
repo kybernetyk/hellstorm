@@ -120,6 +120,7 @@ namespace hs
 					
 					qd->scale = pos->scale;
 					qd->rotation = pos->rot;
+					qd->color = ren->color;
 					qd->alpha = ren->alpha;
 					qd->anchor_point = ren->anchor_point;
 					
@@ -133,6 +134,7 @@ namespace hs
 					
 					aq->scale = pos->scale;
 					aq->rotation = pos->rot;
+					aq->color = ren->color;
 					aq->alpha = ren->alpha;
 					aq->anchor_point = ren->anchor_point;
 					
@@ -148,6 +150,7 @@ namespace hs
 					
 					bf->scale = pos->scale;
 					bf->rotation = pos->rot;
+					bf->color = ren->color;
 					bf->alpha = ren->alpha;
 					bf->anchor_point = ren->anchor_point;
 	

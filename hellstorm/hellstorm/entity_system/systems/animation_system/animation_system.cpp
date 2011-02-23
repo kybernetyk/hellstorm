@@ -149,7 +149,7 @@ namespace hs
 			{
 				aq = g_renderable_manager.get_resource<atlas_quad>(&current_sprite->res_handle);
 				
-				size2d framesize = current_animation->frame_size;
+				//size2d framesize = current_animation->frame_size;
 				int sx = aq->tex_size.w / current_animation->frame_size.w;
 				//	int sy = current_sprite->atlas_quad->tex_h / fs.h;
 				

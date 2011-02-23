@@ -12,6 +12,7 @@ namespace game
 	namespace factory
 	{
 		void create_psycho_back(hs::entity_manager *em);
-		void create_borders_and_raster(hs::entity_manager *em);
+		void create_borders(hs::entity_manager *em);
+		void create_raster(hs::entity_manager *em);
 	}
 }

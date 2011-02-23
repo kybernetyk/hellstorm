@@ -28,6 +28,7 @@ namespace hs
 	{
 		position = vec3d_make(0.0, 0.0, 0.0);
 		size = size2d_make(0.0, 0.0);
+		color.r = color.g = color.b = 1.0;
 		
 		alpha = 1.0;
 		rotation = 0.0;

@@ -48,11 +48,9 @@ namespace game
 		
 		}
 		
-		void create_borders_and_raster(hs::entity_manager *em)
+		void create_borders(hs::entity_manager *em)
 		{
 			hs::entity *rast = 0;
-			rast = hs::factory::create_sprite(em, "raster_3.png", hs::vec3d_screen_center(7.0), hs::anchor_center);
-			rast->get<hs::comp::renderable>()->alpha = 1.0;
 			
 			rast = hs::factory::create_sprite(em, "rahmen.png", hs::vec3d_screen_center(9.0), hs::anchor_center);
 			
@@ -68,5 +66,14 @@ namespace game
 			
 			
 		}
+		
+
+		void create_raster(hs::entity_manager *em)
+		{
+			hs::entity *rast = 0;
+			rast = hs::factory::create_sprite(em, "raster_3.png", hs::vec3d_screen_center(7.0), hs::anchor_center);
+
+		}
+
 	}
 }

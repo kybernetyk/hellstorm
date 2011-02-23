@@ -15,7 +15,6 @@ namespace hs
 
 	input_device::input_device()
 	{
-		input_state = inputstate_no_input;
 		last_event = inputevent_none;
 		
 		initial_touch_location = vec2d_zero;
@@ -29,12 +28,7 @@ namespace hs
 		if (reset_event)
 			last_event = inputevent_none;
 	}
-	
-	e_inputstate input_device::get_inputstate(void)
-	{
-		return input_state;
-	}
-	
+
 	vec2d input_device::get_initial_touch_location(void)
 	{
 		return initial_touch_location;	
@@ -69,7 +63,6 @@ namespace hs
 	void input_device::input_touch_down(vec2d location)
 	{
 		last_event = inputevent_touch_down;
-		input_state = inputstate_touch_down;
 		initial_touch_location = g_renderer.conv_screen_to_world(location);
 		current_touch_location = initial_touch_location;
 	}
@@ -83,7 +76,6 @@ namespace hs
 	void input_device::input_touch_up(vec2d location)
 	{
 		last_event = inputevent_touch_up;
-		input_state = inputstate_no_input;
 		current_touch_location = g_renderer.conv_screen_to_world(location);
 	}
 

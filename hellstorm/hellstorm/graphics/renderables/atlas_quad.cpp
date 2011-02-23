@@ -129,24 +129,24 @@ namespace hs
 			vertices[10] = size.h;
 			vertices[11] = 0;
 			
-			colors[0] = 1.0;
-			colors[1] = 1.0;
-			colors[2] = 1.0;
+			colors[0] = color.r;
+			colors[1] = color.g;
+			colors[2] = color.b;
 			colors[3] = alpha;
 
-			colors[4] = 1.0;
-			colors[5] = 1.0;
-			colors[6] = 1.0;
+			colors[4] = color.r;
+			colors[5] = color.g;
+			colors[6] = color.b;
 			colors[7] = alpha;
 
-			colors[8] = 1.0;
-			colors[9] = 1.0;
-			colors[10] = 1.0;
+			colors[8] = color.r;
+			colors[9] = color.g;
+			colors[10] = color.b;
 			colors[11] = alpha;
 
-			colors[12] = 1.0;
-			colors[13] = 1.0;
-			colors[14] = 1.0;
+			colors[12] = color.r;
+			colors[13] = color.g;
+			colors[14] = color.b;
 			colors[15] = alpha;
 
 //			GLfloat colors[] = 

@@ -75,10 +75,10 @@ namespace hs
 			
 			GLfloat colors[] = 
 			{
-				1.0,1.0,1.0,alpha,
-				1.0,1.0,1.0,alpha,
-				1.0,1.0,1.0,alpha,
-				1.0,1.0,1.0,alpha,
+				color.r, color.g, color.b, alpha,
+				color.r, color.g, color.b, alpha,
+				color.r, color.g, color.b, alpha,
+				color.r, color.g, color.b, alpha
 			};
 			glColorPointer(4, GL_FLOAT, 0, colors);
 			

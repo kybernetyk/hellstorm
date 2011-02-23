@@ -11,13 +11,6 @@
 
 namespace hs
 {
-	enum e_inputstate
-	{
-		inputstate_no_input,
-		inputstate_touch_down,
-		inputstate_touch_up	
-	};
-	
 	enum e_inputevent
 	{
 		inputevent_none,
@@ -33,7 +26,6 @@ namespace hs
 		
 		void update(void);
 
-		e_inputstate get_inputstate(void);
 		vec2d get_initial_touch_location(void);
 		vec2d get_current_touch_location(void);
 	
@@ -49,7 +41,6 @@ namespace hs
 		bool has_touched_up(void);
 		
 	protected:
-		e_inputstate input_state;
 		e_inputevent last_event;
 		vec2d initial_touch_location;
 		vec2d current_touch_location;

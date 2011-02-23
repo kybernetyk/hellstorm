@@ -44,20 +44,19 @@ namespace game
 		size_t qry_size = sizeof(qry)/sizeof(hs::uid);
 		
 		cache_size = em->get_entities_possesing_components(qry, qry_size, ent_cache, hs::cfg::entity_system.entity_pool_size);
-
 		
 		hs::entity *current_entity = NULL;
 		comp_psycho_marker *current_marker = 0;
 		hs::comp::renderable *current_renderable = 0;
 		hs::comp::position *current_position = 0;
-		
+	
 		for (hs::uid i = 0; i < cache_size; i++)
 		{
 			current_entity = ent_cache[i];
 			current_marker = em->get_component<comp_psycho_marker>(current_entity);
 			current_renderable = em->get_component<hs::comp::renderable>(current_entity);
 			current_position = em->get_component<hs::comp::position>(current_entity);
-			
+
 			if (current_marker->type == e_psycho_type_sunburst) 
 			{
 				current_position->rot += dt * current_marker->rot_speed;

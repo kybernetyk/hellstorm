@@ -16,13 +16,13 @@ namespace hs
 		double y;
 	};
 	
-	extern vec2d anchor_bottom_left;
-	extern vec2d anchor_bottom_right;
-	extern vec2d anchor_center;
-	extern vec2d anchor_top_left;
-	extern vec2d anchor_top_right;
+	const vec2d anchor_bottom_left = {0.0,0.0};
+	const vec2d anchor_bottom_right = {1.0,0.0};
+	const vec2d anchor_center = {0.5,0.5};
+	const vec2d anchor_top_left = {0.0,1.0};
+	const vec2d anchor_top_right = {1.0,1.0};
 	
-	extern vec2d vec2d_zero;
+	const vec2d vec2d_zero = {0.0,0.0};
 		
 	vec2d vec2d_make(double x, double y);
 	vec2d vec2d_screen_center(void);
@@ -35,10 +35,11 @@ namespace hs
 		double z;
 	};
 	
-	extern vec3d vec3d_zero;
-	
 	vec3d vec3d_make(double x, double y, double z);
 	vec3d vec3d_screen_center(double z = 0.0);
+	
+	const vec3d vec3d_zero = {0.0,0.0,0.0};
+
 	
 	struct size2d
 	{
@@ -58,4 +59,17 @@ namespace hs
 	
 	rect rect_make(double x, double y, double w, double h);
 	bool rect_is_equal_to_rect(rect *r1, rect *r2);
+	
+	struct color3f
+	{
+		double r, g, b;
+	};
+
+	color3f color3f_make(double r, double g, double b);
+	const color3f color3f_white = {1.0, 1.0, 1.0};
+	const color3f color3f_black = {0.0, 0.0, 0.0};
+	const color3f color3f_red = {1.0, 0.0, 0.0};
+	const color3f color3f_green = {0.0, 1.0, 0.0};
+	const color3f color3f_blue = {0.0, 0.0, 1.0};
+	
 }

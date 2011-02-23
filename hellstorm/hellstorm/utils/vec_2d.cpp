@@ -12,14 +12,6 @@
 
 namespace hs
 {
-	vec2d anchor_bottom_left = {0.0,0.0};
-	vec2d anchor_bottom_right = {1.0,0.0};
-	vec2d anchor_center = {0.5,0.5};
-	vec2d anchor_top_left = {0.0,1.0};
-	vec2d anchor_top_right = {1.0,1.0};
-
-	vec2d vec2d_zero = {0.0,0.0};
-	vec3d vec3d_zero = {0.0,0.0,0.0};
 	
 	vec2d vec2d_make(double x, double y)
 	{
@@ -76,4 +68,13 @@ namespace hs
 		
 		return false;
 	}
+	
+	
+	color3f color3f_make(double r, double g, double b)
+	{
+		color3f col = {r, g, b};
+		return  col;
+	}
+	
+
 }

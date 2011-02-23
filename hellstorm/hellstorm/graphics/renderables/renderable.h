@@ -7,11 +7,14 @@
 //
 
 #pragma once
+#include "hs_ogl.h"
 #include "vec_2d.h"
 #include <string>
 
+
 namespace hs 
 {
+	
 	class renderable
 	{
 		public:
@@ -24,6 +27,7 @@ namespace hs
 		vec3d position;
 		size2d size;
 		
+		color3f color;
 		double alpha;
 		double rotation;
 

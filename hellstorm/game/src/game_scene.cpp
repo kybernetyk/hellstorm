@@ -29,7 +29,8 @@ namespace game
 		
 		hs::factory::create_sprite(em, "background.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
-		factory::create_borders_and_raster(em);
+		factory::create_borders(em);
+		factory::create_raster(em);
 		
 	}
 	

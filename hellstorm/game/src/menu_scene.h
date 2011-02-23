@@ -31,6 +31,7 @@ namespace game
 		hs::particle_system *ps;
 		hs::action_system *as;
 		hs::animation_system *ans;
+		hs::ui_system *ui_system;
 		psycho_bg_system *bg_system;
 	};
 };
