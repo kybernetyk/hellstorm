@@ -93,10 +93,24 @@ namespace hs
 		return (r1->position.z < r2->position.z);
 	}
 
+	namespace
+	{
+		struct ren_comparor
+		{
+			bool operator()( const renderable *r1, const renderable *r2 ) const
+			{
+				if (r1->position.z == r2->position.z)
+					return (r1->guid < r2->guid);
+				
+				return (r1->position.z < r2->position.z);
+			}
+			
+		};
+	}
 	
 	void renderer::flush(void)
 	{
-		std::sort (renderables.begin(), renderables.end(), comp_rens);
+		std::sort (renderables.begin(), renderables.end(), ren_comparor());
 		
 		std::vector<renderable *>::const_iterator it = renderables.begin();
 		while (it != renderables.end())
