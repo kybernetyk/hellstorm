@@ -39,13 +39,18 @@ namespace hs
 			
 			rect rc_pressed;
 			rect rc_idle;
+			int tag;
+			
+			int *tag_ptr;
 			
 			button()
 			{
 				type = e_control_button;
 				state = e_state_idle;
 				prev_state = state;
+				tag = 0;
 				
+				tag_ptr = 0;
 				rc_idle = rect_make(0.0, 0.0, 0.0, 0.0);
 				rc_pressed = rect_make(0.0, 0.0, 0.0, 0.0);
 			}
@@ -61,6 +66,10 @@ namespace hs
 		void update(double dt);
 		
 	protected:
+		void handle_button(void);
+		
+		entity *current_entity;
+		ui::control *current_control;
 		entity_manager *em;
 		
 		entity **ent_cache;

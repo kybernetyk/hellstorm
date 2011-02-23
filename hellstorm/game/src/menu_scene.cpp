@@ -30,6 +30,26 @@ namespace game
 	double r,g,b;
 	double d;
 	
+	
+	hs::entity *menu_scene::create_menu_button(std::string caption, hs::vec3d pos, int tag)
+	{
+		hs::entity *but = 0;
+		
+		
+		but = hs::ui::factory::create_button(em, 
+									   "button.png",
+									   caption,
+									   hs::rect_make(0.0, 0.0, 260, 85),
+									   hs::rect_make(0.0, 100, 260, 85),
+									   pos);
+
+		
+		but->get<hs::ui::button>()->tag_ptr = &button_tag;
+		but->get<hs::ui::button>()->tag = tag;
+		
+		return but;
+	}
+	
 	void menu_scene::init(void)
 	{
 		hs::audio_system::preload_sound("click.mp3");
@@ -71,15 +91,10 @@ namespace game
 //		e->get<hs::comp::renderable>()->alpha = 0.5;
 //		e->get<hs::comp::position>()->scale = hs::vec2d_make(1.9, 1.9);
 		
-		hs::ui::factory::create_button(em, 
-									   "button.png",
-									   "test",
-									   hs::rect_make(0.0, 0.0, 260, 85),
-									   hs::rect_make(0.0, 100, 260, 85),
-									   hs::vec3d_screen_center(0.0));
-		
 		
 		//text = hs::factory::create_text_label(em, "impact20.fnt", "Tap Screen To Play!", hs::vec3d_screen_center(0.0));
+		
+		create_menu_button("play", hs::vec3d_screen_center(0.0), e_button_start);
 	}
 	
 	void menu_scene::shutdown(void)
@@ -108,65 +123,26 @@ namespace game
 		r = sin(d);
 		g = cos(d);
 		b = atan(d);
-		
-//		alpha_shade->get<hs::comp::renderable>()->alpha = 1.0;
-
-//		r = sin(d);
-//		g = cos(d);
-//		b = atan(d);
-
-		
-
-//		if (r < 0.2)
-//			r = 0.2;
-//		if (g < 0.2)
-//			g = 0.2;
-//		if (b < 0.2)
-//			b = 0.2;
-		
 		logo_blink->get<hs::comp::renderable>()->color = hs::color3f_make(r, g, b);
 		
-//		switch (rand()%3) 
-//		{
-//			case 0:
-//				logo->get<hs::comp::renderable>()->color = hs::color3f_red;
-//				break;
-//			case 1:
-//				logo->get<hs::comp::renderable>()->color = hs::color3f_green;
-//				break;
-//			case 2:
-//				logo->get<hs::comp::renderable>()->color = hs::color3f_blue;
-//				break;
-//			default:
-//				logo->get<hs::comp::renderable>()->color = hs::color3f_white;
-//				break;
-//		}
+		ui_system->update(dt);
+		if (button_tag != e_button_none)
+		{
+			switch (button_tag) 
+			{
+				case e_button_start:
+					hs::g_game->push_scene(new game_scene());
+					break;
+			}
+			button_tag = e_button_none;			
+		}
+		
+		
 		
 		ans->update(dt);
 		as->update(dt);
 		bg_system->update(dt);
-		ui_system->update(dt);
 		ps->update(dt);
-		
-//		if (hs::g_input.has_touched_down())
-//		{
-//			printf("has touched down!\n");	
-//		}
-//		if (hs::g_input.has_moved())
-//		{
-//			printf("has moved!\n");
-//		}
-//		if (hs::g_input.has_touched_up())
-//		{
-//			printf("has touched up!\n");
-//			hs::g_game->push_scene(new game_scene());
-//		}
-		
-		/*
-		if (hs::g_input.get_last_event() != hs::inputevent_none)
-		{
-			printf("last input event: %i\n", hs::g_input.get_last_event());
-		}*/
 	}
 	
 	void menu_scene::render()

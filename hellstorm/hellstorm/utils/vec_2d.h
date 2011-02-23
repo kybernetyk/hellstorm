@@ -59,6 +59,10 @@ namespace hs
 	
 	rect rect_make(double x, double y, double w, double h);
 	bool rect_is_equal_to_rect(rect *r1, rect *r2);
+	bool point_in_rect(vec2d point, rect r1);
+
+	class entity;
+	bool point_in_entity(vec2d point, entity *e);
 	
 	struct color3f
 	{
