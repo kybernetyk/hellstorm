@@ -35,7 +35,7 @@ namespace game
 	{
 		hs::entity *but = 0;
 		
-		but = hs::ui::creat_button_from_file(em, "menu_button.cfg", hs::vec3d_screen_center(), "play!");
+		but = hs::ui::create_button_from_file(em, "menu_button.cfg", hs::vec3d_screen_center(), "play!");
 		but->get<hs::ui::button>()->tag_ptr = &button_tag;
 		but->get<hs::ui::button>()->tag = tag;
 		
@@ -45,8 +45,8 @@ namespace game
 	void menu_scene::init(void)
 	{
 		hs::audio_system::preload_sound("click.mp3");
-		hs::audio_system::preload_music("music.mp3");
-		hs::audio_system::play_music("music.mp3");
+//		hs::audio_system::preload_music("music.mp3");
+//		hs::audio_system::play_music("music.mp3");
 		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);
@@ -123,6 +123,7 @@ namespace game
 			switch (button_tag) 
 			{
 				case e_button_start:
+					hs::audio_system::play_sound("click.mp3");
 					hs::g_game->push_scene(new game_scene());
 					break;
 			}

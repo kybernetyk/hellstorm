@@ -37,7 +37,7 @@ namespace hs
 			return ret;
 		}
 		
-		entity *creat_button_from_file(entity_manager *em, std::string filename, vec3d position, std::string caption, vec2d anchor)
+		entity *create_button_from_file(entity_manager *em, std::string filename, vec3d position, std::string caption, vec2d anchor)
 		{
 			try
 			{
