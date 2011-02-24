@@ -93,8 +93,6 @@ namespace hs
 		return (r1->position.z < r2->position.z);
 	}
 
-	namespace
-	{
 		struct ren_comparor
 		{
 			bool operator()( const renderable *r1, const renderable *r2 ) const
@@ -106,7 +104,6 @@ namespace hs
 			}
 			
 		};
-	}
 	
 	void renderer::flush(void)
 	{
