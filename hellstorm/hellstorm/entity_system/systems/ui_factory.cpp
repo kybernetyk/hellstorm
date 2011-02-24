@@ -65,11 +65,18 @@ namespace hs
 				std::string font;
 				font = cfg.read<std::string>("font");
 				
+				//optional
+				hs::vec2d pressin = hs::vec2d_zero;
+				cfg.readInto(pressin.x, "pressin.x");
+				cfg.readInto(pressin.y, "pressin.y");
+				
+
 				entity *ret = em->new_entity();
 				button *btn = em->add_component<button>(ret);
 				btn->type = e_control_button;
 				btn->rc_idle = rc_idle;
 				btn->rc_pressed = rc_pressed;
+				btn->pressin = pressin;
 
 				
 				btn->graphic = hs::factory::create_atlas_sprite(em, button_texture, position, rc_idle, anchor);

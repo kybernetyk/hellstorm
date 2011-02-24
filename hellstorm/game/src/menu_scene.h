@@ -14,7 +14,10 @@ namespace game
 	enum e_menu_button_tag
 	{
 		e_button_none = 0,
-		e_button_start = 1
+		e_button_start,
+		e_button_settings,
+		e_button_scores,
+		e_button_more
 	};
 
 	class menu_scene : public hs::scene
@@ -30,8 +33,7 @@ namespace game
 		
 		~menu_scene();
 
-		hs::entity *create_menu_button(std::string caption, hs::vec3d pos, int tag);
-		
+		hs::entity *create_menu_button(std::string filename, hs::vec3d pos, int tag);
 	protected:
 		hs::entity_manager *em;
 		hs::corpse_retrieval_system *cs;

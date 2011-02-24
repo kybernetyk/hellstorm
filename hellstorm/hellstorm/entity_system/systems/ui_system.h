@@ -37,6 +37,8 @@ namespace hs
 			entity *text;
 			entity *graphic;
 			
+			vec2d pressin;
+			
 			rect rc_pressed;
 			rect rc_idle;
 			int tag;
@@ -53,6 +55,7 @@ namespace hs
 				tag_ptr = 0;
 				rc_idle = rect_make(0.0, 0.0, 0.0, 0.0);
 				rc_pressed = rect_make(0.0, 0.0, 0.0, 0.0);
+				pressin = vec2d_zero;
 			}
 		};
 	}

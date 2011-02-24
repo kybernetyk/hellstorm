@@ -31,11 +31,11 @@ namespace game
 	double d;
 	
 	
-	hs::entity *menu_scene::create_menu_button(std::string caption, hs::vec3d pos, int tag)
+	hs::entity *menu_scene::create_menu_button(std::string filename, hs::vec3d pos, int tag)
 	{
 		hs::entity *but = 0;
 		
-		but = hs::ui::create_button_from_file(em, "menu_button.cfg", hs::vec3d_screen_center(), "play!");
+		but = hs::ui::create_button_from_file(em, filename, pos);
 		but->get<hs::ui::button>()->tag_ptr = &button_tag;
 		but->get<hs::ui::button>()->tag = tag;
 		
@@ -86,7 +86,19 @@ namespace game
 		
 		//text = hs::factory::create_text_label(em, "impact20.fnt", "Tap Screen To Play!", hs::vec3d_screen_center(0.0));
 		
-		create_menu_button("play", hs::vec3d_screen_center(0.0), e_button_start);
+		create_menu_button("play_button.cfg", 
+						   hs::vec3d_make(178, 275, 0.0),
+						   e_button_start);
+		
+		create_menu_button("settings_button.cfg", 
+						   hs::vec3d_make(110, 197, 0.0), 
+						   e_button_settings);
+		create_menu_button("scores_button.cfg", 
+						   hs::vec3d_make(200, 128, 0.0),
+						   e_button_scores);
+		create_menu_button("more_button.cfg", 
+						   hs::vec3d_make(145, 60, 0.0), 
+						   e_button_more);
 	}
 	
 	void menu_scene::shutdown(void)
@@ -123,11 +135,11 @@ namespace game
 			switch (button_tag) 
 			{
 				case e_button_start:
-					hs::audio_system::play_sound("click.mp3");
 					hs::g_game->push_scene(new game_scene());
 					break;
 			}
-			button_tag = e_button_none;			
+			hs::audio_system::play_sound("click.mp3");
+			button_tag = e_button_none;	
 		}
 		
 		

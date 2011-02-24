@@ -56,13 +56,21 @@ namespace hs
 		
 		if (btn->state != btn->prev_state)
 		{
+			comp::position *pos = btn->graphic->get<comp::position>();
+
 			if (btn->state == ui::e_state_pressed)
 			{
-				graphic->src_rect = btn->rc_pressed;	
+				graphic->src_rect = btn->rc_pressed;
+				pos->origin.x += btn->pressin.x;
+				pos->origin.y += btn->pressin.y;
+				
+				printf("pressin: %f,%f\n", btn->pressin.x, btn->pressin.y);
 			}
 			else if (btn->state == ui::e_state_idle)
 			{
 				graphic->src_rect = btn->rc_idle;
+				pos->origin.x -= btn->pressin.x;
+				pos->origin.y -= btn->pressin.y;
 			}
 			
 			btn->prev_state = btn->state;
