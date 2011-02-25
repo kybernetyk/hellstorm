@@ -36,6 +36,9 @@ namespace hs
 		void tick(void);
 		void render(void);
 	
+		void did_become_inactive(void);
+		void did_become_active(void);
+		
 		void long_delta_occured(void);
 	
 		game();

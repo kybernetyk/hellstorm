@@ -66,17 +66,27 @@ namespace hs
 				config.readInto(entity_system.entity_pool_size, "entity_system.entity_pool_size");
 				config.readInto(entity_system.components_per_entity, "entity_system.components_per_entity");
 				
-				
-
+				//override with user settings
+				read_user_settings();
 			}
 			catch (ConfigFile::file_not_found) 
 			{
 				return false;
 			}
-			
-			
-			
 			return true;
 		}
+		
+		void read_user_settings(void)
+		{
+			settings::get_value_for_key(audio.music_volume, "music_volume");
+			settings::get_value_for_key(audio.sfx_volume, "sound_volume");
+		}
+		
+		void save_user_settings(void)
+		{
+			settings::set_value_for_key(audio.music_volume, "music_volume");
+			settings::set_value_for_key(audio.sfx_volume, "sound_volume");
+		}
+
 	}
 }

@@ -39,5 +39,7 @@ namespace hs
 				
 		
 		extern bool read_config_from_file(std::string filename);
+		extern void read_user_settings(void);
+		extern void save_user_settings(void);
 	}
 }

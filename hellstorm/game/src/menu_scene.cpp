@@ -44,8 +44,6 @@ namespace game
 	
 	void menu_scene::init(void)
 	{
-		hs::audio_system::preload_sound("click.mp3");
-//		hs::audio_system::preload_music("music.mp3");
 //		hs::audio_system::play_music("music.mp3");
 		
 		em = new hs::entity_manager();
@@ -60,7 +58,7 @@ namespace game
 		hs::factory::create_sprite(em, "background_noraster.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
 		factory::create_borders(em);
-	//	factory::create_raster(em);
+		factory::create_raster(em);
 		
 		logo = hs::factory::create_sprite(em, "logo.png", 
 										  hs::vec3d_make(160, 400, 6.0), 
@@ -74,22 +72,10 @@ namespace game
 										  hs::vec3d_make(160, 400, 6.2), 
 										  hs::anchor_center);
 		alpha_shade->get<hs::comp::renderable>()->alpha = 0.5;
-//		
-		//		logo->get<hs::comp::position>()->scale = hs::vec2d_make(1.9, 1.9);
-//		
-//		hs::entity *e = hs::factory::create_sprite(em, "logo.png", 
-//								   hs::vec3d_make(160, 400, 6.1), 
-//								   hs::anchor_center);
-//		e->get<hs::comp::renderable>()->alpha = 0.5;
-//		e->get<hs::comp::position>()->scale = hs::vec2d_make(1.9, 1.9);
-		
-		
-		//text = hs::factory::create_text_label(em, "impact20.fnt", "Tap Screen To Play!", hs::vec3d_screen_center(0.0));
 		
 		create_menu_button("play_button.cfg", 
 						   hs::vec3d_make(178, 275, 0.0),
 						   e_button_start);
-		
 		create_menu_button("settings_button.cfg", 
 						   hs::vec3d_make(110, 197, 0.0), 
 						   e_button_settings);

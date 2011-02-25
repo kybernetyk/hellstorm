@@ -11,6 +11,7 @@
 #include "hs_types.h"
 #include "file_util.h"
 #include "timer.h"
+#include "user_settings.h"
 #include "hellstorm_config.h"
 #include "notification_system.h"
 

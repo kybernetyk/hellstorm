@@ -12,7 +12,7 @@
 #import "EAGLView.h"
 
 #include "hs_wrapper.h"
-#include "menu_scene.h"
+#include "startup_scene.h"
 
 // Uniform index.
 enum {
@@ -64,7 +64,7 @@ enum {
     if ([context API] == kEAGLRenderingAPIOpenGLES2)
         [self loadShaders];
 
-	hs_game_init(new game::menu_scene());
+	hs_game_init(new game::startup_scene());
 	
     animating = FALSE;
     animationFrameInterval = 60/hs::cfg::screen.desired_fps;

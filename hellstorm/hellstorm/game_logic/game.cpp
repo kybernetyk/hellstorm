@@ -26,13 +26,31 @@ namespace hs
 	{
 		current_scene = 0;
 	}
-	
+
+	void game::shutdown()
+    {
+		cfg::save_user_settings();
+		delete fnt;
+    	g_renderer.shutdown();
+    }
+
 	void game::long_delta_occured(void)
 	{
 		tmr.update();
 		tmr.update();
 		next_game_tick = get_tick_count();
 	}
+	
+	void game::did_become_inactive(void)
+	{
+		cfg::save_user_settings();
+	}
+
+	void game::did_become_active(void)
+	{
+		long_delta_occured();
+	}
+
 	
 	void game::set_next_scene(hs::scene *scene)
 	{
@@ -108,13 +126,7 @@ namespace hs
         tmr.delta = 0.0;
 		return true;
     }
-    
-    void game::shutdown()
-    {
-		delete fnt;
-    	g_renderer.shutdown();
-    }
-	
+
 	void game::tick(void)
 	{
 		if (scene_queue_state != e_sqs_none)

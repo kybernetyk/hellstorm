@@ -15,13 +15,13 @@ static hs::game *the_game;
 void hs_game_init(hs::scene *scene)
 {
     the_game = new hs::game();
-	//the_game->init_wih_scene(scene);
-	
 	the_game->init_with_scene(scene);
 }
 
 void hs_game_shutdown(void)
 {
+	printf("game shutting down ...\n");
+	the_game->shutdown();
     delete the_game;
 }
 
@@ -37,15 +37,13 @@ void hs_game_render(void)
 
 void hs_game_did_become_active(void)
 {
-	the_game->long_delta_occured();
+	the_game->did_become_active();
 }
 
 void hs_game_did_enter_background(void)
 {
-	
+	the_game->did_become_inactive();
 }
-
-
 
 void hs_input_touch_down(double x, double y)
 {
