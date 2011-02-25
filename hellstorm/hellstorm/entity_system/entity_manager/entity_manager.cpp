@@ -46,7 +46,6 @@ namespace hs
 		if (!comp::components_registered)
 			comp::register_components();
 		
-		is_dirty = true;
 		current_guid = 1;
 		
 		entities = new entity*[cfg::entity_system.entity_pool_size];
@@ -101,7 +100,6 @@ namespace hs
 	
 	void entity_manager::register_entity(entity *e)
 	{
-		is_dirty = true;
 		e->ent_mgr = this;
 		e->manager_id = get_next_available_manager_id();
 		e->guid = get_next_available_guid();
@@ -124,7 +122,6 @@ namespace hs
 #pragma mark remove
 	void entity_manager::remove_entity(uid entity_manager_id)
 	{
-		is_dirty = true;
 		entity *e = entities[entity_manager_id];
 		remove_all_components(e);
 		entities[entity_manager_id] = NULL;
@@ -133,7 +130,6 @@ namespace hs
 	
 	void entity_manager::remove_all_entities(void)
 	{
-		is_dirty = true;
 		entity *e = NULL;
 		
 		for (uid i = 0; i < cfg::entity_system.entity_pool_size; i++)
@@ -146,8 +142,6 @@ namespace hs
 	
 	void entity_manager::remove_all_components(entity *e)
 	{
-		is_dirty = true;
-		
 		component *c = NULL;
 		for (uid i = 0; i < cfg::entity_system.components_per_entity; i++)
 		{

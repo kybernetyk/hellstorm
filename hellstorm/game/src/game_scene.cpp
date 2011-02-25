@@ -100,8 +100,6 @@ namespace game
 	void game_scene::render()
 	{
 		rs->render();
-		
-		em->is_dirty = false;
 	}
 	
 	int game_scene::scene_type()

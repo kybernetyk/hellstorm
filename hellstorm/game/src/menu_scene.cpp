@@ -139,8 +139,6 @@ namespace game
 	void menu_scene::render()
 	{
 		rs->render();
-		
-		em->is_dirty = false;
 	}
 	
 	int menu_scene::scene_type()

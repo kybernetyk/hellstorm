@@ -70,7 +70,6 @@ namespace hs
 		T *add_component(entity *e)
 		{
 			T *comp = new T();
-			is_dirty = true;
 			if (T::family_id >= cfg::entity_system.components_per_entity ||
 				T::family_id == 0)
 			{	
@@ -88,7 +87,6 @@ namespace hs
 		template <typename COMP_TYPE>
 		COMP_TYPE *add_component(entity *e, COMP_TYPE *c)
 		{
-			is_dirty = true;
 			
 			if (COMP_TYPE::family_id >= cfg::entity_system.components_per_entity || 
 				COMP_TYPE::family_id == 0)
@@ -112,7 +110,6 @@ namespace hs
 		template <typename COMP_TYPE>
 		COMP_TYPE *add_component(entity *e, COMP_TYPE *c, uid fam_id)
 		{
-			is_dirty = true;
 			
 			if (fam_id >= cfg::entity_system.components_per_entity || 
 				fam_id == 0)
@@ -148,7 +145,6 @@ namespace hs
 			component *c = components[e->manager_id][T::family_id];
 			delete c;
 			components[e->manager_id][T::family_id] = NULL;
-			is_dirty = true;
 		}
 
 		template<typename COMP_TYPE>
@@ -156,7 +152,6 @@ namespace hs
 		{
 			components[e->manager_id][COMP_TYPE::family_id] = NULL;
 			delete c;
-			is_dirty = true;
 		}
 
 		template<typename COMP_TYPE>
@@ -164,7 +159,6 @@ namespace hs
 		{
 			components[e->manager_id][family_id] = NULL;
 			delete c;
-			is_dirty = true;
 		}
 
 		
@@ -173,7 +167,6 @@ namespace hs
 			component *c = components[e->manager_id][family_id];
 			components[e->manager_id][family_id] = NULL;
 			delete c;
-			is_dirty = true;
 		}
 		
 		void remove_all_components(entity *e);
@@ -183,9 +176,6 @@ namespace hs
 		void dump_entities(void);
 		void dump_component(entity *e, component *c);
 		void dump_components(entity *e);
-
-
-		bool is_dirty;
 
 		protected:
 		uid get_next_available_manager_id(void);

@@ -120,7 +120,6 @@ namespace hs
 	
 	void renderer::end_render(void)
 	{
-		
 		glLoadIdentity();
 	}
 	
