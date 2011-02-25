@@ -36,6 +36,7 @@ namespace game
 		static hs::uid family_id;
 		e_gbo_state state;
 		e_gbo_type type;
+		e_gbo_color color;
 		int col, row;
 		double timer;
 		double fall_time;
@@ -47,6 +48,7 @@ namespace game
 
 			timer = fall_time = 1.0;
 			type = e_gbo_type_pill;
+			color = e_gbo_red;
 		}
 	};
 		

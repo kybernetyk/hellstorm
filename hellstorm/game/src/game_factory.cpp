@@ -80,7 +80,7 @@ namespace game
 	
 	namespace factory
 	{
-		hs::entity *create_player_pill (hs::entity_manager *em, int col, int row, int type)
+		hs::entity *create_player_pill(hs::entity_manager *em, int col, int row, e_doublepill_type type)
 		{
 			hs::vec2d pill_anchor = hs::vec2d_make(0.25, 0.5);
 			int x_off = type % 8;
@@ -104,7 +104,55 @@ namespace game
 			return ret;
 		}
 		
-		hs::entity *create_virus (hs::entity_manager *em, int col, int row, e_gbo_color type)
+		e_gbo_color cols[] = 
+		{
+			e_gbo_red, e_gbo_red,
+			e_gbo_green, e_gbo_red,
+			e_gbo_yellow, e_gbo_red,
+			e_gbo_blue, e_gbo_red,
+			
+			e_gbo_red, e_gbo_green,
+			e_gbo_green, e_gbo_green,
+			e_gbo_yellow, e_gbo_green,
+			e_gbo_blue, e_gbo_green,
+			
+			e_gbo_red, e_gbo_yellow,
+			e_gbo_green, e_gbo_yellow,
+			e_gbo_yellow, e_gbo_yellow,
+			e_gbo_blue, e_gbo_yellow,
+			
+			e_gbo_red, e_gbo_blue,
+			e_gbo_green, e_gbo_blue,
+			e_gbo_yellow, e_gbo_blue,
+			e_gbo_blue, e_gbo_blue
+		};
+		
+		hs::entity *create_pill(hs::entity_manager *em, int col, int row, e_doublepill_type type, e_left_right subtype)
+		{
+			hs::vec2d pill_anchor = hs::vec2d_make(0.5, 0.5);
+			int x_off = type % 8;
+			int y_off = 1 + (type / 8);
+			printf("row = %i -> %i\n", row, y_off);
+			
+			hs::entity *ret = hs::factory::create_atlas_sprite(em, 
+															   "game_sheet.png", 
+															   pixel_for_colrow(col, row),
+															   hs::rect_make(x_off * 64.0+subtype*32, y_off * 64.0, 32.0, 32.0),
+															   pill_anchor);
+			hs::comp::renderable *r = ret->get<hs::comp::renderable>();
+			r->alpha = 0.9;
+			
+			game_board_element *gbo = ret->add<game_board_element>();
+			gbo->col = col;
+			gbo->row = row;
+			gbo->type = e_gbo_type_pill;
+			gbo->state = e_gbo_state_idle;
+			gbo->color = cols[type*2+subtype];
+
+			return ret;
+		}
+		
+		hs::entity *create_virus(hs::entity_manager *em, int col, int row, e_gbo_color type)
 		{
 			double xsrc = 4 * 32 + type * 64;
 			double ysrc = 8 * 32;
@@ -112,13 +160,14 @@ namespace game
 			hs::entity *ret = hs::factory::create_atlas_sprite(em, 
 															   "game_sheet.png", 
 															   pixel_for_colrow(col, row),
-															   hs::rect_make(xsrc, ysrc, 34.0, 32.0));
+															   hs::rect_make(xsrc, ysrc, 26.0, 26.0));
 
 			game_board_element *gbo = ret->add<game_board_element>();
 			gbo->col = col;
 			gbo->row = row;
 			gbo->type = e_gbo_type_virus;
 			gbo->state = e_gbo_state_idle;
+			gbo->color = type;
 
 			return ret;
 		}

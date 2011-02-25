@@ -36,8 +36,11 @@ namespace game
 		factory::create_virus(em, 3, 5, e_gbo_yellow);
 		factory::create_virus(em, 2, 2, e_gbo_blue);
 		
-		factory::create_player_pill(em, 3, defs::board_num_of_rows, 0);
+		factory::create_player_pill(em, 3, defs::board_num_of_rows, factory::e_dp_blue_green);
 
+
+		factory::create_pill(em, 4, 5, factory::e_dp_red_blue, factory::left);
+		factory::create_pill(em, 5, 5, factory::e_dp_red_blue, factory::right);
 	}
 	
 	void game_scene::shutdown(void)
