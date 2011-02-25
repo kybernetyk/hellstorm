@@ -39,6 +39,13 @@ namespace hs
 		vec3d vc = {x,y,z};
 		return vc;
 	}
+
+	vec3d vec3d_make(vec2d v, double z)
+	{
+		vec3d vc = {v.x,v.y,z};
+		return vc;
+	}
+
 	
 	vec3d vec3d_screen_center(double z)
 	{

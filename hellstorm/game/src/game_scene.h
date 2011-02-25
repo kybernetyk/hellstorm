@@ -12,6 +12,13 @@
 
 namespace game 
 {
+	namespace defs
+	{
+		const double board_x_offset = 64.0;
+		const double board_y_offset = 32.0;
+		const double board_z = 0.0;
+	}
+	
 	class game_scene : public hs::scene
 	{
 	public:
@@ -26,6 +33,10 @@ namespace game
 		~game_scene();
 
 	protected:
+		hs::entity *create_pill (int col, int row, int type);
+		hs::entity *create_virus (int col, int row, int type);
+		
+		
 		hs::entity_manager *em;
 		hs::corpse_retrieval_system *cs;
 		hs::render_system *rs;

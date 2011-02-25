@@ -44,7 +44,7 @@ namespace game
 	
 	void menu_scene::init(void)
 	{
-//		hs::audio_system::play_music("music.mp3");
+		hs::audio_system::play_music("music.mp3");
 		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);

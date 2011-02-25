@@ -64,8 +64,6 @@ namespace hs
 				pos->origin.x += btn->pressin.x;
 				pos->origin.y += btn->pressin.y;
 				pos->rot += btn->pressin_rot;
-				
-				printf("pressin: %f,%f\n", btn->pressin.x, btn->pressin.y);
 			}
 			else if (btn->state == ui::e_state_idle)
 			{

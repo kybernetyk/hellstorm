@@ -36,6 +36,7 @@ namespace hs
 	};
 	
 	vec3d vec3d_make(double x, double y, double z);
+	vec3d vec3d_make(vec2d v, double z);
 	vec3d vec3d_screen_center(double z = 0.0);
 	
 	const vec3d vec3d_zero = {0.0,0.0,0.0};
