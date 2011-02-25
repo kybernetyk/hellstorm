@@ -63,6 +63,7 @@ namespace hs
 				graphic->src_rect = btn->rc_pressed;
 				pos->origin.x += btn->pressin.x;
 				pos->origin.y += btn->pressin.y;
+				pos->rot += btn->pressin_rot;
 				
 				printf("pressin: %f,%f\n", btn->pressin.x, btn->pressin.y);
 			}
@@ -71,6 +72,7 @@ namespace hs
 				graphic->src_rect = btn->rc_idle;
 				pos->origin.x -= btn->pressin.x;
 				pos->origin.y -= btn->pressin.y;
+				pos->rot -= btn->pressin_rot;
 			}
 			
 			btn->prev_state = btn->state;

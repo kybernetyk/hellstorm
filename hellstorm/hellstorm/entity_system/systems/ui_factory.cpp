@@ -70,6 +70,9 @@ namespace hs
 				cfg.readInto(pressin.x, "pressin.x");
 				cfg.readInto(pressin.y, "pressin.y");
 				
+				//optional
+				double pressin_rot = 0.0;
+				cfg.readInto(pressin_rot, "pressin.rot");
 
 				entity *ret = em->new_entity();
 				button *btn = em->add_component<button>(ret);
@@ -77,6 +80,7 @@ namespace hs
 				btn->rc_idle = rc_idle;
 				btn->rc_pressed = rc_pressed;
 				btn->pressin = pressin;
+				btn->pressin_rot = pressin_rot;
 
 				
 				btn->graphic = hs::factory::create_atlas_sprite(em, button_texture, position, rc_idle, anchor);

@@ -38,6 +38,7 @@ namespace hs
 			entity *graphic;
 			
 			vec2d pressin;
+			double pressin_rot;
 			
 			rect rc_pressed;
 			rect rc_idle;
@@ -56,6 +57,7 @@ namespace hs
 				rc_idle = rect_make(0.0, 0.0, 0.0, 0.0);
 				rc_pressed = rect_make(0.0, 0.0, 0.0, 0.0);
 				pressin = vec2d_zero;
+				pressin_rot = 0.0;
 			}
 		};
 	}
