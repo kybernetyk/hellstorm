@@ -33,7 +33,6 @@ namespace game
 			rot_speed = 40.0;
 			velocity = hs::vec2d_zero;
 		}
-		
 	};
 	
 	class psycho_bg_system
