@@ -54,6 +54,7 @@
 		037D69971316F97300C56050 /* more_button.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 037D69961316F97300C56050 /* more_button.cfg */; };
 		037D69991316FE9100C56050 /* menu_buttons_debug.png in Resources */ = {isa = PBXBuildFile; fileRef = 037D69981316FE9100C56050 /* menu_buttons_debug.png */; };
 		038BB4FC13156A650079B1AC /* menu_button.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 038BB4FB13156A650079B1AC /* menu_button.cfg */; };
+		038F825A1317BF720029D993 /* notification_system.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038F82581317BF720029D993 /* notification_system.mm */; };
 		03ADE4641315018A00A539BC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4631315018A00A539BC /* logo.png */; };
 		03ADE4691315091100A539BC /* logo_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4681315091100A539BC /* logo_blink.png */; };
 		03ADE46D1315374700A539BC /* ui_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ADE46B1315374700A539BC /* ui_system.cpp */; };
@@ -162,6 +163,8 @@
 		037D69961316F97300C56050 /* more_button.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = more_button.cfg; sourceTree = "<group>"; };
 		037D69981316FE9100C56050 /* menu_buttons_debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_buttons_debug.png; sourceTree = "<group>"; };
 		038BB4FB13156A650079B1AC /* menu_button.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = menu_button.cfg; sourceTree = "<group>"; };
+		038F82581317BF720029D993 /* notification_system.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = notification_system.mm; sourceTree = "<group>"; };
+		038F82591317BF720029D993 /* notification_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notification_system.h; sourceTree = "<group>"; };
 		03ADE4631315018A00A539BC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		03ADE4681315091100A539BC /* logo_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_blink.png; sourceTree = "<group>"; };
 		03ADE46B1315374700A539BC /* ui_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_system.cpp; sourceTree = "<group>"; };
@@ -731,6 +734,8 @@
 				03BAA44D1313E7E100AAA735 /* timer.h */,
 				03BAA44E1313E7E100AAA735 /* vec_2d.cpp */,
 				03BAA44F1313E7E100AAA735 /* vec_2d.h */,
+				038F82581317BF720029D993 /* notification_system.mm */,
+				038F82591317BF720029D993 /* notification_system.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -878,6 +883,7 @@
 				0372A7B31314489C00D1A840 /* game_scene.cpp in Sources */,
 				03ADE46D1315374700A539BC /* ui_system.cpp in Sources */,
 				03ADE47013153B3600A539BC /* ui_factory.cpp in Sources */,
+				038F825A1317BF720029D993 /* notification_system.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
