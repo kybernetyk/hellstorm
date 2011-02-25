@@ -21,6 +21,8 @@
 		0331C09F1313FDE5006937CA /* raster_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0331C09D1313FDE5006937CA /* raster_2.png */; };
 		0337A8521317DA7700A62987 /* startup.png in Resources */ = {isa = PBXBuildFile; fileRef = 0337A8511317DA7700A62987 /* startup.png */; };
 		0337A8551317DAF800A62987 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0337A8541317DAF800A62987 /* Default.png */; };
+		033C7130131818FD0064560E /* game_board_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033C712E131818FD0064560E /* game_board_system.cpp */; };
+		033C713313181D2A0064560E /* game_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033C713113181D2A0064560E /* game_utils.cpp */; };
 		03440B6F130E76D20097D9DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B6E130E76D20097D9DA /* UIKit.framework */; };
 		03440B71130E76D20097D9DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B70130E76D20097D9DA /* Foundation.framework */; };
 		03440B73130E76D20097D9DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B72130E76D20097D9DA /* CoreGraphics.framework */; };
@@ -123,6 +125,10 @@
 		0331C09D1313FDE5006937CA /* raster_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = raster_2.png; sourceTree = "<group>"; };
 		0337A8511317DA7700A62987 /* startup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startup.png; sourceTree = "<group>"; };
 		0337A8541317DAF800A62987 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		033C712E131818FD0064560E /* game_board_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_board_system.cpp; sourceTree = "<group>"; };
+		033C712F131818FD0064560E /* game_board_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_board_system.h; sourceTree = "<group>"; };
+		033C713113181D2A0064560E /* game_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_utils.cpp; sourceTree = "<group>"; };
+		033C713213181D2A0064560E /* game_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_utils.h; sourceTree = "<group>"; };
 		03440B6A130E76D20097D9DA /* hellstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hellstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03440B6E130E76D20097D9DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03440B70130E76D20097D9DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -298,6 +304,8 @@
 			children = (
 				0331C0891313F0A7006937CA /* psycho_bg_system.cpp */,
 				0331C08A1313F0A7006937CA /* psycho_bg_system.h */,
+				033C712E131818FD0064560E /* game_board_system.cpp */,
+				033C712F131818FD0064560E /* game_board_system.h */,
 			);
 			name = systems;
 			sourceTree = "<group>";
@@ -367,6 +375,8 @@
 			children = (
 				0372A7AD131446E400D1A840 /* game_factory.cpp */,
 				0372A7AE131446E400D1A840 /* game_factory.h */,
+				033C713113181D2A0064560E /* game_utils.cpp */,
+				033C713213181D2A0064560E /* game_utils.h */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -896,6 +906,8 @@
 				038F825A1317BF720029D993 /* notification_system.mm in Sources */,
 				038F825E1317C3CD0029D993 /* user_settings.mm in Sources */,
 				038F82611317D4B00029D993 /* startup_scene.cpp in Sources */,
+				033C7130131818FD0064560E /* game_board_system.cpp in Sources */,
+				033C713313181D2A0064560E /* game_utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
