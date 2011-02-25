@@ -42,9 +42,57 @@ namespace game
 			current_pos = current_entity->get<hs::comp::position>();
 			player = current_entity->get<comp_player>();
 			
+			if (hs::g_input.has_touched_down())
+			{
+				if (hs::g_input.get_current_touch_location().x < 160)
+				{
+					move_left();
+				}
+				else
+				{
+					move_right();
+				}
+			}
 			handle_state_falling();
 		}
 	}
+	
+	void player_system::move_left(void)
+	{
+		int c_test_col = player->center_col - 1;
+		int a_test_col = player->aux_col - 1;
+		
+		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
+			return;
+		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
+			return;
+		
+		if (global::board_map[c_test_col][player->center_row] ||
+			global::board_map[a_test_col][player->aux_row])
+			return;
+		
+		player->center_col = c_test_col;
+		player->aux_col = a_test_col;
+	}
+	
+	void player_system::move_right(void)
+	{
+		int c_test_col = player->center_col + 1;
+		int a_test_col = player->aux_col + 1;
+		
+		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
+			return;
+		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
+			return;
+
+		if (global::board_map[c_test_col][player->center_row] ||
+			global::board_map[a_test_col][player->aux_row])
+			return;
+
+		player->center_col = c_test_col;
+		player->aux_col = a_test_col;
+	}
+
 	
 	void player_system::handle_state_falling(void)
 	{

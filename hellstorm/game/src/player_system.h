@@ -56,6 +56,9 @@ namespace game
 		hs::comp::position *current_pos;
 		comp_player *player;
 		
+		void move_left(void);
+		void move_right(void);
+		
 		bool can_move_down(void);
 		
 		void handle_state_falling(void);

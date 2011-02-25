@@ -37,7 +37,7 @@ namespace game
 		factory::create_virus(em, 1, 5, e_gbo_yellow);
 		factory::create_virus(em, 2, 2, e_gbo_blue);
 		
-		factory::create_player_pill(em, 4, defs::board_num_of_rows, factory::e_dp_blue_green);
+		factory::create_player_pill(em, 4, defs::board_num_of_rows-1, factory::e_dp_blue_green);
 
 
 		factory::create_pill(em, 4, 5, factory::e_dp_red_blue, factory::left);
@@ -76,16 +76,16 @@ namespace game
 		gb_system->update(dt);
 		plr_system->update(dt);
 		
-		if (hs::g_input.has_touched_down())
-			printf("has touched down!\n");
-		if (hs::g_input.has_moved())
-			printf("has moved!\n");
-		if (hs::g_input.has_touched_up())
-		{
-			printf("has touched up!\n");
-			
-			hs::g_game->pop_scene();
-		}
+//		if (hs::g_input.has_touched_down())
+//			printf("has touched down!\n");
+//		if (hs::g_input.has_moved())
+//			printf("has moved!\n");
+//		if (hs::g_input.has_touched_up())
+//		{
+//			printf("has touched up!\n");
+//			
+//		//	hs::g_game->pop_scene();
+//		}
 		
 		
 		cs->collect_corpses();

@@ -107,7 +107,6 @@ namespace game
 		//so if we did corpse collection at the end of update
 		//the systems wouldn't know that the manager is dirty 
 		//and a shitstorm of dangling references would rain down on them
-		cs->collect_corpses();
 		
 		d += dt * ( cos(60.0 * M_PI * dt) * M_PI ) * M_PI;
 		r = sin(d);
@@ -128,12 +127,12 @@ namespace game
 			button_tag = e_button_none;	
 		}
 		
-		
-		
 		ans->update(dt);
 		as->update(dt);
 		bg_system->update(dt);
 		ps->update(dt);
+		
+		cs->collect_corpses();
 	}
 	
 	void menu_scene::render()

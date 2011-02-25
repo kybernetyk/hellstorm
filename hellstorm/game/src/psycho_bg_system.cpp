@@ -18,15 +18,13 @@ namespace game
 	{
 		hs::comp::register_component_class<comp_psycho_marker>();
 		
-		//printf("comp_psycho_marker::family_id =  %i\n", comp_psycho_marker::family_id);
-		
 		em = manager;
 		ent_cache = new hs::entity*[hs::cfg::entity_system.entity_pool_size];
 		cache_size = 0;
 		memset(ent_cache, 0x00, sizeof(hs::entity *)*hs::cfg::entity_system.entity_pool_size);
 	}
 	
-	psycho_bg_system::~ psycho_bg_system()
+	psycho_bg_system::~psycho_bg_system()
 	{
 		delete [] ent_cache;
 		ent_cache = 0;
@@ -85,9 +83,6 @@ namespace game
 				int r = rand()%100 + 10;
 				
 				current_marker->velocity.x = r * f;
-					
-//				if (rand()%2 == 0)
-//					current_marker->rot_speed *= -1.0;
 			}
 
 			if (current_position->origin.y < 0 ||
@@ -111,15 +106,7 @@ namespace game
 				int r = rand()%100 + 10;
 				
 				current_marker->velocity.y = r * f;
-
-//				if (rand()%2 == 0)
-//					current_marker->rot_speed *= -1.0;
 			}
-
-			
-//			printf("marker type: %i\n", current_marker->type);
 		}
-//		if (cache_size > 0)
-//			printf("..\n");
 	}
 }
