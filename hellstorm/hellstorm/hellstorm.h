@@ -12,6 +12,7 @@
 #include "file_util.h"
 #include "timer.h"
 #include "hellstorm_config.h"
+#include "notification_system.h"
 
 #include "vec_2d.h"
 #include "renderer.h"
