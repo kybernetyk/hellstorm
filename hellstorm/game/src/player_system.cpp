@@ -132,10 +132,8 @@ namespace game
 			hs::entity *aux = factory::create_pill(em, player->aux_col, player->aux_row, player->double_pill_type, factory::right);
 
 			center->get<hs::comp::position>()->rot = current_pos->rot;
-
 			aux->get<hs::comp::position>()->rot = current_pos->rot;
-			
-			return;
+		return;
 		}
 		current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
 	}
