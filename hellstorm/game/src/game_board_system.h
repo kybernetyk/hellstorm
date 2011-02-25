@@ -64,18 +64,15 @@ namespace game
 		hs::entity **ent_cache;
 		size_t cache_size;
 		
-		hs::entity *ent_map[defs::board_num_of_cols][defs::board_num_of_rows];
 		double current_dt;
 		hs::entity *current_entity;
 		hs::comp::position *current_pos;
 		game_board_element *current_gbo;
 		
-		void make_map(void);
-		
 		bool can_move_down(void);
 		
 		void handle_state_idle(void);
 		void handle_state_falling(void);
-		void change_state(e_gbo_state new_state);
+		void change_state(game_board_element *gbo, e_gbo_state new_state);
 	};
 }

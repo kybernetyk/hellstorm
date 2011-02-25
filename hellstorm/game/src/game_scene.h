@@ -10,6 +10,7 @@
 #include "hellstorm.h"
 #include "psycho_bg_system.h"
 #include "game_board_system.h"
+#include "player_system.h"
 
 namespace game 
 {
@@ -36,6 +37,7 @@ namespace game
 		hs::animation_system *ans;
 		psycho_bg_system *bg_system;
 		game_board_system *gb_system;
+		player_system *plr_system;
 	};
 
 }

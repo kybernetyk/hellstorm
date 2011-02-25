@@ -93,17 +93,17 @@ namespace hs
 		return (r1->position.z < r2->position.z);
 	}
 
-		struct ren_comparor
+	struct ren_comparor
+	{
+		bool operator()( const renderable *r1, const renderable *r2 ) const
 		{
-			bool operator()( const renderable *r1, const renderable *r2 ) const
-			{
-				if (r1->position.z == r2->position.z)
-					return (r1->guid < r2->guid);
-				
-				return (r1->position.z < r2->position.z);
-			}
+			if (r1->position.z == r2->position.z)
+				return (r1->guid < r2->guid);
 			
-		};
+			return (r1->position.z < r2->position.z);
+		}
+		
+	};
 	
 	void renderer::flush(void)
 	{

@@ -10,6 +10,7 @@
 #include "psycho_bg_system.h"
 #include "game_board_system.h"
 #include "game_utils.h"
+#include "player_system.h"
 
 namespace game 
 {
@@ -80,30 +81,6 @@ namespace game
 	
 	namespace factory
 	{
-		hs::entity *create_player_pill(hs::entity_manager *em, int col, int row, e_doublepill_type type)
-		{
-			hs::vec2d pill_anchor = hs::vec2d_make(0.25, 0.5);
-			int x_off = type % 8;
-			int y_off = 1 + (type / 8);
-			printf("row = %i -> %i\n", row, y_off);
-			
-			hs::entity *ret = hs::factory::create_atlas_sprite(em, 
-															   "game_sheet.png", 
-															   pixel_for_colrow(col, row),
-															   hs::rect_make(x_off * 64.0, y_off * 64.0, 64.0, 32.0),
-															   pill_anchor);
-			hs::comp::renderable *r = ret->get<hs::comp::renderable>();
-			r->alpha = 0.9;
-			
-			game_board_element *gbo = ret->add<game_board_element>();
-			gbo->col = col;
-			gbo->row = row;
-			gbo->type = e_gbo_type_pill;
-			gbo->state = e_gbo_state_falling;
-			
-			return ret;
-		}
-		
 		e_gbo_color cols[] = 
 		{
 			e_gbo_red, e_gbo_red,
@@ -127,12 +104,37 @@ namespace game
 			e_gbo_blue, e_gbo_blue
 		};
 		
+		hs::entity *create_player_pill(hs::entity_manager *em, int col, int row, e_doublepill_type type)
+		{
+			hs::vec2d pill_anchor = hs::vec2d_make(0.25, 0.5);
+			int x_off = type % 8;
+			int y_off = 1 + (type / 8);
+			printf("row = %i -> %i\n", row, y_off);
+			
+			hs::entity *ret = hs::factory::create_atlas_sprite(em, 
+															   "game_sheet.png", 
+															   pixel_for_colrow(col, row),
+															   hs::rect_make(x_off * 64.0, y_off * 64.0, 64.0, 32.0),
+															   pill_anchor);
+			hs::comp::renderable *r = ret->get<hs::comp::renderable>();
+			r->alpha = 0.9;
+			
+			comp_player *player = ret->add<comp_player>();
+			player->center_col = col;
+			player->center_row = row;
+			player->aux_col = col+1;
+			player->aux_row = row;
+			player->center_color = cols[type*2];
+			player->aux_color = cols[type*2+1];
+			player->double_pill_type = type;
+			return ret;
+		}
+		
 		hs::entity *create_pill(hs::entity_manager *em, int col, int row, e_doublepill_type type, e_left_right subtype)
 		{
 			hs::vec2d pill_anchor = hs::vec2d_make(0.5, 0.5);
 			int x_off = type % 8;
 			int y_off = 1 + (type / 8);
-			printf("row = %i -> %i\n", row, y_off);
 			
 			hs::entity *ret = hs::factory::create_atlas_sprite(em, 
 															   "game_sheet.png", 

@@ -134,7 +134,6 @@ namespace hs
 			switch (scene_queue_state) 
 			{
 				case e_sqs_set:
-					
 					//kill stack
 					for (int i = scene_stack_pointer; i >= 0; i--)
 					{

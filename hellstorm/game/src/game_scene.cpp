@@ -27,16 +27,17 @@ namespace game
 		ans = new hs::animation_system(em, as);
 		bg_system = new psycho_bg_system(em);
 		gb_system = new game_board_system(em);
+		plr_system = new player_system(em);
 		
 		hs::factory::create_sprite(em, "background.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
 		factory::create_borders(em);
 		factory::create_raster(em);
 		
-		factory::create_virus(em, 3, 5, e_gbo_yellow);
+		factory::create_virus(em, 1, 5, e_gbo_yellow);
 		factory::create_virus(em, 2, 2, e_gbo_blue);
 		
-		factory::create_player_pill(em, 3, defs::board_num_of_rows, factory::e_dp_blue_green);
+		factory::create_player_pill(em, 4, defs::board_num_of_rows, factory::e_dp_blue_green);
 
 
 		factory::create_pill(em, 4, 5, factory::e_dp_red_blue, factory::left);
@@ -55,6 +56,7 @@ namespace game
 		delete ans;
 		delete bg_system;
 		delete gb_system;
+		delete plr_system;
 	}
 	
 	void game_scene::update(double dt)
@@ -64,7 +66,6 @@ namespace game
 		//so if we did corpse collection at the end of update
 		//the systems wouldn't know that the manager is dirty 
 		//and a shitstorm of dangling references would rain down on them
-		cs->collect_corpses();
 		
 		
 		ans->update(dt);
@@ -73,6 +74,7 @@ namespace game
 		ps->update(dt);
 		
 		gb_system->update(dt);
+		plr_system->update(dt);
 		
 		if (hs::g_input.has_touched_down())
 			printf("has touched down!\n");
@@ -85,6 +87,9 @@ namespace game
 			hs::g_game->pop_scene();
 		}
 		
+		
+		cs->collect_corpses();
+
 		/*
 		 if (hs::g_input.get_last_event() != hs::inputevent_none)
 		 {
