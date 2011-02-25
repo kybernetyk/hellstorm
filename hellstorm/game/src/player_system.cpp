@@ -29,7 +29,7 @@ namespace game
 		delete [] ent_cache;
 		ent_cache = 0;
 	}
-	
+	#define DEG2RAD(x) (0.0174532925 * (x))
 	void player_system::update(double dt)
 	{
 		current_dt = dt;
@@ -44,7 +44,12 @@ namespace game
 			
 			if (hs::g_input.has_touched_down())
 			{
-				if (hs::g_input.get_current_touch_location().x < 160)
+				if (hs::g_input.get_current_touch_location().y > 400)
+				{
+					printf("ROTATE!\n");
+					rotate();
+				}
+				else if (hs::g_input.get_current_touch_location().x < 160)
 				{
 					move_left();
 				}
@@ -56,7 +61,19 @@ namespace game
 			handle_state_falling();
 		}
 	}
-	
+
+	void player_system::rotate(void)
+	{
+		current_pos->rot += 90.0;
+		if (current_pos->rot >= 360.0)
+			current_pos->rot = 0.0;
+		
+		int col_offset = cos(DEG2RAD(current_pos->rot));
+		int row_offset = sin(DEG2RAD(current_pos->rot));
+
+		player->aux_col = player->center_col + col_offset;
+		player->aux_row = player->center_row + row_offset;
+	}
 	void player_system::move_left(void)
 	{
 		int c_test_col = player->center_col - 1;
@@ -111,8 +128,13 @@ namespace game
 			player->aux_row++;
 			current_entity->add<hs::comp::mark_of_death>();
 			
-			factory::create_pill(em, player->center_col, player->center_row, player->double_pill_type, factory::left);
-			factory::create_pill(em, player->aux_col, player->aux_row, player->double_pill_type, factory::right);
+			hs::entity *center = factory::create_pill(em, player->center_col, player->center_row, player->double_pill_type, factory::left);
+			hs::entity *aux = factory::create_pill(em, player->aux_col, player->aux_row, player->double_pill_type, factory::right);
+
+			center->get<hs::comp::position>()->rot = current_pos->rot;
+
+			aux->get<hs::comp::position>()->rot = current_pos->rot;
+			
 			return;
 		}
 		current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
@@ -120,7 +142,7 @@ namespace game
 	
 	bool player_system::can_move_down(void)
 	{
-		if (player->center_row <= 0 || player->aux_row <= 0)
+		if (player->center_row < 0 || player->aux_row < 0)
 			return false;
 		
 		if (global::board_map[player->center_col][player->center_row] || 
