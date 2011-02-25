@@ -52,11 +52,11 @@ namespace hs
 	}
 
 	
-	void game::set_next_scene(hs::scene *scene)
+	void game::set_scene(hs::scene *scene)
 	{
 		if (next_scene)
 		{
-			printf("can't set next scene in same frame more than once!\n");
+			printf("can't set scene in same frame more than once!\n");
 			abort();
 		}
 		
@@ -134,8 +134,15 @@ namespace hs
 			switch (scene_queue_state) 
 			{
 				case e_sqs_set:
-					current_scene->shutdown();
-					delete current_scene;
+					
+					//kill stack
+					for (int i = scene_stack_pointer; i >= 0; i--)
+					{
+						current_scene = scene_stack[scene_stack_pointer];
+						current_scene->shutdown();
+						delete current_scene;
+					}
+					
 					scene_stack[scene_stack_pointer] = next_scene;
 					current_scene = next_scene;
 					current_scene->init();

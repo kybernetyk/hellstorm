@@ -46,7 +46,7 @@ namespace game
 			hs::audio_system::preload_music("music.mp3");
 
 			
-			hs::g_game->set_next_scene(new menu_scene());	
+			hs::g_game->set_scene(new menu_scene());	
 			//load user settings
 			//scores
 			//etc pp

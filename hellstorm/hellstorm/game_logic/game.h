@@ -29,7 +29,7 @@ namespace hs
 		bool init_with_scene(hs::scene *scene);
 		void shutdown(void);
         
-		void set_next_scene(hs::scene *scene);
+		void set_scene(hs::scene *scene);
 		void push_scene(hs::scene *scene);
 		void pop_scene(void);
 		

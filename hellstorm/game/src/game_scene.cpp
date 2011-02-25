@@ -38,6 +38,9 @@ namespace game
 										 hs::rect_make(x_off * 64.0, y_off * 64.0, 64.0, 32.0),
 										 pill_anchor);
 
+		hs::comp::renderable *r = ret->get<hs::comp::renderable>();
+		r->alpha = 0.9;
+		
 		return ret;
 	}
 	
@@ -111,7 +114,7 @@ namespace game
 		
 		
 		hs::comp::position *pos = pill->get<hs::comp::position>();
-		pos->rot = 90.0;
+		pos->rot += dt * 90.0;
 
 		
 		ans->update(dt);
