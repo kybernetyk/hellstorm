@@ -12,6 +12,7 @@
 		031AFF2F13141DAF000D11C2 /* rahmen.png in Resources */ = {isa = PBXBuildFile; fileRef = 031AFF2E13141DAF000D11C2 /* rahmen.png */; };
 		031AFF3113141DE9000D11C2 /* lower.png in Resources */ = {isa = PBXBuildFile; fileRef = 031AFF3013141DE9000D11C2 /* lower.png */; };
 		031AFF3313141E69000D11C2 /* upper.png in Resources */ = {isa = PBXBuildFile; fileRef = 031AFF3213141E69000D11C2 /* upper.png */; };
+		031C162F13190D9D00A7BD0B /* game_logic_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031C162D13190D9C00A7BD0B /* game_logic_system.cpp */; };
 		0331C08B1313F0A7006937CA /* psycho_bg_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0331C0891313F0A7006937CA /* psycho_bg_system.cpp */; };
 		0331C0951313FC31006937CA /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0331C0941313FC31006937CA /* background.png */; };
 		0331C0971313FC76006937CA /* sunburst_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0331C0961313FC76006937CA /* sunburst_1.png */; };
@@ -117,6 +118,8 @@
 		031AFF2E13141DAF000D11C2 /* rahmen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rahmen.png; sourceTree = "<group>"; };
 		031AFF3013141DE9000D11C2 /* lower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lower.png; sourceTree = "<group>"; };
 		031AFF3213141E69000D11C2 /* upper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upper.png; sourceTree = "<group>"; };
+		031C162D13190D9C00A7BD0B /* game_logic_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_logic_system.cpp; sourceTree = "<group>"; };
+		031C162E13190D9C00A7BD0B /* game_logic_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_logic_system.h; sourceTree = "<group>"; };
 		0331C0891313F0A7006937CA /* psycho_bg_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = psycho_bg_system.cpp; sourceTree = "<group>"; };
 		0331C08A1313F0A7006937CA /* psycho_bg_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = psycho_bg_system.h; sourceTree = "<group>"; };
 		0331C0941313FC31006937CA /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				033C712F131818FD0064560E /* game_board_system.h */,
 				033C71341318413B0064560E /* player_system.cpp */,
 				033C71351318413C0064560E /* player_system.h */,
+				031C162D13190D9C00A7BD0B /* game_logic_system.cpp */,
+				031C162E13190D9C00A7BD0B /* game_logic_system.h */,
 			);
 			name = systems;
 			sourceTree = "<group>";
@@ -920,6 +925,7 @@
 				033C713313181D2A0064560E /* game_utils.cpp in Sources */,
 				033C71361318413C0064560E /* player_system.cpp in Sources */,
 				033C7139131841FF0064560E /* game_globals.cpp in Sources */,
+				031C162F13190D9D00A7BD0B /* game_logic_system.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
