@@ -28,7 +28,8 @@ namespace game
 		e_gbo_red = 0,
 		e_gbo_blue = 1,
 		e_gbo_green = 2,
-		e_gbo_yellow = 3
+		e_gbo_yellow = 3,
+		e_gbo_invalid
 	};
 	
 	struct game_board_element : public hs::component

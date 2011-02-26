@@ -40,7 +40,6 @@ namespace hs
 			resource_handle current_handle = get_free_handle();
 			
 			T *res = new T(filename);
-			printf("%s = %p\n", filename.c_str(), res);
 			resources_by_handle[current_handle] = res;
 			reference_counts[filename] = 1;
 			handles_by_filename[filename] = current_handle;

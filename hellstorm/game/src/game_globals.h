@@ -26,6 +26,8 @@ namespace game
 			e_gs_player_landed,
 			e_gs_player_landed_ontop,
 			e_gs_check_for_chains,
+			e_gs_chains_marked,
+			e_gs_no_chains,
 			e_gs_game_over
 		};
 		

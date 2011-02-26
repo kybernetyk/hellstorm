@@ -10,6 +10,7 @@
 #include "game_factory.h"
 #include "game_utils.h"
 #include "game_globals.h"
+#include "game_logic_system.h"
 
 namespace game 
 {
@@ -29,6 +30,7 @@ namespace game
 		bg_system = new psycho_bg_system(em);
 		gb_system = new game_board_system(em);
 		plr_system = new player_system(em);
+		logic_system = new game_logic_system(em);
 		
 		hs::factory::create_sprite(em, "background.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
@@ -60,6 +62,7 @@ namespace game
 		delete bg_system;
 		delete gb_system;
 		delete plr_system;
+		delete logic_system;
 	}
 	
 	void game_scene::handle_state_changes(void)
@@ -85,6 +88,14 @@ namespace game
 					printf("OMG DIE DIE DIE\n");
 					global::g_state.current_state = global::e_gs_game_over;
 					break;
+				case global::e_gs_no_chains:
+					printf("NO CHAINS! :(\n");
+					global::g_state.current_state = global::e_gs_player_need_respawn;
+					break;
+				case global::e_gs_chains_marked:
+					printf("YAY WE GOT CHAINS!\n");
+					global::g_state.current_state = global::e_gs_player_need_respawn;
+					break;
 				case global::e_gs_game_over:
 					printf("OH GAME OVER :(\n");
 					hs::g_game->pop_scene();
@@ -108,13 +119,7 @@ namespace game
 		//the systems wouldn't know that the manager is dirty 
 		//and a shitstorm of dangling references would rain down on them
 		handle_state_changes();
-		
-		if (global::g_state.current_state == global::e_gs_check_for_chains)
-		{	
-			printf("checking for matches (which will be done in the game logic system) ...\n");
-			global::g_state.current_state = global::e_gs_player_need_respawn;	
-		}
-		
+
 		ans->update(dt);
 		as->update(dt);
 		bg_system->update(dt);
@@ -122,7 +127,7 @@ namespace game
 		
 		gb_system->update(dt);
 		plr_system->update(dt);
-		
+		logic_system->update(dt);
 
 		
 //		if (hs::g_input.has_touched_down())
