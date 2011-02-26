@@ -29,6 +29,7 @@ namespace game
 		delete [] ent_cache;
 		ent_cache = 0;
 	}
+	
 	#define DEG2RAD(x) (0.0174532925 * (x))
 	void player_system::update(double dt)
 	{
@@ -64,12 +65,26 @@ namespace game
 
 	void player_system::rotate(void)
 	{
+		double rot = current_pos->rot + 90.0;
+
+		int col_offset = cos(DEG2RAD(rot));
+		int row_offset = sin(DEG2RAD(rot));
+
+		int test_col = player->center_col + col_offset;
+		int test_row = player->center_row + row_offset;
+		
+		if (test_col < 0 || 
+			test_row < 0 || 
+			test_col >= defs::board_num_of_cols || 
+			test_row >= defs::board_num_of_rows)
+			return;
+		
+		if (global::board_map[test_col][test_row])
+			return;
+		
 		current_pos->rot += 90.0;
 		if (current_pos->rot >= 360.0)
 			current_pos->rot = 0.0;
-		
-		int col_offset = cos(DEG2RAD(current_pos->rot));
-		int row_offset = sin(DEG2RAD(current_pos->rot));
 
 		player->aux_col = player->center_col + col_offset;
 		player->aux_row = player->center_row + row_offset;
@@ -133,7 +148,15 @@ namespace game
 
 			center->get<hs::comp::position>()->rot = current_pos->rot;
 			aux->get<hs::comp::position>()->rot = current_pos->rot;
-		return;
+		
+			if (player->center_row < defs::board_num_of_rows &&
+				player->aux_row < defs::board_num_of_rows)
+				global::g_state.current_state = global::e_gs_player_landed;
+			else
+				global::g_state.current_state = global::e_gs_player_landed_ontop;
+			
+			printf("NAO IS THE LANDED!\n");
+			return;
 		}
 		current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
 	}

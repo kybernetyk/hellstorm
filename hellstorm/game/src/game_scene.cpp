@@ -9,6 +9,7 @@
 #include "game_scene.h"
 #include "game_factory.h"
 #include "game_utils.h"
+#include "game_globals.h"
 
 namespace game 
 {
@@ -37,11 +38,13 @@ namespace game
 		factory::create_virus(em, 1, 5, e_gbo_yellow);
 		factory::create_virus(em, 2, 2, e_gbo_blue);
 		
-		factory::create_player_pill(em, 4, defs::board_num_of_rows-1, factory::e_dp_blue_green);
-
-
-		factory::create_pill(em, 4, 5, factory::e_dp_red_blue, factory::left);
-		factory::create_pill(em, 5, 5, factory::e_dp_red_blue, factory::right);
+		//factory::create_player_pill(em, 4, defs::board_num_of_rows-1, factory::e_dp_blue_green);
+		
+		global::g_state.current_state = global::e_gs_idle;
+//
+//
+//		factory::create_pill(em, 4, 5, factory::e_dp_red_blue, factory::left);
+//		factory::create_pill(em, 5, 5, factory::e_dp_red_blue, factory::right);
 	}
 	
 	void game_scene::shutdown(void)
@@ -59,6 +62,44 @@ namespace game
 		delete plr_system;
 	}
 	
+	void game_scene::handle_state_changes(void)
+	{
+		if (global::g_state.current_state != global::g_state.old_state)
+		{
+			global::e_game_state tmp = global::g_state.current_state;
+			
+			switch (global::g_state.current_state) 
+			{
+				case global::e_gs_idle:
+					printf("oh we're idle ... let's do eet!\n");
+					global::g_state.current_state = global::e_gs_player_need_respawn;
+					break;
+				case global::e_gs_player_need_respawn:
+					factory::create_player_pill(em, 4, defs::board_num_of_rows-1, (factory::e_doublepill_type)(rand()%16));
+					global::g_state.current_state = global::e_gs_player_active;
+					break;
+				case global::e_gs_player_landed:
+					global::g_state.current_state = global::e_gs_check_for_chains;
+					break;
+				case global::e_gs_player_landed_ontop:
+					printf("OMG DIE DIE DIE\n");
+					global::g_state.current_state = global::e_gs_game_over;
+					break;
+				case global::e_gs_game_over:
+					printf("OH GAME OVER :(\n");
+					hs::g_game->pop_scene();
+					break;
+				default:
+					break;
+			}
+			
+			global::g_state.old_state = tmp;
+		}
+//
+//		if (global::g_state.current_state != global::g_state.old_state)
+//			handle_state_changes();
+	}
+	
 	void game_scene::update(double dt)
 	{
 		//we must collect the corpses from the last frame
@@ -66,7 +107,13 @@ namespace game
 		//so if we did corpse collection at the end of update
 		//the systems wouldn't know that the manager is dirty 
 		//and a shitstorm of dangling references would rain down on them
+		handle_state_changes();
 		
+		if (global::g_state.current_state == global::e_gs_check_for_chains)
+		{	
+			printf("checking for matches (which will be done in the game logic system) ...\n");
+			global::g_state.current_state = global::e_gs_player_need_respawn;	
+		}
 		
 		ans->update(dt);
 		as->update(dt);
@@ -75,6 +122,8 @@ namespace game
 		
 		gb_system->update(dt);
 		plr_system->update(dt);
+		
+
 		
 //		if (hs::g_input.has_touched_down())
 //			printf("has touched down!\n");

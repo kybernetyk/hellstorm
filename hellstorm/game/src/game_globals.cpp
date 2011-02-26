@@ -15,6 +15,7 @@ namespace game
 	namespace global
 	{
 		hs::entity *board_map[defs::board_num_of_cols][defs::board_num_of_rows];
+		state g_state;
 		
 		void update_board_map(hs::entity **entities, size_t num_of_entities)
 		{

@@ -29,6 +29,8 @@ namespace game
 		~game_scene();
 
 	protected:
+		void handle_state_changes(void);
+		
 		hs::entity_manager *em;
 		hs::corpse_retrieval_system *cs;
 		hs::render_system *rs;
