@@ -94,6 +94,10 @@ namespace game
 					break;
 				case global::e_gs_chains_marked:
 					printf("YAY WE GOT CHAINS!\n");
+					global::g_state.current_state = global::e_gs_move_gbos;
+					break;
+				case global::e_gs_move_gbos:
+					//let the game board move all entities
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_game_over:

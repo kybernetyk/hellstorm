@@ -18,7 +18,7 @@ namespace game
 	
 	void startup_scene::init(void)
 	{
-		init_counter = 1;
+	init_counter = 1;
 		init_done = false;
 		
 		printf("startup scene init ...\n");

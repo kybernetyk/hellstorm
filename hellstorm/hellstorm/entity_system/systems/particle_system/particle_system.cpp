@@ -36,22 +36,11 @@ namespace hs
 			comp::position::family_id
 		};
 		cache_size = em->get_entities_possesing_components(qry, 2, ent_cache, cfg::entity_system.entity_pool_size);
-//		std::vector<entity *> entities;
-//		em->get_entities_possesing_components(entities, comp::particle_emitter::family_id, comp::position::family_id, ARGLIST_END);
-//		
-//		std::vector<entity *>::const_iterator it = entities.begin();
 
-
-		
 		entity *current_entity = NULL;
 		comp::particle_emitter *current_pe = NULL;
 		comp::position *current_pos = NULL;
 		
-//		while (it != entities.end())
-//		{
-//			current_entity = *it;
-//			++it;
-			
 		for (uid i = 0; i < cache_size; i++)
 		{
 			current_entity = ent_cache[i];
@@ -76,6 +65,4 @@ namespace hs
 			}
 		}
 	}
-	
-
 }

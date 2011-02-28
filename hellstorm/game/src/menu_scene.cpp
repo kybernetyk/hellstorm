@@ -57,7 +57,7 @@ namespace game
 		
 		hs::factory::create_sprite(em, "background_noraster.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
-		factory::create_borders(em);
+		//factory::create_borders(em);
 		factory::create_raster(em);
 		
 		logo = hs::factory::create_sprite(em, "logo.png", 
