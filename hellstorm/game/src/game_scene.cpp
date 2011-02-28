@@ -81,7 +81,7 @@ namespace game
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_player_need_respawn:
-					factory::create_player_pill(em, 3, defs::board_num_of_rows-1, (factory::e_doublepill_type)(rand()%16));
+					factory::create_player_pill(em, defs::player_spawn_col , defs::player_spawn_row, (factory::e_doublepill_type)(rand()%16));
 					global::g_state.current_state = global::e_gs_player_active;
 					break;
 				case global::e_gs_player_landed:

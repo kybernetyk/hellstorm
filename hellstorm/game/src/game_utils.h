@@ -17,7 +17,11 @@ namespace game
 		const double board_z = 0.0;
 		
 		const int board_num_of_cols = 7;
-		const int board_num_of_rows = 12;
+		const int board_num_of_rows = 13;
+		
+		const int player_spawn_col = 3;
+		const int player_spawn_row = board_num_of_rows - 2;
+		
 	}
 
 	hs::vec3d pixel_for_colrow(int col, int row);
