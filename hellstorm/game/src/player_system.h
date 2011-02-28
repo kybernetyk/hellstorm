@@ -27,8 +27,6 @@ namespace game
 	
 		factory::e_doublepill_type double_pill_type;
 
-		bool minxy;
-
 		comp_player()
 		{
 			center_col = 0, center_row = 0;
@@ -38,11 +36,16 @@ namespace game
 			center_color = e_gbo_red;
 			aux_color = e_gbo_red;
 			double_pill_type = factory::e_dp_red_red;
-			
-			minxy = false;
 		}
 	};
 	
+	enum e_move_direction
+	{
+		e_move_left = -1,
+		e_move_right = 1
+	};
+	
+
 	class player_system
 	{
 	public:
@@ -60,9 +63,11 @@ namespace game
 		hs::comp::position *current_pos;
 		comp_player *player;
 		
+		
 		void rotate(void);
 		void move_left(void);
 		void move_right(void);
+		void move(e_move_direction dir);
 		
 		bool can_move_down(int num_of_rows_to_move = 1);
 		

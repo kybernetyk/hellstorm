@@ -83,35 +83,7 @@ namespace game
 			test_col >= defs::board_num_of_cols || 
 			test_row >= defs::board_num_of_rows)
 			return;
-		
-	
 
-//		
-//
-//		hs::entity *test_ent = global::board_map[test_col][test_row];
-//		if (test_ent)
-//		{
-//			hs::rect aux_rc;
-//			aux_rc.x = current_pos->origin.x - 16 + col_offset * 32.0;
-//			aux_rc.y = current_pos->origin.y - 16 + row_offset * 32.0;
-//			aux_rc.w = 32.0;
-//			aux_rc.h = 30.0;
-//
-//			hs::rect test_rc;
-//			hs::vec3d test_pos = pixel_for_colrow(test_col, test_row);
-//			test_rc.x = test_pos.x - 16.0;
-//			test_rc.y = test_pos.y - 16.0;
-//			test_rc.w = 32.0;
-//			test_rc.h = 30.0;
-//			
-//			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
-//				test_rc.h = 26.0;
-//			
-//			if (hs::rect_intersect_rect(&aux_rc, &test_rc))
-//				return;
-//
-//		}
-		
 		if (global::board_map[test_col][test_row])
 			return;
 		
@@ -122,16 +94,17 @@ namespace game
 		player->aux_col = player->center_col + col_offset;
 		player->aux_row = player->center_row + row_offset;
 	}
-	void player_system::move_left(void)
-	{
-		int c_test_col = player->center_col - 1;
-		int a_test_col = player->aux_col - 1;
 
+	void player_system::move(e_move_direction dir)
+	{
+		int c_test_col = player->center_col + (int)dir;
+		int a_test_col = player->aux_col + (int)dir;
+		
 		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
 			return;
 		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
 			return;
-
+		
 		/* center */
 		if (global::board_map[c_test_col][player->center_row])
 		{	
@@ -142,7 +115,7 @@ namespace game
 			center_rc.y = current_pos->origin.y - 16;
 			center_rc.w = 32.0;
 			center_rc.h = 30.0;
-
+			
 			hs::rect test_rc;
 			hs::vec3d test_pos = pixel_for_colrow(c_test_col, player->center_row);
 			test_rc.x = test_pos.x - 16.0;
@@ -160,7 +133,7 @@ namespace game
 		if (player->center_row > 0 && global::board_map[c_test_col][player->center_row-1])
 		{			
 			hs::entity *test_ent = global::board_map[c_test_col][player->center_row-1];
-
+			
 			hs::rect center_rc;
 			center_rc.x = current_pos->origin.x - 16;
 			center_rc.y = current_pos->origin.y - 16;
@@ -173,7 +146,7 @@ namespace game
 			test_rc.y = test_pos.y - 16.0;
 			test_rc.w = 32.0;
 			test_rc.h = 30.0;
-
+			
 			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
 				test_rc.h = 26.0;
 			
@@ -211,7 +184,7 @@ namespace game
 			if (hs::rect_intersect_rect(&aux_rc, &test_rc))
 				return;
 		}
-
+		
 		if (player->aux_row > 0 && global::board_map[a_test_col][player->aux_row-1])
 		{	
 			hs::entity *test_ent = global::board_map[a_test_col][player->aux_row-1];
@@ -240,156 +213,21 @@ namespace game
 			if (hs::rect_intersect_rect(&aux_rc, &test_rc))
 				return;
 		}
-
-
 		/* -- aux */
 		
 		player->center_col = c_test_col;
 		player->aux_col = a_test_col;
 
-		
-//		int c_test_col = player->center_col - 1;
-//		int a_test_col = player->aux_col - 1;
-//		
-//		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
-//			return;
-//		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
-//			return;
-//		
-//		if (global::board_map[c_test_col][player->center_row] ||
-//			global::board_map[a_test_col][player->aux_row])
-//			return;
-//		
-//		player->center_col = c_test_col;
-//		player->aux_col = a_test_col;
+	}
+	
+	void player_system::move_left(void)
+	{
+		move(e_move_left);
 	}
 	
 	void player_system::move_right(void)
 	{
-		int c_test_col = player->center_col + 1;
-		int a_test_col = player->aux_col + 1;
-		
-		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
-			return;
-		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
-			return;
-		
-		/* center */
-		if (global::board_map[c_test_col][player->center_row])
-		{	
-			hs::entity *test_ent = global::board_map[c_test_col][player->center_row];
-			
-			hs::rect center_rc;
-			center_rc.x = current_pos->origin.x - 16;
-			center_rc.y = current_pos->origin.y - 16;
-			center_rc.w = 32.0;
-			center_rc.h = 30.0;
-			
-			hs::rect test_rc;
-			hs::vec3d test_pos = pixel_for_colrow(c_test_col, player->center_row);
-			test_rc.x = test_pos.x - 16.0;
-			test_rc.y = test_pos.y - 16.0;
-			test_rc.w = 32.0;
-			test_rc.h = 30.0;
-			
-			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
-				test_rc.h = 26.0;
-			
-			if (hs::rect_intersect_rect(&center_rc, &test_rc))
-				return;
-		}
-		
-		if (player->center_row > 0 && global::board_map[c_test_col][player->center_row-1])
-		{			
-			hs::entity *test_ent = global::board_map[c_test_col][player->center_row-1];
-			
-			hs::rect center_rc;
-			center_rc.x = current_pos->origin.x - 16;
-			center_rc.y = current_pos->origin.y - 16;
-			center_rc.w = 32.0;
-			center_rc.h = 30.0;
-			
-			hs::rect test_rc;
-			hs::vec3d test_pos = pixel_for_colrow(c_test_col, player->center_row-1);
-			test_rc.x = test_pos.x - 16.0;
-			test_rc.y = test_pos.y - 16.0;
-			test_rc.w = 32.0;
-			test_rc.h = 30.0;
-			
-			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
-				test_rc.h = 26.0;
-			
-			if (hs::rect_intersect_rect(&center_rc, &test_rc))
-				return;
-		}
-		/* -- center */
-		
-		/* aux */
-		if (global::board_map[a_test_col][player->aux_row])
-		{	
-			hs::entity *test_ent = global::board_map[a_test_col][player->aux_row];
-			
-			hs::rect aux_rc;
-			aux_rc.x = current_pos->origin.x - 16;
-			aux_rc.y = current_pos->origin.y - 16;
-			aux_rc.w = 32.0;
-			aux_rc.h = 30.0;
-			
-			int diff = player->aux_row - player->center_row;
-			aux_rc.y += diff * 32.0;
-			diff = player->aux_col - player->center_col;
-			aux_rc.x += diff * 32.0;
-			
-			hs::rect test_rc;
-			hs::vec3d test_pos = pixel_for_colrow(a_test_col, player->aux_row);
-			test_rc.x = test_pos.x - 16.0;
-			test_rc.y = test_pos.y - 16.0;
-			test_rc.w = 32.0;
-			test_rc.h = 30.0;
-			
-			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
-				test_rc.h = 26.0;
-			
-			if (hs::rect_intersect_rect(&aux_rc, &test_rc))
-				return;
-		}
-		
-		if (player->aux_row > 0 && global::board_map[a_test_col][player->aux_row-1])
-		{	
-			hs::entity *test_ent = global::board_map[a_test_col][player->aux_row-1];
-			
-			hs::rect aux_rc;
-			aux_rc.x = current_pos->origin.x - 16;
-			aux_rc.y = current_pos->origin.y - 16;
-			aux_rc.w = 32.0;
-			aux_rc.h = 30.0;
-			
-			int diff = player->aux_row - player->center_row;
-			aux_rc.y += diff * 32.0;
-			diff = player->aux_col - player->center_col;
-			aux_rc.x += diff * 32.0;
-			
-			hs::rect test_rc;
-			hs::vec3d test_pos = pixel_for_colrow(a_test_col, player->aux_row-1);
-			test_rc.x = test_pos.x - 16.0;
-			test_rc.y = test_pos.y - 16.0;
-			test_rc.w = 32.0;
-			test_rc.h = 30.0;
-			
-			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
-				test_rc.h = 26.0;
-			
-			if (hs::rect_intersect_rect(&aux_rc, &test_rc))
-				return;
-		}
-
-		
-//		if (global::board_map[c_test_col][player->center_row] ||
-//			global::board_map[a_test_col][player->aux_row])
-//			return;
-//
-		player->center_col = c_test_col;
-		player->aux_col = a_test_col;
+		move(e_move_right);
 	}
 	
 	void player_system::handle_state_falling(void)
@@ -402,11 +240,9 @@ namespace game
 
 		player->timer -= current_dt;
 
-		
 		if (player->timer <= 0.0)
 		{
 			player->timer = player->fall_time;
-			player->minxy = false;
 			
 			if (!can_move_down())
 			{
