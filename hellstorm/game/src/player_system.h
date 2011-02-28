@@ -26,8 +26,9 @@ namespace game
 		e_gbo_color aux_color;
 	
 		factory::e_doublepill_type double_pill_type;
-		
-		
+
+		bool minxy;
+
 		comp_player()
 		{
 			center_col = 0, center_row = 0;
@@ -37,6 +38,8 @@ namespace game
 			center_color = e_gbo_red;
 			aux_color = e_gbo_red;
 			double_pill_type = factory::e_dp_red_red;
+			
+			minxy = false;
 		}
 	};
 	
@@ -61,7 +64,8 @@ namespace game
 		void move_left(void);
 		void move_right(void);
 		
-		bool can_move_down(void);
+		bool can_move_down(int num_of_rows_to_move = 1);
+		
 		
 		void handle_state_falling(void);
 	};

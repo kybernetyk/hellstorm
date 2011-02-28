@@ -93,18 +93,75 @@ namespace game
 	{
 		int c_test_col = player->center_col - 1;
 		int a_test_col = player->aux_col - 1;
-		
+
 		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
 			return;
 		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
 			return;
+
+		if (global::board_map[c_test_col][player->center_row])
+		{	
+			hs::entity *test_ent = global::board_map[c_test_col][player->center_row];
+			
+			hs::rect center_rc;
+			center_rc.x = current_pos->origin.x - 16;
+			center_rc.y = current_pos->origin.y - 16;
+			center_rc.w = center_rc.h = 32.0;
+
+			hs::rect test_rc;
+			hs::vec3d test_pos = pixel_for_colrow(c_test_col, player->center_row);
+			test_rc.x = test_pos.x - 16.0;
+			test_rc.y = test_pos.y - 16.0;
+			test_rc.w = test_rc.h = 32.0;
+			
+			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
+				test_rc.h = 26.0;
+			
+			if (hs::rect_intersect_rect(&center_rc, &test_rc))
+				return;
+		}
 		
-		if (global::board_map[c_test_col][player->center_row] ||
-			global::board_map[a_test_col][player->aux_row])
-			return;
+		if (player->center_row > 0 && global::board_map[c_test_col][player->center_row-1])
+		{			
+			hs::entity *test_ent = global::board_map[c_test_col][player->center_row-1];
+
+			hs::rect center_rc;
+			center_rc.x = current_pos->origin.x - 16;
+			center_rc.y = current_pos->origin.y - 16;
+			center_rc.w = center_rc.h = 32.0;
+			
+			hs::rect test_rc;
+			hs::vec3d test_pos = pixel_for_colrow(c_test_col, player->center_row-1);
+			test_rc.x = test_pos.x - 16.0;
+			test_rc.y = test_pos.y - 16.0;
+			test_rc.w = test_rc.h = 32.0;
+
+			if (test_ent->get<game_board_element>()->type == e_gbo_type_virus)
+				test_rc.h = 26.0;
+			
+			if (hs::rect_intersect_rect(&center_rc, &test_rc))
+				return;
+		}
+
 		
 		player->center_col = c_test_col;
 		player->aux_col = a_test_col;
+
+		
+//		int c_test_col = player->center_col - 1;
+//		int a_test_col = player->aux_col - 1;
+//		
+//		if (c_test_col < 0 || c_test_col >= defs::board_num_of_cols)
+//			return;
+//		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
+//			return;
+//		
+//		if (global::board_map[c_test_col][player->center_row] ||
+//			global::board_map[a_test_col][player->aux_row])
+//			return;
+//		
+//		player->center_col = c_test_col;
+//		player->aux_col = a_test_col;
 	}
 	
 	void player_system::move_right(void)
@@ -124,50 +181,71 @@ namespace game
 		player->center_col = c_test_col;
 		player->aux_col = a_test_col;
 	}
-
 	
 	void player_system::handle_state_falling(void)
 	{
 		player->timer -= current_dt;
+
+		if (player->timer <= 0.2)
+		{
+			if (can_move_down())
+				current_pos->origin.y -= current_dt * (1.0/0.2) * 32.0;
+		}
 		
 		if (player->timer <= 0.0)
 		{
 			player->timer = player->fall_time;
+			player->minxy = false;
+			
+			if (!can_move_down())
+			{
+				current_entity->add<hs::comp::mark_of_death>();
+				current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
+				
+				hs::entity *center = factory::create_pill(em, player->center_col, player->center_row, player->double_pill_type, factory::left);
+				hs::entity *aux = factory::create_pill(em, player->aux_col, player->aux_row, player->double_pill_type, factory::right);
+				
+				center->get<hs::comp::position>()->rot = current_pos->rot;
+				aux->get<hs::comp::position>()->rot = current_pos->rot;
+				
+				if (player->center_row < defs::board_num_of_rows &&
+					player->aux_row < defs::board_num_of_rows)
+					global::g_state.current_state = global::e_gs_player_landed;
+				else
+					global::g_state.current_state = global::e_gs_player_landed_ontop;
+				
+				
+				printf("NAO IS THE LANDED!\n");
+				return;
+			}
+			
 			player->center_row--;
 			player->aux_row--;
-		}
-
-		if (!can_move_down())
-		{
-			player->center_row++;
-			player->aux_row++;
-			current_entity->add<hs::comp::mark_of_death>();
 			
-			hs::entity *center = factory::create_pill(em, player->center_col, player->center_row, player->double_pill_type, factory::left);
-			hs::entity *aux = factory::create_pill(em, player->aux_col, player->aux_row, player->double_pill_type, factory::right);
-
-			center->get<hs::comp::position>()->rot = current_pos->rot;
-			aux->get<hs::comp::position>()->rot = current_pos->rot;
-		
-			if (player->center_row < defs::board_num_of_rows &&
-				player->aux_row < defs::board_num_of_rows)
-				global::g_state.current_state = global::e_gs_player_landed;
-			else
-				global::g_state.current_state = global::e_gs_player_landed_ontop;
-			
-			printf("NAO IS THE LANDED!\n");
-			return;
+			current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
 		}
-		current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
+		current_pos->origin.x = pixel_for_colrow(player->center_col, player->center_row).x;
 	}
 	
-	bool player_system::can_move_down(void)
+	bool player_system::can_move_down(int num_of_rows_to_move)
 	{
-		if (player->center_row < 0 || player->aux_row < 0)
+		int cc, cr;
+		int ac, ar;
+		
+		cc = player->center_col;
+		cr = player->center_row;
+		
+		ac = player->aux_col;
+		ar = player->aux_row;
+		
+		cr -= num_of_rows_to_move;
+		ar -= num_of_rows_to_move;	
+		
+		if (cr < 0 || ar < 0)
 			return false;
 		
-		if (global::board_map[player->center_col][player->center_row] || 
-			global::board_map[player->aux_col][player->aux_row])
+		if (global::board_map[cc][cr] || 
+			global::board_map[ac][ar])
 			return false;
 		
 		return true;
