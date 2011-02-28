@@ -13,4 +13,10 @@ namespace game
 	{
 		return hs::vec3d_make((col*32) + defs::board_x_offset, (row*32)+defs::board_y_offset, defs::board_z);
 	}
+
+	hs::vec3d pixel_for_colrow(double col, double row)
+	{
+		return hs::vec3d_make((col*32.0) + defs::board_x_offset, (row*32.0)+defs::board_y_offset, defs::board_z);
+	}
+
 }

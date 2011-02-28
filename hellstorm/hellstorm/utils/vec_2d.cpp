@@ -76,6 +76,14 @@ namespace hs
 		return false;	
 	}
 	
+	bool rect_intersect_rect(rect *r1, rect *r2)
+	{
+		return  !(r1->x > r2->x + r2->w ||
+				  r1->x + r1->w < r2->x ||
+				  r1->y + r1->h > r2->y ||
+				  r1->y < r2->y + r2->h);
+	}
+	
 	bool point_in_rect(vec2d point, rect r1)
 	{
 		if ( ( (point.x > r1.x) && (point.x < (r1.x + r1.w)) ) &&
@@ -89,6 +97,136 @@ namespace hs
 	{
 		color3f col = {r, g, b};
 		return  col;
+	}
+	
+	bool entities_collide(entity *e1, entity *e2)
+	{
+		if (!e1 || !e2)
+			return false;
+		
+		comp::position *pos1 = e1->ent_mgr->get_component<comp::position>(e1);
+		if (!pos1)
+			return false;
+
+		comp::position *pos2 = e2->ent_mgr->get_component<comp::position>(e2);
+		if (!pos2)
+			return false;
+
+		comp::renderable *ren1 = e1->ent_mgr->get_component<comp::renderable>(e1);
+		if (!ren1)
+			return false;
+
+		comp::renderable *ren2 = e2->ent_mgr->get_component<comp::renderable>(e2);
+		if (!ren2)
+			return false;
+
+		
+		rect r1;
+		r1.x = pos1->origin.x;
+		r1.y = pos1->origin.y;
+		
+		rect r2;
+		r2.x = pos2->origin.x;
+		r2.y = pos2->origin.y;
+
+		quad *q = 0;
+		atlas_quad *aq = 0;
+
+		switch (ren1->ren_type) 
+		{
+			case comp::RENDERABLETYPE_SPRITE:
+				q = g_renderable_manager.get_resource<quad>(&ren1->res_handle);
+				r1.w = q->size.w * fabs(pos1->scale.x);
+				r1.h = q->size.h * fabs(pos1->scale.y);
+				r1.x -= r1.w * (1.0 - ren1->anchor_point.x);
+				r1.y -= r1.h * (1.0 - ren1->anchor_point.y);
+				break;
+			case comp::RENDERABLETYPE_ATLASSPRITE:
+				aq = g_renderable_manager.get_resource<atlas_quad>(&ren1->res_handle);
+				r1.w = aq->src_rect.w;
+				r1.h = aq->src_rect.h;
+				r1.x -= r1.w * (1.0 - ren1->anchor_point.x);
+				r1.y -= r1.h * (1.0 - ren1->anchor_point.y);
+				break;
+			default:
+				printf("not implemented!\n");
+				abort();
+				return false;
+				break;
+		}
+
+		switch (ren2->ren_type) 
+		{
+			case comp::RENDERABLETYPE_SPRITE:
+				q = g_renderable_manager.get_resource<quad>(&ren2->res_handle);
+				r2.w = q->size.w * fabs(pos2->scale.x);
+				r2.h = q->size.h * fabs(pos2->scale.y);
+				r2.x -= r2.w * (1.0 - ren2->anchor_point.x);
+				r2.y -= r2.h * (1.0 - ren2->anchor_point.y);
+				break;
+			case comp::RENDERABLETYPE_ATLASSPRITE:
+				aq = g_renderable_manager.get_resource<atlas_quad>(&ren2->res_handle);
+				r2.w = aq->src_rect.w;
+				r2.h = aq->src_rect.h;
+				r2.x -= r2.w * (1.0 - ren2->anchor_point.x);
+				r2.y -= r2.h * (1.0 - ren2->anchor_point.y);
+				break;
+			default:
+				printf("not implemented!\n");
+				abort();
+				return false;
+				break;
+		}
+
+		return rect_intersect_rect(&r1, &r2);
+	}
+
+	
+	bool entity_intersect_rect(entity *e1, rect *r2)
+	{
+		if (!e1)
+			return false;
+		
+		comp::position *pos1 = e1->ent_mgr->get_component<comp::position>(e1);
+		if (!pos1)
+			return false;
+		
+		comp::renderable *ren1 = e1->ent_mgr->get_component<comp::renderable>(e1);
+		if (!ren1)
+			return false;
+		
+		
+		rect r1;
+		r1.x = pos1->origin.x;
+		r1.y = pos1->origin.y;
+		
+		
+		quad *q = 0;
+		atlas_quad *aq = 0;
+		
+		switch (ren1->ren_type) 
+		{
+			case comp::RENDERABLETYPE_SPRITE:
+				q = g_renderable_manager.get_resource<quad>(&ren1->res_handle);
+				r1.w = q->size.w * fabs(pos1->scale.x);
+				r1.h = q->size.h * fabs(pos1->scale.y);
+				r1.x -= r1.w * (1.0 - ren1->anchor_point.x);
+				r1.y -= r1.h * (1.0 - ren1->anchor_point.y);
+				break;
+			case comp::RENDERABLETYPE_ATLASSPRITE:
+				aq = g_renderable_manager.get_resource<atlas_quad>(&ren1->res_handle);
+				r1.w = aq->src_rect.w;
+				r1.h = aq->src_rect.h;
+				r1.x -= r1.w * (1.0 - ren1->anchor_point.x);
+				r1.y -= r1.h * (1.0 - ren1->anchor_point.y);
+				break;
+			default:
+				printf("not implemented!\n");
+				abort();
+				return false;
+				break;
+		}
+		return rect_intersect_rect(&r1, r2);
 	}
 
 	bool point_in_entity(vec2d point, entity *e)

@@ -27,6 +27,7 @@ namespace game
 	
 		factory::e_doublepill_type double_pill_type;
 		
+		
 		comp_player()
 		{
 			center_col = 0, center_row = 0;
