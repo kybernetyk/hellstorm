@@ -40,14 +40,13 @@ namespace game
 		e_gbo_color color;
 		int col, row;
 		double timer;
-		double fall_time;
 
 		game_board_element()
 		{
 			state = e_gbo_state_idle;
 			col = row = 0;
 
-			timer = fall_time = 1.0;
+			timer = 0.0;
 			type = e_gbo_type_pill;
 			color = e_gbo_red;
 		}

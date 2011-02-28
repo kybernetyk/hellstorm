@@ -213,6 +213,7 @@ namespace game
 			}
 		}
 
+		//2nd remove marks for pills that are connected to statics
 		game_board_element *neighbour_gbo;
 		hs::entity *neighbour_entity;
 
@@ -293,8 +294,6 @@ namespace game
 					neighbour_gbo->state = e_gbo_state_idle;
 					r++;
 				}
-				
-
 			}
 		}
 

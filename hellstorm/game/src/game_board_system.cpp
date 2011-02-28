@@ -14,6 +14,8 @@ namespace game
 {
 	hs::uid game_board_element::family_id = 0;
 	
+	const float gbo_falltime = 0.01;
+	
 	game_board_system::game_board_system(hs::entity_manager *manager)
 	{
 		em = manager;
@@ -101,7 +103,7 @@ namespace game
 		if (gbo->state == e_gbo_state_falling &&
 			new_state == e_gbo_state_idle)
 		{
-			gbo->timer = current_gbo->fall_time;
+			gbo->timer = gbo_falltime;
 			gbo->state = e_gbo_state_idle;
 			return;
 		}
@@ -109,7 +111,7 @@ namespace game
 		if (gbo->state == e_gbo_state_idle &&
 			new_state == e_gbo_state_falling)
 		{
-			gbo->timer = current_gbo->fall_time;
+			gbo->timer = gbo_falltime;
 			gbo->state = e_gbo_state_falling;
 			return;
 		}
@@ -136,7 +138,7 @@ namespace game
 
 		if (current_gbo->timer <= 0.0)
 		{
-			current_gbo->timer = current_gbo->fall_time;
+			current_gbo->timer = gbo_falltime;
 			current_gbo->row--;
 		}
 		
