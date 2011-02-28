@@ -137,7 +137,7 @@ namespace hs
 					//kill stack
 					for (int i = scene_stack_pointer; i >= 0; i--)
 					{
-						current_scene = scene_stack[scene_stack_pointer];
+						current_scene = scene_stack[i];
 						current_scene->shutdown();
 						delete current_scene;
 					}

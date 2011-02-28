@@ -44,7 +44,7 @@ namespace game
 	
 	void menu_scene::init(void)
 	{
-		hs::audio_system::play_music("music.mp3");
+		hs::audio_system::play_music("Menu.mp3");
 		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);
@@ -120,7 +120,7 @@ namespace game
 			switch (button_tag) 
 			{
 				case e_button_start:
-					hs::g_game->push_scene(new game_scene());
+					hs::g_game->set_scene(new game_scene());
 					break;
 			}
 			hs::audio_system::play_sound("click.mp3");

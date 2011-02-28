@@ -46,7 +46,8 @@ namespace game
 
 		global::update_board_map(ent_cache, cache_size);
 		
-		
+
+		int fall_count = 0;
 		for (size_t i = 0; i < cache_size; i++)
 		{
 			current_entity = ent_cache[i];
@@ -59,11 +60,17 @@ namespace game
 					handle_state_idle();
 					break;
 				case e_gbo_state_falling:
+					fall_count ++;
 					handle_state_falling();
 					break;
 				default:
 					break;
 			}
+		}
+		
+		if (fall_count == 0 && global::g_state.current_state == global::e_gs_gbos_falling)
+		{
+			global::g_state.current_state = global::e_gs_check_for_chains;//global::e_gs_player_need_respawn;
 		}
 	}
 #pragma mark -
@@ -78,7 +85,11 @@ namespace game
 		
 		hs::entity *e = global::board_map[col][row];
 		if (e)
-			return false;
+		{
+			game_board_element *gbo = e->get<game_board_element>();
+			if (gbo->state != e_gbo_state_falling)
+				return false;
+		}
 		
 		return true;
 	}

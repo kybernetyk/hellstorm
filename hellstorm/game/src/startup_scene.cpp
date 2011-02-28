@@ -43,7 +43,7 @@ namespace game
 			init_done = true;
 			printf("PENIS?\n");
 			hs::audio_system::preload_sound("click.mp3");
-			hs::audio_system::preload_music("music.mp3");
+			hs::audio_system::preload_music("Menu.mp3");
 
 			
 			hs::g_game->set_scene(new menu_scene());	

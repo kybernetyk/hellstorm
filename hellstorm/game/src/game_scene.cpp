@@ -11,6 +11,7 @@
 #include "game_utils.h"
 #include "game_globals.h"
 #include "game_logic_system.h"
+#include "menu_scene.h"
 
 namespace game 
 {
@@ -21,6 +22,8 @@ namespace game
 
 	void game_scene::init(void)
 	{
+		hs::audio_system::play_music("RealTechno.mp3");
+		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);
 		rs = new hs::render_system(em);
@@ -78,7 +81,7 @@ namespace game
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_player_need_respawn:
-					factory::create_player_pill(em, 4, defs::board_num_of_rows-1, (factory::e_doublepill_type)(rand()%16));
+					factory::create_player_pill(em, 3, defs::board_num_of_rows-1, (factory::e_doublepill_type)(rand()%16));
 					global::g_state.current_state = global::e_gs_player_active;
 					break;
 				case global::e_gs_player_landed:
@@ -98,11 +101,15 @@ namespace game
 					break;
 				case global::e_gs_move_gbos:
 					//let the game board move all entities
-					global::g_state.current_state = global::e_gs_player_need_respawn;
+					//global::g_state.current_state = global::e_gs_player_need_respawn;
+					break;
+				case global::e_gs_gbos_falling:
+					//game board system let's them fall
 					break;
 				case global::e_gs_game_over:
 					printf("OH GAME OVER :(\n");
-					hs::g_game->pop_scene();
+					//hs::g_game->pop_scene();
+					hs::g_game->set_scene(new menu_scene());
 					break;
 				default:
 					break;

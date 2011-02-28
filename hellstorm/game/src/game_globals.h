@@ -21,6 +21,7 @@ namespace game
 		{
 			e_gs_unitialized,
 			e_gs_idle,
+			e_gs_gbos_falling,
 			e_gs_player_need_respawn,
 			e_gs_player_active,
 			e_gs_player_landed,
