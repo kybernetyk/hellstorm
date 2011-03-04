@@ -47,7 +47,6 @@ namespace game
 			{
 				if (hs::g_input.get_current_touch_location().y > 400)
 				{
-					printf("ROTATE!\n");
 					rotate();
 				}
 				else if (hs::g_input.get_current_touch_location().x < 160)
@@ -72,11 +71,7 @@ namespace game
 
 		int test_col = player->center_col + col_offset;
 		//int test_row = player->center_row + row_offset;
-		
 		int test_row = (current_pos->origin.y-defs::board_y_offset)/32.0 + row_offset;
-
-//			return hs::vec3d_make((col*32.0) + defs::board_x_offset, (row*32.0)+defs::board_y_offset, defs::board_z);
-
 		
 		if (test_col < 0 || 
 			test_row < 0 || 
@@ -232,10 +227,11 @@ namespace game
 	
 	void player_system::handle_state_falling(void)
 	{
-		if (player->timer < 0.25)
+		//maybe move belog <= 0.0 ?
+		if (player->timer < 0.20)
 		{
 			if (can_move_down())
-				current_pos->origin.y -= current_dt * (1.0/0.25) * 32.0;
+				current_pos->origin.y -= current_dt * (1.0/0.20) * 32.0;
 		}
 
 		player->timer -= current_dt;
@@ -255,14 +251,12 @@ namespace game
 				center->get<hs::comp::position>()->rot = current_pos->rot;
 				aux->get<hs::comp::position>()->rot = current_pos->rot;
 				
-				if (player->center_row < defs::board_num_of_rows-1 &&
-					player->aux_row < defs::board_num_of_rows-1)
+				if (player->center_row < defs::player_spawn_row &&
+					player->aux_row < defs::player_spawn_row)
 					global::g_state.current_state = global::e_gs_player_landed;
 				else
 					global::g_state.current_state = global::e_gs_player_landed_ontop;
-				
-				
-				printf("NAO IS THE LANDED!\n");
+
 				return;
 			}
 			
@@ -270,6 +264,7 @@ namespace game
 			player->aux_row--;
 			
 			current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
+			return;
 		}
 
 	
