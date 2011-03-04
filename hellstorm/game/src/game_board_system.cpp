@@ -14,7 +14,7 @@ namespace game
 {
 	hs::uid game_board_element::family_id = 0;
 	
-	const float gbo_falltime = 0.01;
+	const float gbo_falltime = 0.09; //must be greater than 2*dt!
 	
 	game_board_system::game_board_system(hs::entity_manager *manager)
 	{
@@ -71,6 +71,9 @@ namespace game
 		}
 		
 		if (fall_count == 0 && global::g_state.current_state == global::e_gs_gbos_falling)
+			/*&&
+			global::g_state.old_state == global::g_state.current_state)    //causes pills falling into each other
+			 */
 		{
 			global::g_state.current_state = global::e_gs_check_for_chains;//global::e_gs_player_need_respawn;
 		}

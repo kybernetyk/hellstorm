@@ -64,7 +64,8 @@ namespace game
 		comp_player *player;
 		
 		
-		void rotate(void);
+		bool rotate_cw(void);
+		bool rotate_ccw(void);
 		void move_left(void);
 		void move_right(void);
 		void move(e_move_direction dir);

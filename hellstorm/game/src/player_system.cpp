@@ -47,7 +47,10 @@ namespace game
 			{
 				if (hs::g_input.get_current_touch_location().y > 400)
 				{
-					rotate();
+					if (hs::g_input.get_current_touch_location().x < 160)
+						rotate_ccw();
+					else
+						rotate_cw();
 				}
 				else if (hs::g_input.get_current_touch_location().x < 160)
 				{
@@ -62,7 +65,7 @@ namespace game
 		}
 	}
 
-	void player_system::rotate(void)
+	bool player_system::rotate_ccw(void)
 	{
 		double rot = current_pos->rot + 90.0;
 
@@ -70,17 +73,16 @@ namespace game
 		int row_offset = sin(DEG2RAD(rot));
 
 		int test_col = player->center_col + col_offset;
-		//int test_row = player->center_row + row_offset;
 		int test_row = (current_pos->origin.y-defs::board_y_offset)/32.0 + row_offset;
 		
 		if (test_col < 0 || 
 			test_row < 0 || 
 			test_col >= defs::board_num_of_cols || 
 			test_row >= defs::board_num_of_rows)
-			return;
-
+			return false;
+		
 		if (global::board_map[test_col][test_row])
-			return;
+			return false;
 		
 		current_pos->rot += 90.0;
 		if (current_pos->rot >= 360.0)
@@ -88,7 +90,39 @@ namespace game
 
 		player->aux_col = player->center_col + col_offset;
 		player->aux_row = player->center_row + row_offset;
+		
+		return true;
 	}
+	
+	bool player_system::rotate_cw(void)
+	{
+		double rot = current_pos->rot - 90.0;
+		
+		int col_offset = cos(DEG2RAD(rot));
+		int row_offset = sin(DEG2RAD(rot));
+		
+		int test_col = player->center_col + col_offset;
+		int test_row = (current_pos->origin.y-defs::board_y_offset)/32.0 + row_offset;
+		
+		if (test_col < 0 || 
+			test_row < 0 || 
+			test_col >= defs::board_num_of_cols || 
+			test_row >= defs::board_num_of_rows)
+			return false;
+		
+		if (global::board_map[test_col][test_row])
+			return false;
+		
+		current_pos->rot -= 90.0;
+		if (current_pos->rot <= 0.0)
+			current_pos->rot = 360.0;
+		
+		player->aux_col = player->center_col + col_offset;
+		player->aux_row = player->center_row + row_offset;
+		
+		return true;
+	}
+	
 
 	void player_system::move(e_move_direction dir)
 	{

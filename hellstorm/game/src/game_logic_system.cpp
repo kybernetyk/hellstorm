@@ -76,6 +76,7 @@ namespace game
 			if (sum >= 4)
 			{
 				marked_for_removal.insert(marked_for_removal.end(), tmp.begin(), tmp.end());
+				tmp.clear();
 			}
 			
 		}
@@ -129,6 +130,7 @@ namespace game
 			if (sum >= 4)
 			{
 				marked_for_removal.insert(marked_for_removal.end(), tmp.begin(), tmp.end());
+				tmp.clear();
 			}
 			
 		}
