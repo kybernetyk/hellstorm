@@ -29,6 +29,7 @@ namespace game
 			e_gs_check_for_chains,
 			e_gs_chains_marked,
 			e_gs_no_chains,
+			e_gs_gbos_need_disconnect,
 			e_gs_move_gbos,
 			e_gs_game_over
 		};

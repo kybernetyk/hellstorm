@@ -58,6 +58,7 @@ namespace hs
 		void remove_all_entities(void);
 		
 		entity *get_entity(uid entity_manager_id);
+		entity *get_entity_by_guid(uid entity_guid);
 		
 //		void get_entities_posessing_component(std::vector<entity*> &result, uid family_id);
 //		void get_entities_possesing_components(std::vector<entity*> &result, ...);

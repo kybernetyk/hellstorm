@@ -165,6 +165,10 @@ namespace game
 
 #pragma mark -
 #pragma mark state move gbos
+
+#define CS_UNDEFINED 0
+#define CS_STATIC 1
+#define CS_FALL 2
 	void game_logic_system::handle_state_move_gbos(void)
 	{
 		game_board_element *current_gbo;
@@ -172,9 +176,6 @@ namespace game
 		
 		std::vector<hs::entity *> tmp;
 		
-#define CS_UNDEFINED 0
-#define CS_STATIC 1
-#define CS_FALL 2
 
 		int col_state = CS_FALL;
 		
@@ -219,7 +220,6 @@ namespace game
 		game_board_element *neighbour_gbo;
 		hs::entity *neighbour_entity;
 
-		//TODO: remove while and mark only next neighbour - if the shit actually works
 		//check below
 		for (int col = 0; col < defs::board_num_of_cols; col++)
 		{
@@ -241,46 +241,6 @@ namespace game
 				if (current_gbo->state != e_gbo_state_idle)
 					continue;
 				
-				//mark to the left
-				int c = col;
-				while (1)
-				{
-					//don't propagate staticism from virus to right or left
-					if (current_gbo->type == e_gbo_type_virus)
-						break;
-					
-					if (c == 0)
-						break;
-
-					neighbour_entity = global::board_map[c-1][row];
-					if (!neighbour_entity)
-						break;
-					
-					neighbour_gbo = neighbour_entity->get<game_board_element>();
-					neighbour_gbo->state = e_gbo_state_idle;
-					c--;
-				}
-
-				//mark to the right
-				c = col;
-				while (1)
-				{
-					//don't propagate staticism from virus to right or left
-					if (current_gbo->type == e_gbo_type_virus)
-						break;
-
-					if (c == defs::board_num_of_cols-1)
-						break;
-					
-					neighbour_entity = global::board_map[c+1][row];
-					if (!neighbour_entity)
-						break;
-					
-					neighbour_gbo = neighbour_entity->get<game_board_element>();
-					neighbour_gbo->state = e_gbo_state_idle;
-					c++;
-				}
-				
 				//mark upper
 				int r = row;
 				while (1)
@@ -296,12 +256,41 @@ namespace game
 					neighbour_gbo->state = e_gbo_state_idle;
 					r++;
 				}
+				
+				//mark connected
+				neighbour_entity = em->get_entity_by_guid(current_gbo->connected_to_guid);
+				if (neighbour_entity)
+				{	
+					neighbour_gbo = em->get_component<game_board_element>(neighbour_entity);	
+					neighbour_gbo->state = e_gbo_state_idle;
+				}
+				
 			}
 		}
-
-		global::g_state.current_state = global::e_gs_gbos_falling;
+		global::g_state.current_state = global::e_gs_gbos_need_disconnect;
 	}
 	
+	void game_logic_system::handle_state_gbos_need_disconnect()
+	{
+		game_board_element *current_gbo;
+		hs::entity *current_entity;
+
+		printf("disconnecting ...\n");
+		for (int col = 0; col < defs::board_num_of_cols; col++)
+		{
+			for (int row = 0; row < defs::board_num_of_rows; row++)
+			{
+				current_entity = global::board_map[col][row];
+				if (!current_entity)
+					continue;
+				
+				current_gbo = em->get_component<game_board_element>(current_entity);
+				if (current_gbo->state == e_gbo_state_falling)
+					current_gbo->connected_to_guid = 0;
+			}
+		}
+		global::g_state.current_state = global::e_gs_gbos_falling;
+	}
 	
 #pragma mark -
 #pragma mark update	
@@ -317,6 +306,9 @@ namespace game
 					break;
 				case global::e_gs_move_gbos:
 					handle_state_move_gbos();
+					break;
+				case global::e_gs_gbos_need_disconnect:
+					handle_state_gbos_need_disconnect();
 					break;
 				default:
 					break;

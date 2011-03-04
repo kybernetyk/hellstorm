@@ -40,6 +40,8 @@ namespace game
 		e_gbo_color color;
 		int col, row;
 		double timer;
+		
+		hs::uid connected_to_guid;
 
 		game_board_element()
 		{
@@ -49,6 +51,7 @@ namespace game
 			timer = 0.0;
 			type = e_gbo_type_pill;
 			color = e_gbo_red;
+			connected_to_guid = 0;
 		}
 	};
 		

@@ -282,6 +282,9 @@ namespace game
 				hs::entity *center = factory::create_pill(em, player->center_col, player->center_row, player->double_pill_type, factory::left);
 				hs::entity *aux = factory::create_pill(em, player->aux_col, player->aux_row, player->double_pill_type, factory::right);
 				
+				center->get<game_board_element>()->connected_to_guid = aux->guid;
+				aux->get<game_board_element>()->connected_to_guid = center->guid;
+				
 				center->get<hs::comp::position>()->rot = current_pos->rot;
 				aux->get<hs::comp::position>()->rot = current_pos->rot;
 				

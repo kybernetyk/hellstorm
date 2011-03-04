@@ -29,11 +29,12 @@ namespace game
 		void update(double dt);
 		
 	protected:
-		void handle_state_check_for_chains(void);
-		void check_horizontal(void);
-		void check_vertical(void);
+		void handle_state_check_for_chains();
+		void check_horizontal();
+		void check_vertical();
 		
-		void handle_state_move_gbos(void);
+		void handle_state_move_gbos();
+		void handle_state_gbos_need_disconnect();
 		
 		std::vector<hs::entity *> marked_for_removal;
 		

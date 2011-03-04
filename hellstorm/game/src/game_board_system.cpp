@@ -50,7 +50,34 @@ namespace game
 		
 
 		int fall_count = 0;
-		for (size_t i = 0; i < cache_size; i++)
+
+		for (int row = 0; row < defs::board_num_of_rows; row++)
+		{
+			for (int col = 0; col < defs::board_num_of_cols; col++)
+			{
+				current_entity = global::board_map[col][row];
+				if (!current_entity)
+					continue;
+				
+				current_gbo = current_entity->get<game_board_element>();
+				current_pos = current_entity->get<hs::comp::position>();
+
+				switch (current_gbo->state) 
+				{
+					case e_gbo_state_idle:
+						handle_state_idle();
+						break;
+					case e_gbo_state_falling:
+						fall_count ++;
+						handle_state_falling();
+						break;
+					default:
+						break;
+				}
+			}
+		}
+		
+/*		for (size_t i = 0; i < cache_size; i++)
 		{
 			current_entity = ent_cache[i];
 			current_gbo = current_entity->get<game_board_element>();
@@ -68,7 +95,7 @@ namespace game
 				default:
 					break;
 			}
-		}
+		}*/
 		
 		if (fall_count == 0 && global::g_state.current_state == global::e_gs_gbos_falling)
 			/*&&
@@ -142,7 +169,10 @@ namespace game
 		if (current_gbo->timer <= 0.0)
 		{
 			current_gbo->timer = gbo_falltime;
+			
+			global::board_map[current_gbo->col][current_gbo->row] = NULL;
 			current_gbo->row--;
+			global::board_map[current_gbo->col][current_gbo->row] = current_entity;
 		}
 		
 		current_pos->origin = pixel_for_colrow(current_gbo->col, current_gbo->row);

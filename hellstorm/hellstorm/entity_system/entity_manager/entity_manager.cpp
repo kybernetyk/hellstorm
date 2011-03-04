@@ -117,6 +117,18 @@ namespace hs
 	{
 		return entities[entity_manager_id];
 	}
+	
+	entity *entity_manager::get_entity_by_guid(uid entity_guid)
+	{
+		if (entity_guid == 0)
+			return NULL;
+		
+		for (uid i = 0; i < cfg::entity_system.entity_pool_size; i++)
+			if (entities[i] && entities[i]->guid == entity_guid)
+				return entities[i];
+
+		return NULL;
+	}
 
 #pragma mark -
 #pragma mark remove
