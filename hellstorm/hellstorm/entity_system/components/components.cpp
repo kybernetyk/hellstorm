@@ -30,6 +30,7 @@ namespace hs
 		uid particle_emitter::family_id;*/
 		uid action_container::family_id;
 		uid seq_animation::family_id;
+		uid name::family_id;
 
 		uid get_next_component_family_id(void)
 		{
@@ -47,6 +48,7 @@ namespace hs
 			register_component_class<renderable>();
 			register_component_class<action_container>();
 			register_component_class<seq_animation>();
+			register_component_class<name>();
 			
 			components_registered = true;
 		}

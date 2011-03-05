@@ -28,6 +28,10 @@ namespace game
 			sunb->get<hs::comp::renderable>()->alpha = 0.1;
 			sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(13.0, -42.0);
 
+			hs::comp::name *name = sunb->add<hs::comp::name>();
+			name->text = "psycho sunburst #1";
+
+			
 //			sunb = hs::factory::create_sprite(em, 
 //											  "sunburst_1.png", 
 //											  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.6), 
@@ -56,18 +60,24 @@ namespace game
 			hs::entity *rast = 0;
 			
 			rast = hs::factory::create_sprite(em, "rahmen.png", hs::vec3d_screen_center(9.0), hs::anchor_center);
+			hs::comp::name *name = rast->add<hs::comp::name>();
+			name->text = "border (rahmen.png)";
+
 			
 			rast = hs::factory::create_sprite(em, 
 											  "lower.png", 
 											  hs::vec3d_make(hs::cfg::screen.size.w/2, 0, 4.0),
 											  hs::vec2d_make(0.5, 0.0));
+			name = rast->add<hs::comp::name>();
+			name->text = "dingens (lower.png)";
 			
 			rast = hs::factory::create_sprite(em, 
 											  "upper.png", 
 											  hs::vec3d_make(hs::cfg::screen.size.w/2, hs::cfg::screen.size.h, 4.0),
 											  hs::vec2d_make(0.5, 1.0));
-			
-			
+			name = rast->add<hs::comp::name>();
+			name->text = "dingens (upper.png)";
+
 		}
 		
 
@@ -76,6 +86,8 @@ namespace game
 			hs::entity *rast = 0;
 			rast = hs::factory::create_sprite(em, "raster_3.png", hs::vec3d_screen_center(7.0), hs::anchor_center);
 
+			hs::comp::name *name = rast->add<hs::comp::name>();
+			name->text = "raster (raster_3.png)";
 		}
 	}
 	
@@ -127,6 +139,9 @@ namespace game
 			player->center_color = cols[type*2];
 			player->aux_color = cols[type*2+1];
 			player->double_pill_type = type;
+			
+			hs::comp::name *name = ret->add<hs::comp::name>();
+			name->text = "player pill";
 			return ret;
 		}
 		
@@ -151,6 +166,9 @@ namespace game
 			gbo->state = e_gbo_state_idle;
 			gbo->color = cols[type*2+subtype];
 
+			hs::comp::name *name = ret->add<hs::comp::name>();
+			name->text = "normal pill";
+
 			return ret;
 		}
 		
@@ -170,6 +188,9 @@ namespace game
 			gbo->type = e_gbo_type_virus;
 			gbo->state = e_gbo_state_idle;
 			gbo->color = type;
+
+			hs::comp::name *name = ret->add<hs::comp::name>();
+			name->text = "virus";
 
 			return ret;
 		}

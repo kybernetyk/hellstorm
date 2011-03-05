@@ -155,7 +155,10 @@ namespace game
 			
 			//entities can be marked double - dont add component if it exists already;
 			if (!current_entity->get<hs::comp::mark_of_death>())
-				current_entity->add<hs::comp::mark_of_death>();
+			{
+				current_entity->add<hs::comp::mark_of_death>();	
+				em->dump_entity(current_entity);
+			}
 		}
 		if (marked_for_removal.size() > 0)
 			global::g_state.current_state = global::e_gs_chains_marked;

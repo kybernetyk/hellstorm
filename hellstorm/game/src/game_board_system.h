@@ -53,6 +53,13 @@ namespace game
 			color = e_gbo_red;
 			connected_to_guid = 0;
 		}
+
+		COMP_DEBUGINFO("[%i] game_board_element: (col: %i, row: %i, color: %i, state: %i)", 
+					   family_id,
+					   col,
+					   row,
+					   (int)color,
+					   (int)state);
 	};
 		
 	class game_board_system

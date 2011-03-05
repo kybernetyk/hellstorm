@@ -7,6 +7,7 @@
 //
 
 #pragma once
+#define __RUNTIME_INFORMATION__
 
 #include "hs_types.h"
 #include "file_util.h"

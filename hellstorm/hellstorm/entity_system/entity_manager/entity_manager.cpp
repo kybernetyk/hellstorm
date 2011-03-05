@@ -165,6 +165,18 @@ namespace hs
 	
 #pragma mark -
 #pragma mark query
+	component *entity_manager::get_component(entity *e, uid family_id)
+	{
+		return components[e->manager_id][family_id];
+	}
+
+	void entity_manager::remove_component (entity *e, uid family_id)
+	{
+		component *c = components[e->manager_id][family_id];
+		components[e->manager_id][family_id] = NULL;
+		delete c;
+	}
+
 	
 	size_t entity_manager::get_entities_posessing_component(uid fam_id, entity **outarr, size_t outarr_size)
 	{
@@ -298,8 +310,8 @@ namespace hs
 
 	void entity_manager::dump_entity(entity *e)
 	{
-		printf("\n\n************** DUMP *************\n");
-		printf("entity ID: %i, checksum: %i, address: %p (%s)\n{\n", e->manager_id,e->guid, e, typeid(e).name());
+		printf("\n\n************ DUMP ENTITY ***********\n");
+		printf("entity slot: %i, guid: %i, address: %p (%s)\n{\n", e->manager_id,e->guid, e, typeid(e).name());
 		dump_components(e);	
 		printf("}\n************** DUMP END *************\n");
 
@@ -314,7 +326,7 @@ namespace hs
 			e = entities[i];
 			if (e)
 			{		
-				printf("entity ID: %i, checksum: %i, address: %p (%s)\n{\n", e->manager_id,e->guid, e, typeid(e).name());			
+				printf("entity slot: %i, guid: %i, address: %p (%s)\n{\n", e->manager_id,e->guid, e, typeid(e).name());
 				dump_components(e);
 				printf("}\n");
 			}
@@ -326,7 +338,7 @@ namespace hs
 	void entity_manager::dump_component(entity *e, component *c)
 	{
 #ifdef __RUNTIME_INFORMATION__
-		printf("\t+[%i] %p (%s)\n",c->_id,c,c->toString().c_str() );
+		printf("\t+ %p (%s)\n",c,c->rtti_string().c_str());
 #else
 		printf("\t+ %p\n",c);
 #endif
@@ -341,7 +353,7 @@ namespace hs
 			if (c)
 			{
 #ifdef __RUNTIME_INFORMATION__
-				printf("\t+[%i] %p (%s)\n",c->_id,c,c->toString().c_str() );
+				printf("\t+ %p (%s)\n",c,c->rtti_string().c_str() );
 #else
 				printf("\t+ %p\n",c);
 #endif

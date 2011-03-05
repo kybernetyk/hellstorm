@@ -33,6 +33,8 @@ namespace game
 			rot_speed = 40.0;
 			velocity = hs::vec2d_zero;
 		}
+
+		COMP_DEBUGINFO("[%i] comp_psycho_marker: (type: %i)", family_id, (int)type);
 	};
 	
 	class psycho_bg_system

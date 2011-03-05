@@ -25,12 +25,6 @@ namespace hs
 		{
 			if (T::family_id != 0) //already registered
 				return;
-//			
-//			{	
-//				printf("This component class seems to be registered already. Are you sure you want to do this again? [comp fam id: %i]\n",
-//					   T::family_id);
-//				abort();
-//			}
 			
 			T::family_id = get_next_component_family_id();
 			
@@ -51,6 +45,8 @@ namespace hs
 		struct mark_of_death : public component
 		{
 			static uid family_id;
+			
+			COMP_DEBUGINFO("[%i] mark_of_death", family_id);
 		};
 
 #pragma mark -
@@ -69,6 +65,13 @@ namespace hs
 				scale = vec2d_make(1.0, 1.0);
 				rot = 0.0;
 			}
+			
+			COMP_DEBUGINFO("[%i] Position: (origin: %.2f,%.2f,%.2f), (rot: %.2f)", 
+						   family_id,
+						   origin.x,
+						   origin.y,
+						   origin.z,
+						   rot);
 		};
 		
 #pragma mark -
@@ -115,6 +118,8 @@ namespace hs
 			{
 				ren_type = RENDERABLETYPE_SPRITE;
 			}
+			
+			COMP_DEBUGINFO("[%i] renderable::sprite", family_id);
 		};
 		
 		struct atlas_sprite : public renderable
@@ -127,6 +132,8 @@ namespace hs
 			
 				src_rect = rect_make(0.0, 0.0, 0.0, 0.0);
 			}
+
+			COMP_DEBUGINFO("[%i] renderable::atlas_sprite", family_id);
 		};
 		
 		struct text_label : public renderable
@@ -137,6 +144,8 @@ namespace hs
 			{
 				ren_type = RENDERABLETYPE_TEXT;
 			}
+
+			COMP_DEBUGINFO("[%i] renderable::text_label", family_id);
 		};
 
 		struct particle_emitter : public renderable
@@ -153,6 +162,8 @@ namespace hs
 				if (!pe->do_not_delete)
 					delete pe;
 			}
+
+			COMP_DEBUGINFO("[%i] renderable::particle_emitter", family_id);
 		};
 		
 #pragma mark -
@@ -167,6 +178,8 @@ namespace hs
 			
 			action_container();
 			~action_container();
+
+			COMP_DEBUGINFO("[%i] action_container", family_id);
 		};
 
 #pragma mark -
@@ -221,6 +234,30 @@ namespace hs
 				next_animation = NULL;
 				on_complete_action = NULL;
 			}
+			
+			COMP_DEBUGINFO("[%i] seq_animation: (current frame: %.2f, fps: %.2f, start: %.2f, end: %.2f, loop: %i)", 
+						   family_id,
+						   current_frame,
+						   frames_per_second,
+						   start_frame,
+						   end_frame,
+						   loop);
+		};
+		
+#pragma mark -
+#pragma mark name
+		struct name : public component
+		{
+			static uid family_id;
+			
+			std::string text;
+			
+			name()
+			{
+				text = "no name yet!";
+			}
+			
+			COMP_DEBUGINFO("[%i] name: %s", family_id, text.c_str())
 		};
 	
 	}
