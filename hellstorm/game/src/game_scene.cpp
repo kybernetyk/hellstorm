@@ -22,7 +22,7 @@ namespace game
 
 	void game_scene::init(void)
 	{
-		hs::audio_system::play_music("Versuch3.mp3");
+		hs::audio_system::play_music("drmario.mp3");
 		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);

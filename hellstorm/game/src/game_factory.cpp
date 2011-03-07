@@ -121,7 +121,6 @@ namespace game
 			hs::vec2d pill_anchor = hs::vec2d_make(0.25, 0.5);
 			int x_off = type % 8;
 			int y_off = 1 + (type / 8);
-			printf("row = %i -> %i\n", row, y_off);
 			
 			hs::entity *ret = hs::factory::create_atlas_sprite(em, 
 															   "game_sheet.png", 

@@ -291,7 +291,6 @@ namespace game
 		game_board_element *current_gbo;
 		hs::entity *current_entity;
 
-		printf("disconnecting ...\n");
 		for (int col = 0; col < defs::board_num_of_cols; col++)
 		{
 			for (int row = 0; row < defs::board_num_of_rows; row++)
