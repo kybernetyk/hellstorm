@@ -9,6 +9,7 @@
 #include "hellstorm.h"
 #include "game_utils.h"
 #include "player_system.h"
+#include "game_factory.h"
 
 namespace game
 {
@@ -38,10 +39,15 @@ namespace game
 		{
 			e_game_state old_state;
 			e_game_state current_state;
+			int score;
+			
+			factory::e_doublepill_type next_pill;
 			
 			state()
 			{
 				old_state = current_state = e_gs_unitialized;
+				next_pill = factory::e_dp_red_red;
+				score = 0;
 			}
 		};
 		

@@ -22,7 +22,7 @@ namespace game
 
 	void game_scene::init(void)
 	{
-		hs::audio_system::play_music("Versuch2.mp3");
+		hs::audio_system::play_music("Versuch3.mp3");
 		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);
@@ -34,6 +34,7 @@ namespace game
 		gb_system = new game_board_system(em);
 		plr_system = new player_system(em);
 		logic_system = new game_logic_system(em);
+		hud_sys = new hud_system(em);
 		
 		hs::factory::create_sprite(em, "background.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
@@ -43,13 +44,10 @@ namespace game
 		factory::create_virus(em, 1, 5, e_gbo_yellow);
 		factory::create_virus(em, 2, 2, e_gbo_blue);
 		
-		//factory::create_player_pill(em, 4, defs::board_num_of_rows-1, factory::e_dp_blue_green);
-		
 		global::g_state.current_state = global::e_gs_idle;
-//
-//
-//		factory::create_pill(em, 4, 5, factory::e_dp_red_blue, factory::left);
-//		factory::create_pill(em, 5, 5, factory::e_dp_red_blue, factory::right);
+		
+		global::g_state.score = 0;
+		global::g_state.next_pill = (factory::e_doublepill_type)(rand()%16);
 	}
 	
 	void game_scene::shutdown(void)
@@ -66,6 +64,7 @@ namespace game
 		delete gb_system;
 		delete plr_system;
 		delete logic_system;
+		delete hud_sys;
 	}
 	
 	void game_scene::handle_state_changes(void)
@@ -81,22 +80,20 @@ namespace game
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_player_need_respawn:
-					factory::create_player_pill(em, defs::player_spawn_col , defs::player_spawn_row, (factory::e_doublepill_type)(rand()%16));
+					factory::create_player_pill(em, defs::player_spawn_col , defs::player_spawn_row, global::g_state.next_pill);
+					global::g_state.next_pill = (factory::e_doublepill_type)(rand()%16);
 					global::g_state.current_state = global::e_gs_player_active;
 					break;
 				case global::e_gs_player_landed:
 					global::g_state.current_state = global::e_gs_check_for_chains;
 					break;
 				case global::e_gs_player_landed_ontop:
-					printf("OMG DIE DIE DIE\n");
 					global::g_state.current_state = global::e_gs_game_over;
 					break;
 				case global::e_gs_no_chains:
-					printf("NO CHAINS! :(\n");
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_chains_marked:
-					printf("YAY WE GOT CHAINS!\n");
 					global::g_state.current_state = global::e_gs_move_gbos;
 					break;
 				case global::e_gs_move_gbos:
@@ -104,11 +101,9 @@ namespace game
 					//global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_gbos_falling:
-					//game board system let's them fall
+					//game board system lets them fall
 					break;
 				case global::e_gs_game_over:
-					printf("OH GAME OVER :(\n");
-					//hs::g_game->pop_scene();
 					hs::g_game->set_scene(new menu_scene());
 					break;
 				default:
@@ -117,18 +112,10 @@ namespace game
 			
 			global::g_state.old_state = tmp;
 		}
-//
-//		if (global::g_state.current_state != global::g_state.old_state)
-//			handle_state_changes();
 	}
 	
 	void game_scene::update(double dt)
 	{
-		//we must collect the corpses from the last frame
-		//as the entity-manager's isDirty property is reset each frame
-		//so if we did corpse collection at the end of update
-		//the systems wouldn't know that the manager is dirty 
-		//and a shitstorm of dangling references would rain down on them
 		handle_state_changes();
 
 		ans->update(dt);
@@ -139,27 +126,9 @@ namespace game
 		gb_system->update(dt);
 		plr_system->update(dt);
 		logic_system->update(dt);
-
 		
-//		if (hs::g_input.has_touched_down())
-//			printf("has touched down!\n");
-//		if (hs::g_input.has_moved())
-//			printf("has moved!\n");
-//		if (hs::g_input.has_touched_up())
-//		{
-//			printf("has touched up!\n");
-//			
-//		//	hs::g_game->pop_scene();
-//		}
-		
-		
+		hud_sys->update(dt);
 		cs->collect_corpses();
-
-		/*
-		 if (hs::g_input.get_last_event() != hs::inputevent_none)
-		 {
-		 printf("last input event: %i\n", hs::g_input.get_last_event());
-		 }*/
 	}
 	
 	void game_scene::render()

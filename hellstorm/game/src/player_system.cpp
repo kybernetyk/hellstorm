@@ -134,7 +134,13 @@ namespace game
 		if (a_test_col < 0 || a_test_col >= defs::board_num_of_cols)
 			return;
 		
-		/* center */
+		/*
+		 * we're building here bounding boxes from row/col pairs
+		 * to get more accurate collision detection than just checking the
+		 * empty places in the map
+		 */
+		
+		/* check player center pill */
 		if (global::board_map[c_test_col][player->center_row])
 		{	
 			hs::entity *test_ent = global::board_map[c_test_col][player->center_row];
@@ -184,7 +190,7 @@ namespace game
 		}
 		/* -- center */
 		
-		/* aux */
+		/* check player aux pill */
 		if (global::board_map[a_test_col][player->aux_row])
 		{	
 			hs::entity *test_ent = global::board_map[a_test_col][player->aux_row];
@@ -246,7 +252,6 @@ namespace game
 		
 		player->center_col = c_test_col;
 		player->aux_col = a_test_col;
-
 	}
 	
 	void player_system::move_left(void)
@@ -261,7 +266,7 @@ namespace game
 	
 	void player_system::handle_state_falling(void)
 	{
-		//maybe move belog <= 0.0 ?
+		//maybe move below <= 0.0 ?
 		if (player->timer < 0.20)
 		{
 			if (can_move_down())

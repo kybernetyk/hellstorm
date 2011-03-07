@@ -12,6 +12,7 @@
 #include "game_board_system.h"
 #include "player_system.h"
 #include "game_logic_system.h"
+#include "hud_system.h"
 
 namespace game 
 {
@@ -42,6 +43,7 @@ namespace game
 		game_board_system *gb_system;
 		player_system *plr_system;
 		game_logic_system *logic_system;
+		hud_system *hud_sys;
 	};
 
 }

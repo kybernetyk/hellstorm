@@ -137,6 +137,9 @@ namespace game
 
 	}
 
+	/*
+	 * check for chains of pills+virii and remove them
+	 */
 	void game_logic_system::handle_state_check_for_chains(void)
 	{
 		marked_for_removal.clear();
@@ -155,11 +158,12 @@ namespace game
 			
 			//entities can be marked double - dont add component if it exists already;
 			if (!current_entity->get<hs::comp::mark_of_death>())
-			{
+			{	
+				global::g_state.score += 100;
 				current_entity->add<hs::comp::mark_of_death>();	
-				em->dump_entity(current_entity);
 			}
 		}
+		
 		if (marked_for_removal.size() > 0)
 			global::g_state.current_state = global::e_gs_chains_marked;
 		else
@@ -172,6 +176,9 @@ namespace game
 #define CS_UNDEFINED 0
 #define CS_STATIC 1
 #define CS_FALL 2
+	/*
+	 * mark gbos that are not connected to a static as falling
+	 */
 	void game_logic_system::handle_state_move_gbos(void)
 	{
 		game_board_element *current_gbo;
@@ -223,56 +230,62 @@ namespace game
 		game_board_element *neighbour_gbo;
 		hs::entity *neighbour_entity;
 
-		//check below
-		for (int col = 0; col < defs::board_num_of_cols; col++)
+		for (int pass = 0; pass < defs::board_num_of_cols; pass++)
 		{
-			for (int row = 0; row < defs::board_num_of_rows; row++)
+			for (int col = 0; col < defs::board_num_of_cols; col++)
 			{
-				neighbour_entity = NULL;
-				
-				current_entity = global::board_map[col][row];
-				if (!current_entity)
+				for (int row = 0; row < defs::board_num_of_rows; row++)
 				{
-					continue;
-				}
-				current_gbo = em->get_component<game_board_element>(current_entity);
-				if (row == 0)
-				{
-					current_gbo->state = e_gbo_state_idle;
-					continue;
-				}
-				if (current_gbo->state != e_gbo_state_idle)
-					continue;
-				
-				//mark upper
-				int r = row;
-				while (1)
-				{
-					if (r == defs::board_num_of_rows-1)
-						break;
+					neighbour_entity = NULL;
 					
-					neighbour_entity = global::board_map[col][r+1];
-					if (!neighbour_entity)
-						break;
+					current_entity = global::board_map[col][row];
+					if (!current_entity)
+					{
+						continue;
+					}
 					
-					neighbour_gbo = neighbour_entity->get<game_board_element>();
-					neighbour_gbo->state = e_gbo_state_idle;
-					r++;
+					current_gbo = em->get_component<game_board_element>(current_entity);
+
+					if (row == 0)
+					{
+						current_gbo->state = e_gbo_state_idle;
+					}
+
+					if (current_gbo->state != e_gbo_state_idle)
+						continue;
+
+					//mark connected
+					neighbour_entity = em->get_entity_by_guid(current_gbo->connected_to_guid);
+					if (neighbour_entity)
+					{	
+						neighbour_gbo = em->get_component<game_board_element>(neighbour_entity);	
+						neighbour_gbo->state = e_gbo_state_idle;
+					}
+					
+					//mark upper
+					int r = row;
+					while (1)
+					{
+						if (r == defs::board_num_of_rows-1)
+							break;
+						
+						neighbour_entity = global::board_map[col][r+1];
+						if (!neighbour_entity)
+							break;
+						
+						neighbour_gbo = neighbour_entity->get<game_board_element>();
+						neighbour_gbo->state = e_gbo_state_idle;
+						r++;
+					}
 				}
-				
-				//mark connected
-				neighbour_entity = em->get_entity_by_guid(current_gbo->connected_to_guid);
-				if (neighbour_entity)
-				{	
-					neighbour_gbo = em->get_component<game_board_element>(neighbour_entity);	
-					neighbour_gbo->state = e_gbo_state_idle;
-				}
-				
 			}
 		}
 		global::g_state.current_state = global::e_gs_gbos_need_disconnect;
 	}
 	
+	/*
+	 * remove connections between falling gbos. (also change the graphics to the single pill)
+	 */
 	void game_logic_system::handle_state_gbos_need_disconnect()
 	{
 		game_board_element *current_gbo;
@@ -299,7 +312,7 @@ namespace game
 #pragma mark update	
 	void game_logic_system::update(double dt)
 	{
-		//do only if we're in the state and not between 2 states (which could have been set in som earlier system)
+		//do only if we're in the state and not between 2 states (which could have been set in some earlier system this frame)
 		if (global::g_state.current_state == global::g_state.old_state)
 		{
 			switch (global::g_state.current_state) 
