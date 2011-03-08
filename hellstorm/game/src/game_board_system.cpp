@@ -173,8 +173,16 @@ namespace game
 			global::board_map[current_gbo->col][current_gbo->row] = NULL;
 			current_gbo->row--;
 			global::board_map[current_gbo->col][current_gbo->row] = current_entity;
+			
+			hs::entity *shading = em->get_entity_by_guid(current_gbo->shading_guid);
+			if (shading)
+			{
+				shading->get<hs::comp::position>()->origin.y -= 32.0;//
+			}
+
 		}
 		
 		current_pos->origin = pixel_for_colrow(current_gbo->col, current_gbo->row);
+		
 	}
 }

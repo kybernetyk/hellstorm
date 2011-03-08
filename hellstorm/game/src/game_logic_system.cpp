@@ -163,6 +163,11 @@ namespace game
 				current_entity->add<hs::comp::mark_of_death>();	
 				if (current_entity->get<game_board_element>()->type == e_gbo_type_virus)
 					global::g_state.virii_left--;
+				
+				game_board_element *gbo = current_entity->get<game_board_element>();
+				hs::entity *shading = em->get_entity_by_guid(gbo->shading_guid);
+				if (shading)
+					shading->add<hs::comp::mark_of_death>();
 			}
 		}
 		
