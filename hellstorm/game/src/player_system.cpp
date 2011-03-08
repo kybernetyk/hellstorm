@@ -365,13 +365,14 @@ namespace game
 				if ((int)current_pos->rot == 90)
 				{
 					shading_center->get<hs::comp::position>()->origin.x = current_pos->origin.x;
-					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y+32;
+					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y;
 					
 					shading_aux->get<hs::comp::position>()->origin.x = current_pos->origin.x;
-					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y;
+					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y+32;
 					
-					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);
-					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);					
+					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);
+					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);			
+					printf("90 90  90 90 \n");
 				}
 				
 				if ((int)current_pos->rot == 180)
@@ -389,13 +390,13 @@ namespace game
 				if ((int)current_pos->rot == 270)
 				{
 					shading_center->get<hs::comp::position>()->origin.x = current_pos->origin.x;
-					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y-30;
+					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y+2;
 					
 					shading_aux->get<hs::comp::position>()->origin.x = current_pos->origin.x;
-					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y+2;
+					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y-30;
 					
-					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);
-					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);					
+					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);
+					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);					
 				}
 
 				em->get_entity_by_guid(player->shading_guid)->add<hs::comp::mark_of_death>();
