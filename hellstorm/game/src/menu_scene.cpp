@@ -12,6 +12,7 @@
 #include "psycho_bg_system.h"
 #include "game_factory.h"
 #include "game_scene.h"
+#include "game_globals.h"
 
 #include <cstdio>
 
@@ -120,6 +121,8 @@ namespace game
 			switch (button_tag) 
 			{
 				case e_button_start:
+					global::g_state.level = 1;
+					global::g_state.score = 0;		
 					hs::g_game->set_scene(new game_scene());
 					break;
 			}

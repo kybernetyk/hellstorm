@@ -293,6 +293,31 @@ namespace game
 				center->get<hs::comp::position>()->rot = current_pos->rot;
 				aux->get<hs::comp::position>()->rot = current_pos->rot;
 				
+				hs::uid s = center->get<game_board_element>()->shine;
+				if (s)
+				{
+					hs::entity *shine = em->get_entity_by_guid(s);
+					double r = current_pos->rot;
+					
+					if ((int)(current_pos->rot) == 270)
+						r = 90;
+
+					shine->get<hs::comp::position>()->rot = r;
+				}
+
+				s = aux->get<game_board_element>()->shine;
+				if (s)
+				{
+					hs::entity *shine = em->get_entity_by_guid(s);
+					double r = current_pos->rot;
+
+					if ((int)(current_pos->rot) == 270)
+						r = 90;
+						
+					shine->get<hs::comp::position>()->rot = r;
+				}
+
+				
 				if (player->center_row < defs::player_spawn_row &&
 					player->aux_row < defs::player_spawn_row)
 					global::g_state.current_state = global::e_gs_player_landed;

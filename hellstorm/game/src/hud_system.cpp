@@ -77,14 +77,14 @@ namespace game
 		cache_size = 0;
 		memset(ent_cache, 0x00, sizeof(hs::entity *)*hs::cfg::entity_system.entity_pool_size);
 		
-		hs::entity *e = hs::factory::create_text_label(em, "impact20.fnt", "12345", hs::vec3d_make(84, 480-48, 5.0), hs::vec2d_make(0.5, 0.0) );
+		hs::entity *e = hs::factory::create_text_label(em, "score.fnt", "12345", hs::vec3d_make(84, 480-48, 9.5), hs::vec2d_make(0.5, 0.0) );
 
 		score_label = e->get<hs::comp::text_label>();
 		
 		//__score___
 		hs::entity *sprite = hs::factory::create_atlas_sprite(em, 
 												  "game_sheet.png", 
-												  hs::vec3d_make(84, 480-52, 5.0), 
+												  hs::vec3d_make(84, 480-52, 9.5), 
 												  hs::rect_make(384, 256, 114, 10),
 												  hs::vec2d_make(0.5, 1.0)
 												  );
@@ -93,7 +93,7 @@ namespace game
 		//__next__
 		sprite = hs::factory::create_atlas_sprite(em, 
 												  "game_sheet.png", 
-												  hs::vec3d_make(268, 480-52, 5.0), 
+												  hs::vec3d_make(268, 480-52, 9.5), 
 												  hs::rect_make(128, 384, 52, 10),
 												  hs::vec2d_make(0.5, 1.0)
 												  );
@@ -101,7 +101,7 @@ namespace game
 		//next left
 		sprite = hs::factory::create_atlas_sprite(em, 
 												  "game_sheet.png",
-												  hs::vec3d_make(260-5, 480-52, 5.0), 
+												  hs::vec3d_make(260-5, 480-51, 9.5), 
 												  next_mapping[factory::e_dp_red_red].left,
 												  hs::vec2d_make(0.5, 0.0)
 												  );
@@ -109,7 +109,7 @@ namespace game
 		
 		sprite = hs::factory::create_atlas_sprite(em, 
 												  "game_sheet.png",
-												  hs::vec3d_make(260+25-5, 480-52, 5.0), 
+												  hs::vec3d_make(260+25-5, 480-51, 9.5), 
 												  next_mapping[factory::e_dp_red_red].right,
 												  hs::vec2d_make(0.5, 0.0)
 												  );

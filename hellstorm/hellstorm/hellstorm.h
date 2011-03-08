@@ -31,6 +31,7 @@
 
 #include "entity_manager.h"
 #include "components.h"
+#include "system.h"
 
 #include "corpse_retrieval_system.h"
 #include "render_system.h"

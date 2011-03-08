@@ -161,6 +161,8 @@ namespace game
 			{	
 				global::g_state.score += 100;
 				current_entity->add<hs::comp::mark_of_death>();	
+				if (current_entity->get<game_board_element>()->type == e_gbo_type_virus)
+					global::g_state.virii_left--;
 			}
 		}
 		

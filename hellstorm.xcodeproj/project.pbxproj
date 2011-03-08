@@ -40,6 +40,9 @@
 		034609C8130FEC9B0086DFDD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C7130FEC980086DFDD /* AVFoundation.framework */; };
 		034609CA130FECA50086DFDD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609C9130FECA20086DFDD /* OpenAL.framework */; };
 		034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034609CB130FECAA0086DFDD /* AudioToolbox.framework */; };
+		03486F8D1325324500A0AF34 /* score.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 03486F8C1325324500A0AF34 /* score.fnt */; };
+		03486F90132602D500A0AF34 /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03486F8E132602D500A0AF34 /* system.cpp */; };
+		03486F93132604E500A0AF34 /* popup_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03486F91132604E300A0AF34 /* popup_system.cpp */; };
 		0372A7AF131446E400D1A840 /* game_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0372A7AD131446E400D1A840 /* game_factory.cpp */; };
 		0372A7B31314489C00D1A840 /* game_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0372A7B11314489C00D1A840 /* game_scene.cpp */; };
 		0374E1C61313E1ED00BD1FDA /* hellstormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1C01313E1ED00BD1FDA /* hellstormViewController.xib */; };
@@ -164,6 +167,11 @@
 		034609C7130FEC980086DFDD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		034609C9130FECA20086DFDD /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		034609CB130FECAA0086DFDD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		03486F8C1325324500A0AF34 /* score.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = score.fnt; sourceTree = "<group>"; };
+		03486F8E132602D500A0AF34 /* system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cpp; sourceTree = "<group>"; };
+		03486F8F132602D500A0AF34 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
+		03486F91132604E300A0AF34 /* popup_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popup_system.cpp; sourceTree = "<group>"; };
+		03486F92132604E400A0AF34 /* popup_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popup_system.h; sourceTree = "<group>"; };
 		0372A7AD131446E400D1A840 /* game_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_factory.cpp; sourceTree = "<group>"; };
 		0372A7AE131446E400D1A840 /* game_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_factory.h; sourceTree = "<group>"; };
 		0372A7B11314489C00D1A840 /* game_scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_scene.cpp; sourceTree = "<group>"; };
@@ -334,6 +342,8 @@
 				031C162E13190D9C00A7BD0B /* game_logic_system.h */,
 				039462201324DF5E00C0B630 /* hud_system.cpp */,
 				039462211324DF5E00C0B630 /* hud_system.h */,
+				03486F91132604E300A0AF34 /* popup_system.cpp */,
+				03486F92132604E400A0AF34 /* popup_system.h */,
 			);
 			name = systems;
 			sourceTree = "<group>";
@@ -473,6 +483,7 @@
 				0374E1CD1313E1FE00BD1FDA /* cool.pex */,
 				0374E1CE1313E1FE00BD1FDA /* hellstorm.cfg */,
 				0374E1CF1313E1FE00BD1FDA /* impact20.fnt */,
+				03486F8C1325324500A0AF34 /* score.fnt */,
 				0374E1D01313E1FE00BD1FDA /* impact20_0.png */,
 				0374E1D11313E1FE00BD1FDA /* music.mp3 */,
 				0374E1D21313E1FE00BD1FDA /* stars.pex */,
@@ -604,6 +615,8 @@
 				03BAA3FD1313E7E100AAA735 /* corpse_retrieval_system */,
 				03BAA4001313E7E100AAA735 /* particle_system */,
 				03BAA4031313E7E100AAA735 /* render_system */,
+				03486F8E132602D500A0AF34 /* system.cpp */,
+				03486F8F132602D500A0AF34 /* system.h */,
 			);
 			path = systems;
 			sourceTree = "<group>";
@@ -881,6 +894,7 @@
 				03E3749D131BB5C600DC557A /* Menu.mp3 in Resources */,
 				0317DCE6132253EF00AF89B4 /* Versuch3.mp3 in Resources */,
 				039462241324EF5800C0B630 /* drmario.mp3 in Resources */,
+				03486F8D1325324500A0AF34 /* score.fnt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +966,8 @@
 				033C7139131841FF0064560E /* game_globals.cpp in Sources */,
 				031C162F13190D9D00A7BD0B /* game_logic_system.cpp in Sources */,
 				039462221324DF5E00C0B630 /* hud_system.cpp in Sources */,
+				03486F90132602D500A0AF34 /* system.cpp in Sources */,
+				03486F93132604E500A0AF34 /* popup_system.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

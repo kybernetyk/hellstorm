@@ -83,6 +83,8 @@ namespace game
 
 		void create_raster(hs::entity_manager *em)
 		{
+			return;
+			
 			hs::entity *rast = 0;
 			rast = hs::factory::create_sprite(em, "raster_3.png", hs::vec3d_screen_center(7.0), hs::anchor_center);
 
@@ -157,7 +159,7 @@ namespace game
 															   pill_anchor);
 			hs::comp::renderable *r = ret->get<hs::comp::renderable>();
 			r->alpha = 0.9;
-			
+
 			game_board_element *gbo = ret->add<game_board_element>();
 			gbo->col = col;
 			gbo->row = row;
@@ -167,6 +169,27 @@ namespace game
 
 			hs::comp::name *name = ret->add<hs::comp::name>();
 			name->text = "normal pill";
+
+			if (subtype == left)
+			{
+				hs::entity *shine = hs::factory::create_atlas_sprite(em, 
+																	 "game_sheet.png",
+																	 pixel_for_colrow(col, row),
+																	 hs::rect_make(416, 384, 32, 32));
+				shine->get<hs::comp::renderable>()->alpha = 0.9;
+				gbo->shine = shine->guid;
+	
+			}
+			else
+			{
+				hs::entity *shine = hs::factory::create_atlas_sprite(em, 
+																	 "game_sheet.png",
+																	 pixel_for_colrow(col, row),
+																	 hs::rect_make(416+32, 384, 32, 32));
+				shine->get<hs::comp::renderable>()->alpha = 0.9;
+				gbo->shine = shine->guid;
+			}
+			
 
 			return ret;
 		}

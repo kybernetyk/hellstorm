@@ -32,7 +32,9 @@ namespace game
 			e_gs_no_chains,
 			e_gs_gbos_need_disconnect,
 			e_gs_move_gbos,
-			e_gs_game_over
+			e_gs_game_over,
+			e_gs_no_virus_left,
+			e_gs_level_summary
 		};
 		
 		struct state
@@ -41,6 +43,9 @@ namespace game
 			e_game_state current_state;
 			int score;
 			
+			int level;
+			int virii_left;
+			
 			factory::e_doublepill_type next_pill;
 			
 			state()
@@ -48,6 +53,8 @@ namespace game
 				old_state = current_state = e_gs_unitialized;
 				next_pill = factory::e_dp_red_red;
 				score = 0;
+				level = 0;
+				virii_left = 0;
 			}
 		};
 		

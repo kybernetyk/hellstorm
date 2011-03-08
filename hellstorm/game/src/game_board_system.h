@@ -42,6 +42,7 @@ namespace game
 		double timer;
 		
 		hs::uid connected_to_guid;
+		hs::uid shine;
 
 		game_board_element()
 		{
@@ -52,6 +53,7 @@ namespace game
 			type = e_gbo_type_pill;
 			color = e_gbo_red;
 			connected_to_guid = 0;
+			shine = 0;
 		}
 
 		COMP_DEBUGINFO("[%i] game_board_element: (col: %i, row: %i, color: %i, state: %i)", 
