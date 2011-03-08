@@ -26,6 +26,8 @@ namespace game
 		e_gbo_color aux_color;
 	
 		factory::e_doublepill_type double_pill_type;
+		
+		hs::uid shading_guid;
 
 		comp_player()
 		{
@@ -36,6 +38,7 @@ namespace game
 			center_color = e_gbo_red;
 			aux_color = e_gbo_red;
 			double_pill_type = factory::e_dp_red_red;
+			shading_guid = 0;
 		}
 	};
 	
@@ -71,7 +74,7 @@ namespace game
 		void move(e_move_direction dir);
 		
 		bool can_move_down(int num_of_rows_to_move = 1);
-		
+		void update_shading();
 		
 		void handle_state_falling(void);
 	};

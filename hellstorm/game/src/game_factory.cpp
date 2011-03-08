@@ -143,6 +143,14 @@ namespace game
 			
 			hs::comp::name *name = ret->add<hs::comp::name>();
 			name->text = "player pill";
+			
+			hs::entity *shading = hs::factory::create_atlas_sprite(em, 
+																 "game_sheet.png",
+																 pixel_for_colrow(col, row),
+																 hs::rect_make(0, 416, 64, 32),
+																   pill_anchor);
+
+			player->shading_guid = shading->guid;
 			return ret;
 		}
 		
@@ -169,27 +177,6 @@ namespace game
 
 			hs::comp::name *name = ret->add<hs::comp::name>();
 			name->text = "normal pill";
-
-			if (subtype == left)
-			{
-				hs::entity *shine = hs::factory::create_atlas_sprite(em, 
-																	 "game_sheet.png",
-																	 pixel_for_colrow(col, row),
-																	 hs::rect_make(416, 384, 32, 32));
-				shine->get<hs::comp::renderable>()->alpha = 0.9;
-				gbo->shine = shine->guid;
-	
-			}
-			else
-			{
-				hs::entity *shine = hs::factory::create_atlas_sprite(em, 
-																	 "game_sheet.png",
-																	 pixel_for_colrow(col, row),
-																	 hs::rect_make(416+32, 384, 32, 32));
-				shine->get<hs::comp::renderable>()->alpha = 0.9;
-				gbo->shine = shine->guid;
-			}
-			
 
 			return ret;
 		}

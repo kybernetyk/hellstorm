@@ -67,6 +67,9 @@ namespace game
 
 	bool player_system::rotate_ccw(void)
 	{
+		if (current_pos->rot >= 360.0)
+			current_pos->rot = 0.0;
+
 		double rot = current_pos->rot + 90.0;
 
 		int col_offset = cos(DEG2RAD(rot));
@@ -96,6 +99,9 @@ namespace game
 	
 	bool player_system::rotate_cw(void)
 	{
+		if (current_pos->rot <= 0.0)
+			current_pos->rot = 360.0;
+
 		double rot = current_pos->rot - 90.0;
 		
 		int col_offset = cos(DEG2RAD(rot));
@@ -264,6 +270,39 @@ namespace game
 		move(e_move_right);
 	}
 	
+	void player_system::update_shading()
+	{
+		hs::entity *shading = em->get_entity_by_guid(player->shading_guid);
+		if ((int)current_pos->rot == 0 || (int)current_pos->rot == 360)
+		{
+			shading->get<hs::comp::position>()->origin.x = current_pos->origin.x;
+			shading->get<hs::comp::position>()->origin.y = current_pos->origin.y;
+			shading->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(0, 416, 64, 32);
+		}
+		
+		if ((int)current_pos->rot == 90)
+		{
+			shading->get<hs::comp::position>()->origin.x = current_pos->origin.x-8.0;
+			shading->get<hs::comp::position>()->origin.y = current_pos->origin.y+16.0;
+			shading->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 64);
+		}
+		
+		if ((int)current_pos->rot == 180)
+		{
+			shading->get<hs::comp::position>()->origin.x = current_pos->origin.x-30.0;
+			shading->get<hs::comp::position>()->origin.y = current_pos->origin.y;
+			shading->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(0, 416, 64, 32);
+		}
+		
+		if ((int)current_pos->rot == 270)
+		{
+			shading->get<hs::comp::position>()->origin.x = current_pos->origin.x-8.0;
+			shading->get<hs::comp::position>()->origin.y = current_pos->origin.y-14.0;
+			shading->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 64);
+		}
+
+	}
+	
 	void player_system::handle_state_falling(void)
 	{
 		//maybe move below <= 0.0 ?
@@ -293,30 +332,74 @@ namespace game
 				center->get<hs::comp::position>()->rot = current_pos->rot;
 				aux->get<hs::comp::position>()->rot = current_pos->rot;
 				
-				hs::uid s = center->get<game_board_element>()->shine;
-				if (s)
+	
+				hs::entity *shading_center = hs::factory::create_atlas_sprite(em, 
+																	   "game_sheet.png",
+																	   pixel_for_colrow(player->center_col, player->center_row),
+																	   hs::rect_make(0, 416, 32, 32));
+//				shading_center->get<hs::comp::renderable>()->alpha = 0.9;
+				shading_center->get<hs::comp::position>()->origin.z = defs::board_z+0.5;
+				center->get<game_board_element>()->shading_guid = shading_center->guid;
+
+				hs::entity *shading_aux = hs::factory::create_atlas_sprite(em, 
+																			  "game_sheet.png",
+																			  pixel_for_colrow(player->center_col, player->center_row),
+																			  hs::rect_make(32, 416, 32, 32));
+//				shading_aux->get<hs::comp::renderable>()->alpha = 0.9;
+				shading_aux->get<hs::comp::position>()->origin.z = defs::board_z+0.5;
+				aux->get<game_board_element>()->shading_guid = shading_aux->guid;
+
+								
+				if ((int)current_pos->rot == 0 || (int)current_pos->rot == 360)
 				{
-					hs::entity *shine = em->get_entity_by_guid(s);
-					double r = current_pos->rot;
+					shading_center->get<hs::comp::position>()->origin.x = current_pos->origin.x;
+					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y;
 					
-					if ((int)(current_pos->rot) == 270)
-						r = 90;
+					shading_aux->get<hs::comp::position>()->origin.x = current_pos->origin.x + 32;
+					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y;
 
-					shine->get<hs::comp::position>()->rot = r;
+					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(0, 416, 32, 32);
+					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(32, 416, 32, 32);					
 				}
-
-				s = aux->get<game_board_element>()->shine;
-				if (s)
+				
+				if ((int)current_pos->rot == 90)
 				{
-					hs::entity *shine = em->get_entity_by_guid(s);
-					double r = current_pos->rot;
-
-					if ((int)(current_pos->rot) == 270)
-						r = 90;
-						
-					shine->get<hs::comp::position>()->rot = r;
+					shading_center->get<hs::comp::position>()->origin.x = current_pos->origin.x;
+					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y+32;
+					
+					shading_aux->get<hs::comp::position>()->origin.x = current_pos->origin.x;
+					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y;
+					
+					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);
+					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);					
+				}
+				
+				if ((int)current_pos->rot == 180)
+				{
+					shading_center->get<hs::comp::position>()->origin.x = current_pos->origin.x+2;
+					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y;
+					
+					shading_aux->get<hs::comp::position>()->origin.x = current_pos->origin.x-30;
+					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y;
+					
+					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(32, 416, 32, 32);
+					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(0, 416, 32, 32);					
+				}
+				
+				if ((int)current_pos->rot == 270)
+				{
+					shading_center->get<hs::comp::position>()->origin.x = current_pos->origin.x;
+					shading_center->get<hs::comp::position>()->origin.y = current_pos->origin.y-30;
+					
+					shading_aux->get<hs::comp::position>()->origin.x = current_pos->origin.x;
+					shading_aux->get<hs::comp::position>()->origin.y = current_pos->origin.y+2;
+					
+					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);
+					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);					
 				}
 
+				em->get_entity_by_guid(player->shading_guid)->add<hs::comp::mark_of_death>();
+				//em->remove_entity(em->get_entity_by_guid(player->shading_guid)->manager_id);
 				
 				if (player->center_row < defs::player_spawn_row &&
 					player->aux_row < defs::player_spawn_row)
@@ -331,12 +414,12 @@ namespace game
 			player->aux_row--;
 			
 			current_pos->origin = pixel_for_colrow(player->center_col, player->center_row);
+			update_shading();
 			return;
 		}
 
-	
 		current_pos->origin.x = pixel_for_colrow(player->center_col, player->center_row).x;
-
+		update_shading();
 	}
 	
 	bool player_system::can_move_down(int num_of_rows_to_move)
