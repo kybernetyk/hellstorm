@@ -13,6 +13,7 @@
 namespace hs 
 {
 	#define PE_LOOP -1.0f
+	#define PE_DUR_FROM_FILE 0.0
 	
 	class particle_emitter : public renderable
 	{

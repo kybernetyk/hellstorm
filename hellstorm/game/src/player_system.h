@@ -22,6 +22,8 @@ namespace game
 		double timer;
 		double fall_time;
 		
+		bool fast_drop;
+		
 		e_gbo_color center_color;
 		e_gbo_color aux_color;
 	
@@ -39,6 +41,7 @@ namespace game
 			aux_color = e_gbo_red;
 			double_pill_type = factory::e_dp_red_red;
 			shading_guid = 0;
+			fast_drop = false;
 		}
 	};
 	

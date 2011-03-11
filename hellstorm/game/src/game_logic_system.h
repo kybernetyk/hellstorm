@@ -19,6 +19,7 @@ namespace game
 {
 	class hs::entity_manager;
 	class hs::entity;
+	struct game_board_element;
 	
 	class game_logic_system
 	{
@@ -35,6 +36,7 @@ namespace game
 		
 		void handle_state_move_gbos();
 		void handle_state_gbos_need_disconnect();
+		void disconnect_pill(hs::entity *pill);
 		
 		std::vector<hs::entity *> marked_for_removal;
 		

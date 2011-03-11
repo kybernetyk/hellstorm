@@ -56,7 +56,7 @@ namespace hs
 		Vector2f p = {position.x, position.y};
 		
 		ParticleEmitter *pe = (ParticleEmitter*)objc_pe_ptr;
-		
+	//	printf("%f\n",dt);
 		[pe setSourcePosition: p];
 		[pe updateWithDelta: dt];
 	}

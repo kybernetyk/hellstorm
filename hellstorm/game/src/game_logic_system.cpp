@@ -167,7 +167,16 @@ namespace game
 				game_board_element *gbo = current_entity->get<game_board_element>();
 				hs::entity *shading = em->get_entity_by_guid(gbo->shading_guid);
 				if (shading)
+				{	
 					shading->add<hs::comp::mark_of_death>();
+					gbo->shading_guid = 0;
+				}
+				
+				if (gbo->connected_to_guid > 0)
+				{
+					hs::entity *e = em->get_entity_by_guid(gbo->connected_to_guid);
+					disconnect_pill(e);
+				}
 			}
 		}
 		
@@ -308,10 +317,53 @@ namespace game
 				
 				current_gbo = em->get_component<game_board_element>(current_entity);
 				if (current_gbo->state == e_gbo_state_falling)
-					current_gbo->connected_to_guid = 0;
+				{	
+					disconnect_pill(current_entity);
+				}
 			}
 		}
 		global::g_state.current_state = global::e_gs_gbos_falling;
+	}
+	
+	void game_logic_system::disconnect_pill(hs::entity *pill)
+	{
+		hs::comp::atlas_sprite *sprite;
+		hs::entity *current_entity = pill;
+
+		game_board_element *current_gbo = pill->get<game_board_element>();
+		if (!current_gbo)
+			abort();
+		
+		current_gbo->connected_to_guid = 0;
+		
+		hs::entity *shading = em->get_entity_by_guid(current_gbo->shading_guid);
+		if (shading)
+		{
+			shading->add<hs::comp::mark_of_death>();	
+			current_gbo->shading_guid = 0;
+		}
+		
+		current_entity->get<hs::comp::position>()->rot = 0.0;
+		
+		sprite = current_entity->get<hs::comp::atlas_sprite>();
+		switch (current_gbo->color)
+		{
+			case e_gbo_red:
+				sprite->src_rect = hs::rect_make(0, 0, 32, 32);
+				break;
+			case e_gbo_green:
+				sprite->src_rect = hs::rect_make(64, 0, 32, 32);
+				break;
+			case e_gbo_yellow:
+				sprite->src_rect = hs::rect_make(128, 0, 32, 32);
+				break;
+			case e_gbo_blue:
+				sprite->src_rect = hs::rect_make(192, 0, 32, 32);
+				break;
+			default:
+				break;
+		}
+
 	}
 	
 #pragma mark -

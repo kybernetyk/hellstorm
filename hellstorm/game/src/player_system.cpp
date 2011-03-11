@@ -52,14 +52,30 @@ namespace game
 					else
 						rotate_cw();
 				}
-				else if (hs::g_input.get_current_touch_location().x < 160)
+
+				if (hs::g_input.get_current_touch_location().y > 100 &&
+					hs::g_input.get_current_touch_location().y < 400 )
 				{
-					move_left();
+					if (hs::g_input.get_current_touch_location().x < 160)
+					{
+						move_left();
+					}
+					else
+					{
+						move_right();
+					}
 				}
-				else
+
+				if (hs::g_input.get_current_touch_location().y < 100)
 				{
-					move_right();
+					player->fast_drop = true;
+					player->timer = 0.1;
 				}
+			}
+			
+			if (hs::g_input.has_touched_up())
+			{
+				player->fast_drop = false;
 			}
 			handle_state_falling();
 		}
@@ -306,7 +322,7 @@ namespace game
 	void player_system::handle_state_falling(void)
 	{
 		//maybe move below <= 0.0 ?
-		if (player->timer < 0.20)
+		if (!player->fast_drop && player->timer < 0.20)
 		{
 			if (can_move_down())
 				current_pos->origin.y -= current_dt * (1.0/0.20) * 32.0;
@@ -317,6 +333,8 @@ namespace game
 		if (player->timer <= 0.0)
 		{
 			player->timer = player->fall_time;
+			if (player->fast_drop)
+				player->timer = 0.1;
 			
 			if (!can_move_down())
 			{

@@ -77,6 +77,8 @@ namespace game
 
 		global::g_state.current_state = global::e_gs_idle;
 		global::g_state.next_pill = (factory::e_doublepill_type)(rand()%16);
+		
+//		hs::factory::create_particle_emitter(em, "matrix_screen.pex", PE_DUR_FROM_FILE, hs::vec3d_make(320/2, 480, 9.0), true);
 	}
 	
 	void game_scene::shutdown(void)
