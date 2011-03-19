@@ -20,6 +20,7 @@ namespace hs
 			reference_counts[filename]++;
 			return textures[filename];
 		}
+		printf("loading tex %s\n", filename.c_str());
 		
 		texture2d *ret = new texture2d(filename);
 		if (!ret)

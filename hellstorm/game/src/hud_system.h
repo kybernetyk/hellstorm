@@ -23,6 +23,7 @@ namespace game
 		size_t cache_size;
 		
 		hs::comp::text_label *score_label;
+		hs::comp::text_label *level_label;
 		hs::comp::atlas_sprite *next_left, *next_right;
 		
 		void update_next_display();

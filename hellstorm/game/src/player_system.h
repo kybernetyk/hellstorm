@@ -10,6 +10,7 @@
 #include "game_utils.h"
 #include "game_board_system.h"
 #include "game_factory.h"
+#include "game_globals.h"
 
 namespace game 
 {

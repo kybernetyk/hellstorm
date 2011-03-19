@@ -37,6 +37,10 @@ namespace game
 			e_gs_level_summary
 		};
 		
+		const int difficulty_easy = 3;
+		const int difficulty_medium = 2;
+		const int difficulty_hard = 1;
+		
 		struct state
 		{
 			e_game_state old_state;
@@ -45,6 +49,8 @@ namespace game
 			
 			int level;
 			int virii_left;
+			
+			int difficulty;
 			
 			factory::e_doublepill_type next_pill;
 			
@@ -55,6 +61,7 @@ namespace game
 				score = 0;
 				level = 0;
 				virii_left = 0;
+				difficulty = difficulty_easy;	//easy
 			}
 		};
 		

@@ -45,31 +45,39 @@ namespace game
 			
 			if (hs::g_input.has_touched_down())
 			{
-				if (hs::g_input.get_current_touch_location().y > 400)
+				bool valid = true;
+				if (hs::g_input.get_current_touch_location().y > 440 &&
+					hs::g_input.get_current_touch_location().x > 280)
+					valid = false;
+				
+				if (valid)
 				{
-					if (hs::g_input.get_current_touch_location().x < 160)
-						rotate_ccw();
-					else
-						rotate_cw();
-				}
-
-				if (hs::g_input.get_current_touch_location().y > 100 &&
-					hs::g_input.get_current_touch_location().y < 400 )
-				{
-					if (hs::g_input.get_current_touch_location().x < 160)
+					if (hs::g_input.get_current_touch_location().y > 400)
 					{
-						move_left();
+						if (hs::g_input.get_current_touch_location().x < 160)
+							rotate_ccw();
+						else
+							rotate_cw();
 					}
-					else
-					{
-						move_right();
-					}
-				}
 
-				if (hs::g_input.get_current_touch_location().y < 100)
-				{
-					player->fast_drop = true;
-					player->timer = 0.1;
+					if (hs::g_input.get_current_touch_location().y > 100 &&
+						hs::g_input.get_current_touch_location().y < 400 )
+					{
+						if (hs::g_input.get_current_touch_location().x < 160)
+						{
+							move_left();
+						}
+						else
+						{
+							move_right();
+						}
+					}
+
+					if (hs::g_input.get_current_touch_location().y < 100)
+					{
+						player->fast_drop = true;
+						player->timer = 0.1;
+					}
 				}
 			}
 			
@@ -332,7 +340,7 @@ namespace game
 
 		if (player->timer <= 0.0)
 		{
-			player->timer = player->fall_time;
+			player->timer = player->fall_time * global::g_state.difficulty;
 			if (player->fast_drop)
 				player->timer = 0.1;
 			

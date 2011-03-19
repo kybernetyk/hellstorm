@@ -141,6 +141,7 @@ namespace hs
 						current_scene->shutdown();
 						delete current_scene;
 					}
+					scene_stack_pointer = 0;
 					
 					scene_stack[scene_stack_pointer] = next_scene;
 					current_scene = next_scene;
@@ -216,21 +217,12 @@ namespace hs
 	{
 //#define TEX_RENDER_TEST
 		current_scene->render();
-		
-		g_renderer.clear();
-		g_renderer.begin_render();
-		g_renderer.apply_camera_transform();
-	 	
-		g_renderer.flush();
-
-		fnt->render_content();
-		g_renderer.end_render();
 
 
 #ifdef TEX_RENDER_TEST
 		static double xx = 0;
-		//xx += 100.0 * tmr.delta;
-		if (xx >= 320)
+		xx += 100.0 * tmr.delta;
+		if (xx >= 360)
 			xx = 0;
 		
 		g_renderer.set_rendertarget(e_rendertarget_texture);
@@ -238,7 +230,7 @@ namespace hs
 
 		g_renderer.begin_render();
 		g_renderer.apply_camera_transform();
-		current_scene->render();
+		g_renderer.flush();
 		g_renderer.end_render();
 		
 		g_renderer.set_rendertarget(e_rendertarget_screen);
@@ -247,31 +239,44 @@ namespace hs
 		
 		//glDisable(GL_BLEND);
 		
-		glTranslatef(-xx, 0.0, 0.0);
 		glPushMatrix();
-			glTranslatef(0.0, 0.0, 0.0);
+		glLoadIdentity();
+	//	g_renderer.apply_camera_transform();
+		glTranslatef(320/2, 480/2, 0);
+		
+		glTranslatef(0, 0, 0);
+		glRotatef( xx, 0.0f, 0.0f, 1.0f );
+		glTranslatef(-320/2, -480/2, 0);
+		
+		
+
 			g_renderer.render_backing_texture_to_screen();
 		glPopMatrix();
 		
-		glPushMatrix();
-			glTranslatef(320.0, 0.0, 0.0);
-		
-			g_renderer.render_backing_texture_to_screen();
-		glPopMatrix();
+//		glPushMatrix();
+//			glTranslatef(320.0, 0.0, 0.0);
+//		
+//			g_renderer.render_backing_texture_to_screen();
+//		glPopMatrix();
 
 		glPushMatrix();
 		glLoadIdentity();
-		fnt->render_content(s);
+		fnt->render_content();
 		glPopMatrix();
 		//glEnable(GL_BLEND);
 		g_renderer.end_render();
 #else
-//		g_renderer.clear();
-//		g_renderer.begin_render();
-//		g_renderer.apply_camera_transform();
-//	 	current_scene->render();
-//		fnt->render_content(s);
-//		g_renderer.end_render();
+		
+		g_renderer.clear();
+		g_renderer.begin_render();
+		g_renderer.apply_camera_transform();
+	 	
+		g_renderer.flush();
+		
+		fnt->render_content();
+		g_renderer.end_render();
+
+
 #endif
 	}
 }

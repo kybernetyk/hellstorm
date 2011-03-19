@@ -90,6 +90,16 @@ namespace game
 												  );
 
 		
+		//__level__
+		sprite = hs::factory::create_sprite(em, "level.png", hs::vec3d_make(190, 480-51, 9.5), hs::vec2d_make(0.5, 1.0));
+		
+		e = hs::factory::create_text_label(em, "score.fnt", "12345", hs::vec3d_make(190, 480-48, 9.5), hs::vec2d_make(0.5, 0.0) );
+		level_label = e->get<hs::comp::text_label>();
+		
+		char c[32];
+		sprintf(c, "%i", global::g_state.level);
+		level_label->text = c;
+
 		//__next__
 		sprite = hs::factory::create_atlas_sprite(em, 
 												  "game_sheet.png", 

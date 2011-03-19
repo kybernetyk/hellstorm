@@ -3,8 +3,14 @@
 //
 
 #import <Availability.h>
-#define HS_TARGET_IPHONE
+
+#ifndef HS_TARGET_IPHONE
+	#define HS_TARGET_IPHONE
+#endif
+
+#ifndef __RUNTIME_INFORMATION__
 #define __RUNTIME_INFORMATION__
+#endif
 
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iPhone SDK 3.0 and later."

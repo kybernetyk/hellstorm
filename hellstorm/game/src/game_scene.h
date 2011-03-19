@@ -35,7 +35,18 @@ namespace game
 		void handle_state_changes(void);
 		void create_next_level_button();
 		void next_level_button_pressed();
+		void create_menu_button();
+		void menu_button_pressed();
+		
+		void create_pause_button();
+		void pause_button_pressed();
+
 		int pressed_button;
+		
+		void handle_button_press();
+		
+		hs::particle_emitter *rnd_spark;
+		double rnd_spark_timer;
 		
 		hs::entity_manager *em;
 		hs::corpse_retrieval_system *cs;

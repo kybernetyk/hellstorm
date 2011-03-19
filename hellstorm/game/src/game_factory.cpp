@@ -19,7 +19,7 @@ namespace game
 		void create_psycho_back(hs::entity_manager *em)
 		{
 			hs::entity *sunb = hs::factory::create_sprite(em, 
-														  "sunburst_2.png", 
+														  "sunburst_1.png", 
 														  hs::vec3d_make(rand()%(int)hs::cfg::screen.size.w, rand()%(int)hs::cfg::screen.size.h, -4.5), 
 														  hs::anchor_center);
 			
@@ -52,23 +52,20 @@ namespace game
 //			sunb->get<comp_psycho_marker>()->velocity = hs::vec2d_make(-43.0, -12.0);
 //			sunb->get<hs::comp::renderable>()->alpha = 0.1;
 //
-		
+//		
 		}
 		
 		void create_borders(hs::entity_manager *em)
 		{
 			hs::entity *rast = 0;
 			
-			rast = hs::factory::create_sprite(em, "rahmen.png", hs::vec3d_screen_center(9.0), hs::anchor_center);
-			hs::comp::name *name = rast->add<hs::comp::name>();
-			name->text = "border (rahmen.png)";
 
 			
 			rast = hs::factory::create_sprite(em, 
 											  "lower.png", 
 											  hs::vec3d_make(hs::cfg::screen.size.w/2, 0, 4.0),
 											  hs::vec2d_make(0.5, 0.0));
-			name = rast->add<hs::comp::name>();
+			hs::comp::name *name = rast->add<hs::comp::name>();
 			name->text = "dingens (lower.png)";
 			
 			rast = hs::factory::create_sprite(em, 
@@ -83,12 +80,15 @@ namespace game
 
 		void create_raster(hs::entity_manager *em)
 		{
-			return;
-			
 			hs::entity *rast = 0;
+			rast = hs::factory::create_sprite(em, "rahmen.png", hs::vec3d_screen_center(9.0), hs::anchor_center);
+			hs::comp::name *name = rast->add<hs::comp::name>();
+			name->text = "border (rahmen.png)";
+
+			return;
 			rast = hs::factory::create_sprite(em, "raster_3.png", hs::vec3d_screen_center(7.0), hs::anchor_center);
 
-			hs::comp::name *name = rast->add<hs::comp::name>();
+			name = rast->add<hs::comp::name>();
 			name->text = "raster (raster_3.png)";
 		}
 	}
@@ -140,6 +140,7 @@ namespace game
 			player->center_color = cols[type*2];
 			player->aux_color = cols[type*2+1];
 			player->double_pill_type = type;
+			player->fall_time = 1.0 * global::g_state.difficulty;
 			
 			hs::comp::name *name = ret->add<hs::comp::name>();
 			name->text = "player pill";

@@ -1,29 +1,18 @@
 //
-//  menu_scene.h
+//  pause_scene.h
 //  hellstorm
 //
-//  Created by jrk on 18/2/11.
+//  Created by jrk on 11/3/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 #pragma once
+
 #include "hellstorm.h"
 #include "psycho_bg_system.h"
 
 namespace game
 {
-	enum e_menu_button_tag
-	{
-		e_button_none = 0,
-		e_button_start,
-		e_button_settings,
-		e_button_scores,
-		e_button_more,
-		e_button_easy,
-		e_button_medium,
-		e_button_hard
-	};
-
-	class menu_scene : public hs::scene
+	class pause_scene : public hs::scene
 	{
 	public:
 		void init(void);
@@ -34,9 +23,8 @@ namespace game
 		
 		int scene_type(void);
 		
-		~menu_scene();
-
-		hs::entity *create_menu_button(std::string filename, hs::vec3d pos, int tag);
+		
+		hs::entity *create_button(std::string filename, hs::vec3d pos, int tag);
 	protected:
 		hs::entity_manager *em;
 		hs::corpse_retrieval_system *cs;
@@ -49,8 +37,9 @@ namespace game
 		
 		int button_tag;
 		
-		std::vector<hs::entity *> buttons;
-		
-		void create_difficulty_menu();
+		static const int tag_button_none = 0;
+		static const int tag_button_resume = 1;
+		static const int tag_button_quit = 2;
 	};
-};
+
+}

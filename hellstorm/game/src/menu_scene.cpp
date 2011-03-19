@@ -42,7 +42,33 @@ namespace game
 		
 		return but;
 	}
-	
+	void menu_scene::create_difficulty_menu()
+	{
+		std::vector<hs::entity *>::iterator it = buttons.begin();
+		
+		while (it != buttons.end())
+		{
+			hs::entity *b = *it;
+			em->add_component<hs::comp::mark_of_death>(b);
+			
+			b->get<hs::ui::button>()->graphic->add<hs::comp::mark_of_death>();
+//			b->get<hs::ui::button>()->graphic->add<hs::comp::mark_of_death>();
+			
+			++it;
+		}
+		buttons.clear();
+		
+		create_menu_button("easy_button.cfg", 
+						   hs::vec3d_make(160, 260, 0.0),
+						   e_button_easy);
+		create_menu_button("medium_button.cfg", 
+						   hs::vec3d_make(160, 180, 0.0),
+						   e_button_medium);
+		create_menu_button("hard_button.cfg", 
+						   hs::vec3d_make(160, 100, 0.0),
+						   e_button_hard);
+
+	}
 	void menu_scene::init(void)
 	{
 		hs::audio_system::play_music("Menu.mp3");
@@ -56,9 +82,9 @@ namespace game
 		ui_system = new hs::ui_system(em);
 		bg_system = new psycho_bg_system(em);
 		
-		hs::factory::create_sprite(em, "background_noraster.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
+		hs::factory::create_sprite(em, "background_noraster2.png", hs::vec3d_screen_center(-5.0), hs::anchor_center);
 		factory::create_psycho_back(em);
-		//factory::create_borders(em);
+	//	factory::create_borders(em);
 		factory::create_raster(em);
 		
 		logo = hs::factory::create_sprite(em, "logo.png", 
@@ -74,18 +100,30 @@ namespace game
 										  hs::anchor_center);
 		alpha_shade->get<hs::comp::renderable>()->alpha = 0.5;
 		
-		create_menu_button("play_button.cfg", 
+		hs::entity *b = create_menu_button("play_button.cfg", 
 						   hs::vec3d_make(178, 275, 0.0),
 						   e_button_start);
-		create_menu_button("settings_button.cfg", 
+		buttons.push_back(b);
+		
+		b = create_menu_button("settings_button.cfg", 
 						   hs::vec3d_make(110, 197, 0.0), 
 						   e_button_settings);
-		create_menu_button("scores_button.cfg", 
+		buttons.push_back(b);
+		
+		b = create_menu_button("scores_button.cfg", 
 						   hs::vec3d_make(200, 128, 0.0),
 						   e_button_scores);
-		create_menu_button("more_button.cfg", 
+		buttons.push_back(b);
+		
+		b = create_menu_button("more_button.cfg", 
 						   hs::vec3d_make(145, 60, 0.0), 
 						   e_button_more);
+		buttons.push_back(b);
+		
+//		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(5, 100, 9.0), true);
+//		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(30, 460, 9.0), true);
+//		hs::factory::create_particle_emitter(em, "subtle_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(30, 460, 8.9), true);
+
 	}
 	
 	void menu_scene::shutdown(void)
@@ -121,10 +159,28 @@ namespace game
 			switch (button_tag) 
 			{
 				case e_button_start:
+					create_difficulty_menu();
+					break;
+				
+				case e_button_easy:
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
+					global::g_state.difficulty = global::difficulty_easy;
 					hs::g_game->set_scene(new game_scene());
 					break;
+				case e_button_medium:
+					global::g_state.level = 1;
+					global::g_state.score = 0;		
+					global::g_state.difficulty = global::difficulty_medium;
+					hs::g_game->set_scene(new game_scene());
+					break;
+				case e_button_hard:
+					global::g_state.level = 1;
+					global::g_state.score = 0;		
+					global::g_state.difficulty = global::difficulty_hard;
+					hs::g_game->set_scene(new game_scene());
+					break;
+			
 			}
 			hs::audio_system::play_sound("click.mp3");
 			button_tag = e_button_none;	

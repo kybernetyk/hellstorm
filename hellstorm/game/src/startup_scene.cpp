@@ -45,6 +45,12 @@ namespace game
 			hs::audio_system::preload_sound("click.mp3");
 			hs::audio_system::preload_music("Menu.mp3");
 
+			hs::g_texture_manager.acquire_texture("rahmen.png");
+			hs::g_texture_manager.acquire_texture("upper.png");
+			hs::g_texture_manager.acquire_texture("lower.png");
+			hs::g_texture_manager.acquire_texture("sunburst_1.png");
+			hs::g_texture_manager.acquire_texture("game_sheet.png");
+			hs::g_texture_manager.acquire_texture("background_noraster2.png");
 			
 			hs::g_game->set_scene(new menu_scene());	
 			//load user settings

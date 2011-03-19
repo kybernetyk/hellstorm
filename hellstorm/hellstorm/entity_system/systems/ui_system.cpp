@@ -28,7 +28,7 @@ namespace hs
 	
 	ui_system::~ui_system()
 	{
-		
+		delete [] ent_cache;
 	}
 	
 	void ui_system::handle_button(void)
