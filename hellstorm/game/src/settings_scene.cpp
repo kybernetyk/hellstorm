@@ -1,18 +1,18 @@
 //
-//  pause_scene.cpp
+//  settings_scene.cpp
 //  hellstorm
 //
-//  Created by jrk on 11/3/11.
+//  Created by jrk on 23/3/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#include "pause_scene.h"
+#include "settings_scene.h"
 #include "game_factory.h"
 #include "menu_scene.h"
 
 namespace game 
 {
-	hs::entity *pause_scene::create_button(std::string filename, hs::vec3d pos, int tag)
+	hs::entity *settings_scene::create_button(std::string filename, hs::vec3d pos, int tag)
 	{
 		hs::entity *but = 0;
 		
@@ -23,15 +23,16 @@ namespace game
 		return but;
 	}
 	
+	//static hs::entity *text;
 	static hs::entity *logo;
 	static hs::entity *logo_blink;
-	static hs::entity *alpha_shade;
+	static 	hs::entity *alpha_shade;
 	
 	static double r,g,b;
 	static double d;
-
 	
-	void pause_scene::init(void)
+	
+	void settings_scene::init(void)
 	{
 		//hs::audio_system::play_music("Menu.mp3");
 		
@@ -62,27 +63,27 @@ namespace game
 												 hs::vec3d_make(160, 400, 6.2), 
 												 hs::anchor_center);
 		alpha_shade->get<hs::comp::renderable>()->alpha = 0.5;
-
+		
 		
 		create_button("play_button.cfg", 
-						   hs::vec3d_make(178, 275, 0.0),
-						   tag_button_resume);
-//		create_button("settings_button.cfg", 
-//						   hs::vec3d_make(110, 197, 0.0), 
-//						   e_button_settings);
+					  hs::vec3d_make(178, 275, 0.0),
+					  tag_button_resume);
+		//		create_button("settings_button.cfg", 
+		//						   hs::vec3d_make(110, 197, 0.0), 
+		//						   e_button_settings);
 		create_button("scores_button.cfg", 
-						   hs::vec3d_make(200, 128, 0.0),
-						   tag_button_quit);
+					  hs::vec3d_make(200, 128, 0.0),
+					  tag_button_quit);
 		
-//		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(5, 100, 9.0), true);
-//		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(30, 460, 9.0), true);
-//		hs::factory::create_particle_emitter(em, "subtle_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(30, 460, 8.9), true);
-
+		//		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(5, 100, 9.0), true);
+		//		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(30, 460, 9.0), true);
+		//		hs::factory::create_particle_emitter(em, "subtle_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(30, 460, 8.9), true);
+		
 	}
 	
-	void pause_scene::shutdown(void)
+	void settings_scene::shutdown(void)
 	{
-		printf("pause scene shutdown!\n");
+		printf("settings scene shutdown!\n");
 		em->remove_all_entities();
 		delete em;
 		delete cs;
@@ -94,7 +95,7 @@ namespace game
 		delete ui_system;
 	}
 	
-	void pause_scene::update(double dt)
+	void settings_scene::update(double dt)
 	{
 		
 		d += dt * ( cos(60.0 * M_PI * dt) * M_PI ) * M_PI;
@@ -102,17 +103,17 @@ namespace game
 		g = cos(d);
 		b = atan(d);
 		logo_blink->get<hs::comp::renderable>()->color = hs::color3f_make(r, g, b);
-
+		
 		ui_system->update(dt);
-
+		
 		switch (button_tag) 
 		{
 			case tag_button_resume:
-				hs::g_game->pop_scene();
 				hs::audio_system::play_sound("click.mp3");
 				break;
 			case tag_button_quit:
-				hs::g_game->set_scene(new menu_scene());
+				hs::audio_system::play_sound("click.mp3");
+				hs::g_game->pop_scene();
 				break;
 			default:
 				break;
@@ -127,12 +128,12 @@ namespace game
 		cs->collect_corpses();
 	}
 	
-	void pause_scene::render()
+	void settings_scene::render()
 	{
 		rs->render();
 	}
 	
-	int pause_scene::scene_type()
+	int settings_scene::scene_type()
 	{
 		return 1;
 	}

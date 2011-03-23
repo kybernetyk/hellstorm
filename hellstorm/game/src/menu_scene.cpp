@@ -13,6 +13,7 @@
 #include "game_factory.h"
 #include "game_scene.h"
 #include "game_globals.h"
+#include "settings_scene.h"
 
 #include <cstdio>
 
@@ -23,13 +24,12 @@ namespace game
 		std::printf("menu scene dtor\n");
 	}
 	
-	hs::entity *text;
-	hs::entity *logo;
-	hs::entity *logo_blink;
-	hs::entity *alpha_shade;
+	static hs::entity *logo;
+	static hs::entity *logo_blink;
+	static hs::entity *alpha_shade;
 	
-	double r,g,b;
-	double d;
+	static double r,g,b;
+	static double d;
 	
 	
 	hs::entity *menu_scene::create_menu_button(std::string filename, hs::vec3d pos, int tag)
@@ -52,8 +52,7 @@ namespace game
 			em->add_component<hs::comp::mark_of_death>(b);
 			
 			b->get<hs::ui::button>()->graphic->add<hs::comp::mark_of_death>();
-//			b->get<hs::ui::button>()->graphic->add<hs::comp::mark_of_death>();
-			
+		
 			++it;
 		}
 		buttons.clear();
@@ -189,6 +188,10 @@ namespace game
 					break;
 				case e_button_more:
 					hs::post_notification("show_more");
+					break;
+					
+				case e_button_settings:
+					hs::g_game->push_scene(new settings_scene());
 					break;
 			
 			}
