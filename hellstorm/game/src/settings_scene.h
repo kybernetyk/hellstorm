@@ -37,9 +37,19 @@ namespace game
 		
 		int button_tag;
 		
+		hs::entity *music_btn;
+		hs::entity *sound_btn;
+		
 		static const int tag_button_none = 0;
-		static const int tag_button_resume = 1;
-		static const int tag_button_quit = 2;
+		static const int tag_button_music = 1;
+		static const int tag_button_sound = 2;
+		static const int tag_button_back = 3;
+
+		void create_sound_button();
+		void toggle_sound();
+
+		void create_music_button();
+		void toggle_music();
 	};
 	
 }

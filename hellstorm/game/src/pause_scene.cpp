@@ -64,14 +64,14 @@ namespace game
 		alpha_shade->get<hs::comp::renderable>()->alpha = 0.5;
 
 		
-		create_button("play_button.cfg", 
-						   hs::vec3d_make(178, 275, 0.0),
+		create_button("resume_button.cfg", 
+						   hs::vec3d_make(160, 200+50, 0.0),
 						   tag_button_resume);
 //		create_button("settings_button.cfg", 
 //						   hs::vec3d_make(110, 197, 0.0), 
 //						   e_button_settings);
-		create_button("scores_button.cfg", 
-						   hs::vec3d_make(200, 128, 0.0),
+		create_button("exit_button.cfg", 
+						   hs::vec3d_make(160, 200-50, 0.0),
 						   tag_button_quit);
 		
 //		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(5, 100, 9.0), true);

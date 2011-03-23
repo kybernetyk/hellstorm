@@ -20,8 +20,22 @@
 
 @synthesize viewController=_viewController;
 
+- (void) registerUserDefaults
+{
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	
+	
+	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys: 
+					   [NSNumber numberWithBool: YES], @"music_on",
+					   [NSNumber numberWithBool: YES], @"sound_on",
+					   nil];
+	
+	[defs registerDefaults: d];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[self registerUserDefaults];
 	gcm = [[GameCenterManager alloc] init];
 	[gcm authenticateLocalUser];
     // Override point for customization after application launch.

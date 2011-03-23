@@ -25,7 +25,24 @@ namespace game
 		start_screen = hs::g_renderable_manager.acquire_resource<hs::quad>("startup.png");
 		hs::quad *q = hs::g_renderable_manager.get_resource<hs::quad>(&start_screen);
 		q->position = hs::vec3d_screen_center();
+	
 		
+		bool sound = true;
+		hs::settings::get_value_for_key(sound, "sound_on");
+		
+		if (!sound)
+			hs::audio_system::set_sound_volume(0.0);
+		else
+			hs::audio_system::set_sound_volume(0.8);
+		
+		bool music = true;
+		hs::settings::get_value_for_key(music, "music_on");
+		
+		if (!music)
+			hs::audio_system::set_music_volume(0.0);
+		else
+			hs::audio_system::set_music_volume(0.6);
+
 	}
 	
 	void startup_scene::shutdown(void)

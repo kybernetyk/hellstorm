@@ -144,6 +144,7 @@ enum {
 
 - (void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver: self];
     hs_game_shutdown();
     if (program) {
         glDeleteProgram(program);

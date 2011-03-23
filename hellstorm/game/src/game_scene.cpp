@@ -114,7 +114,7 @@ namespace game
 	{
 		hs::entity *but = 0;
 		
-		but = hs::ui::create_button_from_file(em, "play_button.cfg", hs::vec3d_make(160, 150, 5.0));
+		but = hs::ui::create_button_from_file(em, "next_button.cfg", hs::vec3d_screen_center(5.0));
 		but->get<hs::ui::button>()->tag_ptr = &pressed_button;
 		but->get<hs::ui::button>()->tag = tag_button_next;
 	}
@@ -214,11 +214,11 @@ namespace game
 					global::g_state.current_state = global::e_gs_level_summary;
 					break;
 				case global::e_gs_level_summary:
-					hs::factory::create_text_label(em, 
-												   "impact20.fnt", 
-												   "YAY LEVEL PFERDIG!",
-												   hs::vec3d_screen_center(7.0));
-					
+//					hs::factory::create_text_label(em, 
+//												   "impact20.fnt", 
+//												   "YAY LEVEL PFERDIG!",
+//												   hs::vec3d_screen_center(7.0));
+//					
 					create_next_level_button();
 					break;
 				default:
