@@ -155,6 +155,16 @@ namespace game
 		ui_system->update(dt);
 		if (button_tag != e_button_none)
 		{
+			std::string fns[] = 
+			{
+				"wackno5.mp3",
+				"Trance1.mp3",
+				"RealTechno.mp3"
+			};
+			
+			std::string s = fns[rand()%3];
+				
+			
 			switch (button_tag) 
 			{
 				case e_button_start:
@@ -165,21 +175,21 @@ namespace game
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
 					global::g_state.difficulty = global::difficulty_easy;
-					hs::audio_system::play_music("wackno5.mp3");
+					hs::audio_system::play_music(s);
 					hs::g_game->set_scene(new game_scene());
 					break;
 				case e_button_medium:
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
 					global::g_state.difficulty = global::difficulty_medium;
-					hs::audio_system::play_music("wackno5.mp3");
+					hs::audio_system::play_music(s);
 					hs::g_game->set_scene(new game_scene());
 					break;
 				case e_button_hard:
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
 					global::g_state.difficulty = global::difficulty_hard;
-					hs::audio_system::play_music("wackno5.mp3");
+					hs::audio_system::play_music(s);
 					hs::g_game->set_scene(new game_scene());
 					break;
 					

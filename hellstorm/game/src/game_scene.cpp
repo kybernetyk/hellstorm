@@ -139,18 +139,21 @@ namespace game
 	
 	void game_scene::pause_button_pressed()
 	{
+		report_score();
 		//hs::g_game->set_scene(new menu_scene());
 		hs::g_game->push_scene(new pause_scene());
 	}
 
 	void game_scene::next_level_button_pressed()
 	{
+		report_score();
 		global::g_state.level++;
 		hs::g_game->set_scene(new game_scene());
 	}
 	
 	void game_scene::menu_button_pressed()
 	{
+		report_score();
 		hs::g_game->set_scene(new menu_scene());
 	}
 	
