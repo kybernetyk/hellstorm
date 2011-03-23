@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GameCenterManager.h"
 @class hellstormViewController;
 
-@interface hellstormAppDelegate : NSObject <UIApplicationDelegate> {
-
+@interface hellstormAppDelegate : NSObject <UIApplicationDelegate> 
+{
+	GameCenterManager *gcm;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

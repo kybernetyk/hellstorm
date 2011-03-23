@@ -7,6 +7,8 @@
 //
 
 #include "game_utils.h"
+#include "game_globals.h"
+#include "GameCenterManager.h"
 namespace game
 {
 	hs::vec3d pixel_for_colrow(int col, int row)
@@ -19,4 +21,22 @@ namespace game
 		return hs::vec3d_make((col*32.0) + defs::board_x_offset, (row*32.0)+defs::board_y_offset, defs::board_z);
 	}
 
+	void report_score()
+	{
+		NSString *strs[] = 
+		{
+			@"com.minyxgames.texxnopilzz.easy",
+			@"com.minyxgames.texxnopilzz.medium",
+			@"com.minyxgames.texxnopilzz.hard",
+		};
+		
+		NSString *cat = strs[global::g_state.difficulty];
+		
+		if (cat)
+		{	
+			[g_pGameCenterManger reportScore: global::g_state.score
+								 forCategory: cat];
+		}
+
+	}
 }

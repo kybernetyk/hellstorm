@@ -11,5 +11,6 @@
 
 namespace hs 
 {
+	void post_notification(const char *name, void *object = NULL);
 	void post_notification(std::string &notification_name, void *object = NULL);
 }

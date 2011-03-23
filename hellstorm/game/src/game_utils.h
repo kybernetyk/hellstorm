@@ -26,4 +26,7 @@ namespace game
 
 	hs::vec3d pixel_for_colrow(int col, int row);
 	hs::vec3d pixel_for_colrow(double col, double row);
+	
+	
+	void report_score();
 }

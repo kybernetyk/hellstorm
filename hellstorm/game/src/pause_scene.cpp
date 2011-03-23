@@ -23,6 +23,15 @@ namespace game
 		return but;
 	}
 	
+	extern hs::entity *text;
+	extern hs::entity *logo;
+	extern hs::entity *logo_blink;
+extern 	hs::entity *alpha_shade;
+	
+	extern double r,g,b;
+	extern double d;
+
+	
 	void pause_scene::init(void)
 	{
 		//hs::audio_system::play_music("Menu.mp3");
@@ -41,6 +50,20 @@ namespace game
 		//factory::create_borders(em);
 		factory::create_raster(em);
 		
+		
+		logo = hs::factory::create_sprite(em, "logo.png", 
+										  hs::vec3d_make(160, 400, 6.0), 
+										  hs::anchor_center);
+		logo_blink = hs::factory::create_sprite(em, "logo_blink.png", 
+												hs::vec3d_make(160, 400, 6.1), 
+												hs::anchor_center);
+		//		logo_blink->get<hs::comp::renderable>()->alpha = 0.5;
+		
+		alpha_shade = hs::factory::create_sprite(em, "logo_blink.png", 
+												 hs::vec3d_make(160, 400, 6.2), 
+												 hs::anchor_center);
+		alpha_shade->get<hs::comp::renderable>()->alpha = 0.5;
+
 		
 		create_button("play_button.cfg", 
 						   hs::vec3d_make(178, 275, 0.0),
@@ -74,6 +97,13 @@ namespace game
 	
 	void pause_scene::update(double dt)
 	{
+		
+		d += dt * ( cos(60.0 * M_PI * dt) * M_PI ) * M_PI;
+		r = sin(d);
+		g = cos(d);
+		b = atan(d);
+		logo_blink->get<hs::comp::renderable>()->color = hs::color3f_make(r, g, b);
+
 		ui_system->update(dt);
 
 		switch (button_tag) 

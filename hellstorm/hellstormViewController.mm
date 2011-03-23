@@ -14,6 +14,10 @@
 #include "hs_wrapper.h"
 #include "startup_scene.h"
 
+#import "PromotionViewController.h"
+#import <GameKit/GameKit.h>
+#import "GameCenterManager.h"
+
 // Uniform index.
 enum {
     UNIFORM_TRANSLATE,
@@ -41,10 +45,76 @@ enum {
 
 @synthesize animating, context, displayLink;
 
+- (void) showMore: (id) sender
+{
+	NSLog(@"show more");	
+	
+	PromotionViewController *vc = [[PromotionViewController alloc] initWithNibName: @"PromotionViewController" bundle: nil];
+	[vc autorelease];
+	[vc setPromotionAddress: @"http://www.minyxgames.com/more_games/promotion_portrait.html"];
+	[self presentModalViewController: vc animated: YES];
+}
+
+- (void) showScores: (id) sender
+{
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	NSNumber *scope = [defs objectForKey: @"leaderboardScope"];
+	GKLeaderboardTimeScope lbscope = [scope integerValue];
+	NSString *catName = [defs objectForKey: @"leaderboardCategoryName"];
+	
+	GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
+	[leaderboardController setTimeScope: lbscope];
+	[leaderboardController setCategory: catName];
+	[leaderboardController setLeaderboardDelegate: self];
+	
+	[self presentModalViewController: leaderboardController animated: YES];
+	
+	[leaderboardController release];
+	
+
+}
+- (void) processGameCenterAuth: (NSError*) error
+{
+	[g_pGameCenterManger submitCachedScores];
+	
+	NSLog(@"processGameCenterAuth. err: %@", [error localizedDescription]);
+}
+
+- (void) scoreReported: (NSError*) error
+{
+	NSLog(@"scoreReported. err: %@", [error localizedDescription]);	
+}
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+	hs::audio_system::play_sound("click.mp3");
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	NSNumber *scope = [NSNumber numberWithInt: [viewController timeScope]];
+	if (scope)
+	{	
+		[defs setObject: scope forKey: @"leaderboardScope"];
+	}
+	if ([viewController category])
+	{
+		[defs setObject: [viewController category] forKey: @"leaderboardCategoryName"];
+	}
+	//	NSLog(@"cat: %@", [viewController category]);
+	[defs synchronize];
+	
+	[self dismissModalViewControllerAnimated: YES];
+
+}	
+- (void) reloadScoresComplete: (GKLeaderboard*) leaderBoard error: (NSError*) error
+{
+	NSLog(@"scores are: %@", [g_pGameCenterManger top100_scores]);
+	NSLog(@"last pos: %i\n", [g_pGameCenterManger last_position]);
+}
+
 - (void)awakeFromNib
 {
   //  EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
+	
+	
     EAGLContext *aContext = nil;
     if (!aContext) {
         aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
@@ -92,7 +162,7 @@ enum {
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    //[super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc. that aren't in use.
 }
@@ -111,8 +181,18 @@ enum {
     [super viewWillDisappear:animated];
 }
 
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver: self selector:@selector(showMore:) name: @"show_more" object: nil];
+	[nc addObserver: self selector:@selector(showScores:) name: @"show_highscores" object: nil];
+}
+
 - (void)viewDidUnload
 {
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver: self];
 	[super viewDidUnload];
 	
     if (program) {

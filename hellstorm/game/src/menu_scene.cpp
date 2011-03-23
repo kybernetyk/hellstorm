@@ -166,19 +166,29 @@ namespace game
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
 					global::g_state.difficulty = global::difficulty_easy;
+					hs::audio_system::play_music("wackno5.mp3");
 					hs::g_game->set_scene(new game_scene());
 					break;
 				case e_button_medium:
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
 					global::g_state.difficulty = global::difficulty_medium;
+					hs::audio_system::play_music("wackno5.mp3");
 					hs::g_game->set_scene(new game_scene());
 					break;
 				case e_button_hard:
 					global::g_state.level = 1;
 					global::g_state.score = 0;		
 					global::g_state.difficulty = global::difficulty_hard;
+					hs::audio_system::play_music("wackno5.mp3");
 					hs::g_game->set_scene(new game_scene());
+					break;
+					
+				case e_button_scores:
+					hs::post_notification("show_highscores");
+					break;
+				case e_button_more:
+					hs::post_notification("show_more");
 					break;
 			
 			}

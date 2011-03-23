@@ -22,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	gcm = [[GameCenterManager alloc] init];
+	[gcm authenticateLocalUser];
     // Override point for customization after application launch.
     self.window.rootViewController = self.viewController;
     return YES;
@@ -80,6 +82,8 @@
 
 - (void)dealloc
 {
+	[gcm release];
+	g_pGameCenterManger = nil;
     [_window release];
     [_viewController release];
     [super dealloc];

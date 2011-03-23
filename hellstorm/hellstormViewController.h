@@ -14,8 +14,11 @@
 #import <OpenGLES/ES1/glext.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
+#import <GameKit/GameKit.h>
+#import "GameCenterManager.h"
 
-@interface hellstormViewController : UIViewController {
+
+@interface hellstormViewController : UIViewController <GKLeaderboardViewControllerDelegate> {
 @private
     EAGLContext *context;
     GLuint program;
@@ -23,6 +26,8 @@
     BOOL animating;
     NSInteger animationFrameInterval;
     CADisplayLink *displayLink;
+	
+	GameCenterManager *gcm;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;

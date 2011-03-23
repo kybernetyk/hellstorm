@@ -29,8 +29,6 @@ namespace game
 	
 	void game_scene::init(void)
 	{
-		hs::audio_system::play_music("Versuch3.mp3");
-		
 		em = new hs::entity_manager();
 		cs = new hs::corpse_retrieval_system(em);
 		rs = new hs::render_system(em);
@@ -201,6 +199,7 @@ namespace game
 					//game board system lets them fall
 					break;
 				case global::e_gs_game_over:
+					report_score();
 					hs::factory::create_text_label(em, 
 												   "impact20.fnt", 
 												   "Oh noes Game Ovre!",

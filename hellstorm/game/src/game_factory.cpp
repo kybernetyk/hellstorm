@@ -140,7 +140,24 @@ namespace game
 			player->center_color = cols[type*2];
 			player->aux_color = cols[type*2+1];
 			player->double_pill_type = type;
-			player->fall_time = 1.0 * global::g_state.difficulty;
+			player->fall_time = 1.0;
+			
+			player->timer = player->fall_time * global::g_state.difficulty;
+			
+			switch (global::g_state.difficulty) 
+			{
+				case global::difficulty_easy:
+					player->timer = 2.0;
+					break;
+				case global::difficulty_medium:
+					player->timer = 1.5;
+					break;
+				case global::difficulty_hard:
+					player->timer = 1.0;
+					break;
+				default:
+					break;
+			}
 			
 			hs::comp::name *name = ret->add<hs::comp::name>();
 			name->text = "player pill";

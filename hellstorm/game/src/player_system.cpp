@@ -83,7 +83,11 @@ namespace game
 			
 			if (hs::g_input.has_touched_up())
 			{
-				player->fast_drop = false;
+				if (player->fast_drop)
+				{
+					player->fast_drop = false;
+//					player->timer = player->fall_time * global::g_state.difficulty;
+				}
 			}
 			handle_state_falling();
 		}
@@ -337,10 +341,27 @@ namespace game
 		}
 
 		player->timer -= current_dt;
-
+//		printf("%.2f\n", player->timer);
+//		printf("fall time: %f\n", player->fall_time);
+//		printf("diff: %i\n",global::g_state.difficulty);
 		if (player->timer <= 0.0)
 		{
-			player->timer = player->fall_time * global::g_state.difficulty;
+			switch (global::g_state.difficulty) 
+			{
+				case global::difficulty_easy:
+					player->timer = 2.0;
+					break;
+				case global::difficulty_medium:
+					player->timer = 1.5;
+					break;
+				case global::difficulty_hard:
+					player->timer = 1.0;
+					break;
+				default:
+					break;
+			}
+
+//			player->timer = player->fall_time * global::g_state.difficulty;
 			if (player->fast_drop)
 				player->timer = 0.1;
 			
@@ -398,7 +419,6 @@ namespace game
 					
 					shading_center->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 448, 32, 32);
 					shading_aux->get<hs::comp::atlas_sprite>()->src_rect = hs::rect_make(64, 416, 32, 32);			
-					printf("90 90  90 90 \n");
 				}
 				
 				if ((int)current_pos->rot == 180)

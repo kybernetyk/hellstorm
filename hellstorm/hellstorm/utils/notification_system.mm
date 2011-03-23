@@ -12,6 +12,12 @@
 
 namespace hs 
 {
+	void post_notification(const char *name, void *objec)
+	{
+		std::string s(name);
+		post_notification(s,objec);
+	}
+	
 	void post_notification(std::string &notification_name, void *object)
 	{
 		//NSString *nn = [NSString stringWithFormat: @"%s",notification_name.c_str()];
