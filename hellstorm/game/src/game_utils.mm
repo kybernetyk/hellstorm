@@ -25,6 +25,7 @@ namespace game
 	{
 		NSString *strs[] = 
 		{
+			nil,
 			@"com.minyxgames.texxnopilzz.easy",
 			@"com.minyxgames.texxnopilzz.medium",
 			@"com.minyxgames.texxnopilzz.hard",
