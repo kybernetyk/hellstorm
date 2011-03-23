@@ -76,6 +76,7 @@ namespace game
 			factory::create_virus(em, c, r, (e_gbo_color)f);	
 		}
 
+		global::g_state.combo = 0;
 		global::g_state.current_state = global::e_gs_idle;
 		global::g_state.next_pill = (factory::e_doublepill_type)(rand()%16);
 		
@@ -170,6 +171,7 @@ namespace game
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_player_need_respawn:
+					global::g_state.combo = 0;
 					if (global::g_state.virii_left <= 0)
 					{
 						global::g_state.current_state = global::e_gs_no_virus_left;

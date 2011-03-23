@@ -51,6 +51,7 @@ namespace game
 			int virii_left;
 			
 			int difficulty;
+			int combo;
 			
 			factory::e_doublepill_type next_pill;
 			
@@ -62,6 +63,7 @@ namespace game
 				level = 0;
 				virii_left = 0;
 				difficulty = difficulty_easy;	//easy
+				combo = 0;
 			}
 		};
 		

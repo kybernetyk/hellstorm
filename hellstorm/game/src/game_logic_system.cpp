@@ -159,7 +159,7 @@ namespace game
 			//entities can be marked double - dont add component if it exists already;
 			if (!current_entity->get<hs::comp::mark_of_death>())
 			{	
-				global::g_state.score += 100;
+				global::g_state.score += (100 + 100 * global::g_state.combo);
 				current_entity->add<hs::comp::mark_of_death>();	
 				if (current_entity->get<game_board_element>()->type == e_gbo_type_virus)
 					global::g_state.virii_left--;
@@ -181,9 +181,15 @@ namespace game
 		}
 		
 		if (marked_for_removal.size() > 0)
-			global::g_state.current_state = global::e_gs_chains_marked;
+		{
+			global::g_state.current_state = global::e_gs_chains_marked;	
+			global::g_state.combo++;
+			printf("COMBO: %i\n", global::g_state.combo);
+		}
 		else
-			global::g_state.current_state = global::e_gs_no_chains;
+		{
+			global::g_state.current_state = global::e_gs_no_chains;	
+		}
 	}
 
 #pragma mark -
