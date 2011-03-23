@@ -83,6 +83,7 @@
 		03A024D2133A147F00A3DBE7 /* PromotionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A024CF133A147F00A3DBE7 /* PromotionViewController.mm */; };
 		03A024D3133A147F00A3DBE7 /* PromotionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03A024D0133A147F00A3DBE7 /* PromotionViewController.xib */; };
 		03A024E7133A18E100A3DBE7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A024E6133A18E100A3DBE7 /* GameKit.framework */; };
+		03A024EA133A22B000A3DBE7 /* settings_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03A024E8133A22AF00A3DBE7 /* settings_scene.cpp */; };
 		03ADE4641315018A00A539BC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4631315018A00A539BC /* logo.png */; };
 		03ADE4691315091100A539BC /* logo_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4681315091100A539BC /* logo_blink.png */; };
 		03ADE46D1315374700A539BC /* ui_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ADE46B1315374700A539BC /* ui_system.cpp */; };
@@ -243,6 +244,8 @@
 		03A024CF133A147F00A3DBE7 /* PromotionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PromotionViewController.mm; sourceTree = "<group>"; };
 		03A024D0133A147F00A3DBE7 /* PromotionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromotionViewController.xib; sourceTree = "<group>"; };
 		03A024E6133A18E100A3DBE7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		03A024E8133A22AF00A3DBE7 /* settings_scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = settings_scene.cpp; sourceTree = "<group>"; };
+		03A024E9133A22AF00A3DBE7 /* settings_scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings_scene.h; sourceTree = "<group>"; };
 		03ADE4631315018A00A539BC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		03ADE4681315091100A539BC /* logo_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_blink.png; sourceTree = "<group>"; };
 		03ADE46B1315374700A539BC /* ui_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_system.cpp; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 				038F82601317D4B00029D993 /* startup_scene.h */,
 				033ADC4E132A2CB300F0ADDF /* pause_scene.cpp */,
 				033ADC4F132A2CB400F0ADDF /* pause_scene.h */,
+				03A024E8133A22AF00A3DBE7 /* settings_scene.cpp */,
+				03A024E9133A22AF00A3DBE7 /* settings_scene.h */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
@@ -1066,6 +1071,7 @@
 				033ADC50132A2CB600F0ADDF /* pause_scene.cpp in Sources */,
 				03A024CB133A145800A3DBE7 /* GameCenterManager.m in Sources */,
 				03A024D2133A147F00A3DBE7 /* PromotionViewController.mm in Sources */,
+				03A024EA133A22B000A3DBE7 /* settings_scene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
