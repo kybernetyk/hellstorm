@@ -40,6 +40,7 @@ namespace game
 		static const int tag_button_none = 0;
 		static const int tag_button_resume = 1;
 		static const int tag_button_quit = 2;
+		static const int tag_button_settings = 3;
 	};
 
 }

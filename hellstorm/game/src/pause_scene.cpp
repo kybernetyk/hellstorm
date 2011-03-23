@@ -9,6 +9,7 @@
 #include "pause_scene.h"
 #include "game_factory.h"
 #include "menu_scene.h"
+#include "settings_scene.h"
 
 namespace game 
 {
@@ -65,13 +66,13 @@ namespace game
 
 		
 		create_button("resume_button.cfg", 
-						   hs::vec3d_make(160, 200+50, 0.0),
+						   hs::vec3d_make(160, 200+75, 0.0),
 						   tag_button_resume);
-//		create_button("settings_button.cfg", 
-//						   hs::vec3d_make(110, 197, 0.0), 
-//						   e_button_settings);
+		create_button("settings_button.cfg", 
+						   hs::vec3d_make(180, 200, 0.0), 
+						   tag_button_settings);
 		create_button("exit_button.cfg", 
-						   hs::vec3d_make(160, 200-50, 0.0),
+						   hs::vec3d_make(160, 200-75, 0.0),
 						   tag_button_quit);
 		
 //		hs::factory::create_particle_emitter(em, "disturbed_sparks.pex", PE_DUR_FROM_FILE, hs::vec3d_make(5, 100, 9.0), true);
@@ -113,6 +114,11 @@ namespace game
 				break;
 			case tag_button_quit:
 				hs::g_game->set_scene(new menu_scene());
+				hs::audio_system::play_sound("click.mp3");
+				break;
+			case tag_button_settings:
+				hs::g_game->push_scene(new settings_scene());
+				hs::audio_system::play_sound("click.mp3");
 				break;
 			default:
 				break;
