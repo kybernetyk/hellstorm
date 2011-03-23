@@ -28,7 +28,7 @@
 		033ADC50132A2CB600F0ADDF /* pause_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033ADC4E132A2CB300F0ADDF /* pause_scene.cpp */; };
 		033ADC52132AA24600F0ADDF /* background_noraster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 033ADC51132AA24500F0ADDF /* background_noraster2.png */; };
 		033C7130131818FD0064560E /* game_board_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033C712E131818FD0064560E /* game_board_system.cpp */; };
-		033C713313181D2A0064560E /* game_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033C713113181D2A0064560E /* game_utils.cpp */; };
+		033C713313181D2A0064560E /* game_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033C713113181D2A0064560E /* game_utils.mm */; };
 		033C71361318413C0064560E /* player_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033C71341318413B0064560E /* player_system.cpp */; };
 		033C7139131841FF0064560E /* game_globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033C7137131841FE0064560E /* game_globals.cpp */; };
 		03440B6F130E76D20097D9DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03440B6E130E76D20097D9DA /* UIKit.framework */; };
@@ -77,6 +77,12 @@
 		038F82611317D4B00029D993 /* startup_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038F825F1317D4B00029D993 /* startup_scene.cpp */; };
 		039462221324DF5E00C0B630 /* hud_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039462201324DF5E00C0B630 /* hud_system.cpp */; };
 		039462241324EF5800C0B630 /* drmario.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 039462231324EF5500C0B630 /* drmario.mp3 */; };
+		03A024C7133A0F2C00A3DBE7 /* wackno5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03A024C6133A0F2C00A3DBE7 /* wackno5.mp3 */; };
+		03A024CB133A145800A3DBE7 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A024CA133A145800A3DBE7 /* GameCenterManager.m */; };
+		03A024D1133A147F00A3DBE7 /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A024CD133A147F00A3DBE7 /* promo_head.png */; };
+		03A024D2133A147F00A3DBE7 /* PromotionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A024CF133A147F00A3DBE7 /* PromotionViewController.mm */; };
+		03A024D3133A147F00A3DBE7 /* PromotionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03A024D0133A147F00A3DBE7 /* PromotionViewController.xib */; };
+		03A024E7133A18E100A3DBE7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A024E6133A18E100A3DBE7 /* GameKit.framework */; };
 		03ADE4641315018A00A539BC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4631315018A00A539BC /* logo.png */; };
 		03ADE4691315091100A539BC /* logo_blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADE4681315091100A539BC /* logo_blink.png */; };
 		03ADE46D1315374700A539BC /* ui_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ADE46B1315374700A539BC /* ui_system.cpp */; };
@@ -162,7 +168,7 @@
 		033ADC51132AA24500F0ADDF /* background_noraster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_noraster2.png; sourceTree = "<group>"; };
 		033C712E131818FD0064560E /* game_board_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_board_system.cpp; sourceTree = "<group>"; };
 		033C712F131818FD0064560E /* game_board_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_board_system.h; sourceTree = "<group>"; };
-		033C713113181D2A0064560E /* game_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_utils.cpp; sourceTree = "<group>"; };
+		033C713113181D2A0064560E /* game_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = game_utils.mm; sourceTree = "<group>"; };
 		033C713213181D2A0064560E /* game_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_utils.h; sourceTree = "<group>"; };
 		033C71341318413B0064560E /* player_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player_system.cpp; sourceTree = "<group>"; };
 		033C71351318413C0064560E /* player_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player_system.h; sourceTree = "<group>"; };
@@ -229,6 +235,14 @@
 		039462201324DF5E00C0B630 /* hud_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hud_system.cpp; sourceTree = "<group>"; };
 		039462211324DF5E00C0B630 /* hud_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hud_system.h; sourceTree = "<group>"; };
 		039462231324EF5500C0B630 /* drmario.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drmario.mp3; sourceTree = "<group>"; };
+		03A024C6133A0F2C00A3DBE7 /* wackno5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wackno5.mp3; sourceTree = "<group>"; };
+		03A024C9133A145800A3DBE7 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		03A024CA133A145800A3DBE7 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		03A024CD133A147F00A3DBE7 /* promo_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_head.png; sourceTree = "<group>"; };
+		03A024CE133A147F00A3DBE7 /* PromotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionViewController.h; sourceTree = "<group>"; };
+		03A024CF133A147F00A3DBE7 /* PromotionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PromotionViewController.mm; sourceTree = "<group>"; };
+		03A024D0133A147F00A3DBE7 /* PromotionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromotionViewController.xib; sourceTree = "<group>"; };
+		03A024E6133A18E100A3DBE7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		03ADE4631315018A00A539BC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		03ADE4681315091100A539BC /* logo_blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_blink.png; sourceTree = "<group>"; };
 		03ADE46B1315374700A539BC /* ui_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_system.cpp; sourceTree = "<group>"; };
@@ -345,6 +359,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A024E7133A18E100A3DBE7 /* GameKit.framework in Frameworks */,
 				034609CC130FECAD0086DFDD /* AudioToolbox.framework in Frameworks */,
 				034609CA130FECA50086DFDD /* OpenAL.framework in Frameworks */,
 				034609C8130FEC9B0086DFDD /* AVFoundation.framework in Frameworks */,
@@ -382,6 +397,7 @@
 		03440B5F130E76D20097D9DA = {
 			isa = PBXGroup;
 			children = (
+				03A024E6133A18E100A3DBE7 /* GameKit.framework */,
 				03440B78130E76D20097D9DA /* hellstorm */,
 				03440B6D130E76D20097D9DA /* Frameworks */,
 				03440B6B130E76D20097D9DA /* Products */,
@@ -432,6 +448,9 @@
 		03440B79130E76D20097D9DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03A024CC133A147F00A3DBE7 /* PromotionViewController */,
+				03A024C9133A145800A3DBE7 /* GameCenterManager.h */,
+				03A024CA133A145800A3DBE7 /* GameCenterManager.m */,
 				03440B7A130E76D20097D9DA /* hellstorm-Info.plist */,
 				03440B7E130E76D20097D9DA /* hellstorm-Prefix.pch */,
 				03440B7F130E76D20097D9DA /* main.m */,
@@ -444,7 +463,7 @@
 			children = (
 				0372A7AD131446E400D1A840 /* game_factory.cpp */,
 				0372A7AE131446E400D1A840 /* game_factory.h */,
-				033C713113181D2A0064560E /* game_utils.cpp */,
+				033C713113181D2A0064560E /* game_utils.mm */,
 				033C713213181D2A0064560E /* game_utils.h */,
 				033C7137131841FE0064560E /* game_globals.cpp */,
 				033C7138131841FE0064560E /* game_globals.h */,
@@ -489,6 +508,7 @@
 		0374E1CA1313E1FE00BD1FDA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				03A024C6133A0F2C00A3DBE7 /* wackno5.mp3 */,
 				037078821334D48900967FEF /* hard_medium_easy.png */,
 				0370787A132F88C700967FEF /* level.png */,
 				039462231324EF5500C0B630 /* drmario.mp3 */,
@@ -551,6 +571,17 @@
 				0331C0871313F08D006937CA /* systems */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		03A024CC133A147F00A3DBE7 /* PromotionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				03A024CD133A147F00A3DBE7 /* promo_head.png */,
+				03A024CE133A147F00A3DBE7 /* PromotionViewController.h */,
+				03A024CF133A147F00A3DBE7 /* PromotionViewController.mm */,
+				03A024D0133A147F00A3DBE7 /* PromotionViewController.xib */,
+			);
+			path = PromotionViewController;
 			sourceTree = "<group>";
 		};
 		03ADE46A1315373A00A539BC /* ui_system */ = {
@@ -956,6 +987,9 @@
 				037078851334D4A900967FEF /* hard_button.cfg in Resources */,
 				037078871334D54B00967FEF /* medium_button.cfg in Resources */,
 				037078891334D55600967FEF /* easy_button.cfg in Resources */,
+				03A024C7133A0F2C00A3DBE7 /* wackno5.mp3 in Resources */,
+				03A024D1133A147F00A3DBE7 /* promo_head.png in Resources */,
+				03A024D3133A147F00A3DBE7 /* PromotionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,7 +1056,7 @@
 				038F825E1317C3CD0029D993 /* user_settings.mm in Sources */,
 				038F82611317D4B00029D993 /* startup_scene.cpp in Sources */,
 				033C7130131818FD0064560E /* game_board_system.cpp in Sources */,
-				033C713313181D2A0064560E /* game_utils.cpp in Sources */,
+				033C713313181D2A0064560E /* game_utils.mm in Sources */,
 				033C71361318413C0064560E /* player_system.cpp in Sources */,
 				033C7139131841FF0064560E /* game_globals.cpp in Sources */,
 				031C162F13190D9D00A7BD0B /* game_logic_system.cpp in Sources */,
@@ -1030,6 +1064,8 @@
 				03486F90132602D500A0AF34 /* system.cpp in Sources */,
 				03486F93132604E500A0AF34 /* popup_system.cpp in Sources */,
 				033ADC50132A2CB600F0ADDF /* pause_scene.cpp in Sources */,
+				03A024CB133A145800A3DBE7 /* GameCenterManager.m in Sources */,
+				03A024D2133A147F00A3DBE7 /* PromotionViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,6 +1153,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INFOPLIST_FILE = "hellstorm/hellstorm-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1138,6 +1175,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INFOPLIST_FILE = "hellstorm/hellstorm-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
