@@ -124,7 +124,7 @@ namespace game
 	{
 		hs::entity *but = 0;
 		
-		but = hs::ui::create_button_from_file(em, "more_button.cfg", hs::vec3d_make(160, 150, 5.0));
+		but = hs::ui::create_button_from_file(em, "exit_button.cfg", hs::vec3d_make(160, 240, 5.0));
 		but->get<hs::ui::button>()->tag_ptr = &pressed_button;
 		but->get<hs::ui::button>()->tag = tag_button_menu;
 	}
@@ -205,10 +205,7 @@ namespace game
 					break;
 				case global::e_gs_game_over:
 					report_score();
-					hs::factory::create_text_label(em, 
-												   "impact20.fnt", 
-												   "Oh noes Game Ovre!",
-												   hs::vec3d_screen_center(7.0));
+					hs::factory::create_sprite(em, "gaemover_1.png", hs::vec3d_make(160, 300, 7.0));
 
 					create_menu_button();
 					break;
@@ -216,6 +213,8 @@ namespace game
 					global::g_state.current_state = global::e_gs_level_summary;
 					break;
 				case global::e_gs_level_summary:
+					hs::factory::create_sprite(em, "level_fin1.png", hs::vec3d_make(160, 300, 7.0));
+
 //					hs::factory::create_text_label(em, 
 //												   "impact20.fnt", 
 //												   "YAY LEVEL PFERDIG!",
