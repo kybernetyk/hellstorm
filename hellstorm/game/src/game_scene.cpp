@@ -205,6 +205,7 @@ namespace game
 					//game board system lets them fall
 					break;
 				case global::e_gs_game_over:
+					hs::audio_system::play_sound("game_over.wav");
 					report_score();
 					hs::factory::create_sprite(em, "gaemover_1.png", hs::vec3d_make(160, 300, 7.0));
 
@@ -215,7 +216,7 @@ namespace game
 					break;
 				case global::e_gs_level_summary:
 					hs::factory::create_sprite(em, "level_fin1.png", hs::vec3d_make(160, 300, 7.0));
-
+					hs::audio_system::play_sound("level_finished.wav");
 //					hs::factory::create_text_label(em, 
 //												   "impact20.fnt", 
 //												   "YAY LEVEL PFERDIG!",
