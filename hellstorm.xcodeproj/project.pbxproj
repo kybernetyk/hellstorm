@@ -76,7 +76,6 @@
 		038F825E1317C3CD0029D993 /* user_settings.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038F825C1317C3CC0029D993 /* user_settings.mm */; };
 		038F82611317D4B00029D993 /* startup_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038F825F1317D4B00029D993 /* startup_scene.cpp */; };
 		039462221324DF5E00C0B630 /* hud_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039462201324DF5E00C0B630 /* hud_system.cpp */; };
-		039462241324EF5800C0B630 /* drmario.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 039462231324EF5500C0B630 /* drmario.mp3 */; };
 		03A024C7133A0F2C00A3DBE7 /* wackno5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03A024C6133A0F2C00A3DBE7 /* wackno5.mp3 */; };
 		03A024CB133A145800A3DBE7 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A024CA133A145800A3DBE7 /* GameCenterManager.m */; };
 		03A024D1133A147F00A3DBE7 /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A024CD133A147F00A3DBE7 /* promo_head.png */; };
@@ -153,6 +152,8 @@
 		03E37498131BB58600DC557A /* RealTechno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03E37497131BB58600DC557A /* RealTechno.mp3 */; };
 		03E3749B131BB59000DC557A /* Versuch2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03E3749A131BB59000DC557A /* Versuch2.mp3 */; };
 		03E3749D131BB5C600DC557A /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03E3749C131BB5C600DC557A /* Menu.mp3 */; };
+		03E72839133CB26800074077 /* gaemover_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E72837133CB26800074077 /* gaemover_1.png */; };
+		03E7283A133CB26800074077 /* level_fin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E72838133CB26800074077 /* level_fin1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,7 +248,6 @@
 		038F82601317D4B00029D993 /* startup_scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = startup_scene.h; sourceTree = "<group>"; };
 		039462201324DF5E00C0B630 /* hud_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hud_system.cpp; sourceTree = "<group>"; };
 		039462211324DF5E00C0B630 /* hud_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hud_system.h; sourceTree = "<group>"; };
-		039462231324EF5500C0B630 /* drmario.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drmario.mp3; sourceTree = "<group>"; };
 		03A024C6133A0F2C00A3DBE7 /* wackno5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wackno5.mp3; sourceTree = "<group>"; };
 		03A024C9133A145800A3DBE7 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
 		03A024CA133A145800A3DBE7 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
@@ -379,6 +379,8 @@
 		03E37497131BB58600DC557A /* RealTechno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RealTechno.mp3; sourceTree = "<group>"; };
 		03E3749A131BB59000DC557A /* Versuch2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Versuch2.mp3; sourceTree = "<group>"; };
 		03E3749C131BB5C600DC557A /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
+		03E72837133CB26800074077 /* gaemover_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gaemover_1.png; sourceTree = "<group>"; };
+		03E72838133CB26800074077 /* level_fin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_fin1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,12 +539,13 @@
 		0374E1CA1313E1FE00BD1FDA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				03E72837133CB26800074077 /* gaemover_1.png */,
+				03E72838133CB26800074077 /* level_fin1.png */,
 				03A024F5133A297100A3DBE7 /* next_resume_exit.png */,
 				03A024EB133A247C00A3DBE7 /* Trance1.mp3 */,
 				03A024C6133A0F2C00A3DBE7 /* wackno5.mp3 */,
 				037078821334D48900967FEF /* hard_medium_easy.png */,
 				0370787A132F88C700967FEF /* level.png */,
-				039462231324EF5500C0B630 /* drmario.mp3 */,
 				0317DCE5132253EF00AF89B4 /* Versuch3.mp3 */,
 				03E3749C131BB5C600DC557A /* Menu.mp3 */,
 				03E3749A131BB59000DC557A /* Versuch2.mp3 */,
@@ -1012,7 +1015,6 @@
 				03E3749B131BB59000DC557A /* Versuch2.mp3 in Resources */,
 				03E3749D131BB5C600DC557A /* Menu.mp3 in Resources */,
 				0317DCE6132253EF00AF89B4 /* Versuch3.mp3 in Resources */,
-				039462241324EF5800C0B630 /* drmario.mp3 in Resources */,
 				03486F8D1325324500A0AF34 /* score.fnt in Resources */,
 				03DDF0881327DA840036D1D4 /* disturbed_sparks.pex in Resources */,
 				03DDF0891327DA840036D1D4 /* tunnel_fx.pex in Resources */,
@@ -1043,6 +1045,8 @@
 				03A02506133A387A00A3DBE7 /* sound_button.png in Resources */,
 				03A02508133A389000A3DBE7 /* sound_off_button.cfg in Resources */,
 				03A0250A133A38AC00A3DBE7 /* sound_on_button.cfg in Resources */,
+				03E72839133CB26800074077 /* gaemover_1.png in Resources */,
+				03E7283A133CB26800074077 /* level_fin1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
