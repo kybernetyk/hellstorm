@@ -14,4 +14,15 @@ namespace hs
 	{
 		
 	}
+	
+	void scene::game_did_become_inactive(void)
+	{
+		
+	}
+	
+	void scene::game_did_become_active(void)
+	{
+		
+	}
+
 }

@@ -31,6 +31,9 @@ namespace game
 		
 		~game_scene();
 
+		void game_did_become_inactive(void);
+
+		
 	protected:
 		void handle_state_changes(void);
 		void create_next_level_button();

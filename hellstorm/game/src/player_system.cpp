@@ -122,6 +122,7 @@ namespace game
 		player->aux_col = player->center_col + col_offset;
 		player->aux_row = player->center_row + row_offset;
 		
+		hs::audio_system::play_sound("pill_rotate3.wav");
 		return true;
 	}
 	
@@ -154,6 +155,7 @@ namespace game
 		player->aux_col = player->center_col + col_offset;
 		player->aux_row = player->center_row + row_offset;
 		
+		hs::audio_system::play_sound("pill_rotate3.wav");
 		return true;
 	}
 	
@@ -286,6 +288,7 @@ namespace game
 		
 		player->center_col = c_test_col;
 		player->aux_col = a_test_col;
+		hs::audio_system::play_sound("pill_move.m4a");
 	}
 	
 	void player_system::move_left(void)
@@ -364,6 +367,7 @@ namespace game
 //			player->timer = player->fall_time * global::g_state.difficulty;
 			if (player->fast_drop)
 				player->timer = 0.1;
+			
 			
 			if (!can_move_down())
 			{
@@ -454,8 +458,11 @@ namespace game
 				else
 					global::g_state.current_state = global::e_gs_player_landed_ontop;
 
+				hs::audio_system::play_sound("pill_land.m4a");
 				return;
 			}
+			
+			hs::audio_system::play_sound("pill_move.m4a");
 			
 			player->center_row--;
 			player->aux_row--;

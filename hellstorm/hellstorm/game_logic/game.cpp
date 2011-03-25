@@ -44,11 +44,13 @@ namespace hs
 	void game::did_become_inactive(void)
 	{
 		cfg::save_user_settings();
+		current_scene->game_did_become_inactive();
 	}
 
 	void game::did_become_active(void)
 	{
 		long_delta_occured();
+		current_scene->game_did_become_active();
 	}
 
 	

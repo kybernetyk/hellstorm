@@ -60,6 +60,10 @@ namespace game
 			init_done = true;
 			printf("PENIS?\n");
 			hs::audio_system::preload_sound("click.mp3");
+			hs::audio_system::preload_sound("pill_land.m4a");
+			hs::audio_system::preload_sound("pill_move.m4a");
+			hs::audio_system::preload_sound("pill_weg.m4a");
+			
 			hs::audio_system::preload_music("Menu.mp3");
 
 			hs::g_texture_manager.acquire_texture("rahmen.png");

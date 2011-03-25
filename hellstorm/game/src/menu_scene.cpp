@@ -159,10 +159,10 @@ namespace game
 			{
 				"wackno5.mp3",
 				"Trance1.mp3",
-				"RealTechno.mp3"
+				"SklovenLoop2.mp3"
 			};
 			
-			std::string s = fns[rand()%3];
+			std::string s = fns[rand()%3]; //no real techno pls
 				
 			
 			switch (button_tag) 

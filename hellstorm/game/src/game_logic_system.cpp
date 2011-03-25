@@ -184,7 +184,7 @@ namespace game
 		{
 			global::g_state.current_state = global::e_gs_chains_marked;	
 			global::g_state.combo++;
-			printf("COMBO: %i\n", global::g_state.combo);
+			hs::audio_system::play_sound("pill_weg.m4a");
 		}
 		else
 		{

@@ -160,7 +160,8 @@ namespace game
 	{
 		if (!can_move_down())
 		{
-			change_state(current_gbo, e_gbo_state_idle);	
+			change_state(current_gbo, e_gbo_state_idle);
+			hs::audio_system::play_sound("pill_land.m4a");
 			return;
 		}
 
@@ -169,6 +170,7 @@ namespace game
 		if (current_gbo->timer <= 0.0)
 		{
 			current_gbo->timer = gbo_falltime;
+//			hs::audio_system::play_sound("pill_move.m4a");
 			
 			global::board_map[current_gbo->col][current_gbo->row] = NULL;
 			current_gbo->row--;

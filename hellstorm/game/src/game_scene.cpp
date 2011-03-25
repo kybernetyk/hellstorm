@@ -53,7 +53,7 @@ namespace game
 		
 		pressed_button = 0;
 		
-		int num_of_virii = global::g_state.level + 1;
+		int num_of_virii = global::g_state.level+1;
 		global::g_state.virii_left = num_of_virii;
 
 		memset(_init_map, 0x00, defs::board_num_of_cols * defs::board_num_of_rows * sizeof(bool));
@@ -61,8 +61,7 @@ namespace game
 		
 		while (1)
 		{
-			num_of_virii--;
-			if (num_of_virii < 0)
+			if (num_of_virii <= 0)
 				break;
 			
 			c = rand()%defs::board_num_of_cols;
@@ -74,6 +73,8 @@ namespace game
 			_init_map[c][r] = true;
 			
 			factory::create_virus(em, c, r, (e_gbo_color)f);	
+			num_of_virii--;
+
 		}
 
 		global::g_state.combo = 0;
@@ -305,4 +306,11 @@ namespace game
 	{
 		return 2;
 	}
+	
+	void game_scene::game_did_become_inactive(void)
+	{
+		pause_button_pressed();		
+	}
+	
+
 }

@@ -21,6 +21,9 @@ namespace hs
 		
 		virtual int scene_type(void) = 0;
 		
+		virtual void game_did_become_inactive(void);
+		virtual void game_did_become_active(void);
+		
 		virtual ~scene();
     };
 };
