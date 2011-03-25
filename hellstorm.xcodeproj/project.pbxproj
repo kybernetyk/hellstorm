@@ -83,6 +83,8 @@
 		03822F82133CC1BB00F4A9C1 /* Menu_Loopbar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03822F81133CC1BB00F4A9C1 /* Menu_Loopbar.mp3 */; };
 		03822F84133CC1E000F4A9C1 /* SklovenLoop2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03822F83133CC1E000F4A9C1 /* SklovenLoop2.mp3 */; };
 		03822F86133CC24600F4A9C1 /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03822F85133CC24600F4A9C1 /* Menu.mp3 */; };
+		03822F89133CC6C900F4A9C1 /* game_over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03822F87133CC6C800F4A9C1 /* game_over.wav */; };
+		03822F8A133CC6C900F4A9C1 /* level_finished.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03822F88133CC6C800F4A9C1 /* level_finished.wav */; };
 		038F825A1317BF720029D993 /* notification_system.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038F82581317BF720029D993 /* notification_system.mm */; };
 		038F825E1317C3CD0029D993 /* user_settings.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038F825C1317C3CC0029D993 /* user_settings.mm */; };
 		038F82611317D4B00029D993 /* startup_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038F825F1317D4B00029D993 /* startup_scene.cpp */; };
@@ -259,6 +261,8 @@
 		03822F81133CC1BB00F4A9C1 /* Menu_Loopbar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu_Loopbar.mp3; sourceTree = "<group>"; };
 		03822F83133CC1E000F4A9C1 /* SklovenLoop2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SklovenLoop2.mp3; sourceTree = "<group>"; };
 		03822F85133CC24600F4A9C1 /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
+		03822F87133CC6C800F4A9C1 /* game_over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game_over.wav; sourceTree = "<group>"; };
+		03822F88133CC6C800F4A9C1 /* level_finished.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = level_finished.wav; sourceTree = "<group>"; };
 		038F82581317BF720029D993 /* notification_system.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = notification_system.mm; sourceTree = "<group>"; };
 		038F82591317BF720029D993 /* notification_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notification_system.h; sourceTree = "<group>"; };
 		038F825C1317C3CC0029D993 /* user_settings.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = user_settings.mm; sourceTree = "<group>"; };
@@ -555,6 +559,8 @@
 		0374E1CA1313E1FE00BD1FDA /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				03822F87133CC6C800F4A9C1 /* game_over.wav */,
+				03822F88133CC6C800F4A9C1 /* level_finished.wav */,
 				03822F85133CC24600F4A9C1 /* Menu.mp3 */,
 				03822F83133CC1E000F4A9C1 /* SklovenLoop2.mp3 */,
 				03822F81133CC1BB00F4A9C1 /* Menu_Loopbar.mp3 */,
@@ -1079,6 +1085,8 @@
 				03822F82133CC1BB00F4A9C1 /* Menu_Loopbar.mp3 in Resources */,
 				03822F84133CC1E000F4A9C1 /* SklovenLoop2.mp3 in Resources */,
 				03822F86133CC24600F4A9C1 /* Menu.mp3 in Resources */,
+				03822F89133CC6C900F4A9C1 /* game_over.wav in Resources */,
+				03822F8A133CC6C900F4A9C1 /* level_finished.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
