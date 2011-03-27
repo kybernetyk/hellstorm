@@ -29,8 +29,8 @@ namespace hs
 	
 	action::~action()
 	{
-		printf("free action: %p\n", this);
-		printf("have child: %p\n", on_complete_action);
+//		printf("free action: %p\n", this);
+//		printf("have child: %p\n", on_complete_action);
 	}
 	
 	void action::append_action(action *next_action)

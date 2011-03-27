@@ -199,7 +199,7 @@ namespace hs
 			}
 			if (loops > 0)
 			{
-				printf("had to do %i loops in one frame!\n", loops);
+				//printf("had to do %i loops in one frame!\n", loops);
 			}
 		}
 		else
@@ -275,7 +275,7 @@ namespace hs
 	 	
 		g_renderer.flush();
 		
-		fnt->render_content();
+	//	fnt->render_content();
 		g_renderer.end_render();
 
 

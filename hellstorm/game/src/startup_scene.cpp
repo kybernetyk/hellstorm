@@ -21,7 +21,6 @@ namespace game
 	init_counter = 1;
 		init_done = false;
 		
-		printf("startup scene init ...\n");
 		start_screen = hs::g_renderable_manager.acquire_resource<hs::quad>("startup.png");
 		hs::quad *q = hs::g_renderable_manager.get_resource<hs::quad>(&start_screen);
 		q->position = hs::vec3d_screen_center();
@@ -52,13 +51,10 @@ namespace game
 	
 	void startup_scene::update(double dt)
 	{
-		printf("STARTUP UPDATE LOL?\n");
-
 		//wait 2 frames before doing heavy loading - so we can at least get a welcome screen out there
 		if (!init_done && (init_counter-- <= 0))
 		{
 			init_done = true;
-			printf("PENIS?\n");
 			hs::audio_system::preload_sound("click.mp3");
 			hs::audio_system::preload_sound("pill_land.m4a");
 			hs::audio_system::preload_sound("pill_move.m4a");

@@ -18,7 +18,8 @@
 #import "GameCenterManager.h"
 
 
-@interface hellstormViewController : UIViewController <GKLeaderboardViewControllerDelegate> {
+@interface hellstormViewController : UIViewController <GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate> 
+{
 @private
     EAGLContext *context;
     GLuint program;

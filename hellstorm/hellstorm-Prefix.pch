@@ -3,6 +3,7 @@
 //
 
 #import <Availability.h>
+#define NSLog(...)
 
 #ifndef HS_TARGET_IPHONE
 	#define HS_TARGET_IPHONE

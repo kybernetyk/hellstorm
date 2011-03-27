@@ -35,11 +35,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[self registerUserDefaults];
-	gcm = [[GameCenterManager alloc] init];
-	[gcm authenticateLocalUser];
     // Override point for customization after application launch.
     self.window.rootViewController = self.viewController;
+	
+	[self registerUserDefaults];
+	gcm = [[GameCenterManager alloc] init];
+	[gcm setDelegate: self.viewController];
+	[gcm authenticateLocalUser];
+
     return YES;
 }
 

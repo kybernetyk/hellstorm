@@ -120,10 +120,10 @@ enum {
         aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
     }
     
-    if (!aContext)
-        NSLog(@"Failed to create ES context");
-    else if (![EAGLContext setCurrentContext:aContext])
-        NSLog(@"Failed to set ES context current");
+//    if (!aContext)
+//        NSLog(@"Failed to create ES context");
+//    else if (![EAGLContext setCurrentContext:aContext])
+//        NSLog(@"Failed to set ES context current");
     
 	self.context = aContext;
 	[aContext release];

@@ -168,7 +168,6 @@ namespace game
 			switch (global::g_state.current_state) 
 			{
 				case global::e_gs_idle:
-					printf("oh we're idle ... let's do eet!\n");
 					global::g_state.current_state = global::e_gs_player_need_respawn;
 					break;
 				case global::e_gs_player_need_respawn:
