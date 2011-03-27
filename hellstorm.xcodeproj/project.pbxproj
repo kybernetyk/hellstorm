@@ -164,6 +164,8 @@
 		03DDF08D1327DA840036D1D4 /* subtle_sparks.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03DDF0871327DA840036D1D4 /* subtle_sparks.pex */; };
 		03E72839133CB26800074077 /* gaemover_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E72837133CB26800074077 /* gaemover_1.png */; };
 		03E7283A133CB26800074077 /* level_fin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E72838133CB26800074077 /* level_fin1.png */; };
+		03F78047133F2DDE0023DC8B /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F78046133F2DDE0023DC8B /* icon_57.png */; };
+		03F78049133F2DE30023DC8B /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F78048133F2DE30023DC8B /* icon_114.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -401,6 +403,8 @@
 		03DDF0871327DA840036D1D4 /* subtle_sparks.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = subtle_sparks.pex; sourceTree = "<group>"; };
 		03E72837133CB26800074077 /* gaemover_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gaemover_1.png; sourceTree = "<group>"; };
 		03E72838133CB26800074077 /* level_fin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_fin1.png; sourceTree = "<group>"; };
+		03F78046133F2DDE0023DC8B /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
+		03F78048133F2DE30023DC8B /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +450,8 @@
 		03440B5F130E76D20097D9DA = {
 			isa = PBXGroup;
 			children = (
+				03F78048133F2DE30023DC8B /* icon_114.png */,
+				03F78046133F2DDE0023DC8B /* icon_57.png */,
 				03A024E6133A18E100A3DBE7 /* GameKit.framework */,
 				03440B78130E76D20097D9DA /* hellstorm */,
 				03440B6D130E76D20097D9DA /* Frameworks */,
@@ -1087,6 +1093,8 @@
 				03822F86133CC24600F4A9C1 /* Menu.mp3 in Resources */,
 				03822F89133CC6C900F4A9C1 /* game_over.wav in Resources */,
 				03822F8A133CC6C900F4A9C1 /* level_finished.wav in Resources */,
+				03F78047133F2DDE0023DC8B /* icon_57.png in Resources */,
+				03F78049133F2DE30023DC8B /* icon_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
