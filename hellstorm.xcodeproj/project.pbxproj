@@ -62,7 +62,6 @@
 		0374E1DA1313E1FE00BD1FDA /* hellstorm.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1CE1313E1FE00BD1FDA /* hellstorm.cfg */; };
 		0374E1DB1313E1FE00BD1FDA /* impact20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1CF1313E1FE00BD1FDA /* impact20.fnt */; };
 		0374E1DC1313E1FE00BD1FDA /* impact20_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1D01313E1FE00BD1FDA /* impact20_0.png */; };
-		0374E1DD1313E1FE00BD1FDA /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1D11313E1FE00BD1FDA /* music.mp3 */; };
 		0374E1DE1313E1FE00BD1FDA /* stars.pex in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1D21313E1FE00BD1FDA /* stars.pex */; };
 		0374E1DF1313E1FE00BD1FDA /* tss.pex in Resources */ = {isa = PBXBuildFile; fileRef = 0374E1D31313E1FE00BD1FDA /* tss.pex */; };
 		0374E1E01313E1FE00BD1FDA /* menu_scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */; };
@@ -241,7 +240,6 @@
 		0374E1CE1313E1FE00BD1FDA /* hellstorm.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hellstorm.cfg; sourceTree = "<group>"; };
 		0374E1CF1313E1FE00BD1FDA /* impact20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = impact20.fnt; sourceTree = "<group>"; };
 		0374E1D01313E1FE00BD1FDA /* impact20_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = impact20_0.png; sourceTree = "<group>"; };
-		0374E1D11313E1FE00BD1FDA /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		0374E1D21313E1FE00BD1FDA /* stars.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stars.pex; sourceTree = "<group>"; };
 		0374E1D31313E1FE00BD1FDA /* tss.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tss.pex; sourceTree = "<group>"; };
 		0374E1D51313E1FE00BD1FDA /* menu_scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_scene.cpp; sourceTree = "<group>"; };
@@ -611,7 +609,6 @@
 				0374E1CF1313E1FE00BD1FDA /* impact20.fnt */,
 				03486F8C1325324500A0AF34 /* score.fnt */,
 				0374E1D01313E1FE00BD1FDA /* impact20_0.png */,
-				0374E1D11313E1FE00BD1FDA /* music.mp3 */,
 				03DDF0821327DA840036D1D4 /* disturbed_sparks.pex */,
 				03DDF0831327DA840036D1D4 /* tunnel_fx.pex */,
 				03DDF0841327DA840036D1D4 /* short_sparks.pex */,
@@ -1022,7 +1019,6 @@
 				0374E1DA1313E1FE00BD1FDA /* hellstorm.cfg in Resources */,
 				0374E1DB1313E1FE00BD1FDA /* impact20.fnt in Resources */,
 				0374E1DC1313E1FE00BD1FDA /* impact20_0.png in Resources */,
-				0374E1DD1313E1FE00BD1FDA /* music.mp3 in Resources */,
 				0374E1DE1313E1FE00BD1FDA /* stars.pex in Resources */,
 				0374E1DF1313E1FE00BD1FDA /* tss.pex in Resources */,
 				03BAA4661313E7E100AAA735 /* WHATS_THIS in Resources */,
