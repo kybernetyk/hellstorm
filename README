@@ -1,0 +1,63 @@
+libhellstorm
+============
+C++ game framework for iOS (in future possibly Mac/Win/Linux/Android). Features a component based entity system.
+
+Copyright
+=========
+(C) 2011 by Leon Szpilewski (http://nntp.pl)
+CocosDenshion, Particle System (C) by their respective authors
+This code comes with no warranty!
+
+License (where not stated differently)
+======================================
+License (framework): LGPL
+License (example game): GPL
+License (art assets): proprietary
+
+Features
+========
+- Component based entity system
+- Scene stack management 
+- 2D rendering through OpenGL ES 1.1 (compatibility header for OpenGL included)
+	- Sprites, Atlas Sprites
+	- Particles
+	- Simple UI system
+	- Bitmap fonts (Angelcode and Hiero FNT compatible)
+- Sound output through CocosDenshion (will be replaced by pure OpenAL in the future)
+- Input abstraction for touches (mouse, other devices planned)
+- Particle system (based on 71squared particle designer, http://particledesigner.71squared.com/). Will be reimplemented in C++ in the future.
+- UI System (supports only buttons and labels ATM)
+
+How To use
+==========
+Examine the example game (dr mario clone). Docs to be done yet. Sorry :)
+
+Where to start with the game?
+-----------------------------
+You start in hellstormViewController.mm in line 137. After that your scene will be updated every frame.
+
+So the game itself starts in startup_scene.cpp in init(). Each frame update() is called.
+After the startup is done, a menu_scene is activated. Look into menu_scene.cpp
+The game itself is handled in game_scene.cpp (take a look into the subsystems for game logic, etc)
+To see how entities are created take a look into game_factory.cpp
+
+How to create a new project?
+----------------------------
+Create a new iOS OpenGL app. Call hs_game_init(scene) after you set up everything. Call hs_game_tick() and hs_game_render() in your drawFrame/update/render method.
+
+Take a look into hellstormAppDelegate.h/mm, EAGLView.h/mm, hellstormViewController.h/mm to see how setup, input passing, etc. is done. Reuse those files - they are fairly general and should stay the same for every game.
+
+Take a look into hs_wrapper.h/cpp to get a idea what you need to call to make the game work.
+
+Todo
+====
+- Documentation
+- Audio system rewrite
+- Particle system rewrite
+- UI system extension
+- Ports for OS X, Windows, Linux. (Either with SDL or SFML)
+
+Contact
+=======
+You can contact me therough my blog at http://nntp.pl or through email leon.szpilewski at gmail dot com
+

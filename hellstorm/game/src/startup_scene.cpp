@@ -18,7 +18,7 @@ namespace game
 	
 	void startup_scene::init(void)
 	{
-	init_counter = 1;
+		init_counter = 1;
 		init_done = false;
 		
 		start_screen = hs::g_renderable_manager.acquire_resource<hs::quad>("startup.png");
