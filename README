@@ -28,6 +28,12 @@ Features
 - Particle system (based on 71squared particle designer, http://particledesigner.71squared.com/). Will be reimplemented in C++ in the future.
 - UI System (supports only buttons and labels ATM)
 
+Sample Game Features
+=================
+- Complete iPhone game which was submitted to the app store
+- Features Game Center integration for hiscores
+- Dr Mario clone
+
 How To use
 ==========
 Examine the example game (dr mario clone). Docs to be done yet. Sorry :)
