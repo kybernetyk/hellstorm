@@ -16,6 +16,7 @@ License (art assets): proprietary
 
 Features
 ========
+- Over engineered C++ code base.
 - Component based entity system
 - Scene stack management 
 - 2D rendering through OpenGL ES 1.1 (compatibility header for OpenGL included)
@@ -30,7 +31,7 @@ Features
 
 Sample Game Features
 =================
-- Complete iPhone game which was submitted to the app store
+- Complete iPhone game which was submitted to the app store (http://itunes.apple.com/us/app/texxno-pilzzz/id427962932?mt=8)
 - Features Game Center integration for hiscores
 - Dr Mario clone
 
@@ -65,5 +66,6 @@ Todo
 
 Contact
 =======
-You can contact me therough my blog at http://nntp.pl or through email leon.szpilewski at gmail dot com
+You can contact me by email leon.szpilewski at gmail dot com
+http://jsz.github.com
 
